@@ -5,6 +5,18 @@ export const HeaderEl = styled.header`
     padding: 20px 0;
 `
 
+export const HeaderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media(max-width: 460px){
+        flex-direction: column;
+        align-items: center;
+    }
+`
+
 export const HeaderLogo = styled(Link).attrs({
     to: '/'
 })`
@@ -13,4 +25,8 @@ export const HeaderLogo = styled(Link).attrs({
     gap: 10px;
     font-size: var(--fs-bg);
     font-weight: var(--fw-bold);
+
+    @media(max-width: 460px){
+        margin-bottom: 10px;
+    } 
 `   

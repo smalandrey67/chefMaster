@@ -1,8 +1,7 @@
 import { FC } from 'react'
 
-import { HeaderEl, HeaderLogo } from '../../styled/Basic/HeaderEl.styled'
+import { HeaderEl, HeaderWrapper, HeaderLogo } from '../../styled/Basic/Header.styled'
 import { Container } from '../../styled/Reused/Container.styled'
-import { Flex } from '../../styled/Reused/Flex.styled'
 
 import { ImSpoonKnife } from 'react-icons/im'
 
@@ -12,16 +11,13 @@ export const Header: FC = () => {
     return (
         <HeaderEl>
             <Container>
-                <Flex align="center" justify="space-between">
-
+                <HeaderWrapper>
                     <HeaderLogo>
-                        <ImSpoonKnife color="var(--color-black)"/>
+                        <ImSpoonKnife color="var(--color-black)" size="25"/>
                         ChefMaster
                     </HeaderLogo>
-
                     <Search />
-                    
-                </Flex>
+                </HeaderWrapper>
             </Container> 
         </HeaderEl>
     )
