@@ -1,10 +1,15 @@
 import styled from 'styled-components'
 
-export const SearchBody = styled.div`
+export const SearchLabel = styled.label`
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px; 
 
+    height: 50px;
+    border-radius: var(--br-radius);
+    padding: 0 20px;
+    box-shadow: var(--shadow);
+    
     @media(max-width: 460px){
         width: 100%; 
     } 
@@ -15,16 +20,13 @@ export const SearchInput = styled.input.attrs({
     name: 'search', 
     placeholder: 'Search'
 })`
-    height: 30px;
+    font-weight: var(--fw-bold);
     width: 100%;
-    padding: 0 20px;
-    border: 1px solid var(--color-text);
-    border-radius: var(--br-radius);
     color: var(--color-text);
-    margin-left: 5px;
     transition: all 0.5s ease;
 
     &::placeholder{
-        color: var(--color-text);
+        font-weight: var(--fw-semiBold);
+        color: var(--color-alternative);
     }
 `

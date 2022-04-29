@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
-import { SearchInput, SearchBody } from '../../styled/Basic/Search.styled'
+import { SearchInput, SearchLabel } from '../../styled/Basic/Search.styled'
 
-import { GoSearch } from 'react-icons/go'
+import { FiSearch } from 'react-icons/fi'
 
 export const Search: FC = () => {
     return (
-        <SearchBody>
+        <SearchLabel>
+            <FiSearch size="18"/>
             <SearchInput autoComplete="off" />
-            <GoSearch cursor="pointer" size="25" />
-        </SearchBody>
+        </SearchLabel>
     )
 } 

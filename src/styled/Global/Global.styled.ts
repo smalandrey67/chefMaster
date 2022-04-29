@@ -11,8 +11,9 @@ export const Global = createGlobalStyle`
     :root {
         //colors
         --color-black: #000000;
-        --color-background: #8e9eab;
-        --color-text: #eef2f3; 
+        --color-background: #eef2f3;
+        --color-text: #232526;
+        --color-alternative: #414345;
 
         //typography
         font-family: 'Quicksand', sans-serif;
@@ -26,12 +27,13 @@ export const Global = createGlobalStyle`
         --fw-bold: 700;
 
         --br-radius: 10px;
+
+        --shadow: rgba(-23,1,165,0.2) 0px 8px 24px;
     }
     body {
         font-family: var(--family);
         font-size: var(--fs-sm);
         background-color: var(--color-background);
-        color: var(--color-text);
     }
 
     a {
