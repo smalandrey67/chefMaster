@@ -10,7 +10,7 @@ export const SearchLabel = styled.label`
     padding: 0 20px;
     box-shadow: var(--shadow);
     
-    @media(max-width: 460px){
+    @media(max-width: 475px){
         width: 100%; 
     } 
 `
@@ -22,8 +22,8 @@ export const SearchInput = styled.input.attrs({
 })`
     font-weight: var(--fw-bold);
     width: 100%;
-    color: var(--color-text);
     transition: all 0.5s ease;
+    font-size: var(--fs-md);
 
     &::placeholder{
         font-weight: var(--fw-semiBold);

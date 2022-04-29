@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
 
-    @media(max-width: 460px){
+    @media(max-width: 475px){
         flex-direction: column;
         align-items: center;
     }
@@ -26,7 +26,7 @@ export const HeaderLogo = styled(Link).attrs({
     font-size: var(--fs-bg);
     font-weight: var(--fw-bold);
 
-    @media(max-width: 460px){
+    @media(max-width: 475px){
         margin-bottom: 10px;
     } 
 `   
