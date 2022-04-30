@@ -16,6 +16,7 @@ export const Global = createGlobalStyle`
         --color-alternative: #414345;
         --color-categories: #56ab2f;
         --color-categories-text: #f5af19;
+        --color-error: #Ed213a;
 
         //typography
         font-family: 'Quicksand', sans-serif;

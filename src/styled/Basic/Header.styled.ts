@@ -10,10 +10,10 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex-direction: column;
 
-    @media(max-width: 475px){
-        flex-direction: column;
-        align-items: center;
+    @media(min-width: 475px){
+        flex-direction: row;
     }
 `
 
@@ -25,8 +25,9 @@ export const HeaderLogo = styled(Link).attrs({
     gap: 10px;
     font-size: var(--fs-bg);
     font-weight: var(--fw-bold);
+    margin-bottom: 10px;
 
-    @media(max-width: 475px){
-        margin-bottom: 10px;
+    @media(min-width: 475px){
+        margin-bottom: 0;
     } 
 `   

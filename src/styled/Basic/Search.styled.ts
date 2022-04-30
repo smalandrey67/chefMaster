@@ -4,14 +4,14 @@ export const SearchLabel = styled.label`
     display: flex;
     align-items: center;
     gap: 10px; 
-
     height: 50px;
     border-radius: var(--br-radius);
     padding: 0 20px;
     box-shadow: var(--shadow);
-    
-    @media(max-width: 475px){
-        width: 100%; 
+    width: 100%;
+
+    @media(min-width: 475px){
+        width: auto; 
     } 
 `
 

@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
-export const CategoriesEl = styled.section``
+export const CategoriesEl = styled.section`
+    margin-bottom: 10px;
+`
 
 export const CategoriesList = styled.ul`
     display: flex;
