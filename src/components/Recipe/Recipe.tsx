@@ -2,25 +2,28 @@ import { FC } from 'react'
 import { IRecipe } from '../../models/IRecipe'
 import { SplideSlide } from '@splidejs/react-splide'
 
-import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient } from '../../styled/Basic/Recipe.styled'
+import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from '../../styled/Basic/Recipe.styled'
 
 interface RecipeProps {
     recipe: IRecipe
 }
 
 export const Recipe: FC<RecipeProps> = ({ recipe }) => {
-    const { id, title, image } = recipe
-
+    const { id, title, image, healthScore } = recipe
+    
     return (
         <SplideSlide>
             <RecipeEl>
                 <RecipeBody>
-                    <RecipeWrapper> 
+                    <RecipeWrapper>
                         <RecipeImage src={image} />
                     </RecipeWrapper>
+
                     <RecipeTitle>{title}</RecipeTitle>
-                    <RecipeGradient />   
-                </RecipeBody> 
+                    <RecipeScore healthScore={healthScore} >{healthScore}</RecipeScore>
+                    <RecipeGradient />
+
+                </RecipeBody>
             </RecipeEl>
         </SplideSlide>
     )

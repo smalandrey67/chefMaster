@@ -21,6 +21,7 @@ export const Global = createGlobalStyle`
         //typography
         font-family: 'Quicksand', sans-serif;
         
+        --fs-sl: 11px;
         --fs-sm: 14px;
         --fs-md: 18px;
         --fs-bg: 25px;

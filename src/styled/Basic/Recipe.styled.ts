@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface RecipeProps {
+    healthScore: number;
+}
+
 export const RecipeEl = styled.article`
     cursor: pointer;
 `
@@ -46,5 +50,29 @@ export const RecipeGradient = styled.div`
     min-height: 100%;
     z-index: 5;
     border-radius: var(--br-radius);
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5))
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))
+`
+
+export const RecipeScore = styled.span<RecipeProps>`
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid ${({ healthScore }) => healthScore <= 5 ? 'var(--color-error)' : 'var(--color-categories)'};
+    color: var(--color-background); 
+    font-size: var(--fs-sl);
+    font-weight: var(--fw-bold);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media(min-width: 768px){
+        font-size: var(--fs-sm);
+        height: 25px;
+        width: 25px;
+        top: 10px;
+        right: 10px;
+    }
 `

@@ -1,6 +1,5 @@
-export interface IRecipe {
+export interface ICuisine {
     id: number;
     title: string;
     image: string;
-    healthScore: number;
 }

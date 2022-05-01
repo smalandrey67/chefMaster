@@ -13,12 +13,12 @@ export const Header: FC = () => {
             <Container>
                 <HeaderWrapper>
                     <HeaderLogo>
-                        <ImSpoonKnife color="var(--color-black)" size="25"/>
+                        <ImSpoonKnife color="var(--color-black)" size="25" />
                         ChefMaster
                     </HeaderLogo>
                     <Search />
                 </HeaderWrapper>
-            </Container> 
+            </Container>
         </HeaderEl>
     )
 }

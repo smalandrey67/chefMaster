@@ -4,9 +4,9 @@ import { SpinnerTop, SpinnerMain, SpinnerFooter } from '../../styled/Basic/Spinn
 export const Spinner: FC = () => {
   return (
     <SpinnerTop>
-        <SpinnerMain>
-            <SpinnerFooter></SpinnerFooter>
-        </SpinnerMain>
+      <SpinnerMain>
+        <SpinnerFooter></SpinnerFooter>
+      </SpinnerMain>
     </SpinnerTop>
   )
 }

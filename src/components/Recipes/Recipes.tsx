@@ -19,18 +19,17 @@ export const Recipes: FC = () => {
 
     useEffect(() => {
         dispatch(randomRecipeAsync())
-        
     }, [dispatch])
 
     return (
         <RandomEl>
             <Container>
                 <Splide options={{
-                        perPage: 3,
-                        arrows: false,
-                        pagination: false,
-                        gap: '10px'
-                    }}>
+                    perPage: 3,
+                    arrows: false,
+                    pagination: false,
+                    gap: '10px'
+                }}>
                     {status === 'pending' ?
                         <Spinner />
                         :

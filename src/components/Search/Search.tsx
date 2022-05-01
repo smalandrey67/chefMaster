@@ -7,7 +7,7 @@ import { FiSearch } from 'react-icons/fi'
 export const Search: FC = () => {
     return (
         <SearchLabel>
-            <FiSearch size="18"/>
+            <FiSearch size="18" />
             <SearchInput autoComplete="off" />
         </SearchLabel>
     )
