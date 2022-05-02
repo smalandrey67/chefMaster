@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { randomRecipeAsync } from '../requests/randomRecipesAsync';
 import { IRecipe } from '../../models/IRecipe'
 
-interface RecipeState {
+type RecipeState = {
     recipes: IRecipe[];
     status: string | null,
     error: string | null,

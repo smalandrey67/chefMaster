@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-interface RecipeProps {
+type RecipeProps = {
     healthScore: number;
 }
 

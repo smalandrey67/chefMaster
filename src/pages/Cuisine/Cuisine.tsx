@@ -21,7 +21,6 @@ export const Cuisine: FC = () => {
         dispatch(cuisineRecipesAsync(type))
     }, [type, dispatch])
 
-
     return (
         <CuisineEl
             animate={{ opacity: 1 }}

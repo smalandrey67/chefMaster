@@ -12,7 +12,7 @@ export const randomRecipeAsync = createAsyncThunk(
                 return [...JSON.parse(localStorage.getItem('recipes') || '')]
             }
 
-            const response = await fetch('')
+            const response = await fetch(getRandomRecipes())
 
             if (!response.ok) {
                 throw new Error('Something went wrong')

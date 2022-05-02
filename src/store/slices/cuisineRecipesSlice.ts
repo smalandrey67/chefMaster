@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { cuisineRecipesAsync } from '../requests/cuisineRecipesAsync'
 import { ICuisine } from '../../models/ICuisine'
 
-interface RecipeState {
+type RecipeState = {
     cuisine: ICuisine[];
     status: string | null,
     error: string | null,
