@@ -8,19 +8,23 @@ type InstructionsProps = {
 }
 
 export const Tabs: FC<InstructionsProps> = ({ activeTab, tabHandler }) => {
-
     return (
         <DetailsInfoWrapper>
 
-            <DetailsInfoButton 
-                className={activeTab === 'instructions' ? 'active' : ''} 
+            <DetailsInfoButton
+                className={activeTab === 'instructions' ? 'active' : ''}
                 onClick={() => tabHandler('instructions')}
             >Instructions</DetailsInfoButton>
 
-            <DetailsInfoButton 
-                className={activeTab === 'ingredients' ? 'active' : ''} 
+            <DetailsInfoButton
+                className={activeTab === 'ingredients' ? 'active' : ''}
                 onClick={() => tabHandler('ingredients')}
             >Ingredients</DetailsInfoButton>
+
+            <DetailsInfoButton
+                className={activeTab === 'cooking' ? 'active' : ''}
+                onClick={() => tabHandler('cooking')}
+            >Cooking</DetailsInfoButton>
 
         </DetailsInfoWrapper>
     )

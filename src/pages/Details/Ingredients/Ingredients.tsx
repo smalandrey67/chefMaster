@@ -4,7 +4,7 @@ import { IDetails } from '../../../models/IDetails'
 import { stringCut } from '../../../utils/stringCut'
 
 import {
-    DetailsIngredients,
+    DetailsList,
     DetailsIngredientsItem,
     DetailsIngredientsImage,
     DetailsIngredientsTitle,
@@ -19,12 +19,7 @@ type IngredientsProps = {
 export const Ingredients: FC<IngredientsProps> = ({ details }) => {
 
     return (
-        <DetailsIngredients
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-        >
+        <DetailsList animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
             {details?.extendedIngredients.map(ingredient =>
                 <DetailsIngredientsItem key={ingredient.id}>
                     <DetailsIngredientsImage src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} />
@@ -35,7 +30,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                     </DetailsIngredientsUnit>
                 </DetailsIngredientsItem>
             )}
-        </DetailsIngredients>
+        </DetailsList>
     )
 }
 

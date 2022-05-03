@@ -11,9 +11,6 @@ type InstructionsProps = {
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {
 
-
- 
-
     return (
         <DetailsInfoDescription
             animate={{ opacity: 1 }}

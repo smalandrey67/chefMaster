@@ -1,3 +1,26 @@
+type IStepsEquipment = {
+    id: number;
+    image: string;
+    name: string;
+}
+
+type IStepsIngredients = {
+    id: number;
+    image: string;
+    name: string;
+}
+
+type ISteps = {
+    equipment: IStepsEquipment[]
+    ingredients: IStepsIngredients[]
+    step: '';
+    number: number;
+}
+
+type IAnalyzedInstructions = {
+    steps: ISteps[]
+}
+
 type IIngredients = {
     id: number;
     image: string; 
@@ -14,4 +37,5 @@ export type IDetails = {
     summary: string; 
     instructions: string;
     extendedIngredients: IIngredients[];
+    analyzedInstructions: IAnalyzedInstructions[]
 }
