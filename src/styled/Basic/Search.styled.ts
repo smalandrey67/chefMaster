@@ -1,5 +1,14 @@
 import styled from 'styled-components'
 
+export const SearchForm = styled.form`
+    width: 100%;
+
+    @media(min-width: 475px){
+        width: auto; 
+    } 
+`
+
+
 export const SearchLabel = styled.label`
     display: flex;
     align-items: center;
@@ -8,17 +17,13 @@ export const SearchLabel = styled.label`
     border-radius: var(--br-radius);
     padding: 0 20px;
     box-shadow: var(--shadow);
-    width: 100%;
-
-    @media(min-width: 475px){
-        width: auto; 
-    } 
 `
 
 export const SearchInput = styled.input.attrs({
     type: 'text',
     name: 'search', 
-    placeholder: 'Search'
+    placeholder: 'Search',
+    enterkeyhint: 'Search',
 })`
     font-weight: var(--fw-bold);
     width: 100%;

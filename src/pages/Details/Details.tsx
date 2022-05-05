@@ -7,7 +7,8 @@ import {
     DetailWrapperImage, 
     DetailsWrapperTitle,
     DetailsImage, 
-    DetailsInfo 
+    DetailsInfo,
+    DetailsWrapperTime
 } from '../../styled/Basic/Details.styled'
 import { Container } from '../../styled/Reused/Container.styled'
 import { ErrorMessage } from '../../styled/Reused/ErrorMessage.styled'
@@ -45,7 +46,10 @@ export const Details: FC = () => {
                         :
                         <>
                             <DetailWrapperImage>
-                                <DetailsWrapperTitle>{details?.title}</DetailsWrapperTitle>
+                                <DetailsWrapperTitle>
+                                    {details?.title}
+                                    <DetailsWrapperTime>({details?.readyInMinutes} minutes)</DetailsWrapperTime> 
+                                </DetailsWrapperTitle>
                                 <DetailsImage src={details?.image} alt={details?.title} />
                             </DetailWrapperImage>
 

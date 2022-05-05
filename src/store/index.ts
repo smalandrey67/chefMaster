@@ -3,11 +3,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import getRandomRecipesReducer  from './slices/randomRecipesSlice'
 import cuisineRecipesReducer from './slices/cuisineRecipesSlice'
 import detailsRecipeReducer from './slices/detailsRecipeSlice'
+import searchedRecipesReducer from './slices/searchedRecipesSlice'
 
 const rootReducer = combineReducers({
     getRandomRecipesReducer,
     cuisineRecipesReducer,
-    detailsRecipeReducer,
+    detailsRecipeReducer, 
+    searchedRecipesReducer,
 })
 
 export const setupStore = () => {

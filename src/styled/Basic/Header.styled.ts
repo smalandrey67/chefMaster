@@ -2,8 +2,18 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const HeaderEl = styled.header`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-background);
     padding: 20px 0;
+
+    @media(min-width: 768px){
+        position: static;
+    }
 `
+
 
 export const HeaderWrapper = styled.div`
     display: flex;

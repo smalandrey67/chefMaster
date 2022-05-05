@@ -23,11 +23,19 @@ export const DetailWrapperImage = styled.div`
 
 export const DetailsWrapperTitle = styled.h2`
     margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
 
     @media(min-width: 768px){
         margin: 0 0 30px 0;
     }
 `
+
+export const DetailsWrapperTime = styled.span`
+    font-size: var(--fs-sl);
+    margin-left: 5px;
+`
+
 
 export const DetailsImage = styled.img`
     width: 100%;
@@ -48,12 +56,18 @@ export const DetailsInfoWrapper = styled.div`
     align-items: center;
     gap: 10px;
     margin: 0 0 10px 0;
+    flex-wrap: wrap;
+
+    @media(min-width: 375px){
+        flex-wrap: nowrap;
+    }
+
 `
 
 export const DetailsInfoButton = styled.button`
     height: 40px;
     padding: 0 15px;
-    flex: 0 1 33.333%;
+    flex: 0 1 100%;
     border-radius: var(--br-radius);
     box-shadow: var(--shadow);
     font-weight: var(--fw-semiBold);

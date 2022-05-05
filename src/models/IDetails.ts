@@ -37,5 +37,6 @@ export type IDetails = {
     summary: string; 
     instructions: string;
     extendedIngredients: IIngredients[];
-    analyzedInstructions: IAnalyzedInstructions[]
+    analyzedInstructions: IAnalyzedInstructions[];
+    readyInMinutes: number;
 }

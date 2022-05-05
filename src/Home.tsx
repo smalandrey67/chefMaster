@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Main } from './pages/Main/Main'
 import { Cuisine } from './pages/Cuisine/Cuisine'
 import { Details } from './pages/Details/Details'
+import { Searched } from './pages/Searched/Searched'
 
 import { Header } from './components/Header/Header'
 import { Categories } from './components/Сategories/Categories'
@@ -17,6 +18,7 @@ export const Home: FC = () => {
                 <Route path='/' element={<Main />} />
                 <Route path='/cuisine/:type' element={<Cuisine /> } />
                 <Route path='/details/:id' element={<Details />} />
+                <Route path='/searched/:name' element={<Searched />} />
             </Routes>
         </>
     )
