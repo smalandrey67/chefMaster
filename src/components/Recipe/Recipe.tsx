@@ -1,17 +1,17 @@
 import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 
 import { IRecipe } from '../../models/IRecipe'
 import { SplideSlide } from '@splidejs/react-splide'
 
-import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from '../../styled/Basic/Recipe.styled'
+import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from './Recipe.styled'
 
 type RecipeProps = {
     recipe: IRecipe
 }
 
 export const Recipe: FC<RecipeProps> = ({ recipe }) => {
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
     const { id, title, image, healthScore } = recipe
     
     const detailsNavigateHandler = () => navigate(`/details/${id}`)
@@ -25,7 +25,7 @@ export const Recipe: FC<RecipeProps> = ({ recipe }) => {
                     </RecipeWrapper>
 
                     <RecipeTitle>{title}</RecipeTitle>
-                    <RecipeScore healthScore={healthScore} >{healthScore}</RecipeScore>
+                    <RecipeScore healthScore={healthScore}>{healthScore}</RecipeScore>
                     <RecipeGradient />
 
                 </RecipeBody>

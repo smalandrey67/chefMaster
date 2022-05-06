@@ -1,17 +1,17 @@
 import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 
 import { ICuisine } from '../../models/ICuisine'
 
-import { RecipeEl } from '../../styled/Basic/Recipe.styled'
-import { RecipeCuisineImageWrapper, RecipeCuisineImage, RecipeCuisineTitle } from '../../styled/Basic/RecipeCuisine.styled'
+import { RecipeEl } from '../Recipe/Recipe.styled'
+import { RecipeCuisineImageWrapper, RecipeCuisineImage, RecipeCuisineTitle } from './RecipeCuisine.styled'
 
 type RecipeCuisineProps = {
     recipe: ICuisine;
 }
 
 export const RecipeCuisine: FC<RecipeCuisineProps> = ({ recipe }) => {
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
     const { id, title, image } = recipe
 
     const detailsNavigateHandler = () => navigate(`/details/${id}`)

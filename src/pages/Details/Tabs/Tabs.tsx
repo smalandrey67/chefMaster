@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { DetailsInfoButton, DetailsInfoWrapper } from '../../../styled/Basic/Details.styled'
+import { DetailsInfoButton, DetailsInfoWrapper } from './Tabs.styled'
 
 type InstructionsProps = {
     activeTab: string,

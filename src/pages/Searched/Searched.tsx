@@ -7,9 +7,8 @@ import { searchedRecipesAsync } from '../../store/requests/searchedRecipesAsync'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
-import { Container } from '../../styled/Reused/Container.styled'
-import { CuisineWrapper } from '../../styled/Basic/Cuisine.styled'
-import { ErrorMessage } from '../../styled/Reused/ErrorMessage.styled'
+import { Container, ErrorMessage } from '../../styled/Reused.styled'
+import { CuisineWrapper } from '../Cuisine/Cuisine.styled'
 
 
 export const Searched: FC = () => {

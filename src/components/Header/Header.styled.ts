@@ -14,7 +14,6 @@ export const HeaderEl = styled.header`
     }
 `
 
-
 export const HeaderWrapper = styled.div`
     display: flex;
     align-items: center;

@@ -1,7 +1,7 @@
 import { FC } from "react"
 
-import { Container } from "../../styled/Reused/Container.styled"
-import { CategoriesNav, CategoriesList, CategoriesItem, CategoriesLink } from '../../styled/Basic/Categories.styled'
+import { Container } from "../../styled/Reused.styled"
+import { CategoriesNav, CategoriesList, CategoriesItem, CategoriesLink } from './Categories.styled'
 
 import { FaPizzaSlice, FaHamburger, FaDrumstickBite } from 'react-icons/fa'
 import { GiSushis } from 'react-icons/gi'

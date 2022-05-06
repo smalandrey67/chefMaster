@@ -8,7 +8,6 @@ export const SearchForm = styled.form`
     } 
 `
 
-
 export const SearchLabel = styled.label`
     display: flex;
     align-items: center;
@@ -23,7 +22,6 @@ export const SearchInput = styled.input.attrs({
     type: 'text',
     name: 'search', 
     placeholder: 'Search',
-    enterkeyhint: 'Search',
 })`
     font-weight: var(--fw-bold);
     width: 100%;

@@ -1,5 +1,5 @@
 export const getRandomRecipes = (): string => {
-    return `${process.env.REACT_APP_URL}/random?apiKey=${process.env.REACT_APP_KEY}&number=9`
+    return `${process.env.REACT_APP_URL}/random?apiKey=${process.env.REACT_APP_KEY}&number=12`
 }
 
 export const getCuisineRecipes = (country: string): string => {

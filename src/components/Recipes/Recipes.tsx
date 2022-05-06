@@ -5,10 +5,10 @@ import { Splide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
 
 import { randomRecipeAsync } from '../../store/requests/randomRecipesAsync'
+import { ISplide } from '../../models/ISplide'
 
-import { RandomEl } from '../../styled/Basic/Recipes.styled'
-import { Container } from '../../styled/Reused/Container.styled'
-import { ErrorMessage } from '../../styled/Reused/ErrorMessage.styled'
+import { RandomEl } from './Recipes.styled'
+import { Container, ErrorMessage } from '../../styled/Reused.styled'
 
 import { Spinner } from '../Spinner/Spinner'
 import { Recipe } from '../Recipe/Recipe'
@@ -21,15 +21,17 @@ export const Recipes: FC = () => {
         dispatch(randomRecipeAsync())
     }, [dispatch])
 
+    const splideOptions: ISplide = {
+        perPage: 3,
+        arrows: false,
+        pagination: false,
+        gap: '10px',
+    }
+
     return (
         <RandomEl>
             <Container>
-                <Splide options={{
-                    perPage: 3,
-                    arrows: false,
-                    pagination: false,
-                    gap: '10px'
-                }}>
+                <Splide options={splideOptions}>
                     {status === 'pending' ?
                         <Spinner />
                         :

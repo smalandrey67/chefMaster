@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { IDetails } from '../../../models/IDetails'
-import { stringCut } from '../../../utils/stringCut'
+import { stringCut } from '../../../utils/'
 
 import {
     DetailsList,
@@ -10,7 +10,7 @@ import {
     DetailsIngredientsTitle,
     DetailsIngredientsUnit,
     DetailsIngredientsUnitSpan
-} from '../../../styled/Basic/Details.styled'
+} from './Ingredients.styled'
 
 type IngredientsProps = {
     details: IDetails | null

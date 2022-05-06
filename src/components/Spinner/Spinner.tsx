@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { SpinnerTop, SpinnerMain, SpinnerFooter } from '../../styled/Basic/Spinner.styled'
+import { SpinnerTop, SpinnerMain, SpinnerFooter } from './Spinner.styled'
 
 export const Spinner: FC = () => {
   return (

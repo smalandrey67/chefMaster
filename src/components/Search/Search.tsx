@@ -1,14 +1,14 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { SearchForm, SearchInput, SearchLabel } from '../../styled/Basic/Search.styled'
+import { SearchForm, SearchInput, SearchLabel } from './Search.styled'
 
 import { FiSearch } from 'react-icons/fi'
 
 export const Search: FC = () => {
     const [term, setTerm] = useState('')
 
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
 
     const submitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -28,7 +28,7 @@ export const Search: FC = () => {
         <SearchForm onSubmit={submitHandler}>
             <SearchLabel>
                 <FiSearch size="18" />
-                <SearchInput value={term} onChange={changeHandler} autoComplete="off" />
+                <SearchInput enterKeyHint="search" value={term} onChange={changeHandler} autoComplete="off" />
             </SearchLabel>
         </SearchForm>
     )

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { HeaderEl, HeaderWrapper, HeaderLogo } from '../../styled/Basic/Header.styled'
-import { Container } from '../../styled/Reused/Container.styled'
+import { HeaderEl, HeaderWrapper, HeaderLogo } from './Header.styled'
+import { Container } from '../../styled/Reused.styled'
 
 import { ImSpoonKnife } from 'react-icons/im'
 

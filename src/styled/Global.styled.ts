@@ -10,7 +10,8 @@ export const Global = createGlobalStyle`
 
     :root {
         //colors
-        --color-black: #000000;
+        --color-white: #fff;
+        --color-black: #000000; 
         --color-background: #eef2f3;
         --color-text: #232526;
         --color-alternative: #414345;
@@ -64,3 +65,4 @@ export const Global = createGlobalStyle`
         list-style: none;
     }
 ` 
+

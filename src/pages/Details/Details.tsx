@@ -9,9 +9,8 @@ import {
     DetailsImage, 
     DetailsInfo,
     DetailsWrapperTime
-} from '../../styled/Basic/Details.styled'
-import { Container } from '../../styled/Reused/Container.styled'
-import { ErrorMessage } from '../../styled/Reused/ErrorMessage.styled'
+} from './Details.styled'
+import { Container, ErrorMessage } from '../../styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { detailsRecipeAsync } from '../../store/requests/detailsRecipesAsync'

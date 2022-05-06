@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
 import { IDetails } from '../../../models/IDetails'
-import { removeTags } from '../../../utils/removeTags'
+import { removeTags } from '../../../utils'
 
-import { DetailsInfoDescription, DetailsInfoTitle } from '../../../styled/Basic/Details.styled'
+import { DetailsInfoDescription, DetailsInfoTitle } from './Instructions.styled'
 
 type InstructionsProps = {
     details: IDetails | null;

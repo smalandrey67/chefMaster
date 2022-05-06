@@ -1,9 +1,8 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { CuisineEl, CuisineTitle, CuisineWrapper } from '../../styled/Basic/Cuisine.styled'
-import { Container } from '../../styled/Reused/Container.styled'
-import { ErrorMessage } from '../../styled/Reused/ErrorMessage.styled'
+import { CuisineEl, CuisineTitle, CuisineWrapper } from './Cuisine.styled'
+import { Container, ErrorMessage } from '../../styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { cuisineRecipesAsync } from '../../store/requests/cuisineRecipesAsync'

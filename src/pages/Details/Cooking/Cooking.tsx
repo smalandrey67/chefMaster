@@ -2,15 +2,15 @@ import { FC, useState } from 'react'
 
 import { IDetails } from '../../../models/IDetails'
 
+import { DetailsList } from '../Ingredients/Ingredients.styled'
 import {
-    DetailsList,
     DetailsCookingItem,
     DetailsCookingHeader,
     DetailsCookingStep,
     DetailsCookingContent,
     DetailsCookingIngredients,
     DetailsCookingIngredientsPhoto,
-} from '../../../styled/Basic/Details.styled'
+} from './Cooking.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
 
