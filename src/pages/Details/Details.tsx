@@ -20,15 +20,16 @@ import { Ingredients } from './Ingredients/Ingredients'
 import { Instructions } from './Instructions/Instructions'
 import { Tabs } from './Tabs/Tabs'
 import { Cooking } from './Cooking/Cooking'
+import { Nutrition } from './Nutrition/Nutrition'
 
 export const Details: FC = () => {
-
     const [activeTab, setActiveTab] = useState('instructions')
 
     const { details, status, error } = useAppSelector(state => state.detailsRecipeReducer)
     const dispatch = useAppDispatch()
 
     const { id } = useParams() as any
+
 
     useEffect(() => {
         dispatch(detailsRecipeAsync(id))
@@ -50,6 +51,7 @@ export const Details: FC = () => {
                                     <DetailsWrapperTime>({details?.readyInMinutes} minutes)</DetailsWrapperTime> 
                                 </DetailsWrapperTitle>
                                 <DetailsImage src={details?.image} alt={details?.title} />
+                                <Nutrition id={id} />
                             </DetailWrapperImage>
 
                             <DetailsInfo>

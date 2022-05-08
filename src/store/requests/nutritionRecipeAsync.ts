@@ -1,17 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getRecipeInformation } from '../../config'
+import { getNutritionRecipe } from '../../config'
 
-export const detailsRecipeAsync = createAsyncThunk(
-    'detailsRecipe/detailsRecipeAsync',
+export const nutritionRecipeAsync = createAsyncThunk(
+    'nutritionRecipe/nutritionRecipeAsync',
 
     async (id: string, { rejectWithValue }) => {
         try {
             // temporary we add to local storage. We have few pointes for requests
-            if(localStorage.getItem('details')){
-                return JSON.parse(localStorage.getItem('details') || '')
+            if(localStorage.getItem('nutrition')){
+                return JSON.parse(localStorage.getItem('nutrition') || '')
             }
 
-            const response = await fetch(getRecipeInformation(id))
+            const response = await fetch(getNutritionRecipe(id))
 
             if (!response.ok) {
                 throw new Error('Something went wrong')
@@ -19,12 +19,12 @@ export const detailsRecipeAsync = createAsyncThunk(
 
             const data = await response.json()
 
+    
             // //temporary we add to local storage. We have few pointes for requests
-            localStorage.setItem('details', JSON.stringify(data))
+            localStorage.setItem('nutrition', JSON.stringify(data))
 
             return data
         } catch (error) {
-            console.log((error as Error).message)
             return rejectWithValue((error as Error).message)
         }
     }
