@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { cuisineRecipesAsync } from '../requests/cuisineRecipesAsync'
+
 import { ICuisine } from '../../models/ICuisine'
 
 type RecipeState = {
@@ -19,20 +20,24 @@ const cuisineRecipeSlice = createSlice({
     initialState,
     reducers: {},
 
-    extraReducers: {
-        [cuisineRecipesAsync.pending.type]: (state) => {
-            state.status = 'pending';
-            state.error = null;
-        },
-        [cuisineRecipesAsync.fulfilled.type]: (state, action: PayloadAction<ICuisine[]>) => {
-            state.status = 'fulfilled';
-            state.cuisine = action.payload;
-        },
-        [cuisineRecipesAsync.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.status = 'rejected';
-            state.error = action.payload;
-        },
-    },
+    extraReducers: (builder): void => {
+        builder
+            .addCase(cuisineRecipesAsync.pending, (state): void => {
+                state.status = 'pending'
+                state.error = null
+            })
+            .addCase(cuisineRecipesAsync.fulfilled, (state, action): void => {
+                state.status = 'fulfilled'
+                state.cuisine = action.payload
+            })
+            .addCase(cuisineRecipesAsync.rejected, (state, action): void => {
+                state.status = 'rejected'
+
+                if (action.payload) {
+                    state.error = action.payload
+                }
+            })
+    }
 })
 
 export default cuisineRecipeSlice.reducer

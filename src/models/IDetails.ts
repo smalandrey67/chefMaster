@@ -19,11 +19,12 @@ type ISteps = {
 
 type IAnalyzedInstructions = {
     steps: ISteps[]
+    name: string;
 }
 
 type IIngredients = {
     id: number;
-    image: string; 
+    image: string;
     nameClean: string;
     unit: string,
     amount: number;
@@ -33,8 +34,7 @@ export type IDetails = {
     id: number;
     title: string;
     image: string;
-    aggregateLikes: number;
-    summary: string; 
+    summary: string;
     instructions: string;
     extendedIngredients: IIngredients[];
     analyzedInstructions: IAnalyzedInstructions[];

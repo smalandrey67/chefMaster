@@ -1,9 +1,10 @@
-import { FC, useState } from 'react'
+import { FC, useState, Fragment } from 'react'
 
 import { IDetails } from '../../../models/IDetails'
 
 import { DetailsList } from '../Ingredients/Ingredients.styled'
 import {
+    DetailsCookingSubtitle,
     DetailsCookingItem,
     DetailsCookingHeader,
     DetailsCookingStep,
@@ -13,16 +14,16 @@ import {
 } from './Cooking.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
-
+import { IoFootstepsSharp } from 'react-icons/io5'
 
 type StepsProps = {
     details: IDetails | null;
 }
 
 export const Cooking: FC<StepsProps> = ({ details }) => {
-    const [stepIsActive, setStepIsActive] = useState<number | null>(null)
+    const [stepIsActive, setStepIsActive] = useState<string | null>(null)
 
-    const stepHandler = (index: number) => {
+    const stepHandler = (index: string) => {
         if (index === stepIsActive) {
             return setStepIsActive(null)
         }
@@ -32,35 +33,44 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
 
     return (
         <DetailsList animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
-            {details?.analyzedInstructions.map(item =>
+            {details?.analyzedInstructions.map((item, index) => (
+                <Fragment key={index}> {/* Item name posible could be empty string. There is no another way to give a unique key as a index  */}
 
-                item.steps.map((step, index) =>
-                    <DetailsCookingItem key={step.number}>
+                    {item.name.length ?
+                        <DetailsCookingSubtitle>
+                            <IoFootstepsSharp />
+                            {item.name}
+                        </DetailsCookingSubtitle>
+                    : ''}
 
-                        <DetailsCookingHeader onClick={() => stepHandler(index)}>
-                            <DetailsCookingStep>Step {step.number}</DetailsCookingStep>
-                            <BsChevronDown
-                                style={{ transform: stepIsActive === index ? 'rotate(180deg)' : 'rotate(0)' }}
-                            />
-                        </DetailsCookingHeader>
+                    {item.steps.map(step =>
+                        <DetailsCookingItem key={step.number}>
+                            <DetailsCookingHeader onClick={() => stepHandler(step.step)}>
+                                <DetailsCookingStep>Step {step.number}</DetailsCookingStep>
+                                <BsChevronDown
+                                    style={{ transform: stepIsActive === step.step ? 'rotate(180deg)' : 'rotate(0)' }}
+                                />
+                            </DetailsCookingHeader>
 
-                        <DetailsCookingContent className={stepIsActive === index ? 'active' : ''}>
-                            <DetailsCookingIngredients className={step.ingredients.length ? '' : 'hide'}>
-                                {step.ingredients.length && step.ingredients.map(ingredient => 
-                                    <DetailsCookingIngredientsPhoto 
-                                        key={ingredient.id} 
-                                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
-                                        alt={ingredient.name} 
-                                    />
-                                )}
-                            </DetailsCookingIngredients>
-                            {step.step}
-                        </DetailsCookingContent>
-
-                    </DetailsCookingItem>
-                )
-
+                            <DetailsCookingContent className={stepIsActive === step.step ? 'active' : ''}>
+                                <DetailsCookingIngredients className={step.ingredients.length ? '' : 'hide'}>
+                                    {step.ingredients.length && step.ingredients.map(ingredient =>
+                                        <DetailsCookingIngredientsPhoto
+                                            key={ingredient.id}
+                                            src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+                                            alt={ingredient.name}
+                                        />
+                                    )}
+                                </DetailsCookingIngredients>
+                                {step.step}
+                            </DetailsCookingContent>
+                        </DetailsCookingItem>
+                    )}
+                </Fragment>
+            )
             )}
         </DetailsList>
     )
 }
+
+

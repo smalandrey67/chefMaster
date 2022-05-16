@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+type SpinnerProps = {
+    height: string;
+}
+
 export const Container = styled.div`
     max-width: 1130px;
     margin: 0 auto;
@@ -12,4 +16,12 @@ export const ErrorMessage = styled.span`
     display: flex;
     align-items: center;
     justify-content: center;
+`
+
+export const SpinnerWrapper = styled.div<SpinnerProps>`
+    height: ${({ height }) => height || 'auto'};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 `

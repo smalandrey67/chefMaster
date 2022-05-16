@@ -10,14 +10,8 @@ type InstructionsProps = {
 }
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {
-
     return (
-        <DetailsInfoDescription
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-        >
+        <DetailsInfoDescription animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
             <DetailsInfoTitle>{removeTags(details?.summary)}</DetailsInfoTitle>
             <DetailsInfoTitle>{removeTags(details?.instructions)}</DetailsInfoTitle>
         </DetailsInfoDescription>

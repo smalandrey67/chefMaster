@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { randomRecipeAsync } from '../requests/randomRecipesAsync';
 import { IRecipe } from '../../models/IRecipe'
 
@@ -19,20 +19,24 @@ const randomRecipeSlice = createSlice({
     initialState,
     reducers: {},
 
-    extraReducers: {
-        [randomRecipeAsync.pending.type]: (state) => {
-            state.status = 'pending';
-            state.error = null;
-        },
-        [randomRecipeAsync.fulfilled.type]: (state, action: PayloadAction<IRecipe[]>) => {
-            state.status = 'fulfilled';
-            state.recipes = action.payload;
-        },
-        [randomRecipeAsync.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.status = 'rejected';
-            state.error = action.payload;
-        },
-    },
+    extraReducers: (builder): void => {
+        builder
+            .addCase(randomRecipeAsync.pending, (state): void => {
+                state.status = 'pending'
+                state.error = null
+            })
+            .addCase(randomRecipeAsync.fulfilled, (state, action): void => {
+                state.status = 'fulfilled'
+                state.recipes = action.payload
+            })
+            .addCase(randomRecipeAsync.rejected, (state, action): void => {
+                state.status = 'rejected'
+
+                if (action.payload) {
+                    state.error = action.payload
+                }
+            })
+    }
 })
 
 export default randomRecipeSlice.reducer

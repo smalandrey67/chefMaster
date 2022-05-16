@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { detailsRecipeAsync } from '../requests/detailsRecipesAsync'
+
 import { IDetails } from '../../models/IDetails'
 
 type RecipeState = {
@@ -19,20 +20,25 @@ const detailsRecipeSlice = createSlice({
     initialState,
     reducers: {},
 
-    extraReducers: {
-        [detailsRecipeAsync.pending.type]: (state) => {
-            state.status = 'pending'
-            state.error = null
-        },
-        [detailsRecipeAsync.fulfilled.type]: (state, action: PayloadAction<IDetails>) => {
-            state.status = 'fulfilled'
-            state.details = action.payload
-        },
-        [detailsRecipeAsync.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.status = 'rejected'
-            state.error = action.payload
-        },
-    },
+
+    extraReducers: (builder): void => {
+        builder
+            .addCase(detailsRecipeAsync.pending, (state): void => {
+                state.status = 'pending'
+                state.error = null
+            })
+            .addCase(detailsRecipeAsync.fulfilled, (state, action): void => {
+                state.status = 'fulfilled'
+                state.details = action.payload
+            })
+            .addCase(detailsRecipeAsync.rejected, (state, action): void => {
+                state.status = 'rejected'
+
+                if (action.payload) {
+                    state.error = action.payload
+                }
+            })
+    }
 })
 
 export default detailsRecipeSlice.reducer

@@ -21,7 +21,7 @@ export const Recipe: FC<RecipeProps> = ({ recipe }) => {
             <RecipeEl onClick={detailsNavigateHandler}>
                 <RecipeBody>
                     <RecipeWrapper>
-                        <RecipeImage src={image} />
+                        <RecipeImage src={image} alt={title} />
                     </RecipeWrapper>
 
                     <RecipeTitle>{title}</RecipeTitle>

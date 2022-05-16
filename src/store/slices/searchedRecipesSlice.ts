@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { searchedRecipesAsync } from '../requests/searchedRecipesAsync';
 import { ICuisine } from '../../models/ICuisine'
 
@@ -19,20 +19,25 @@ const searchedRecipesSlice = createSlice({
     initialState,
     reducers: {},
 
-    extraReducers: {
-        [searchedRecipesAsync.pending.type]: (state) => {
-            state.status = 'pending';
-            state.error = null;
-        },
-        [searchedRecipesAsync.fulfilled.type]: (state, action: PayloadAction<ICuisine[]>) => {
-            state.status = 'fulfilled';
-            state.searched = action.payload;
-        },
-        [searchedRecipesAsync.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.status = 'rejected';
-            state.error = action.payload;
-        },
-    },
+
+    extraReducers: (builder): void => {
+        builder
+            .addCase(searchedRecipesAsync.pending, (state): void => {
+                state.status = 'pending'
+                state.error = null
+            })
+            .addCase(searchedRecipesAsync.fulfilled, (state, action): void => {
+                state.status = 'fulfilled'
+                state.searched = action.payload
+            })
+            .addCase(searchedRecipesAsync.rejected, (state, action): void => {
+                state.status = 'rejected'
+
+                if (action.payload) {
+                    state.error = action.payload
+                }
+            })
+    }
 })
 
 export default searchedRecipesSlice.reducer

@@ -1,16 +1,17 @@
 import { FC, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { 
-    DetailsEl, 
-    DetailsWrapper, 
-    DetailWrapperImage, 
+import {
+    DetailsEl,
+    DetailsWrapperLeft,
+    DetailsWrapper,
+    DetailWrapperImage,
     DetailsWrapperTitle,
-    DetailsImage, 
+    DetailsImage,
     DetailsInfo,
-    DetailsWrapperTime
+    DetailsWrapperTime,
 } from './Details.styled'
-import { Container, ErrorMessage } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper } from '../../styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { detailsRecipeAsync } from '../../store/requests/detailsRecipesAsync'
@@ -22,6 +23,9 @@ import { Tabs } from './Tabs/Tabs'
 import { Cooking } from './Cooking/Cooking'
 import { Nutrition } from './Nutrition/Nutrition'
 
+import { BiError } from 'react-icons/bi'
+
+
 export const Details: FC = () => {
     const [activeTab, setActiveTab] = useState('instructions')
 
@@ -30,10 +34,10 @@ export const Details: FC = () => {
 
     const { id } = useParams() as any
 
-
     useEffect(() => {
         dispatch(detailsRecipeAsync(id))
     }, [id, dispatch])
+
 
     const tabHandler = (string: string) => setActiveTab(string)
 
@@ -42,17 +46,23 @@ export const Details: FC = () => {
             <Container>
                 <DetailsWrapper>
                     {status === 'pending' ?
-                        <Spinner />
+                        <SpinnerWrapper height='50vh'>
+                            <Spinner />
+                        </SpinnerWrapper>
                         :
                         <>
-                            <DetailWrapperImage>
-                                <DetailsWrapperTitle>
-                                    {details?.title}
-                                    <DetailsWrapperTime>({details?.readyInMinutes} minutes)</DetailsWrapperTime> 
-                                </DetailsWrapperTitle>
-                                <DetailsImage src={details?.image} alt={details?.title} />
+                            <DetailsWrapperLeft>
+                                <DetailWrapperImage>
+                                    <DetailsWrapperTitle>
+                                        {details?.title}
+                                        <DetailsWrapperTime>({details?.readyInMinutes} minutes)</DetailsWrapperTime>
+                                    </DetailsWrapperTitle>
+
+                                    <DetailsImage src={details?.image} alt={details?.title} />
+                                </DetailWrapperImage>
+
                                 <Nutrition id={id} />
-                            </DetailWrapperImage>
+                            </DetailsWrapperLeft>
 
                             <DetailsInfo>
                                 <Tabs activeTab={activeTab} tabHandler={tabHandler} />
@@ -66,7 +76,10 @@ export const Details: FC = () => {
                         </>
                     }
                 </DetailsWrapper>
-                {error && <ErrorMessage>Something went wrong</ErrorMessage>}
+                {error && <ErrorMessage>
+                    <BiError />
+                    Something went wrong
+                </ErrorMessage>}
             </Container>
         </DetailsEl>
     )

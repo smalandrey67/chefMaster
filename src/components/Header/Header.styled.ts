@@ -8,6 +8,7 @@ export const HeaderEl = styled.header`
     width: 100%;
     background-color: var(--color-background);
     padding: 20px 0;
+    z-index: 100;
 
     @media(min-width: 768px){
         position: static;

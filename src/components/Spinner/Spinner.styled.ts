@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
+
 export const SpinnerTop = styled.div`
     width: 118px;
     height: 118px;
     display: inline-block;
     overflow: hidden;
     background: none;
-    margin: 0 auto;
 `
 
 export const SpinnerMain = styled.div`

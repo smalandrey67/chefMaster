@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import { BsSuitHeartFill } from 'react-icons/bs'
 
 
 //==================Details======================//
 export const DetailsEl = styled(motion.article)``
+
 
 export const DetailsWrapper = styled.div`
     @media(min-width: 768px){
@@ -12,8 +14,10 @@ export const DetailsWrapper = styled.div`
     } 
 `
 
-export const DetailWrapperImage = styled.div`
-    margin-bottom: 5px;
+export const DetailsWrapperLeft = styled.div``
+
+export const DetailWrapperImage = styled.figure`
+    margin: 0 0 5px 0;
 
     @media(min-width: 768px){
         flex: 0 1 50%;
@@ -21,7 +25,9 @@ export const DetailWrapperImage = styled.div`
     }
 `
 
-export const DetailsWrapperTitle = styled.h2`
+export const DetailsWrapperTitle = styled.figcaption`
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semiBold);
     margin: 0 0 10px 0;
    
     @media(min-width: 768px){

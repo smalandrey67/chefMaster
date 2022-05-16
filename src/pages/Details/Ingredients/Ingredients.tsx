@@ -22,7 +22,10 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
         <DetailsList animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
             {details?.extendedIngredients.map(ingredient =>
                 <DetailsIngredientsItem key={ingredient.id}>
-                    <DetailsIngredientsImage src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} />
+                    <DetailsIngredientsImage 
+                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} 
+                        alt={ingredient.nameClean}
+                    />
                     <DetailsIngredientsTitle>{stringCut(ingredient.nameClean, 15)}</DetailsIngredientsTitle>
                     <DetailsIngredientsUnit>
                         <DetailsIngredientsUnitSpan>{ingredient.amount}</DetailsIngredientsUnitSpan>

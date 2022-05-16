@@ -7,8 +7,11 @@ import { searchedRecipesAsync } from '../../store/requests/searchedRecipesAsync'
 import { Spinner } from '../../components/Spinner/Spinner'
 import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
-import { Container, ErrorMessage } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper } from '../../styled/Reused.styled'
 import { CuisineWrapper } from '../Cuisine/Cuisine.styled'
+import { SearchedWarning } from './Searched.styled'
+
+import { BiError } from 'react-icons/bi'
 
 
 export const Searched: FC = () => {
@@ -21,16 +24,28 @@ export const Searched: FC = () => {
         dispatch(searchedRecipesAsync(name))
     }, [name, dispatch])
 
-
     return (
         <Container>
             <CuisineWrapper>
+                
                 {status === 'pending' ?
-                    <Spinner />
+                    <SpinnerWrapper height='50vh'>
+                        <Spinner />
+                    </SpinnerWrapper>
                     :
+                    searched.length ?
                     searched.map(recipe => <RecipeCuisine key={recipe.id} recipe={recipe} />)
+                        :
+                    <SearchedWarning>
+                        <BiError /> 
+                        Nothing was found
+                    </SearchedWarning>
                 }
-                {error && <ErrorMessage>Something went wrong</ErrorMessage>}
+
+                {error && <ErrorMessage>
+                    <BiError />
+                    Something went wrong
+                </ErrorMessage>}
             </CuisineWrapper>
         </Container>
     )

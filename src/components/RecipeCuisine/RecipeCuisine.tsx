@@ -19,7 +19,7 @@ export const RecipeCuisine: FC<RecipeCuisineProps> = ({ recipe }) => {
     return (
         <RecipeEl onClick={detailsNavigateHandler}>
             <RecipeCuisineImageWrapper>
-                <RecipeCuisineImage src={image}/>  
+                <RecipeCuisineImage src={image} alt={title} />  
             </RecipeCuisineImageWrapper>
 
             <RecipeCuisineTitle>{title}</RecipeCuisineTitle>
