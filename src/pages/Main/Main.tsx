@@ -1,7 +1,15 @@
-import { FC } from "react"
+import { FC } from 'react'
 
-import { Recipes } from "../../components/Recipes/Recipes"
+import { Recipes } from '../../components/Recipes/Recipes'
+import { About } from '../../components/About/About'
+
+import { MainEl } from './Main.styled'
 
 export const Main: FC = () => {
-    return <Recipes />
+    return (
+        <MainEl>
+            <Recipes />
+            <About />
+        </MainEl>
+    )
 }

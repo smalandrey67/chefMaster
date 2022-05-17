@@ -10,6 +10,7 @@ export const RecipeEl = styled.article`
 
 export const RecipeBody = styled.div`
     position: relative;
+
 `
 
 export const RecipeWrapper = styled.div`
