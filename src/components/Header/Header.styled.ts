@@ -17,14 +17,18 @@ export const HeaderEl = styled.header`
 
 export const HeaderWrapper = styled.div`
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     flex-direction: column;
 
-    @media(min-width: 475px){
+    @media(min-width: 500px){
         flex-direction: row;
     }
+`
+
+export const HeaderLogoWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const HeaderLogo = styled(Link).attrs({
@@ -35,7 +39,9 @@ export const HeaderLogo = styled(Link).attrs({
     gap: 10px;
     font-size: var(--fs-bg);
     font-weight: var(--fw-bold);
-    margin-bottom: 10px;
+    margin: 0 10px 10px 0;
+
+
 
     @media(min-width: 475px){
         margin-bottom: 0;

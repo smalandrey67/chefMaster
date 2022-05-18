@@ -9,10 +9,9 @@ import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
 import { Container, ErrorMessage, SpinnerWrapper } from '../../styled/Reused.styled'
 import { CuisineWrapper } from '../Cuisine/Cuisine.styled'
-import { SearchedWarning } from './Searched.styled'
+import { SearchedWarning } from '../../styled/Reused.styled'
 
 import { BiError } from 'react-icons/bi'
-
 
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()

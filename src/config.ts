@@ -17,3 +17,9 @@ export const getSearchedRecipes = (name: string): string => {
 export const getNutritionRecipe = (id: string): string => {
     return `${process.env.REACT_APP_URL}/${id}/nutritionWidget.json?apiKey=${process.env.REACT_APP_KEY}`
 }
+
+export const getQuickAnswer = (question: string): string => {
+    const words = question.split(' ')
+
+    return `${process.env.REACT_APP_URL}/quickAnswer?apiKey=${process.env.REACT_APP_KEY}&q=${words.join('+')}`
+}

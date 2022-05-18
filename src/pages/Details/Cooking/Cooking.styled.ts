@@ -19,10 +19,7 @@ export const DetailsCookingItem = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    &:not(:last-child){
-        margin-bottom: 5px;
-    }
+    margin-bottom: 5px;
 `
 
 export const DetailsCookingHeader = styled.div`

@@ -51,7 +51,7 @@ export const RecipeGradient = styled.div`
     min-height: 100%;
     z-index: 5;
     border-radius: var(--br-radius);
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7))
+    background: linear-gradient(rgba(0, 0, 0, 0), var(--color-gradient));
 `
 
 export const RecipeScore = styled.span<RecipeProps>`

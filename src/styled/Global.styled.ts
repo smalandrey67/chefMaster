@@ -18,6 +18,7 @@ export const Global = createGlobalStyle`
         --color-categories: #56ab2f;
         --color-categories-text: #f5af19;
         --color-error: #Ed213a;
+        --color-gradient: rgba(0, 0, 0, 0.8);
 
         //typography
         font-family: 'Quicksand', sans-serif;
