@@ -24,6 +24,7 @@ import { Cooking } from './Cooking/Cooking'
 import { Nutrition } from './Nutrition/Nutrition'
 
 import { BiError } from 'react-icons/bi'
+import { IMotion } from '../../models/IMotion'
 
 
 export const Details: FC = () => {
@@ -41,8 +42,16 @@ export const Details: FC = () => {
 
     const tabHandler = (string: string) => setActiveTab(string)
 
+    // #settings motion
+    const motionSettings: IMotion = {
+        animate: { opacity: 1 },
+        initial: { opacity: 0 },
+        exit: { opacity: 0 },
+        transition: { duration: 0.5 }
+    }
+
     return (
-        <DetailsEl animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
+        <DetailsEl {...motionSettings} >
             <Container>
                 <DetailsWrapper>
                     {status === 'pending' ?

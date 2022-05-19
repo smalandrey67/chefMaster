@@ -59,7 +59,7 @@ export const RecipeScore = styled.span<RecipeProps>`
     top: 5px;
     right: 5px;
     border: 1px solid ${({ healthScore }) => healthScore <= 5 ? 'var(--color-error)' : 'var(--color-categories)'};
-    color: var(--color-background); 
+    color: var(--color-white); 
     font-size: var(--fs-sl);
     font-weight: var(--fw-bold);
     height: 20px;

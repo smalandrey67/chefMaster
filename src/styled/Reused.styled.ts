@@ -29,9 +29,29 @@ export const SpinnerWrapper = styled.div<SpinnerProps>`
 
 export const SearchedWarning = styled.h4`
     margin: 0 auto;
-    
     display: flex;
     align-items: center;
     font-size: var(--fs-md);
     gap: 5px;
+`
+
+// #Base style of button
+export const Button = styled.button`
+    height: 40px;
+    padding: 0 15px;
+    border-radius: var(--br-radius);
+    box-shadow: var(--shadow);
+    font-weight: var(--fw-semiBold);
+`
+
+// #Base styled of input
+export const Input = styled.input`
+    font-size: var(--fs-md);
+    background-color: var(--color-white);
+    border-radius: var(--br-radius);
+
+    &::placeholder{
+        font-weight: var(--fw-semiBold);
+        color: var(--color-alternative);
+    }
 `

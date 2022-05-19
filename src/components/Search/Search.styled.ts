@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { Input } from '../../styled/Reused.styled'
+
 
 export const SearchForm = styled.form`
     width: 100%;
@@ -16,20 +18,15 @@ export const SearchLabel = styled.label`
     border-radius: var(--br-radius);
     padding: 0 20px;
     box-shadow: var(--shadow);
+ 
+    background-color: var(--color-background);
 `
 
-export const SearchInput = styled.input.attrs({
+export const SearchInput = styled(Input).attrs({
     type: 'text',
     name: 'search', 
     placeholder: 'Search',
 })`
-    font-weight: var(--fw-bold);
     width: 100%;
-    transition: all 0.5s ease;
-    font-size: var(--fs-md);
-
-    &::placeholder{
-        font-weight: var(--fw-semiBold);
-        color: var(--color-alternative);
-    }
+    font-weight: var(--fw-bold);
 `

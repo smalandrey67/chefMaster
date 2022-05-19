@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { BsSuitHeartFill } from 'react-icons/bs'
 
 
 //==================Details======================//

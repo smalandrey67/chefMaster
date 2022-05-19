@@ -6,8 +6,10 @@ export const HeaderEl = styled.header`
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-background);
     padding: 20px 0;
+    background-color: var(--color-white);
+    border-bottom-left-radius: var(--br-radius);
+    border-bottom-right-radius: var(--br-radius);
     z-index: 100;
 
     @media(min-width: 768px){
@@ -17,18 +19,13 @@ export const HeaderEl = styled.header`
 
 export const HeaderWrapper = styled.div`
     display: flex;
+    align-items: center;
     justify-content: space-between;
     flex-direction: column;
 
-    @media(min-width: 500px){
+    @media(min-width: 475px){
         flex-direction: row;
     }
-`
-
-export const HeaderLogoWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 `
 
 export const HeaderLogo = styled(Link).attrs({
@@ -47,3 +44,4 @@ export const HeaderLogo = styled(Link).attrs({
         margin-bottom: 0;
     } 
 `   
+

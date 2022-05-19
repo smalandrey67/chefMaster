@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { Button } from '../../../styled/Reused.styled'
+
 
 export const DetailsInfoWrapper = styled.div`
     display: flex;
@@ -12,14 +14,12 @@ export const DetailsInfoWrapper = styled.div`
 
 `
 
-export const DetailsInfoButton = styled.button`
-    height: 40px;
-    padding: 0 15px;
+export const DetailsInfoButton = styled(Button).attrs({
+    type: 'button',
+    name: 'tab'
+})`
     flex: 0 1 100%;
-    border-radius: var(--br-radius);
-    box-shadow: var(--shadow);
-    font-weight: var(--fw-semiBold);
-
+    
     @media(min-width: 768px){
         flex: 0 1 25%;
     }
@@ -36,6 +36,6 @@ export const DetailsInfoButton = styled.button`
 
     &.active{
         background-color: var(--color-categories);
-        color: var(--color-background); 
+        color: var(--color-white); 
     }
 `

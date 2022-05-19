@@ -8,7 +8,7 @@ export const CategoriesNav = styled.nav`
         margin: 0 0 20px 0;  
     }
 
-    @media(max-width: 500px){
+    @media(max-width: 475px){
         margin: 130px 0 20px 0;
     }
     

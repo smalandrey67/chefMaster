@@ -12,7 +12,8 @@ export const Global = createGlobalStyle`
         //colors
         --color-white: #fff;
         --color-black: #000000; 
-        --color-background: #eef2f3;
+        /* --color-background: #FFFAF0; */
+        
         --color-text: #232526;
         --color-alternative: #414345;
         --color-categories: #56ab2f;
@@ -34,13 +35,18 @@ export const Global = createGlobalStyle`
 
         --br-radius: 10px;
 
-        --shadow: rgba(-23,1,165,0.2) 0px 8px 24px;
+        --shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
     body {
         font-family: var(--family);
         font-size: var(--fs-sm);
-        background-color: var(--color-background);
-        color: var(--color-alternative);
+        background-color: var(--color-white);
+        color: var(--color-text);
+
+        // #test approach give us a ability ad overflow hiiden to body in safari
+        position: relative;
+        height: 100%;
+        width: 100%;
     }
 
     a {

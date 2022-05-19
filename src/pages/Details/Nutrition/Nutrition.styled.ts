@@ -12,15 +12,15 @@ export const NutritionWrapper = styled.div`
 `
 
 export const NutritionItem = styled.div`
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5px;
   
     margin-bottom: 5px;
-    gap: 5px;
     font-weight: var(--fw-semiBold);
 
     &:not(:last-child){
-        margin-right: 15px;
+        margin-right: 25px;
     }
 `
 

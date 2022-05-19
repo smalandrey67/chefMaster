@@ -12,6 +12,8 @@ import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
 import { BiError } from 'react-icons/bi'
 
+import { IMotion } from '../../models/IMotion'
+
 export const Cuisine: FC = () => {
     const dispatch = useAppDispatch()
     const { cuisine, status, error } = useAppSelector(state => state.cuisineRecipesReducer)
@@ -22,9 +24,16 @@ export const Cuisine: FC = () => {
         dispatch(cuisineRecipesAsync(type))
     }, [type, dispatch])
 
+    // #settings motion
+    const motionSettings: IMotion = {
+        animate: {opacity: 1}, 
+        initial: {opacity: 0},
+        exit: {opacity: 0}, 
+        transition: {duration: 0.5}
+    }
 
     return (
-        <CuisineEl animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
+        <CuisineEl {...motionSettings} >
             <Container>
                 <CuisineTitle>{type}</CuisineTitle>
                 <CuisineWrapper>

@@ -1,5 +1,8 @@
 import styled from 'styled-components'
+import { Button, Input } from '../../styled/Reused.styled'
+
 import { motion } from 'framer-motion'
+
 
 export const PopupEl = styled(motion.div)`
    position: fixed;
@@ -8,6 +11,7 @@ export const PopupEl = styled(motion.div)`
    background-color: var(--color-gradient);
    top: 0;
    left: 0;
+   z-index: 150;
 `
 
 export const PopupBody = styled.div`
@@ -19,9 +23,9 @@ export const PopupBody = styled.div`
 `
 
 export const PopupContent = styled.div`
-   background-color: var(--color-background);
+   background-color: var(--color-white);
    color: var(--color-text);
-   width: 800px;
+   width: 500px;
    padding: 10px;
    border-radius: var(--br-radius);
 `
@@ -45,8 +49,9 @@ export const PopupSubtitleSpan = styled.span`
 
 export const PopupSubtitle = styled.p`
    display: flex;
-   align-items: flex-start;
-   gap: 5px;
+   align-items: center;
+   justify-content: space-between;
+
    margin: 0 0 10px 0;
 `
 
@@ -63,38 +68,25 @@ export const PopupFormBody = styled.div`
   
 `
 
-export const PopupFormInput = styled.input.attrs({
+export const PopupFormInput = styled(Input).attrs({
    type: 'text',
    name: 'question',
-   placeholder: 'ask question',
+   placeholder: 'Question',
 })`
    height: 100%;
    flex: 0 1 70%;
-   box-shadow: var(--shadow);
-   border-radius: var(--br-radius);
    padding: 0 15px;
-   background-color: var(--color-background);
-
-   font-size: var(--fs-sm);
    font-weight: var(--fw-semiBold);
-
-   &::placeholder{
-        font-weight: var(--fw-semiBold);
-        color: var(--color-alternative);
-
-    }
+   box-shadow: var(--shadow);
 `
 
-export const PopupFormButton = styled.button.attrs({
+export const PopupFormButton = styled(Button).attrs({
    type: 'submit',
-   name: 'submit',
+   name: 'tab',
 })`
-   height: 100%;  
    flex: 0 1 30%;
    background-color: var(--color-categories);
    color: var(--color-white);
-   border-radius: var(--br-radius);
-   transition: all 0.5s ease;
 `
 
 

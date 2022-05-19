@@ -19,12 +19,12 @@ import {
    PopupAnswer,
 } from './Popup.styled'
 import { ErrorMessage, SpinnerWrapper, SearchedWarning } from '../../styled/Reused.styled'
-
-
 import { Spinner } from '../Spinner/Spinner'
 
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
+
+import { IMotion } from '../../models/IMotion'
 
 
 type PopupProps = {
@@ -62,8 +62,16 @@ export const Popup: FC<PopupProps> = ({ setPopupIsActive }) => {
    }
 
 
+   // #settings motion
+   const motionSettings: IMotion = {
+      animate: { opacity: 1 },
+      initial: { opacity: 0 },
+      exit: { opacity: 0 },
+      transition: { duration: 0.5 }
+   }
+
    return (
-      <PopupEl animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
+      <PopupEl {...motionSettings} >
          <PopupBody>
             <PopupContent>
                
@@ -77,14 +85,9 @@ export const Popup: FC<PopupProps> = ({ setPopupIsActive }) => {
                </PopupHeader>
 
                <PopupSubtitle>
-                  <PopupSubtitleSpan>About:</PopupSubtitleSpan>
-                  it's a chat bot where you can find out someting useful for yourself
-               </PopupSubtitle>
-               <PopupSubtitle>
                   <PopupSubtitleSpan>Example:</PopupSubtitleSpan>
                   How much vitamin c is in 2 apples
                </PopupSubtitle>
-
 
                <PopupForm onSubmit={submitHandler}>
                   <PopupFormBody>
