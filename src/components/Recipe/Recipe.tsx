@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { IRecipe } from '../../models/IRecipe'
+import { RecipeResultType } from '../../types/Recipe'
 import { SplideSlide } from '@splidejs/react-splide'
 
 import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from './Recipe.styled'
 
 type RecipeProps = {
-    recipe: IRecipe
+    recipe: RecipeResultType
 }
 
 export const Recipe: FC<RecipeProps> = ({ recipe }) => {

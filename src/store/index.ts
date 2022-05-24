@@ -6,6 +6,7 @@ import detailsRecipeReducer from './slices/detailsRecipeSlice'
 import searchedRecipesReducer from './slices/searchedRecipesSlice'
 import nutritionRecipeReducer from './slices/nutritionRecipeSlice'
 import quickAnswerReducer from './slices/quickAnswerSlice'
+import blogsReducer from './slices/blogsSlice'
 
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     searchedRecipesReducer, 
     nutritionRecipeReducer, 
     quickAnswerReducer,
+    blogsReducer,
 })
 
 export const setupStore = () => {

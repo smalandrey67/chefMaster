@@ -13,6 +13,8 @@ import { SearchedWarning } from '../../styled/Reused.styled'
 
 import { BiError } from 'react-icons/bi'
 
+import { StatusEnum } from '../../types/Status'
+
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()
     const { searched, status, error } = useAppSelector(state => state.searchedRecipesReducer)
@@ -27,7 +29,7 @@ export const Searched: FC = () => {
         <Container>
             <CuisineWrapper>
                 
-                {status === 'pending' ?
+                {status === StatusEnum.PENDING ?
                     <SpinnerWrapper height='50vh'>
                         <Spinner />
                     </SpinnerWrapper>

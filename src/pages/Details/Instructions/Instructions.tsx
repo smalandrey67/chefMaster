@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
-import { IDetails } from '../../../models/IDetails'
-import { removeTags } from '../../../utils'
+import { DetailsType } from '../../../types/Details'
+import { removeTags } from '../../../utils/functions'
 
 import { DetailsInfoDescription, DetailsInfoTitle } from './Instructions.styled'
 
 type InstructionsProps = {
-    details: IDetails | null;
+    details: DetailsType | null;
 }
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {

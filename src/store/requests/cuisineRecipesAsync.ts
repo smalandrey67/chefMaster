@@ -1,29 +1,33 @@
+import axios from 'axios'
+import { instance } from '../../api'
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getCuisineRecipes } from '../../config'
 
-import { ICuisine } from '../../models/ICuisine'
+import { CuisineType, CuisineResultsType } from '../../types/Cuisine'
 
-export const cuisineRecipesAsync = createAsyncThunk<ICuisine[], string, { rejectValue: string }>(
+export const cuisineRecipesAsync = createAsyncThunk<CuisineResultsType[], string, { rejectValue: string }>(
     'cuisineRecipes/cuisineRecipesAsync',
 
-    async (country, { rejectWithValue }) => {
-        // temporary we add to local storage. We have few pointes for requests
-        if (localStorage.getItem('cuisine')) {
-            return [...JSON.parse(localStorage.getItem('cuisine') || '')]
+    async (country, { rejectWithValue }): Promise<CuisineResultsType[] | any> => {
+        try {
+
+            // temporary we add to local storage. We have few pointes for requests
+            if (localStorage.getItem('cuisine')) {
+                return JSON.parse(localStorage.getItem('cuisine') || '')
+            }
+
+            const response = await instance.get<CuisineType>(getCuisineRecipes(country))
+
+            localStorage.setItem('cuisine', JSON.stringify(response.data.results))
+
+            return response.data.results as CuisineResultsType[]
+        } catch (e) {
+            if (axios.isAxiosError(e)){
+                return rejectWithValue(e.message)
+            }
+
+            return rejectWithValue('Can\'t download this cuisine. Server error')
         }
-
-        const response = await fetch(getCuisineRecipes(country))
-
-        if (!response.ok) {
-            return rejectWithValue('Can\'t download this cuisine. Server error.')
-        }
-
-        const data = await response.json()
-
-        //temporary we add to local storage. We have few pointes for requests
-        localStorage.setItem('cuisine', JSON.stringify(data.results))
-
-        return (await data.results) as ICuisine[]
-
     }
 )

@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { nutritionRecipeAsync } from '../requests/nutritionRecipeAsync'
 
-import { INutrition } from '../../models/INutrition'
+import { NutritionType } from '../../types/Nutrition'
+import { StatusEnum } from '../../types/Status'
 
 type RecipeState = {
-    nutrition: INutrition | null,
-    status: string | null,
-    error: string | null,
+    nutrition: NutritionType | null,
+    status: StatusEnum,
+    error: string,
 }
 
 const initialState: RecipeState = {
     nutrition: null,
-    status: null,
-    error: null,
+    status: StatusEnum.IDKE,
+    error: '',
 }
 
 const nutritionRecipeSlice = createSlice({
@@ -20,23 +21,18 @@ const nutritionRecipeSlice = createSlice({
     initialState,
     reducers: {},
 
-
     extraReducers: (builder): void => {
         builder
             .addCase(nutritionRecipeAsync.pending, (state): void => {
-                state.status = 'pending'
-                state.error = null
+                state.status = StatusEnum.IDKE
             })
             .addCase(nutritionRecipeAsync.fulfilled, (state, action): void => {
-                state.status = 'fulfilled'
+                state.status = StatusEnum.FULFILLED
                 state.nutrition = action.payload
             })
             .addCase(nutritionRecipeAsync.rejected, (state, action): void => {
-                state.status = 'rejected'
-
-                if (action.payload) {
-                    state.error = action.payload
-                }
+                state.status = StatusEnum.REJECTED
+                state.error = action.payload as string
             })
     }
 })

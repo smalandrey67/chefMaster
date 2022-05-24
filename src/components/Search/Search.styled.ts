@@ -2,11 +2,16 @@ import styled from 'styled-components'
 import { Input } from '../../styled/Reused.styled'
 
 
+export const SearchWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`
+
 export const SearchForm = styled.form`
     width: 100%;
 
     @media(min-width: 475px){
-        width: auto; 
+        width: 300px; 
     } 
 `
 

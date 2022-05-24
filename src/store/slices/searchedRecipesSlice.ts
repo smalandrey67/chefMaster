@@ -1,17 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { searchedRecipesAsync } from '../requests/searchedRecipesAsync';
-import { ICuisine } from '../../models/ICuisine'
+import { searchedRecipesAsync } from '../requests/searchedRecipesAsync'
+
+import { CuisineResultsType } from '../../types/Cuisine'
+import { StatusEnum } from '../../types/Status'
 
 type RecipeState = {
-    searched: ICuisine[];
-    status: string | null,
-    error: string | null,
+    searched: CuisineResultsType[]
+    status: StatusEnum
+    error: string
 }
 
 const initialState: RecipeState = {
     searched: [],
-    status: null,
-    error: null,
+    status: StatusEnum.IDKE,
+    error: '',
 }
 
 const searchedRecipesSlice = createSlice({
@@ -23,19 +25,15 @@ const searchedRecipesSlice = createSlice({
     extraReducers: (builder): void => {
         builder
             .addCase(searchedRecipesAsync.pending, (state): void => {
-                state.status = 'pending'
-                state.error = null
+                state.status = StatusEnum.PENDING
             })
             .addCase(searchedRecipesAsync.fulfilled, (state, action): void => {
-                state.status = 'fulfilled'
+                state.status = StatusEnum.FULFILLED
                 state.searched = action.payload
             })
             .addCase(searchedRecipesAsync.rejected, (state, action): void => {
-                state.status = 'rejected'
-
-                if (action.payload) {
-                    state.error = action.payload
-                }
+                state.status = StatusEnum.REJECTED
+                state.error = action.payload as string
             })
     }
 })

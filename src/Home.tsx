@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Main } from './pages/Main/Main'
 import { Cuisine } from './pages/Cuisine/Cuisine'
 import { Details } from './pages/Details/Details'
+import { Blogs } from './pages/Blogs/Blogs'
 import { Searched } from './pages/Searched/Searched'
 import { NotFound } from './pages/NotFound/NotFound'
 
@@ -19,6 +20,7 @@ export const Home: FC = () => {
                 <Route path='/' element={<Main />} />
                 <Route path='/cuisine/:type' element={<Cuisine /> } />
                 <Route path='/details/:id' element={<Details />} />
+                <Route path='/blogs' element={<Blogs />} />
                 <Route path='/searched/:name' element={<Searched />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>

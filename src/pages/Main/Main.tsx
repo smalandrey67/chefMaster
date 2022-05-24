@@ -17,7 +17,7 @@ export const Main: FC = () => {
 
             return
         }
-
+     
         document.body.style.overflow = 'visible'
     }, [popupIsActive])
 
@@ -34,7 +34,7 @@ export const Main: FC = () => {
             {/* button which open popup */}
             <MainChatWrapper onClick={popupHandler}>
                 <BsChatRightText 
-                    size='20' 
+                    size='25' 
                     cursor='pointer' 
                     color='var(--color-white)'
                 />

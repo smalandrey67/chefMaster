@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { cuisineRecipesAsync } from '../requests/cuisineRecipesAsync'
 
-import { ICuisine } from '../../models/ICuisine'
+import { CuisineResultsType } from '../../types/Cuisine'
+import { StatusEnum } from '../../types/Status'
 
 type RecipeState = {
-    cuisine: ICuisine[];
-    status: string | null,
-    error: string | null,
+    cuisine: CuisineResultsType[];
+    status: StatusEnum,
+    error: string,
 }
 
 const initialState: RecipeState = {
     cuisine: [],
-    status: null,
-    error: null,
+    status: StatusEnum.IDKE,
+    error: '',
 }
 
 const cuisineRecipeSlice = createSlice({
@@ -23,22 +24,19 @@ const cuisineRecipeSlice = createSlice({
     extraReducers: (builder): void => {
         builder
             .addCase(cuisineRecipesAsync.pending, (state): void => {
-                state.status = 'pending'
-                state.error = null
+                state.status = StatusEnum.PENDING
             })
             .addCase(cuisineRecipesAsync.fulfilled, (state, action): void => {
-                state.status = 'fulfilled'
+                state.status = StatusEnum.FULFILLED
                 state.cuisine = action.payload
             })
             .addCase(cuisineRecipesAsync.rejected, (state, action): void => {
-                state.status = 'rejected'
-
-                if (action.payload) {
-                    state.error = action.payload
-                }
+                state.status = StatusEnum.REJECTED
+                state.error = action.payload as string
             })
     }
 })
+
 
 export default cuisineRecipeSlice.reducer
 

@@ -2,16 +2,11 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 export const CategoriesNav = styled.nav`
-    margin: 100px 0 20px 0;   
+    margin: 140px 0 20px 0;   
 
     @media(min-width: 768px){
         margin: 0 0 20px 0;  
     }
-
-    @media(max-width: 475px){
-        margin: 130px 0 20px 0;
-    }
-    
 `
 
 export const CategoriesList = styled.ul`

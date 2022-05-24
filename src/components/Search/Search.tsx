@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { SearchForm, SearchInput, SearchLabel } from './Search.styled'
+import { SearchWrapper, SearchForm, SearchInput, SearchLabel } from './Search.styled'
 
 import { FiSearch } from 'react-icons/fi'
 
 export const Search: FC = () => {
-    const [term, setTerm] = useState('')
+    const [term, setTerm] = useState<string>('')
 
     const navigate: NavigateFunction = useNavigate()
 
@@ -25,11 +25,13 @@ export const Search: FC = () => {
 
 
     return (
-        <SearchForm onSubmit={submitHandler}>
-            <SearchLabel>
-                <FiSearch size="18" />
-                <SearchInput enterKeyHint="search" value={term} onChange={changeHandler} autoComplete="off" />
-            </SearchLabel>
-        </SearchForm>
+        <SearchWrapper>
+            <SearchForm onSubmit={submitHandler}>
+                <SearchLabel>
+                    <FiSearch size="18" />
+                    <SearchInput enterKeyHint="search" value={term} onChange={changeHandler} autoComplete="off" />
+                </SearchLabel>
+            </SearchForm>
+        </SearchWrapper>
     )
 } 

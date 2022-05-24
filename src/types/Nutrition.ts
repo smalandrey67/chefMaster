@@ -1,4 +1,4 @@
-export type INutrition = {
+export type NutritionType = {
     calories: string;
     carbs: string;
     protein: string;

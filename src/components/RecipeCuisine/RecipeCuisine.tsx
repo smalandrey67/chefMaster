@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { ICuisine } from '../../models/ICuisine'
+import { CuisineResultsType } from '../../types/Cuisine'
 
 import { RecipeEl } from '../Recipe/Recipe.styled'
 import { RecipeCuisineImageWrapper, RecipeCuisineImage, RecipeCuisineTitle } from './RecipeCuisine.styled'
 
 type RecipeCuisineProps = {
-    recipe: ICuisine;
+    recipe: CuisineResultsType
 }
 
 export const RecipeCuisine: FC<RecipeCuisineProps> = ({ recipe }) => {

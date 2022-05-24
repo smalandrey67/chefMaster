@@ -12,7 +12,8 @@ import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
 import { BiError } from 'react-icons/bi'
 
-import { IMotion } from '../../models/IMotion'
+import { StatusEnum } from '../../types/Status'
+import { motionSettings } from '../../utils/motionSettings'
 
 export const Cuisine: FC = () => {
     const dispatch = useAppDispatch()
@@ -24,20 +25,12 @@ export const Cuisine: FC = () => {
         dispatch(cuisineRecipesAsync(type))
     }, [type, dispatch])
 
-    // #settings motion
-    const motionSettings: IMotion = {
-        animate: {opacity: 1}, 
-        initial: {opacity: 0},
-        exit: {opacity: 0}, 
-        transition: {duration: 0.5}
-    }
-
     return (
         <CuisineEl {...motionSettings} >
             <Container>
                 <CuisineTitle>{type}</CuisineTitle>
                 <CuisineWrapper>
-                    {status === 'pending' ?
+                    {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='40vh'>
                             <Spinner />
                         </SpinnerWrapper>
@@ -46,7 +39,7 @@ export const Cuisine: FC = () => {
                     }
                     {error && <ErrorMessage>
                         <BiError />
-                        Something went wrong
+                        {error}
                     </ErrorMessage>}
                 </CuisineWrapper>
             </Container>

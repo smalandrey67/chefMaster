@@ -1,28 +1,28 @@
-type IStepsEquipment = {
+type StepsEquipmentType = {
     id: number;
     image: string;
     name: string;
 }
 
-type IStepsIngredients = {
+type StepsIngredientsType = {
     id: number;
     image: string;
     name: string;
 }
 
-type ISteps = {
-    equipment: IStepsEquipment[]
-    ingredients: IStepsIngredients[]
-    step: '';
+type StepsType = {
+    equipment: StepsEquipmentType[]
+    ingredients: StepsIngredientsType[]
+    step: string;
     number: number;
 }
 
-type IAnalyzedInstructions = {
-    steps: ISteps[]
+type AnalyzedInstructionsType = {
+    steps: StepsType[]
     name: string;
 }
 
-type IIngredients = {
+type IngredientsType = {
     id: number;
     image: string;
     nameClean: string;
@@ -30,13 +30,13 @@ type IIngredients = {
     amount: number;
 }
 
-export type IDetails = {
+export type DetailsType = {
     id: number;
     title: string;
     image: string;
     summary: string;
     instructions: string;
-    extendedIngredients: IIngredients[];
-    analyzedInstructions: IAnalyzedInstructions[];
+    extendedIngredients: IngredientsType[];
+    analyzedInstructions: AnalyzedInstructionsType[];
     readyInMinutes: number;
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { IDetails } from '../../../models/IDetails'
-import { stringCut } from '../../../utils/'
+import { DetailsType } from '../../../types/Details'
+import { stringCut } from '../../../utils/functions'
 
 import {
     DetailsList,
@@ -13,7 +13,7 @@ import {
 } from './Ingredients.styled'
 
 type IngredientsProps = {
-    details: IDetails | null
+    details: DetailsType | null
 }
 
 export const Ingredients: FC<IngredientsProps> = ({ details }) => {

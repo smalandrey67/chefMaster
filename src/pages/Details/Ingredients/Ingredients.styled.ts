@@ -17,10 +17,7 @@ export const DetailsIngredientsItem = styled.li`
     box-shadow: var(--shadow);
     border-radius: var(--br-radius);
     background-color: var(--color-white);
-
-    &:not(:last-child){
-        margin-bottom: 4px;
-    }
+    margin-bottom: 4px;
 `
 
 export const DetailsIngredientsImage = styled.img`

@@ -46,6 +46,8 @@ export const Button = styled.button`
 
 // #Base styled of input
 export const Input = styled.input`
+    -webkit-appearance: none;
+
     font-size: var(--fs-md);
     background-color: var(--color-white);
     border-radius: var(--br-radius);

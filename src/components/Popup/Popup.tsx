@@ -17,6 +17,7 @@ import {
    PopupFormInput,
    PopupFormButton,
    PopupAnswer,
+   PopupImage
 } from './Popup.styled'
 import { ErrorMessage, SpinnerWrapper, SearchedWarning } from '../../styled/Reused.styled'
 import { Spinner } from '../Spinner/Spinner'
@@ -24,11 +25,12 @@ import { Spinner } from '../Spinner/Spinner'
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
-import { IMotion } from '../../models/IMotion'
+import { StatusEnum } from '../../types/Status'
+import { motionSettings } from '../../utils/motionSettings'
 
 
 type PopupProps = {
-   setPopupIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+   setPopupIsActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const Popup: FC<PopupProps> = ({ setPopupIsActive }) => {
@@ -36,6 +38,7 @@ export const Popup: FC<PopupProps> = ({ setPopupIsActive }) => {
 
    const dispatch = useAppDispatch()
    const { answer, status, error } = useAppSelector(state => state.quickAnswerReducer)
+
 
    // #popup handler
    const popupCloseHandler = (): void => {
@@ -61,20 +64,11 @@ export const Popup: FC<PopupProps> = ({ setPopupIsActive }) => {
       setQuestion('')
    }
 
-
-   // #settings motion
-   const motionSettings: IMotion = {
-      animate: { opacity: 1 },
-      initial: { opacity: 0 },
-      exit: { opacity: 0 },
-      transition: { duration: 0.5 }
-   }
-
    return (
       <PopupEl {...motionSettings} >
          <PopupBody>
             <PopupContent>
-               
+
                <PopupHeader>
                   <PopupHeaderTitle>Quick answer</PopupHeaderTitle>
                   <IoCloseSharp
@@ -96,25 +90,30 @@ export const Popup: FC<PopupProps> = ({ setPopupIsActive }) => {
                   </PopupFormBody>
                </PopupForm>
 
-
-               {status === 'pending' ?
+               {/* if status PENDING => showed spinner */}
+               {status === StatusEnum.PENDING ?
                   <SpinnerWrapper height='15vh'>
                      <Spinner />
                   </SpinnerWrapper>
-                  :
-                  <PopupAnswer>{answer?.answer}</PopupAnswer>
-               }
+                  : null}
 
+               {/* if status FULFILLED and there are some values into ANSWER => showed answer */}
+               {(status === StatusEnum.FULFILLED && Object.keys(answer || []).length) ?
+                  <PopupAnswer>
+                     <PopupImage src={answer?.image} alt='Product' />
+                     {answer?.answer}
+                  </PopupAnswer> 
+                  : null}
 
-               {(status === 'fulfilled' && !Object.keys(answer || []).length) &&
+               {/* if status FULFILLED and there is no value into ANSWER => showed warning */}
+               {(status === StatusEnum.FULFILLED && !Object.keys(answer || []).length) ?
                   <SearchedWarning>
                      <BiError />
                      Nothing was found
-                  </SearchedWarning>
-               }
+                  </SearchedWarning> : null}
 
-
-               {status === 'rejected' && <ErrorMessage>
+               {/* if status REJECTED => showed error */}
+               {status === StatusEnum.REJECTED && <ErrorMessage>
                   <BiError />
                   {error}
                </ErrorMessage>}

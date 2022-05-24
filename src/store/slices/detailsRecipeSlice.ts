@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { detailsRecipeAsync } from '../requests/detailsRecipesAsync'
 
-import { IDetails } from '../../models/IDetails'
+import { DetailsType } from '../../types/Details'
+import { StatusEnum } from '../../types/Status'
 
 type RecipeState = {
-    details: IDetails | null,
-    status: string | null,
-    error: string | null,
+    details: DetailsType | null
+    status: StatusEnum
+    error: string,
 }
 
 const initialState: RecipeState = {
     details: null,
-    status: null,
-    error: null,
+    status: StatusEnum.IDKE,
+    error: '',
 }
 
 const detailsRecipeSlice = createSlice({
@@ -24,19 +25,15 @@ const detailsRecipeSlice = createSlice({
     extraReducers: (builder): void => {
         builder
             .addCase(detailsRecipeAsync.pending, (state): void => {
-                state.status = 'pending'
-                state.error = null
+                state.status = StatusEnum.PENDING
             })
             .addCase(detailsRecipeAsync.fulfilled, (state, action): void => {
-                state.status = 'fulfilled'
+                state.status = StatusEnum.FULFILLED
                 state.details = action.payload
             })
             .addCase(detailsRecipeAsync.rejected, (state, action): void => {
-                state.status = 'rejected'
-
-                if (action.payload) {
-                    state.error = action.payload
-                }
+                state.status = StatusEnum.REJECTED
+                state.error = action.payload as string
             })
     }
 })

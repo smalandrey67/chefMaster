@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Button, Input } from '../../styled/Reused.styled'
 
 import { motion } from 'framer-motion'
@@ -41,7 +41,7 @@ export const PopupHeader = styled.div`
 export const PopupHeaderTitle = styled.h4`
    margin: 0;
    font-size: var(--fs-md);
-` 
+`
 
 export const PopupSubtitleSpan = styled.span`
    font-weight: var(--fw-bold);
@@ -64,8 +64,7 @@ export const PopupFormBody = styled.div`
    display: flex;
    align-items: center;
    gap: 5px;
-   height: 40px;
-  
+   height: 40px;  
 `
 
 export const PopupFormInput = styled(Input).attrs({
@@ -77,7 +76,9 @@ export const PopupFormInput = styled(Input).attrs({
    flex: 0 1 70%;
    padding: 0 15px;
    font-weight: var(--fw-semiBold);
+   
    box-shadow: var(--shadow);
+   -webkit-box-shadow: var(--shadow);
 `
 
 export const PopupFormButton = styled(Button).attrs({
@@ -90,7 +91,14 @@ export const PopupFormButton = styled(Button).attrs({
 `
 
 
-export const PopupAnswer = styled.div``
+export const PopupAnswer = styled.div`
+   display: flex;
+   align-items: center;
+`
+
+export const PopupImage = styled.img`
+   object-fit: contain;
+`
 
 
 

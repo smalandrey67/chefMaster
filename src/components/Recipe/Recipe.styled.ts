@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 type RecipeProps = {
     healthScore: number;
@@ -10,7 +10,6 @@ export const RecipeEl = styled.article`
 
 export const RecipeBody = styled.div`
     position: relative;
-
 `
 
 export const RecipeWrapper = styled.div`

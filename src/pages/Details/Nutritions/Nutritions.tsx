@@ -3,13 +3,15 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 import { nutritionRecipeAsync } from '../../../store/requests/nutritionRecipeAsync'
 
 import { ErrorMessage, SpinnerWrapper } from '../../../styled/Reused.styled'
-import { NutritionWrapper, NutritionItem } from './Nutrition.styled'
+import { NutritionWrapper, NutritionItem } from './Nutritions.styled'
 
 import { Spinner } from '../../../components/Spinner/Spinner'
 
-import { GiPaperArrow, GiRawEgg, GiFat } from 'react-icons/gi'
+import { GiPaperArrow, GiRawEgg } from 'react-icons/gi'
 import { ImFire } from 'react-icons/im'
 import { BiError } from 'react-icons/bi'
+
+import { StatusEnum } from '../../../types/Status'
 
 
 type NutritionProps = {
@@ -27,7 +29,7 @@ export const Nutrition: FC<NutritionProps> = ({ id }) => {
  
     return (
         <NutritionWrapper>
-            {status === 'pending' ?
+            {status === StatusEnum.PENDING ?
                 <SpinnerWrapper height="20vh">
                     <Spinner />
                 </SpinnerWrapper>
@@ -51,7 +53,7 @@ export const Nutrition: FC<NutritionProps> = ({ id }) => {
             }
             {error && <ErrorMessage>
                 <BiError />
-                Something went wrong
+                {error}
             </ErrorMessage>}
         </NutritionWrapper>
     )

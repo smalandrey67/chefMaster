@@ -1,17 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { randomRecipeAsync } from '../requests/randomRecipesAsync';
-import { IRecipe } from '../../models/IRecipe'
+
+import { RecipeResultType } from '../../types/Recipe'
+import { StatusEnum } from '../../types/Status'
 
 type RecipeState = {
-    recipes: IRecipe[];
-    status: string | null,
-    error: string | null,
+    recipes: RecipeResultType[];
+    status: StatusEnum
+    error: string
 }
 
 const initialState: RecipeState = {
     recipes: [],
-    status: null,
-    error: null,
+    status: StatusEnum.IDKE,
+    error: '',
 }
 
 const randomRecipeSlice = createSlice({
@@ -22,19 +24,15 @@ const randomRecipeSlice = createSlice({
     extraReducers: (builder): void => {
         builder
             .addCase(randomRecipeAsync.pending, (state): void => {
-                state.status = 'pending'
-                state.error = null
+                state.status = StatusEnum.PENDING
             })
             .addCase(randomRecipeAsync.fulfilled, (state, action): void => {
-                state.status = 'fulfilled'
+                state.status = StatusEnum.FULFILLED
                 state.recipes = action.payload
             })
             .addCase(randomRecipeAsync.rejected, (state, action): void => {
-                state.status = 'rejected'
-
-                if (action.payload) {
-                    state.error = action.payload
-                }
+                state.status = StatusEnum.REJECTED
+                state.error = action.payload as string
             })
     }
 })

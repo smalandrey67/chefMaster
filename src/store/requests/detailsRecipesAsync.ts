@@ -1,28 +1,33 @@
+import axios from 'axios'
+import { instance } from '../../api' 
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getRecipeInformation } from '../../config'
 
-import { IDetails } from '../../models/IDetails'
+import { DetailsType } from '../../types/Details'
 
-export const detailsRecipeAsync = createAsyncThunk<IDetails, string, { rejectValue: string }>(
+export const detailsRecipeAsync = createAsyncThunk<DetailsType, string, { rejectValue: string }>(
     'detailsRecipe/detailsRecipeAsync',
 
-    async (id, { rejectWithValue }) => {
-        // temporary we add to local storage. We have few pointes for requests
-        if (localStorage.getItem('details')) {
-            return JSON.parse(localStorage.getItem('details') || '')
+    async (id, { rejectWithValue }): Promise<DetailsType | any> => {
+        try {
+
+            if (localStorage.getItem('details')) {
+                return JSON.parse(localStorage.getItem('details') || '')
+            }
+
+            const response = await instance.get<DetailsType>(getRecipeInformation(id))
+
+            localStorage.setItem('details', JSON.stringify(response.data))
+
+            return response.data as DetailsType
+
+        } catch (e) {
+            if (axios.isAxiosError(e)) {
+                return rejectWithValue(e.message)
+            }
+
+            return rejectWithValue('Can\'t download details of this recipe. Server error')
         }
-
-        const response = await fetch(getRecipeInformation(id))
-
-        if (!response.ok) {
-            return rejectWithValue('Can\'t download details of this recipe. Server error.')
-        }
-
-        const data = await response.json()
-
-        // //temporary we add to local storage. We have few pointes for requests
-        localStorage.setItem('details', JSON.stringify(data))
-
-        return (await data) as IDetails
     }
 )

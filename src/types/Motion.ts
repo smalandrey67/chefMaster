@@ -1,4 +1,4 @@
-export type IMotion = {
+export type MotionType = {
    animate: {
       opacity: number
    }, 

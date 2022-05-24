@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { quickAnswerAsync } from '../requests/quickAnswerAsync'
 
-import { IAnswer } from '../../models/IAnswer'
+import { AnswerType } from '../../types/Answer'
+import { StatusEnum } from '../../types/Status'
 
 type AnswerState = {
-   answer: IAnswer | null,
-   status: string | null,
-   error: string | null,
+   answer: AnswerType | null,
+   status: StatusEnum,
+   error: string
 }
 
 const initialState: AnswerState = {
    answer: null,
-   status: null,
-   error: null,
+   status: StatusEnum.IDKE,
+   error: '',
 }
 
 const quickAnswerSlice = createSlice({
@@ -23,26 +24,22 @@ const quickAnswerSlice = createSlice({
       // #when popop will be closed we reset the state
       resetAnswer: (state) => {
          state.answer = null
-         state.status = null
+         state.status = StatusEnum.IDKE
       }
    },
 
    extraReducers: (builder): void => {
       builder
          .addCase(quickAnswerAsync.pending, (state): void => {
-            state.status = 'pending'
-            state.error = null
+            state.status = StatusEnum.PENDING
          })
          .addCase(quickAnswerAsync.fulfilled, (state, action): void => {
-            state.status = 'fulfilled'
+            state.status = StatusEnum.FULFILLED
             state.answer = action.payload
          })
          .addCase(quickAnswerAsync.rejected, (state, action): void => {
-            state.status = 'rejected'
-
-            if (action.payload) {
-               state.error = action.payload
-            }
+            state.status = StatusEnum.REJECTED
+            state.error = action.payload as string
          })
    }
 })

@@ -21,14 +21,15 @@ import { Ingredients } from './Ingredients/Ingredients'
 import { Instructions } from './Instructions/Instructions'
 import { Tabs } from './Tabs/Tabs'
 import { Cooking } from './Cooking/Cooking'
-import { Nutrition } from './Nutrition/Nutrition'
+import { Nutrition } from './Nutritions/Nutritions'
 
 import { BiError } from 'react-icons/bi'
-import { IMotion } from '../../models/IMotion'
 
+import { StatusEnum } from '../../types/Status'
+import { motionSettings } from '../../utils/motionSettings'
 
 export const Details: FC = () => {
-    const [activeTab, setActiveTab] = useState('instructions')
+    const [activeTab, setActiveTab] = useState<string>('instructions')
 
     const { details, status, error } = useAppSelector(state => state.detailsRecipeReducer)
     const dispatch = useAppDispatch()
@@ -42,19 +43,11 @@ export const Details: FC = () => {
 
     const tabHandler = (string: string) => setActiveTab(string)
 
-    // #settings motion
-    const motionSettings: IMotion = {
-        animate: { opacity: 1 },
-        initial: { opacity: 0 },
-        exit: { opacity: 0 },
-        transition: { duration: 0.5 }
-    }
-
     return (
         <DetailsEl {...motionSettings} >
             <Container>
                 <DetailsWrapper>
-                    {status === 'pending' ?
+                    {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='50vh'>
                             <Spinner />
                         </SpinnerWrapper>
