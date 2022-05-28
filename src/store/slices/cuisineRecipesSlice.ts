@@ -4,13 +4,13 @@ import { cuisineRecipesAsync } from '../requests/cuisineRecipesAsync'
 import { CuisineResultsType } from '../../types/Cuisine'
 import { StatusEnum } from '../../types/Status'
 
-type RecipeState = {
+type CuisineState = {
     cuisine: CuisineResultsType[];
     status: StatusEnum,
     error: string,
 }
 
-const initialState: RecipeState = {
+const initialState: CuisineState = {
     cuisine: [],
     status: StatusEnum.IDKE,
     error: '',

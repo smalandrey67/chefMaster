@@ -3,11 +3,9 @@ import styled from 'styled-components'
 export const DetailsCookingSubtitle = styled.h4`
     margin: 5px 0;
     padding: 10px;
-    display: flex;
-    gap: 5px;
-    align-items: flex-start;
+    display: grid;
+    grid-auto-flow: column;
     font-size: var(--fs-sm);
-
 `
 
 export const DetailsCookingItem = styled.li`

@@ -4,13 +4,13 @@ import { searchedRecipesAsync } from '../requests/searchedRecipesAsync'
 import { CuisineResultsType } from '../../types/Cuisine'
 import { StatusEnum } from '../../types/Status'
 
-type RecipeState = {
+type searhedState = {
     searched: CuisineResultsType[]
     status: StatusEnum
     error: string
 }
 
-const initialState: RecipeState = {
+const initialState: searhedState = {
     searched: [],
     status: StatusEnum.IDKE,
     error: '',

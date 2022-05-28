@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { Splide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
 
@@ -15,6 +15,7 @@ import { Recipe } from '../Recipe/Recipe'
 import { BiError } from 'react-icons/bi'
 
 import { StatusEnum } from '../../types/Status'
+import { RecipeResultType } from '../../types/Recipe'
 
 export const Recipes: FC = () => {
     const { recipes, status, error } = useAppSelector(state => state.getRandomRecipesReducer)
@@ -41,12 +42,12 @@ export const Recipes: FC = () => {
                             <Spinner />
                         </SpinnerWrapper>
                         :
-                        recipes.map(recipe => <Recipe key={recipe.id} recipe={recipe} />)
+                        recipes.map((recipe: RecipeResultType): JSX.Element => <Recipe key={recipe.id} {...recipe} />)
                     }
                 </Splide>
                 {error && <ErrorMessage>
                     <BiError />
-                    Something went wrong
+                    {error}
                 </ErrorMessage>}
             </Container>
         </RandomEl>

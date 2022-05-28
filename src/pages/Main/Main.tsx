@@ -1,29 +1,19 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, ChangeEvent } from 'react'
 
 import { Recipes } from '../../components/Recipes/Recipes'
 import { About } from '../../components/About/About'
-import { Popup } from '../../components/Popup/Popup'
+import { Answer } from '../../components/Answer/Answer'
 
 import { MainEl, MainChatWrapper } from './Main.styled'
 
 import { BsChatRightText } from 'react-icons/bs'
 
+import { usePopup } from '../../hooks/usePopup'
+
 export const Main: FC = () => {
-    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
+    const { popupIsActive, popupHandler } = usePopup()
 
-    useEffect(() => {
-        if (popupIsActive) {
-            document.body.style.overflow = 'hidden'
-
-            return
-        }
-     
-        document.body.style.overflow = 'visible'
-    }, [popupIsActive])
-
-    const popupHandler = (): void => {
-        setPopupIsActive(prevState => !prevState)
-    }
+    
 
 
     return (
@@ -31,8 +21,10 @@ export const Main: FC = () => {
             <Recipes />
             <About />
 
-            {/* button which open popup */}
-            <MainChatWrapper onClick={popupHandler}>
+            {/* <input type="file" onChange={fileHandler}/> */}
+        
+            {/* button which open the chat for answer a question */}
+            <MainChatWrapper onClick={() => popupHandler()}>
                 <BsChatRightText 
                     size='25' 
                     cursor='pointer' 
@@ -40,8 +32,7 @@ export const Main: FC = () => {
                 />
             </MainChatWrapper>
 
-            {popupIsActive && <Popup setPopupIsActive={setPopupIsActive} />}
-
+            {popupIsActive && <Answer popupHandler={popupHandler} />}
         </MainEl>
     )
 }

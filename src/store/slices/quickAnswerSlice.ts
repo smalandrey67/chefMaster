@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { quickAnswerAsync } from '../requests/quickAnswerAsync'
 
-import { AnswerType } from '../../types/Answer'
+import { AnswerResponseType } from '../../types/Answer'
 import { StatusEnum } from '../../types/Status'
 
 type AnswerState = {
-   answer: AnswerType | null,
+   answer: AnswerResponseType | null,
    status: StatusEnum,
    error: string
 }

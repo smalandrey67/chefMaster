@@ -4,13 +4,13 @@ import { blogsAsync } from '../requests/blogsAsync'
 import { BlogsType } from '../../types/Blogs'
 import { StatusEnum } from '../../types/Status'
 
-type RecipeState = {
+type BlogState = {
    blogs: BlogsType[];
    status: StatusEnum,
    error: string,
 }
 
-const initialState: RecipeState = {
+const initialState: BlogState = {
    blogs: [],
    status: StatusEnum.IDKE,
    error: '',

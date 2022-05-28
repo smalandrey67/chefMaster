@@ -1,8 +1,24 @@
 import styled from 'styled-components'
 
+type ErrorMessageProps = {
+    justifyContent?: string
+}
+
 type SpinnerProps = {
     height: string;
 }
+
+type MarginProps = {
+    margin?: string
+}
+
+type SpecialTitleProps = {
+    margin?: string
+    fontWeight?: string
+    color?: string
+    fontSize?: string
+}
+
 
 export const Container = styled.div`
     max-width: 1130px;
@@ -10,13 +26,13 @@ export const Container = styled.div`
     padding: 0 15px;
 `
 
-export const ErrorMessage = styled.span`
+export const ErrorMessage = styled.span<ErrorMessageProps>`
     color: var(--color-error);
     font-size: var(--fs-small);
     display: flex;
     align-items: flex-start;
     gap: 3px;
-    justify-content: center;
+    justify-content: ${({ justifyContent }) => justifyContent || 'center'}
 `
 
 export const SpinnerWrapper = styled.div<SpinnerProps>`
@@ -56,4 +72,29 @@ export const Input = styled.input`
         font-weight: var(--fw-semiBold);
         color: var(--color-alternative);
     }
+`
+
+// #Texts
+export const Title = styled.h2`
+    margin: 0 0 10px 0;
+    font-size: var(--fs-bg);
+`
+
+export const SubTitle = styled.h3<MarginProps>`
+    margin: ${({ margin }) => margin || 0}
+`
+
+export const Text = styled.p<MarginProps>`
+    margin: ${({ margin }) => margin || 0}
+`
+
+export const SpecialTitle = styled.span<SpecialTitleProps>`
+    font-size: ${({ fontSize }) => fontSize || 'var(--fs-sl)'};
+
+    margin: ${({ margin }) => margin || 0};
+   
+    font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
+
+    color: ${({ color }) => color || 'var(--color-black)'}
+
 `

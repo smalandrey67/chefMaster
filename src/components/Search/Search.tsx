@@ -1,36 +1,52 @@
-import { ChangeEvent, FC, FormEvent, useState } from 'react'
+import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { ErrorMessage } from '../../styled/Reused.styled'
 import { SearchWrapper, SearchForm, SearchInput, SearchLabel } from './Search.styled'
 
 import { FiSearch } from 'react-icons/fi'
 
+import { SearchType } from '../../types/Search'
+
 export const Search: FC = () => {
-    const [term, setTerm] = useState<string>('')
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm<SearchType>({ mode: 'onSubmit' })
 
     const navigate: NavigateFunction = useNavigate()
 
-    const submitHandler = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const submitHandler: SubmitHandler<SearchType> = (data): void => {
+        navigate(`/searched/${data.term.trim().toLocaleLowerCase()}`)
 
-        if(!term) return
-
-        navigate(`/searched/${term.trim().toLocaleLowerCase()}`)
-        setTerm('')
-    }
-
-    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTerm(e.target.value)
+        reset()
     }
 
 
     return (
         <SearchWrapper>
-            <SearchForm onSubmit={submitHandler}>
+            <SearchForm onSubmit={handleSubmit(submitHandler)}>
+                
                 <SearchLabel>
                     <FiSearch size="18" />
-                    <SearchInput enterKeyHint="search" value={term} onChange={changeHandler} autoComplete="off" />
+                    <SearchInput 
+                        {...register('term', {
+                            required: 'Field is required',
+                        })}
+                        enterKeyHint='search' 
+                        autoComplete='off' 
+                        placeholder='Search'
+                    />
                 </SearchLabel>
+
+                {errors?.term && 
+                <ErrorMessage justifyContent='flex-start'>
+                    {errors?.term?.message}
+                </ErrorMessage>}
+
             </SearchForm>
         </SearchWrapper>
     )

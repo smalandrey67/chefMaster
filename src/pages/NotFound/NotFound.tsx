@@ -10,7 +10,7 @@ export const NotFound: FC = () => {
         <Container>
             <NotFoundWrapper>
                 <NotFoundImageWrapper>
-                    <NotFoundImage src={Error}/> 
+                    <NotFoundImage src={Error} alt='error' /> 
                 </NotFoundImageWrapper>
                 <NotFoundTitle>We could not find this page</NotFoundTitle>
             </NotFoundWrapper> 

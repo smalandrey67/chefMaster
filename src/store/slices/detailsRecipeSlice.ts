@@ -4,13 +4,13 @@ import { detailsRecipeAsync } from '../requests/detailsRecipesAsync'
 import { DetailsType } from '../../types/Details'
 import { StatusEnum } from '../../types/Status'
 
-type RecipeState = {
+type detailsState = {
     details: DetailsType | null
     status: StatusEnum
     error: string,
 }
 
-const initialState: RecipeState = {
+const initialState: detailsState = {
     details: null,
     status: StatusEnum.IDKE,
     error: '',

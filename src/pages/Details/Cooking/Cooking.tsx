@@ -1,6 +1,9 @@
 import { FC, useState, Fragment } from 'react'
 
-import { DetailsType } from '../../../types/Details'
+import { DetailsType, AnalyzedInstructionsType, StepsType, StepsIngredientsType } from '../../../types/Details'
+
+import { motionSettings } from '../../../utils/motionSettings'
+import { stringCut } from '../../../utils/functions'
 
 import { DetailsList } from '../Ingredients/Ingredients.styled'
 import {
@@ -18,7 +21,7 @@ import { IoFootstepsSharp } from 'react-icons/io5'
 
 type StepsProps = {
     // #find out why we use null over here
-    details: DetailsType | null 
+    details: DetailsType | null
 }
 
 export const Cooking: FC<StepsProps> = ({ details }) => {
@@ -31,51 +34,48 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
 
         setStepIsActive(index)
     }
-
-    // #Posibly analyzedInstructions could be empty array so take note this and try to fix it
+    
     return (
-        <DetailsList animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} >
-           
+        <DetailsList {...motionSettings} >
 
-                {details?.analyzedInstructions.map((item, index) => (
-                    <Fragment key={index}> {/* Item name posible could be empty string. There is no another way to give a unique key as a index  */}
+            {details?.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index): JSX.Element => (
+                <Fragment key={index}> {/* Item name posible could be empty string. There is no another way to give a unique key */}
 
-                        {item.name.length ?
-                            <DetailsCookingSubtitle>
-                                <IoFootstepsSharp />
-                                {item.name}
-                            </DetailsCookingSubtitle>
-                        : ''}
+                    {name.length ?
+                        <DetailsCookingSubtitle>
+                            <IoFootstepsSharp />
+                            {stringCut('Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, mollitia exercitationem doloremque distinctio quam et, culpa error facere quibusdam ex in, deleniti quos repellat beatae. Quo illo neque architecto quaerat magnam quod sequi, eveniet eum consequatur laborum exercitationem harum vero nulla molestias vel ullam? Rem hic cumque ex sint possimus?', 40)}
+                        </DetailsCookingSubtitle>
+                    : ''}
 
-                        {item.steps.map(step =>
-                            <DetailsCookingItem key={step.number}>
-                                <DetailsCookingHeader onClick={() => stepHandler(step.step)}>
-                                    <DetailsCookingStep>Step {step.number}</DetailsCookingStep>
-                                    <BsChevronDown
-                                        style={{ transform: stepIsActive === step.step ? 'rotate(180deg)' : 'rotate(0)' }}
-                                    />
-                                </DetailsCookingHeader>
 
-                                <DetailsCookingContent className={stepIsActive === step.step ? 'active' : ''}>
-                                    <DetailsCookingIngredients className={step.ingredients.length ? '' : 'hide'}>
-                                        {step.ingredients.length && step.ingredients.map(ingredient =>
-                                            <DetailsCookingIngredientsPhoto
-                                                key={ingredient.id}
-                                                src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
-                                                alt={ingredient.name}
-                                            />
-                                        )}
-                                    </DetailsCookingIngredients>
-                                    {step.step}
-                                </DetailsCookingContent>
-                            </DetailsCookingItem>
-                        )}
-                    </Fragment>
-                )
-                )}
+                    {steps.map(({ number, step, ingredients }: StepsType): JSX.Element =>
+                        <DetailsCookingItem key={number}>
+                            <DetailsCookingHeader onClick={() => stepHandler(step)}>
+                                <DetailsCookingStep>Step {number}</DetailsCookingStep>
+                                <BsChevronDown
+                                    style={{ transform: stepIsActive === step ? 'rotate(180deg)' : 'rotate(0)' }}
+                                />
+                            </DetailsCookingHeader>
 
-            {/* : ''} */}
+                            <DetailsCookingContent className={stepIsActive === step ? 'active' : ''}>
+                                <DetailsCookingIngredients className={ingredients.length ? '' : 'hide'}>
 
+                                    {ingredients.length && ingredients.map(({ id, image, name }: StepsIngredientsType): JSX.Element =>
+                                        <DetailsCookingIngredientsPhoto
+                                            key={id}
+                                            src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`}
+                                            alt={name}
+                                        />
+                                    )}
+
+                                </DetailsCookingIngredients>
+                                {step}
+                            </DetailsCookingContent>
+                        </DetailsCookingItem>
+                    )}
+                </Fragment>
+            ))}
         </DetailsList>
     )
 }

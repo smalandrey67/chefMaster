@@ -6,13 +6,9 @@ import { SplideSlide } from '@splidejs/react-splide'
 
 import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from './Recipe.styled'
 
-type RecipeProps = {
-    recipe: RecipeResultType
-}
 
-export const Recipe: FC<RecipeProps> = ({ recipe }) => {
+export const Recipe: FC<RecipeResultType> = ({ id, title, image, healthScore }) => {
     const navigate: NavigateFunction = useNavigate()
-    const { id, title, image, healthScore } = recipe
     
     const detailsNavigateHandler = () => navigate(`/details/${id}`)
 
@@ -27,7 +23,6 @@ export const Recipe: FC<RecipeProps> = ({ recipe }) => {
                     <RecipeTitle>{title}</RecipeTitle>
                     <RecipeScore healthScore={healthScore}>{healthScore}</RecipeScore>
                     <RecipeGradient />
-
                 </RecipeBody>
             </RecipeEl>
         </SplideSlide>

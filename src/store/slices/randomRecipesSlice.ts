@@ -4,13 +4,13 @@ import { randomRecipeAsync } from '../requests/randomRecipesAsync';
 import { RecipeResultType } from '../../types/Recipe'
 import { StatusEnum } from '../../types/Status'
 
-type RecipeState = {
+type randomRecipeState = {
     recipes: RecipeResultType[];
     status: StatusEnum
     error: string
 }
 
-const initialState: RecipeState = {
+const initialState: randomRecipeState = {
     recipes: [],
     status: StatusEnum.IDKE,
     error: '',

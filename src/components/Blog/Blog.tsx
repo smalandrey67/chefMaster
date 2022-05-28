@@ -1,54 +1,41 @@
 import { FC } from 'react'
 
-import { 
-   BlogEl, 
-   BlogBody, 
-   BlogTitle, 
-   BlogFigure, 
+import {
+   BlogEl,
+   BlogBody,
+   BlogFigure,
    BlogFigCaption,
-   BlogFigCaptionAuthor,
    BlogFigureImage,
    BlogList,
    BlogItem,
-   BlogItemTitle, 
-   BlogItemDescription,
-} from './Blog.styled' 
+} from './Blog.styled'
+import { Title, Text, SpecialTitle } from '../../styled/Reused.styled'
 
-import { BlogsType } from '../../types/Blogs'
+import { BlogType } from '../../types/Blogs'
 
-
-
-export const Blog: FC<BlogsType> = ({ title, image, author, description }) => {
-
+export const Blog: FC<BlogType> = ({ title, file, author, description }) => {
 
    return (
       <BlogEl>
          <BlogBody>
-            <BlogTitle>{title}</BlogTitle>
+            <Title>{title}</Title>
 
             <BlogFigure>
-               <BlogFigureImage src={image} alt={title} />
+               <BlogFigureImage src={`${file}`} alt={title} />
                <BlogFigCaption>
-                  written by 
-                  <BlogFigCaptionAuthor>
-                     {author}   
-                  </BlogFigCaptionAuthor> 
-               </BlogFigCaption> 
+                  written by
+                  <SpecialTitle margin='0 0 0 5px' fontWeight='var(--fw-bold)' color='var(--color-categories)'>
+                     {author}
+                  </SpecialTitle>
+               </BlogFigCaption>
             </BlogFigure>
 
             <BlogList>
-
-               {description.map(article => 
-                  <BlogItem key={article.id}>
-                     <BlogItemTitle>{article.subTitle}</BlogItemTitle>
-                     <BlogItemDescription>{article.information}</BlogItemDescription>
-                  </BlogItem>   
-               )}
-
-
+               <BlogItem>
+                  <Text>{description}</Text>
+               </BlogItem>
             </BlogList>
-
-         </BlogBody> 
-      </BlogEl> 
+         </BlogBody>
+      </BlogEl>
    )
 }

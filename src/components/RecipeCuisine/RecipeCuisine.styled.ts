@@ -13,7 +13,4 @@ export const RecipeCuisineImage = styled.img`
     object-fit: cover;
 `
 
-export const RecipeCuisineTitle = styled.h3`
-    margin: 0;
-`
 

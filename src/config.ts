@@ -27,3 +27,7 @@ export const getQuickAnswer = (question: string): string => {
 export const getBlogs = (): string => {
     return `${process.env.REACT_APP_BLOGS_URL}`
 }
+
+export const uploadImage = (): string => {
+    return `${process.env.REACT_APP_BLOGS_UPLOAD_URL}`   
+}

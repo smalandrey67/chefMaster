@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
 import { nutritionRecipeAsync } from '../../../store/requests/nutritionRecipeAsync'
 
 import { ErrorMessage, SpinnerWrapper } from '../../../styled/Reused.styled'

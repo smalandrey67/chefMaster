@@ -4,13 +4,13 @@ import { nutritionRecipeAsync } from '../requests/nutritionRecipeAsync'
 import { NutritionType } from '../../types/Nutrition'
 import { StatusEnum } from '../../types/Status'
 
-type RecipeState = {
+type nutritionState = {
     nutrition: NutritionType | null,
     status: StatusEnum,
     error: string,
 }
 
-const initialState: RecipeState = {
+const initialState: nutritionState = {
     nutrition: null,
     status: StatusEnum.IDKE,
     error: '',

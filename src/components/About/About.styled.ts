@@ -33,15 +33,3 @@ export const AboutDescriptionWrapper = styled.div`
    justify-content: flex-end;
 `
 
-export const AboutDescription = styled.div`
-   font-size: var(--fs-md);
-   color: var(--color-text);
-
-   &:not(:last-child){
-      margin-bottom: 10px;
-   }
-
-   @media(min-width: 768px){
-      flex: 0 1 40%;
-   }
-`

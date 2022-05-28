@@ -4,19 +4,19 @@ import { instance } from '../../api'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getQuickAnswer } from '../../config'
 
-import { AnswerType } from '../../types/Answer'
+import { AnswerResponseType } from '../../types/Answer'
 
-export const quickAnswerAsync = createAsyncThunk<AnswerType, string, { rejectValue: string }>(
+export const quickAnswerAsync = createAsyncThunk<AnswerResponseType, string, { rejectValue: string }>(
    'quickAnswer/quickAnswerAsync',
 
-   async (question, { rejectWithValue }): Promise<AnswerType | any> => {
+   async (question, { rejectWithValue }): Promise<AnswerResponseType | any> => {
       try {
 
          if (localStorage.getItem('answer')) {
             return JSON.parse(localStorage.getItem('answer') || '')
          }
 
-         const response = await instance.get<AnswerType>(getQuickAnswer(question))
+         const response = await instance.get<AnswerResponseType>(getQuickAnswer(question))
 
          localStorage.setItem('answer', JSON.stringify(response.data))
 

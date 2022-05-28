@@ -1,13 +1,32 @@
-export type BlogsDesciptionType = {
+import { UploadImageType } from './UploadImage'
+
+export type BlogResponse = {
    id: string
-   subTitle: string 
-   information: string
+   createAt: string
+   title: string
+   file: UploadImageType
+   author: string
+   description: string
+}
+
+export type DataType = {
+   title: string
+   file: FileList
+   author: string
+   description: string
+}
+
+export type BlogType = {
+   title: string
+   file: UploadImageType
+   author: string
+   description: string
 }
 
 export type BlogsType = {
-   id?: string
+   id: string
    title: string
-   image: string
+   file: UploadImageType
    author: string
-   description: BlogsDesciptionType[]
+   description: string
 }

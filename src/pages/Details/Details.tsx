@@ -9,11 +9,10 @@ import {
     DetailsWrapperTitle,
     DetailsImage,
     DetailsInfo,
-    DetailsWrapperTime,
 } from './Details.styled'
-import { Container, ErrorMessage, SpinnerWrapper } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper, SpecialTitle } from '../../styled/Reused.styled'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { detailsRecipeAsync } from '../../store/requests/detailsRecipesAsync'
 
 import { Spinner } from '../../components/Spinner/Spinner'
@@ -41,7 +40,7 @@ export const Details: FC = () => {
     }, [id, dispatch])
 
 
-    const tabHandler = (string: string) => setActiveTab(string)
+    const tabHandler = (string: string): void => setActiveTab(string)
 
     return (
         <DetailsEl {...motionSettings} >
@@ -57,7 +56,7 @@ export const Details: FC = () => {
                                 <DetailWrapperImage>
                                     <DetailsWrapperTitle>
                                         {details?.title}
-                                        <DetailsWrapperTime>({details?.readyInMinutes} minutes)</DetailsWrapperTime>
+                                        <SpecialTitle margin='0 0 0 5px'>({details?.readyInMinutes} minutes)</SpecialTitle>
                                     </DetailsWrapperTitle>
 
                                     <DetailsImage src={details?.image} alt={details?.title} />
@@ -80,7 +79,7 @@ export const Details: FC = () => {
                 </DetailsWrapper>
                 {error && <ErrorMessage>
                     <BiError />
-                    Something went wrong
+                    {error}
                 </ErrorMessage>}
             </Container>
         </DetailsEl>

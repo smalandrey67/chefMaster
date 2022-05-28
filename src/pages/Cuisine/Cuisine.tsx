@@ -1,10 +1,10 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { CuisineEl, CuisineTitle, CuisineWrapper } from './Cuisine.styled'
-import { Container, ErrorMessage, SpinnerWrapper } from '../../styled/Reused.styled'
+import { CuisineEl, CuisineWrapper } from './Cuisine.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Title } from '../../styled/Reused.styled'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { cuisineRecipesAsync } from '../../store/requests/cuisineRecipesAsync'
 
 import { Spinner } from '../../components/Spinner/Spinner'
@@ -13,6 +13,8 @@ import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 import { BiError } from 'react-icons/bi'
 
 import { StatusEnum } from '../../types/Status'
+import { CuisineResultsType } from '../../types/Cuisine'
+
 import { motionSettings } from '../../utils/motionSettings'
 
 export const Cuisine: FC = () => {
@@ -28,14 +30,14 @@ export const Cuisine: FC = () => {
     return (
         <CuisineEl {...motionSettings} >
             <Container>
-                <CuisineTitle>{type}</CuisineTitle>
+                <Title>{type}</Title>
                 <CuisineWrapper>
                     {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='40vh'>
                             <Spinner />
                         </SpinnerWrapper>
                         :
-                        cuisine.map(recipe => <RecipeCuisine key={recipe.id} recipe={recipe} />)
+                        cuisine.map((recipe: CuisineResultsType): JSX.Element => <RecipeCuisine key={recipe.id} {...recipe} />)
                     }
                     {error && <ErrorMessage>
                         <BiError />

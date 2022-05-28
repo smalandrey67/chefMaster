@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useAppSelector, useAppDispatch } from '../../hooks/redux'
+import { useAppSelector, useAppDispatch } from '../../hooks/useRedux'
 import { searchedRecipesAsync } from '../../store/requests/searchedRecipesAsync'
 
 import { Spinner } from '../../components/Spinner/Spinner'
@@ -14,6 +14,7 @@ import { SearchedWarning } from '../../styled/Reused.styled'
 import { BiError } from 'react-icons/bi'
 
 import { StatusEnum } from '../../types/Status'
+import { CuisineResultsType } from '../../types/Cuisine'
 
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()
@@ -28,24 +29,26 @@ export const Searched: FC = () => {
     return (
         <Container>
             <CuisineWrapper>
-                
+
                 {status === StatusEnum.PENDING ?
                     <SpinnerWrapper height='50vh'>
                         <Spinner />
                     </SpinnerWrapper>
                     :
                     searched.length ?
-                    searched.map(recipe => <RecipeCuisine key={recipe.id} recipe={recipe} />)
+                        searched.map((recipe: CuisineResultsType): JSX.Element =>
+                            <RecipeCuisine key={recipe.id} {...recipe} />
+                        )
                         :
-                    <SearchedWarning>
-                        <BiError /> 
-                        Nothing was found
-                    </SearchedWarning>
+                        <SearchedWarning>
+                            <BiError />
+                            Nothing was found
+                        </SearchedWarning>
                 }
 
                 {error && <ErrorMessage>
                     <BiError />
-                    Something went wrong
+                    {error}
                 </ErrorMessage>}
             </CuisineWrapper>
         </Container>

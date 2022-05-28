@@ -1,28 +1,28 @@
-type StepsEquipmentType = {
+export type StepsEquipmentType = {
     id: number;
     image: string;
     name: string;
 }
 
-type StepsIngredientsType = {
+export type StepsIngredientsType = {
     id: number;
     image: string;
     name: string;
 }
 
-type StepsType = {
+export type StepsType = {
     equipment: StepsEquipmentType[]
     ingredients: StepsIngredientsType[]
     step: string;
     number: number;
 }
 
-type AnalyzedInstructionsType = {
+export type AnalyzedInstructionsType = {
     steps: StepsType[]
     name: string;
 }
 
-type IngredientsType = {
+export type IngredientsType = {
     id: number;
     image: string;
     nameClean: string;

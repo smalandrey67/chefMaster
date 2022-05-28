@@ -1,9 +1,12 @@
 import { FC } from 'react'
 
 import { DetailsType } from '../../../types/Details'
-import { removeTags } from '../../../utils/functions'
 
-import { DetailsInfoDescription, DetailsInfoTitle } from './Instructions.styled'
+import { removeTags } from '../../../utils/functions'
+import { motionSettings } from '../../../utils/motionSettings'
+
+import { DetailsInfoDescription } from './Instructions.styled'
+import { Text } from '../../../styled/Reused.styled'
 
 type InstructionsProps = {
     details: DetailsType | null;
@@ -11,9 +14,9 @@ type InstructionsProps = {
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {
     return (
-        <DetailsInfoDescription animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-            <DetailsInfoTitle>{removeTags(details?.summary)}</DetailsInfoTitle>
-            <DetailsInfoTitle>{removeTags(details?.instructions)}</DetailsInfoTitle>
+        <DetailsInfoDescription {...motionSettings}>
+            <Text margin='0 0 10px 0'>{removeTags(details?.summary)}</Text>
+            <Text margin='0 0 10px 0'>{removeTags(details?.instructions)}</Text>
         </DetailsInfoDescription>
     )
 }   
