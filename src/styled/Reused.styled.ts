@@ -43,12 +43,16 @@ export const SpinnerWrapper = styled.div<SpinnerProps>`
     width: 100%;
 `
 
+export const Spinner = styled.img``
+
 export const SearchedWarning = styled.h4`
-    margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
-    font-size: var(--fs-md);
+    justify-content: center;
+    margin: 15px 0 0 0;
     gap: 5px;
+    font-size: var(--fs-md);
 `
 
 // #Base style of button
@@ -58,6 +62,7 @@ export const Button = styled.button`
     border-radius: var(--br-radius);
     box-shadow: var(--shadow);
     font-weight: var(--fw-semiBold);
+    background-color: var(--color-white); 
 `
 
 // #Base styled of input
@@ -96,5 +101,5 @@ export const SpecialTitle = styled.span<SpecialTitleProps>`
     font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
 
     color: ${({ color }) => color || 'var(--color-black)'}
-
 `
+

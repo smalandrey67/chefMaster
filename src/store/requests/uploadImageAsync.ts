@@ -13,13 +13,13 @@ export const uploadImageAsync = createAsyncThunk<UploadImageType, FormData, { re
       try {
          const response = await axios.post<UploadImageType>(uploadImage(), data)
 
-         return response.data.secure_url
+         return response.data.secure_url as unknown as UploadImageType
       } catch (e) {
          if (axios.isAxiosError(e)) {
             return rejectWithValue(e.message)
          }
 
-         return rejectWithValue('Can\'t find this product. Server error')
+         return rejectWithValue('Can\'t upload image. Server error')
       }
    }
 )

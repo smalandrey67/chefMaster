@@ -4,10 +4,10 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { blogsAsync } from '../../store/requests/blogsAsync'
 
 import { BlogsEl, BolgsAddWrapper, BlogsAdd, BlogsWrapper } from './Blogs.styled'
-import { Container, SpinnerWrapper, ErrorMessage } from '../../styled/Reused.styled'
+import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../styled/Reused.styled'
 
 import { Blog } from '../../components/Blog/Blog'
-import { Spinner } from '../../components/Spinner/Spinner'
+import SpinnerBg from '../../assets/spinner-bg.svg'
 
 import { StatusEnum } from '../../types/Status'
 import { BlogsType } from '../../types/Blogs'
@@ -22,13 +22,12 @@ export const Blogs: FC = () => {
 
    useEffect(() => {
       dispatch(blogsAsync())
-   }, [])
-
+   }, [dispatch])
 
    return (
       <BlogsEl>
          <Container>
-            
+
             <BolgsAddWrapper>
                <BlogsAdd>
                   add blog
@@ -36,10 +35,15 @@ export const Blogs: FC = () => {
                </BlogsAdd>
             </BolgsAddWrapper>
 
+            {!blogs.length && !error ? <SearchedWarning>
+               <BiError />
+               No posts yet
+            </SearchedWarning> : null}
+
             <BlogsWrapper>
                {status === StatusEnum.PENDING ?
                   <SpinnerWrapper height='40vh'>
-                     <Spinner />
+                     <Spinner src={SpinnerBg} alt='spinner' />
                   </SpinnerWrapper>
                   :
                   blogs.map(({ id, ...blog }: BlogsType): JSX.Element => <Blog key={id} {...blog} />)
@@ -49,7 +53,6 @@ export const Blogs: FC = () => {
                   <BiError />
                   {error}
                </ErrorMessage>}
-
             </BlogsWrapper>
          </Container>
       </BlogsEl>

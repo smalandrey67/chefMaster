@@ -1,4 +1,4 @@
-import { FC, FormEvent, ChangeEvent, useState } from 'react'
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
@@ -15,9 +15,9 @@ import {
    AnswerAnswer,
    AnswerImage
 } from './Answer.styled'
-import { ErrorMessage, SpinnerWrapper, SearchedWarning, SpecialTitle } from '../../styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner, SearchedWarning, SpecialTitle } from '../../styled/Reused.styled'
 
-import { Spinner } from '../Spinner/Spinner'
+import SpinnerSm from '../../assets/spinner-sm.svg'
 import { Popup } from '../Popup/Popup'
 
 import { IoCloseSharp } from 'react-icons/io5'
@@ -71,8 +71,6 @@ export const Answer: FC<PopupProps> = ({ popupHandler }) => {
                   {...register('question', {
                      required: 'Field is required',
                   })}
-                  placeholder='Question'
-                  type='text'
                />
 
                <AnswerFormButton>ask</AnswerFormButton>
@@ -89,7 +87,7 @@ export const Answer: FC<PopupProps> = ({ popupHandler }) => {
          {
             status === StatusEnum.PENDING ?
                <SpinnerWrapper height='15vh'>
-                  <Spinner />
+                  <Spinner src={SpinnerSm} alt='spinner' />
                </SpinnerWrapper>
                : null
          }

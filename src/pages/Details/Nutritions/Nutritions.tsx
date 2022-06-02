@@ -2,10 +2,10 @@ import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
 import { nutritionRecipeAsync } from '../../../store/requests/nutritionRecipeAsync'
 
-import { ErrorMessage, SpinnerWrapper } from '../../../styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner } from '../../../styled/Reused.styled'
 import { NutritionWrapper, NutritionItem } from './Nutritions.styled'
 
-import { Spinner } from '../../../components/Spinner/Spinner'
+import SpinnerSm from '../../../assets/spinner-sm.svg'
 
 import { GiPaperArrow, GiRawEgg } from 'react-icons/gi'
 import { ImFire } from 'react-icons/im'
@@ -30,23 +30,23 @@ export const Nutrition: FC<NutritionProps> = ({ id }) => {
     return (
         <NutritionWrapper>
             {status === StatusEnum.PENDING ?
-                <SpinnerWrapper height="20vh">
-                    <Spinner />
+                <SpinnerWrapper height='15vh'>
+                    <Spinner src={SpinnerSm} alt='spinner' />
                 </SpinnerWrapper>
                 :
                 <>
                     <NutritionItem>
-                        <GiPaperArrow size="15" />
+                        <GiPaperArrow size='20' />
                         {nutrition?.carbs} carbs
                     </NutritionItem>
 
                     <NutritionItem>
-                        <GiRawEgg size="20" />
+                        <GiRawEgg size='20' />
                         {nutrition?.protein} proteins
                     </NutritionItem>
 
                     <NutritionItem>
-                        <ImFire size="20" />
+                        <ImFire size='20' />
                         {nutrition?.calories} Kcal
                     </NutritionItem>
                 </>

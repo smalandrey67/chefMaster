@@ -23,11 +23,13 @@ export const SearchLabel = styled.label`
     border-radius: var(--br-radius);
     padding: 0 20px;
     box-shadow: var(--shadow);
-    background-color: var(--color-background);
+    background-color: var(--color-white);
     margin-bottom: 5px;
 `
 
-export const SearchInput = styled(Input)`
+export const SearchInput = styled(Input).attrs({
+    placeholder: 'Search'
+})`
     width: 100%;
     font-weight: var(--fw-bold);
 `

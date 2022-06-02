@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react'
 
 import { PopupEl, PopupBody, PopupContent } from './Popup.styled'
 
-import { motionSettings } from '../../utils/motionSettings'
+import { motionSettings } from '../../utils/motionOptions'
 
 
 type PopupProps = {

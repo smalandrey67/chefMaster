@@ -12,7 +12,7 @@ export const blogsAsync = createAsyncThunk<BlogsType[], void, { rejectValue: str
 
          const response = await axios.get<BlogsType[]>(getBlogs())
 
-         return response.data
+         return response.data as BlogsType[]
 
       } catch (e) {
          if (axios.isAxiosError(e)) {

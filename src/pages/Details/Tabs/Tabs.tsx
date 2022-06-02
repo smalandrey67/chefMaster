@@ -19,6 +19,7 @@ export const Tabs: FC<InstructionsProps> = ({ activeTab, tabHandler }) => {
             <DetailsInfoButton
                 className={activeTab === 'ingredients' ? 'active' : ''}
                 onClick={() => tabHandler('ingredients')}
+             
             >Ingredients</DetailsInfoButton>
 
             <DetailsInfoButton

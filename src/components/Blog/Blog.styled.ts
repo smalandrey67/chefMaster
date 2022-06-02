@@ -15,7 +15,12 @@ export const BlogBody = styled.div`
 export const BlogFigure = styled.figure`
    width: 100%;
    height: 200px;
-   margin: 0 0 20px 0;
+   margin: 0 0 25px 0;
+
+
+   @media(min-width: 768px){
+      height: 500px;
+   }
 
 `
 

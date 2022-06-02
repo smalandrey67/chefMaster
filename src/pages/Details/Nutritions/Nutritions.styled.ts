@@ -6,6 +6,7 @@ export const NutritionWrapper = styled.div`
     justify-content: center;
     flex-wrap: wrap;
 
+
     @media(min-width: 376px){
         justify-content: space-between;
     }
@@ -14,8 +15,8 @@ export const NutritionWrapper = styled.div`
 export const NutritionItem = styled.div`
     display: grid;
     grid-auto-flow: column;
+    align-items: center;
     gap: 5px;
-  
     margin-bottom: 5px;
     font-weight: var(--fw-semiBold);
 

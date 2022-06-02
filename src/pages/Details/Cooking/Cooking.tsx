@@ -2,7 +2,7 @@ import { FC, useState, Fragment } from 'react'
 
 import { DetailsType, AnalyzedInstructionsType, StepsType, StepsIngredientsType } from '../../../types/Details'
 
-import { motionSettings } from '../../../utils/motionSettings'
+import { motionSettings } from '../../../utils/motionOptions'
 import { stringCut } from '../../../utils/functions'
 
 import { DetailsList } from '../Ingredients/Ingredients.styled'
@@ -15,12 +15,13 @@ import {
     DetailsCookingIngredients,
     DetailsCookingIngredientsPhoto,
 } from './Cooking.styled'
+import { SearchedWarning } from '../../../styled/Reused.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
+import { BiError } from 'react-icons/bi'
 
 type StepsProps = {
-    // #find out why we use null over here
     details: DetailsType | null
 }
 
@@ -37,6 +38,13 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
     
     return (
         <DetailsList {...motionSettings} >
+
+            {!details?.analyzedInstructions.length ?
+            <SearchedWarning>
+                <BiError size={20} />
+                No instructions for cooking
+            </SearchedWarning> : null}
+
 
             {details?.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index): JSX.Element => (
                 <Fragment key={index}> {/* Item name posible could be empty string. There is no another way to give a unique key */}

@@ -44,9 +44,7 @@ const quickAnswerSlice = createSlice({
    }
 })
 
-const { actions, reducer } = quickAnswerSlice
-
-export const { resetAnswer } = actions
-export default reducer
+export const { resetAnswer } = quickAnswerSlice.actions
+export default quickAnswerSlice.reducer
 
 

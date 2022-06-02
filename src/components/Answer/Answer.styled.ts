@@ -1,7 +1,5 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Button, Input } from '../../styled/Reused.styled'
-
-import { motion } from 'framer-motion'
 
 export const AnswerHeader = styled.div`
    display: flex;
@@ -38,8 +36,10 @@ export const AnswerFormBody = styled.div`
    margin-bottom: 5px;
 `
 
-
-export const AnswerFormInput = styled(Input)`
+export const AnswerFormInput = styled(Input).attrs({
+   placeholder: 'Question',
+   type: 'text'
+})`
    height: 100%;
    flex: 0 1 70%;
    padding: 0 15px;

@@ -27,21 +27,51 @@ export const HeaderWrapper = styled.div`
 `
 
 
+export const HeaderBlogsWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`
 
 export const HeaderLogo = styled(Link).attrs({
     to: '/'
 })`
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-left: 5px; 
     font-size: var(--fs-bg);
     font-weight: var(--fw-bold);
     margin-right: 10px;
-`   
+`
+
 
 export const HeaderBlogs = styled(Link).attrs({
     to: '/blogs'
-})``
+})`
+    display: flex;
+    align-items: center;
+    font-size: var(--fs-md);
+
+    animation-name: jump-blog;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    &:active{
+        animation-play-state: paused;
+    }
+
+    @media(min-width: 768px){
+        &:hover{
+            animation-play-state: paused;
+        }
+    }
+
+    @keyframes jump-blog {
+        0%{
+            transform: scale(0.8)
+        }100%{
+            transform: scale(1)
+        }
+    }
+`
 
 
 

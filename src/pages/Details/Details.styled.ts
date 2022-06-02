@@ -24,6 +24,8 @@ export const DetailWrapperImage = styled.figure`
     }
 `
 
+
+
 export const DetailsWrapperTitle = styled.figcaption`
     font-size: var(--fs-bg);
     font-weight: var(--fw-semiBold);
@@ -35,11 +37,40 @@ export const DetailsWrapperTitle = styled.figcaption`
     }
 `
 
+
+export const DetailsOverImage = styled.div`
+    position: relative;
+`
+
+export const DetailsReadyMinutes = styled.span`
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: var(--color-white);
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 7px;
+
+    font-weight: var(--fw-bold);
+`
+
+export const DetailsAggregateLikes = styled.span`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--color-white);
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 5px;
+    font-weight: var(--fw-bold);
+`
+
 export const DetailsImage = styled.img`
     width: 100%;
     object-fit: cover;
     border-radius: var(--br-radius);
-
 `
 
 export const DetailsInfo = styled.div`

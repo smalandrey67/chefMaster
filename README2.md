@@ -14,20 +14,20 @@
 
 # do the reusable style component for warning and errors !!
 
-# find out and solve problem with overflow hiddent whenver we open the modal
+# find out and solve problem with overflow hiddent whenver we open the modal - DONE pertially
 
 # create owm form element for each component wich use this
 
 # do the same input with label for search ang for create post
 
-# change attrs. You can paste them directyly from compoenent 
+# change attrs. You can paste them directyly from compoenent - DONE
 
-# create resize spinner for dif components
+# create resize spinner for dif components - DONE
 
-# fix types for post rewuest. When we are getting data we have no type ober there
+# fix types for post rewuest. When we are getting data we have no type over there - DONE
 
-# Change name of each slice
+# Change name of each slice - DONE
 
-# Change export reducer at each slice 
+# Change export reducer at each slice - DONE
 
-# When we return the date inside of CreateAsyncThunk we don't put as type of someting !! 
+# When we return the date inside of CreateAsyncThunk we don't put as type of someting !!  - DONE

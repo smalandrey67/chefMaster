@@ -1,4 +1,5 @@
-import { FC, useState, useEffect, ChangeEvent } from 'react'
+import { FC } from 'react'
+import ReactDOM from 'react-dom'
 
 import { Recipes } from '../../components/Recipes/Recipes'
 import { About } from '../../components/About/About'
@@ -10,10 +11,9 @@ import { BsChatRightText } from 'react-icons/bs'
 
 import { usePopup } from '../../hooks/usePopup'
 
+
 export const Main: FC = () => {
     const { popupIsActive, popupHandler } = usePopup()
-
-    
 
 
     return (
@@ -21,18 +21,19 @@ export const Main: FC = () => {
             <Recipes />
             <About />
 
-            {/* <input type="file" onChange={fileHandler}/> */}
-        
             {/* button which open the chat for answer a question */}
             <MainChatWrapper onClick={() => popupHandler()}>
-                <BsChatRightText 
-                    size='25' 
-                    cursor='pointer' 
+                <BsChatRightText
+                    size='25'
+                    cursor='pointer'
                     color='var(--color-white)'
                 />
             </MainChatWrapper>
 
-            {popupIsActive && <Answer popupHandler={popupHandler} />}
+            {
+                popupIsActive &&
+                ReactDOM.createPortal(<Answer popupHandler={popupHandler} />, document.getElementById('popup')!)
+            }
         </MainEl>
     )
 }

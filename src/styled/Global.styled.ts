@@ -12,11 +12,12 @@ export const Global = createGlobalStyle`
         //colors
         --color-white: #fff;
         --color-black: #000000; 
+        --color-grey: grey;
         --color-text: #232526;
         --color-alternative: #414345;
         --color-categories: #56ab2f;
         --color-categories-text: #f5af19;
-        --color-error: #Ed213a;
+        --color-error: #ed213a;
         --color-gradient: rgba(0, 0, 0, 0.8);
 
         //typography
@@ -40,11 +41,7 @@ export const Global = createGlobalStyle`
         font-size: var(--fs-sm);
         background-color: var(--color-white);
         color: var(--color-text);
-
-        // #test approach give us a ability ad overflow hiiden to body in safari
         position: relative;
-        height: 100%;
-        width: 100%;
     }
 
     a {

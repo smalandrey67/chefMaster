@@ -9,13 +9,15 @@ import {
     DetailsWrapperTitle,
     DetailsImage,
     DetailsInfo,
+    DetailsOverImage,
+    DetailsReadyMinutes,
+    DetailsAggregateLikes
 } from './Details.styled'
-import { Container, ErrorMessage, SpinnerWrapper, SpecialTitle } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { detailsRecipeAsync } from '../../store/requests/detailsRecipesAsync'
 
-import { Spinner } from '../../components/Spinner/Spinner'
 import { Ingredients } from './Ingredients/Ingredients'
 import { Instructions } from './Instructions/Instructions'
 import { Tabs } from './Tabs/Tabs'
@@ -23,9 +25,12 @@ import { Cooking } from './Cooking/Cooking'
 import { Nutrition } from './Nutritions/Nutritions'
 
 import { BiError } from 'react-icons/bi'
+import { BsClock } from 'react-icons/bs'
+import { AiOutlineLike } from 'react-icons/ai'
+import SpinnerBg from '../../assets/spinner-bg.svg'
 
 import { StatusEnum } from '../../types/Status'
-import { motionSettings } from '../../utils/motionSettings'
+import { motionSettings } from '../../utils/motionOptions'
 
 export const Details: FC = () => {
     const [activeTab, setActiveTab] = useState<string>('instructions')
@@ -48,7 +53,7 @@ export const Details: FC = () => {
                 <DetailsWrapper>
                     {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='50vh'>
-                            <Spinner />
+                            <Spinner src={SpinnerBg} alt='spinner' />
                         </SpinnerWrapper>
                         :
                         <>
@@ -56,10 +61,22 @@ export const Details: FC = () => {
                                 <DetailWrapperImage>
                                     <DetailsWrapperTitle>
                                         {details?.title}
-                                        <SpecialTitle margin='0 0 0 5px'>({details?.readyInMinutes} minutes)</SpecialTitle>
                                     </DetailsWrapperTitle>
 
-                                    <DetailsImage src={details?.image} alt={details?.title} />
+                                    <DetailsOverImage>
+                                        <DetailsImage src={details?.image} alt={details?.title} />
+                                        
+                                        <DetailsReadyMinutes>
+                                            <BsClock size={20} />
+                                            {details?.readyInMinutes} min
+                                        </DetailsReadyMinutes>
+
+                                        <DetailsAggregateLikes>
+                                            <AiOutlineLike size={20} />
+                                            {details?.aggregateLikes}
+                                        </DetailsAggregateLikes>
+                                    </DetailsOverImage>
+
                                 </DetailWrapperImage>
 
                                 <Nutrition id={id} />

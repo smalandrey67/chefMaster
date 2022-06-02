@@ -38,7 +38,6 @@ export const Search: FC = () => {
                         })}
                         enterKeyHint='search' 
                         autoComplete='off' 
-                        placeholder='Search'
                     />
                 </SearchLabel>
 

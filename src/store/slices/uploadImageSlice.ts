@@ -44,10 +44,7 @@ const uploadImageSlice = createSlice({
    }
 })
 
-const { actions, reducer } = uploadImageSlice
-
-export const { resetUrl } = actions
-
-export default reducer
+export const { resetUrl } = uploadImageSlice.actions
+export default uploadImageSlice.reducer
 
 

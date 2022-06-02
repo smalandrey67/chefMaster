@@ -20,7 +20,7 @@ export const quickAnswerAsync = createAsyncThunk<AnswerResponseType, string, { r
 
          localStorage.setItem('answer', JSON.stringify(response.data))
 
-         return response.data
+         return response.data as AnswerResponseType
       } catch (e) {
          if (axios.isAxiosError(e)) {
             return rejectWithValue(e.message)

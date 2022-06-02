@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '../../hooks/useRedux'
 import { searchedRecipesAsync } from '../../store/requests/searchedRecipesAsync'
 
-import { Spinner } from '../../components/Spinner/Spinner'
+import SpinnerBg from '../../assets/spinner-bg.svg'
 import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
-import { Container, ErrorMessage, SpinnerWrapper } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../styled/Reused.styled'
 import { CuisineWrapper } from '../Cuisine/Cuisine.styled'
 import { SearchedWarning } from '../../styled/Reused.styled'
 
@@ -32,7 +32,7 @@ export const Searched: FC = () => {
 
                 {status === StatusEnum.PENDING ?
                     <SpinnerWrapper height='50vh'>
-                        <Spinner />
+                        <Spinner src={SpinnerBg} alt='spinner' />
                     </SpinnerWrapper>
                     :
                     searched.length ?
@@ -41,7 +41,7 @@ export const Searched: FC = () => {
                         )
                         :
                         <SearchedWarning>
-                            <BiError />
+                            <BiError size={20} />
                             Nothing was found
                         </SearchedWarning>
                 }

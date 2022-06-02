@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
+export const DetailsIngredientsCount = styled.span`
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+    color: var(--color-grey);
+    font-weight: var(--fw-semiBold);
+`
+
 export const DetailsList = styled(motion.ul)`
     margin: 0;
     padding: 0;

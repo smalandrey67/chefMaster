@@ -1,4 +1,4 @@
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 type RecipeProps = {
     healthScore: number;
@@ -36,6 +36,7 @@ export const RecipeTitle = styled.h3`
     font-size: var(--fs-sm);
     margin: 0 0 15px 0;
     display: none;
+    color: var(--color-white);
 
     @media(min-width: 768px){
         display: block;
@@ -50,7 +51,6 @@ export const RecipeGradient = styled.div`
     min-height: 100%;
     z-index: 5;
     border-radius: var(--br-radius);
-    background: linear-gradient(rgba(0, 0, 0, 0), var(--color-gradient));
 `
 
 export const RecipeScore = styled.span<RecipeProps>`

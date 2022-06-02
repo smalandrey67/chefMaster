@@ -21,7 +21,7 @@ export const BlogsAdd = styled(Link).attrs({
    display: flex;
    align-items: center;
    justify-content: space-between;
-   flex: 0 1 120px;
+   flex: 0 1 110px;
 
    &:active { 
       background-color: var(--color-categories);

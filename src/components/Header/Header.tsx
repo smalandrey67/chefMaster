@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { HeaderEl, HeaderWrapper, HeaderLogo, HeaderBlogs } from './Header.styled'
+import { HeaderEl, HeaderWrapper, HeaderLogo, HeaderBlogsWrapper, HeaderBlogs } from './Header.styled'
 import { Container } from '../../styled/Reused.styled'
 
 import { ImSpoonKnife } from 'react-icons/im'
@@ -15,15 +15,15 @@ export const Header: FC = () => {
             <Container>
                 <HeaderWrapper>
 
-                    <HeaderLogo>
+                    <HeaderBlogsWrapper>
                         <ImSpoonKnife size='25' />
-                        ChefMaster
-                    </HeaderLogo>
+                        <HeaderLogo>ChefMaster</HeaderLogo>
+                    </HeaderBlogsWrapper>
 
                     <HeaderBlogs>
                         <IoBookSharp cursor='pointer' size='25' />
                     </HeaderBlogs>
-
+                
                 </HeaderWrapper>
                 <Search />
             </Container>

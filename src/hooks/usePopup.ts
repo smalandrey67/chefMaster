@@ -3,8 +3,9 @@ import { useAppDispatch } from './useRedux'
 import { resetAnswer } from '../store/slices/quickAnswerSlice'
 
 import { AnswerResponseType } from '../types/Answer'
+import { UsePopupType } from '../types/Hooks'
 
-export const usePopup = () => {
+export const usePopup = (): UsePopupType => {
 
    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
    const dispatch = useAppDispatch()

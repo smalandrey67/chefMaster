@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { DetailsType } from '../../../types/Details'
 
 import { removeTags } from '../../../utils/functions'
-import { motionSettings } from '../../../utils/motionSettings'
+import { motionSettings } from '../../../utils/motionOptions'
 
 import { DetailsInfoDescription } from './Instructions.styled'
 import { Text } from '../../../styled/Reused.styled'

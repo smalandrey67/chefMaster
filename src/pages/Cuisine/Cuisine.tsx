@@ -2,12 +2,12 @@ import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { CuisineEl, CuisineWrapper } from './Cuisine.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Title } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner, Title } from '../../styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { cuisineRecipesAsync } from '../../store/requests/cuisineRecipesAsync'
 
-import { Spinner } from '../../components/Spinner/Spinner'
+import SpinnerBg  from '../../assets/spinner-bg.svg'
 import { RecipeCuisine } from '../../components/RecipeCuisine/RecipeCuisine'
 
 import { BiError } from 'react-icons/bi'
@@ -15,7 +15,7 @@ import { BiError } from 'react-icons/bi'
 import { StatusEnum } from '../../types/Status'
 import { CuisineResultsType } from '../../types/Cuisine'
 
-import { motionSettings } from '../../utils/motionSettings'
+import { motionSettings } from '../../utils/motionOptions'
 
 export const Cuisine: FC = () => {
     const dispatch = useAppDispatch()
@@ -34,7 +34,7 @@ export const Cuisine: FC = () => {
                 <CuisineWrapper>
                     {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='40vh'>
-                            <Spinner />
+                            <Spinner src={SpinnerBg} alt='spinner' />
                         </SpinnerWrapper>
                         :
                         cuisine.map((recipe: CuisineResultsType): JSX.Element => <RecipeCuisine key={recipe.id} {...recipe} />)

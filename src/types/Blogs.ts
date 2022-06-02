@@ -28,5 +28,6 @@ export type BlogsType = {
    title: string
    file: UploadImageType
    author: string
+   createdAt: string
    description: string
 }

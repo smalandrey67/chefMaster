@@ -12,7 +12,7 @@ export const About: FC = () => {
             <AboutWrapper>
 
                <AboutWrapperImage>
-                  <AboutImage src={Background} />
+                  <AboutImage src={Background} alt='background' />
                </AboutWrapperImage>
 
                <AboutDescriptionWrapper>

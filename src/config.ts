@@ -29,5 +29,5 @@ export const getBlogs = (): string => {
 }
 
 export const uploadImage = (): string => {
-    return `${process.env.REACT_APP_BLOGS_UPLOAD_URL}`   
+    return `${process.env.REACT_APP_BLOGS_UPLOAD_URL}` 
 }
