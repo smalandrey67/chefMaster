@@ -1,13 +1,13 @@
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { UploadImageType } from '../../../types/UploadImage'
-import { BlogType, DataType } from '../../../types/Blogs'
-import { UseSubmitType } from '../../../types/Hooks'
+import { UploadImageType } from '../../../models/UploadImage'
+import { BlogType, DataType } from '../../../models/Blogs'
+import { UseSubmitType } from '../../../models/Hooks'
 
 import { useAppDispatch } from '../../../hooks/useRedux'
-import { uploadBlogAsync } from '../../../store/requests/uploadBlogAsync'
-import { resetUrl } from '../../../store/slices/uploadImageSlice'
+import { uploadBlogA } from '../../../store/slices/uploadBlog/uploadBlogA'
+import { resetUrl } from '../../../store/slices/uploadImage/uploadImageS'
 
 export const useSubmit = (
    url: UploadImageType | null,
@@ -22,7 +22,7 @@ export const useSubmit = (
       if (url) {
          const post: BlogType = { ...data, file: url }
 
-         dispatch(uploadBlogAsync(post))
+         dispatch(uploadBlogA(post))
          dispatch(resetUrl())
 
          setFileName('')

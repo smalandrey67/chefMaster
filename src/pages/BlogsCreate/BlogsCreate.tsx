@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form'
 
 import { useAppSelector } from '../../hooks/useRedux'
 
-import { stringCut } from '../../utils/functions'
+import { stringCut } from '../../utils/helpers/string.helpers'
 
-import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from '../../styled/Reused.styled'
+import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from '../../assets/styled/Reused.styled'
 import {
    BlogsCreateEl,
    BlogsCreateBody,
@@ -22,10 +22,10 @@ import {
    BlogsCreateLabelWrapper,
 } from './BlogsCreate.styled'
 
-import { StatusEnum } from '../../types/Status'
-import { DataType } from '../../types/Blogs'
+import { StatusEnum } from '../../models/Status'
+import { DataType } from '../../models/Blogs'
 
-import SpinnerSm from '../../assets/spinner-sm.svg'
+import SpinnerSm from '../../assets/images/spinner-sm.svg'
 import { BiError } from 'react-icons/bi'
 
 import { useImage } from './hook/image'
@@ -43,7 +43,7 @@ export const BlogsCreate: FC = () => {
    const { imageHandler, fileName, setFileName, url, status, error } = useImage()
    const { submitHandler } = useSubmit(url, setFileName, reset)
 
-   const { errorUploadBlog } = useAppSelector(state => state.uploadBlogReducer)
+   const { errorUploadBlog } = useAppSelector(state => state.uploadBlogR)
 
    return (
       <BlogsCreateEl>

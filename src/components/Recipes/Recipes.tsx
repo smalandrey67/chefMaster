@@ -2,33 +2,33 @@ import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { Splide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
-import { randomRecipeAsync } from '../../store/requests/randomRecipesAsync'
+import { recipesA } from '../../store/slices/recipes/recipesA'
 
 import { RandomEl } from './Recipes.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
 
-import SpinnerBg from '../../assets/spinner-bg.svg'
+import SpinnerBg from '../../assets/images/spinner-bg.svg'
 import { Recipe } from '../Recipe/Recipe'
 
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../types/Status'
-import { RecipeResultType } from '../../types/Recipe'
+import { StatusEnum } from '../../models/Status'
+import { RecipeResultType } from '../../models/Recipe'
 
-import { splideOptions } from '../../utils/splideOptions'
+import { splide } from '../../utils/constants/splide.constants'
 
 export const Recipes: FC = () => {
-    const { recipes, status, error } = useAppSelector(state => state.getRandomRecipesReducer)
+    const { recipes, status, error } = useAppSelector(state => state.recipesR)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(randomRecipeAsync())
+        dispatch(recipesA())
     }, [dispatch])
 
     return (
         <RandomEl>
             <Container>
-                <Splide options={splideOptions}>
+                <Splide options={splide}>
                     {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='50vh'>
                             <Spinner src={SpinnerBg} alt='spinner' />

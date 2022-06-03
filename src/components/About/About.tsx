@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { Container, Text } from '../../styled/Reused.styled'
+import { Container, Text } from '../../assets/styled/Reused.styled'
 import { AboutEl, AboutWrapper, AboutWrapperImage, AboutImage, AboutDescriptionWrapper } from './About.styled'
 
-import Background from '../../assets/cooking-bg.jpg'
+import Background from '../../assets/images/cooking-bg.jpg'
 
 export const About: FC = () => {
    return (

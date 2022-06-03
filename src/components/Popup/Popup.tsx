@@ -2,16 +2,15 @@ import { FC, ReactNode } from 'react'
 
 import { PopupEl, PopupBody, PopupContent } from './Popup.styled'
 
-import { motionSettings } from '../../utils/motionOptions'
+import { motion } from '../../utils/constants/motion.constants'
 
-
-type PopupProps = {
+export type PopupProps = {
    children: JSX.Element | ReactNode
 }
 
 export const Popup: FC<PopupProps> = ({ children }) => {
    return (
-      <PopupEl {...motionSettings}>
+      <PopupEl {...motion}>
          <PopupBody>
             <PopupContent>
                {children}

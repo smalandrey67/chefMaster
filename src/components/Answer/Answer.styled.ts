@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, Input } from '../../styled/Reused.styled'
+import { Button, Input } from '../../assets/styled/Reused.styled'
 
 export const AnswerHeader = styled.div`
    display: flex;

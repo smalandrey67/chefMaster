@@ -1,17 +1,17 @@
 import { ChangeEvent, useState } from 'react'
 
-import { uploadImageAsync } from '../../../store/requests/uploadImageAsync'
+import { uploadImageA } from '../../../store/slices/uploadImage/uploadImageA'
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
 
-import { UseImageType } from '../../../types/Hooks'
+import { UseImageType } from '../../../models/Hooks'
 
 export const useImage = (): UseImageType => {
    const [fileName, setFileName] = useState<string>('')
 
    const dispatch = useAppDispatch()
-   const { url, status, error } = useAppSelector(state => state.uploadImageReducer)
+   const { url, status, error } = useAppSelector(state => state.uploadImageR)
 
-   const imageHandler = (e: ChangeEvent<HTMLInputElement>) => {
+   const imageHandler = (e: ChangeEvent<HTMLInputElement>): void => {
       const files: FileList | null = e.target.files
 
       if (files) {
@@ -22,7 +22,7 @@ export const useImage = (): UseImageType => {
          formData.append('file', files[0])
          formData.append('upload_preset', 'ees8ffne')
 
-         dispatch(uploadImageAsync(formData))
+         dispatch(uploadImageA(formData))
       }
    }
 

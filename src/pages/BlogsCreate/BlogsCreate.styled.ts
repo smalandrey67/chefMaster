@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Input, Button } from '../../styled/Reused.styled'
+import { Input, Button } from '../../assets/styled/Reused.styled'
 
-import { UploadImageType } from '../../types/UploadImage'
+import { UploadImageType } from '../../models/UploadImage'
 
 type BlogsCreatePreviewImageProps = {
    url: UploadImageType | null

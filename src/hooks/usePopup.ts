@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useAppDispatch } from './useRedux'
-import { resetAnswer } from '../store/slices/quickAnswerSlice'
+import { resetAnswer } from '../store/slices/answer/answerS'
 
-import { AnswerResponseType } from '../types/Answer'
-import { UsePopupType } from '../types/Hooks'
+import { AnswerResponseType } from '../models/Answer'
+import { UsePopupType } from '../models/Hooks'
 
 export const usePopup = (): UsePopupType => {
 

@@ -1,32 +1,30 @@
 import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
-import { nutritionRecipeAsync } from '../../../store/requests/nutritionRecipeAsync'
+import { nutritionsA } from '../../../store/slices/nutritions/nutritionsA'
 
-import { ErrorMessage, SpinnerWrapper, Spinner } from '../../../styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner } from '../../../assets/styled/Reused.styled'
 import { NutritionWrapper, NutritionItem } from './Nutritions.styled'
 
-import SpinnerSm from '../../../assets/spinner-sm.svg'
+import SpinnerSm from '../../../assets/images/spinner-sm.svg'
 
 import { GiPaperArrow, GiRawEgg } from 'react-icons/gi'
 import { ImFire } from 'react-icons/im'
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../../types/Status'
-
+import { StatusEnum } from '../../../models/Status'
 
 type NutritionProps = {
     id: string;
 }
 
-export const Nutrition: FC<NutritionProps> = ({ id }) => {
-    const { nutrition, status, error } = useAppSelector(state => state.nutritionRecipeReducer)
+export const Nutritions: FC<NutritionProps> = ({ id }) => {
+    const { nutrition, status, error } = useAppSelector(state => state.nutritionsR)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(nutritionRecipeAsync(id))
+        dispatch(nutritionsA(id))
     }, [id, dispatch])
 
- 
     return (
         <NutritionWrapper>
             {status === StatusEnum.PENDING ?
@@ -37,17 +35,17 @@ export const Nutrition: FC<NutritionProps> = ({ id }) => {
                 <>
                     <NutritionItem>
                         <GiPaperArrow size='20' />
-                        {nutrition?.carbs} carbs
+                        {nutrition.carbs} carbs
                     </NutritionItem>
 
                     <NutritionItem>
                         <GiRawEgg size='20' />
-                        {nutrition?.protein} proteins
+                        {nutrition.protein} proteins
                     </NutritionItem>
 
                     <NutritionItem>
                         <ImFire size='20' />
-                        {nutrition?.calories} Kcal
+                        {nutrition.calories} Kcal
                     </NutritionItem>
                 </>
             }

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { HeaderEl, HeaderWrapper, HeaderLogo, HeaderBlogsWrapper, HeaderBlogs } from './Header.styled'
-import { Container } from '../../styled/Reused.styled'
+import { Container } from '../../assets/styled/Reused.styled'
 
 import { ImSpoonKnife } from 'react-icons/im'
 import { IoBookSharp } from 'react-icons/io5'

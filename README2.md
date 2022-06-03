@@ -10,11 +10,11 @@
 
 # fix some bugs at details page such as the icon when we have 1 more details of analyzed. And if we have so big text it looks no pretty nice - DONE
 
-# distribute types correctly
+# distribute types correctly - DONE
 
 # do the reusable style component for warning and errors !!
 
-# find out and solve problem with overflow hiddent whenver we open the modal - DONE pertially
+# find out and solve problem with overflow hiddent whenver we open the modal - DONE partially
 
 # create owm form element for each component wich use this
 

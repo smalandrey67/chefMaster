@@ -1,16 +1,16 @@
 import { FC, useEffect, } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { blogsAsync } from '../../store/requests/blogsAsync'
+import { blogsA } from '../../store/slices/blogs/blogsA'
 
 import { BlogsEl, BolgsAddWrapper, BlogsAdd, BlogsWrapper } from './Blogs.styled'
-import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../styled/Reused.styled'
+import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../assets/styled/Reused.styled'
 
 import { Blog } from '../../components/Blog/Blog'
-import SpinnerBg from '../../assets/spinner-bg.svg'
+import SpinnerBg from '../../assets/images/spinner-bg.svg'
 
-import { StatusEnum } from '../../types/Status'
-import { BlogsType } from '../../types/Blogs'
+import { StatusEnum } from '../../models/Status'
+import { BlogsType } from '../../models/Blogs'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'
@@ -18,10 +18,10 @@ import { HiPlus } from 'react-icons/hi'
 
 export const Blogs: FC = () => {
    const dispatch = useAppDispatch()
-   const { blogs, status, error } = useAppSelector(state => state.blogsReducer)
+   const { blogs, status, error } = useAppSelector(state => state.blogsR)
 
    useEffect(() => {
-      dispatch(blogsAsync())
+      dispatch(blogsA())
    }, [dispatch])
 
    return (
@@ -35,7 +35,7 @@ export const Blogs: FC = () => {
                </BlogsAdd>
             </BolgsAddWrapper>
 
-            {!blogs.length && !error ? <SearchedWarning>
+            {!blogs.length && !error && status !== StatusEnum.PENDING ? <SearchedWarning>
                <BiError />
                No posts yet
             </SearchedWarning> : null}

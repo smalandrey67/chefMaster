@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button } from '../../../styled/Reused.styled'
+import { Button } from '../../../assets/styled/Reused.styled'
 
 
 export const DetailsInfoWrapper = styled.div`

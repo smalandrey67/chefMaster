@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Input } from '../../styled/Reused.styled'
+import { Input } from '../../assets/styled/Reused.styled'
 
 
 export const SearchWrapper = styled.div`

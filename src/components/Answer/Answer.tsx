@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { quickAnswerAsync } from '../../store/requests/quickAnswerAsync'
+import { answerA } from '../../store/slices/answer/answerA'
 
 import {
    AnswerHeader,
@@ -15,22 +15,22 @@ import {
    AnswerAnswer,
    AnswerImage
 } from './Answer.styled'
-import { ErrorMessage, SpinnerWrapper, Spinner, SearchedWarning, SpecialTitle } from '../../styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner, SearchedWarning, SpecialTitle } from '../../assets/styled/Reused.styled'
 
-import SpinnerSm from '../../assets/spinner-sm.svg'
+import SpinnerSm from '../../assets/images/spinner-sm.svg'
 import { Popup } from '../Popup/Popup'
 
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../types/Status'
-import { AnswerResponseType, AnswerType } from '../../types/Answer'
+import { StatusEnum } from '../../models/Status'
+import { AnswerResponseType, AnswerType } from '../../models/Answer'
 
-type PopupProps = {
+export type AnswerProps = {
    popupHandler: (answer?: AnswerResponseType | null) => void
 }
 
-export const Answer: FC<PopupProps> = ({ popupHandler }) => {
+export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
    const {
       register,
       formState: { errors },
@@ -39,11 +39,11 @@ export const Answer: FC<PopupProps> = ({ popupHandler }) => {
    } = useForm<AnswerType>({ mode: 'onSubmit' })
 
    const dispatch = useAppDispatch()
-   const { answer, status, error } = useAppSelector(state => state.quickAnswerReducer)
+   const { answer, status, error } = useAppSelector(state => state.answerR)
 
    
    const submitHandler: SubmitHandler<AnswerType> = (data): void => {
-      dispatch(quickAnswerAsync(data.question))
+      dispatch(answerA(data.question))
       reset()
    }
 

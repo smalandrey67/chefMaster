@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import ReactDOM from 'react-dom'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import { Recipes } from '../../components/Recipes/Recipes'
 import { About } from '../../components/About/About'
@@ -12,16 +13,16 @@ import { BsChatRightText } from 'react-icons/bs'
 import { usePopup } from '../../hooks/usePopup'
 
 
+
 export const Main: FC = () => {
     const { popupIsActive, popupHandler } = usePopup()
-
 
     return (
         <MainEl>
             <Recipes />
             <About />
 
-            {/* button which open the chat for answer a question */}
+            {/* The button which open the chat for answer a question */}
             <MainChatWrapper onClick={() => popupHandler()}>
                 <BsChatRightText
                     size='25'
@@ -32,7 +33,9 @@ export const Main: FC = () => {
 
             {
                 popupIsActive &&
-                ReactDOM.createPortal(<Answer popupHandler={popupHandler} />, document.getElementById('popup')!)
+                ReactDOM.createPortal(
+                    <Answer popupHandler={popupHandler} />, document.getElementById('popup')!
+                )
             }
         </MainEl>
     )

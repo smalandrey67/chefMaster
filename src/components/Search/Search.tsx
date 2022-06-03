@@ -2,12 +2,12 @@ import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { ErrorMessage } from '../../styled/Reused.styled'
+import { ErrorMessage } from '../../assets/styled/Reused.styled'
 import { SearchWrapper, SearchForm, SearchInput, SearchLabel } from './Search.styled'
 
 import { FiSearch } from 'react-icons/fi'
 
-import { SearchType } from '../../types/Search'
+import { SearchType } from './Search.types'
 
 export const Search: FC = () => {
     const {
