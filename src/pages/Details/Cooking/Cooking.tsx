@@ -53,7 +53,7 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
                     {name.length ?
                         <DetailsCookingSubtitle>
                             <IoFootstepsSharp />
-                            {stringCut('Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, mollitia exercitationem doloremque distinctio quam et, culpa error facere quibusdam ex in, deleniti quos repellat beatae. Quo illo neque architecto quaerat magnam quod sequi, eveniet eum consequatur laborum exercitationem harum vero nulla molestias vel ullam? Rem hic cumque ex sint possimus?', 40)}
+                            {stringCut(name, 40)}
                         </DetailsCookingSubtitle>
                         : ''}
 

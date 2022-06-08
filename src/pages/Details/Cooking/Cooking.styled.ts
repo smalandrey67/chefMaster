@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const DetailsCookingSubtitle = styled.h4`
     margin: 5px 0;
     padding: 10px;
-    display: grid;
+    text-align: left;
     grid-auto-flow: column;
     font-size: var(--fs-sm);
 `

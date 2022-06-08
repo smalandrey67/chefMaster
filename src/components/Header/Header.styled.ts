@@ -7,7 +7,7 @@ export const HeaderEl = styled.header`
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 0;
+    padding-top: 20px;
     background-color: var(--color-white);
     border-bottom-left-radius: var(--br-radius);
     border-bottom-right-radius: var(--br-radius);

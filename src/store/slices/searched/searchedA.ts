@@ -6,11 +6,11 @@ import { getSearched } from '../../../api/config'
 
 import { CuisineType, CuisineResultsType } from '../../../models/Cuisine'
 
-export const searchedA = createAsyncThunk<CuisineResultsType[], string, { rejectValue: string }>(
+export const searchedA = createAsyncThunk<CuisineResultsType[], string , { rejectValue: string }>(
     'searchedRecipes/searchedA',
 
-    async (name, { rejectWithValue }): Promise<CuisineResultsType[] | any> => {
-
+    async (name, { rejectWithValue }) => {
+       
         try {
             const response = await instance.get<CuisineType>(getSearched(name))
 

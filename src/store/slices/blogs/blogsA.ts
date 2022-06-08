@@ -7,7 +7,7 @@ import { BlogsType } from '../../../models/Blogs'
 export const blogsA = createAsyncThunk<BlogsType[], void, { rejectValue: string }>(
    'blogs/blogsA',
 
-   async (_, { rejectWithValue }): Promise<BlogsType[] | any> => {
+   async (_, { rejectWithValue }) => {
       try {
          const response = await axios.get<BlogsType[]>(getBlogs())
 

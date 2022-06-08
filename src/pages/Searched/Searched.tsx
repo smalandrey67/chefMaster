@@ -19,6 +19,7 @@ import { CuisineResultsType } from '../../models/Cuisine'
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()
     const { searched, status, error } = useAppSelector(state => state.searchedR)
+ 
 
     const { name } = useParams() as any
 

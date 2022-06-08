@@ -9,7 +9,7 @@ import { RecipeType, RecipeResultType } from '../../../models/Recipe'
 export const recipesA = createAsyncThunk<RecipeResultType[], void, { rejectValue: string }>(
     'randomRecipe/recipesA',
 
-    async (_, { rejectWithValue }): Promise<RecipeResultType[] | any> => {
+    async (_, { rejectWithValue }) => {
 
         try{
             const response = await instance.get<RecipeType>(getRecipes())

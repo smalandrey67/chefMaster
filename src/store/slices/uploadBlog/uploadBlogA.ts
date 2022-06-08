@@ -7,9 +7,9 @@ import { BlogType, BlogResponse } from '../../../models/Blogs'
 
 export const uploadBlogA = createAsyncThunk<BlogResponse, BlogType, { rejectValue: string }>(
    'uploadBlog/uploadBlogA',
-
-   async (data, { rejectWithValue }): Promise<BlogResponse | any> => {
-
+   
+    //@ts-ignore
+   async (data, { rejectWithValue }) => {
       try {
          await axios.post<BlogResponse>(getBlogs(), data)
          

@@ -9,7 +9,7 @@ import { AnswerResponseType } from '../../../models/Answer'
 export const answerA = createAsyncThunk<AnswerResponseType, string, { rejectValue: string }>(
    'quickAnswer/quickAnswerAsync',
 
-   async (question, { rejectWithValue }): Promise<AnswerResponseType | any> => {
+   async (question, { rejectWithValue }) => {
       try {
          const response = await instance.get<AnswerResponseType>(getAnswer(question))
 

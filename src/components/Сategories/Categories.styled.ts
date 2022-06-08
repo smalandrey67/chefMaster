@@ -5,7 +5,7 @@ export const CategoriesNav = styled.nav`
     margin: 140px 0 20px 0;   
 
     @media(min-width: 768px){
-        margin: 0 0 20px 0;  
+        margin: 17px 0 20px 0;  
     }
 `
 

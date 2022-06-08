@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
@@ -26,7 +26,7 @@ import { BiError } from 'react-icons/bi'
 import { StatusEnum } from '../../models/Status'
 import { AnswerResponseType, AnswerType } from '../../models/Answer'
 
-export type AnswerProps = {
+type AnswerProps = {
    popupHandler: (answer?: AnswerResponseType | null) => void
 }
 

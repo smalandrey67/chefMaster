@@ -4,6 +4,7 @@ import { answerA } from './answerA'
 import { AnswerResponseType } from '../../../models/Answer'
 import { StatusEnum } from '../../../models/Status'
 
+
 type AnswerState = {
    answer: AnswerResponseType | null,
    status: StatusEnum,
@@ -20,7 +21,7 @@ const answerS = createSlice({
    name: 'quickAnswer',
    initialState,
    reducers: {
-      
+
       // #when popop will be closed we reset the state
       resetAnswer: (state) => {
          state.answer = null

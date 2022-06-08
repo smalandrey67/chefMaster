@@ -10,6 +10,8 @@ import { Search } from '../Search/Search'
 
 export const Header: FC = () => {
 
+  
+
     return (
         <HeaderEl>
             <Container>

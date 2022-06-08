@@ -9,7 +9,7 @@ import { DetailsType } from '../../../models/Details'
 export const detailsA = createAsyncThunk<DetailsType, string, { rejectValue: string }>(
     'detailsRecipe/detailsA',
 
-    async (id, { rejectWithValue }): Promise<DetailsType | any> => {
+    async (id, { rejectWithValue }) => {
         try {
             const response = await instance.get<DetailsType>(getDetails(id))
 

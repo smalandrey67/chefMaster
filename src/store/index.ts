@@ -9,6 +9,7 @@ import answerR from './slices/answer/answerS'
 import blogsR from './slices/blogs/blogsS'
 import uploadImageR from './slices/uploadImage/uploadImageS'
 import uploadBlogR from './slices/uploadBlog/uploadBlogS'
+import filterR from './slices/filter/filterS'
 
 
 const rootReducer = combineReducers({
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
     blogsR,
     uploadImageR,
     uploadBlogR,
+    filterR,
 })
 
 export const setupStore = () => {

@@ -1,18 +1,21 @@
 import styled from 'styled-components'
-import { Input } from '../../assets/styled/Reused.styled'
+import { Input, Button } from '../../assets/styled/Reused.styled'
 
 
 export const SearchWrapper = styled.div`
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    position: relative;
+
+    @media(min-width: 475px){
+        margin-left: auto;
+        width: 400px; 
+    } 
 `
 
 export const SearchForm = styled.form`
-    width: 100%;
-
-    @media(min-width: 475px){
-        width: 300px; 
-    } 
+    flex: 0 1 75%;
 `
 
 export const SearchLabel = styled.label`
@@ -24,7 +27,7 @@ export const SearchLabel = styled.label`
     padding: 0 20px;
     box-shadow: var(--shadow);
     background-color: var(--color-white);
-    margin-bottom: 5px;
+    margin: 0 5px 5px 0;
 `
 
 export const SearchInput = styled(Input).attrs({
@@ -32,4 +35,27 @@ export const SearchInput = styled(Input).attrs({
 })`
     width: 100%;
     font-weight: var(--fw-bold);
+`
+
+export const SearchFilter = styled(Button)`
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 0 1 25%;
+    height: 50px; 
+
+    &:active{
+        background-color: var(--color-categories);
+        color: var(--color-white);
+    }
+
+    @media(min-width: 768px){
+        transition: all 0.5s ease;
+        &:hover{
+            background-color: var(--color-categories);
+            color: var(--color-white);
+        }
+    }
 `

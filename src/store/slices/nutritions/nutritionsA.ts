@@ -9,7 +9,7 @@ import { NutritionType } from '../../../models/Nutrition'
 export const nutritionsA = createAsyncThunk<NutritionType, string, { rejectValue: string }>(
     'nutritionRecipe/nutritionsA',
 
-    async (id, { rejectWithValue }): Promise<NutritionType | any> => {
+    async (id, { rejectWithValue }) => {
         try{
             const response = await instance.get<NutritionType>(getNutritions(id))
 

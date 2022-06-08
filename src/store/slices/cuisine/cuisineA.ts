@@ -9,7 +9,7 @@ import { CuisineType, CuisineResultsType } from '../../../models/Cuisine'
 export const cuisineA = createAsyncThunk<CuisineResultsType[], string, { rejectValue: string }>(
     'cuisineRecipes/cuisineA',
 
-    async (country, { rejectWithValue }): Promise<CuisineResultsType[] | any> => {
+    async (country, { rejectWithValue }) => {
         try {
             const response = await instance.get<CuisineType>(getCuisine(country))
 
