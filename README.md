@@ -1,9 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -39,8 +33,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Снимок](https://user-images.githubusercontent.com/72796440/172041435-64ca8c6b-c3f6-4f92-a95e-63dc1b126ca2.PNG) ![Снимок2](https://user-images.githubusercontent.com/72796440/172041504-90aa155a-d318-4adc-9ecd-0c9e22014394.PNG)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
