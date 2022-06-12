@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react'
 import { uploadImageA } from '../../../store/slices/uploadImage/uploadImageA'
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
 
-import { UseImageType } from '../../../models/Hooks'
+import { UseImageType } from '../../../@types/Hooks'
 
 export const useImage = (): UseImageType => {
    const [fileName, setFileName] = useState<string>('')

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { RecipeResultType } from '../../models/Recipe'
+import { RecipeResultType } from '../../@types/Recipe'
 import { SplideSlide } from '@splidejs/react-splide'
 
 import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from './Recipe.styled'

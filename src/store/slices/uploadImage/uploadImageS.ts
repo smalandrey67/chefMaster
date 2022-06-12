@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { uploadImageA } from './uploadImageA'
 
-import { UploadImageType } from '../../../models/UploadImage'
-import { StatusEnum } from '../../../models/Status'
+import { UploadImageType } from '../../../@types/UploadImage'
+import { StatusEnum } from '../../../@types/Status'
 
 type searhedState = {
    url: UploadImageType | null

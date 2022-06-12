@@ -4,7 +4,7 @@ import { instance } from '../../../api/instance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getSearched } from '../../../api/config'
 
-import { CuisineType, CuisineResultsType } from '../../../models/Cuisine'
+import { CuisineType, CuisineResultsType } from '../../../@types/Cuisine'
 
 export const searchedA = createAsyncThunk<CuisineResultsType[], string , { rejectValue: string }>(
     'searchedRecipes/searchedA',

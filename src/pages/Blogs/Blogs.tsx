@@ -9,8 +9,8 @@ import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } fro
 import { Blog } from '../../components/Blog/Blog'
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
 
-import { StatusEnum } from '../../models/Status'
-import { BlogsType } from '../../models/Blogs'
+import { StatusEnum } from '../../@types/Status'
+import { BlogsType } from '../../@types/Blogs'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'

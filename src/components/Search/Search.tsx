@@ -59,7 +59,7 @@ export const Search: FC = () => {
             </SearchForm>
 
             <SearchFilter onClick={filterHandler}>
-                <GoSettings />
+                <GoSettings style={{marginRight: 5}}/>
                 Filter
             </SearchFilter>
 

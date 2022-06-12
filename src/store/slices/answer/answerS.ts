@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { answerA } from './answerA'
 
-import { AnswerResponseType } from '../../../models/Answer'
-import { StatusEnum } from '../../../models/Status'
-
+import { AnswerResponseType } from '../../../@types/Answer'
+import { StatusEnum } from '../../../@types/Status'
 
 type AnswerState = {
    answer: AnswerResponseType | null,
@@ -44,6 +43,7 @@ const answerS = createSlice({
          })
    }
 })
+
 
 export const { resetAnswer } = answerS.actions
 export default answerS.reducer

@@ -13,8 +13,8 @@ import { SearchedWarning } from '../../assets/styled/Reused.styled'
 
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../models/Status'
-import { CuisineResultsType } from '../../models/Cuisine'
+import { StatusEnum } from '../../@types/Status'
+import { CuisineResultsType } from '../../@types/Cuisine'
 
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()

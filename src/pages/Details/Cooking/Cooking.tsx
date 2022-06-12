@@ -1,6 +1,6 @@
 import { FC, useState, Fragment } from 'react'
 
-import { DetailsType, AnalyzedInstructionsType, StepsType, StepsIngredientsType } from '../../../models/Details'
+import { DetailsType, AnalyzedInstructionsType, StepsType, StepsIngredientsType } from '../../../@types/Details'
 
 import { motion } from '../../../utils/constants/motion.constants'
 import { stringCut } from '../../../utils/helpers/string.helpers'
@@ -55,12 +55,12 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
                             <IoFootstepsSharp />
                             {stringCut(name, 40)}
                         </DetailsCookingSubtitle>
-                        : ''}
+                    : null}
 
 
                     {steps.map(({ number, step, ingredients }: StepsType): JSX.Element =>
                         <DetailsCookingItem key={number}>
-                            <DetailsCookingHeader onClick={() => stepHandler(step)}>
+                            <DetailsCookingHeader onClick={(): void => stepHandler(step)}>
                                 <DetailsCookingStep>Step {number}</DetailsCookingStep>
                                 <BsChevronDown
                                     style={{ transform: stepIsActive === step ? 'rotate(180deg)' : 'rotate(0)' }}

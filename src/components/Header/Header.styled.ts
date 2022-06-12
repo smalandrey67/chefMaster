@@ -58,7 +58,7 @@ export const HeaderBlogs = styled(Link).attrs({
         animation-play-state: paused;
     }
 
-    @media(min-width: 768px){
+    @media (hover: hover) {
         &:hover{
             animation-play-state: paused;
         }

@@ -4,7 +4,7 @@ import { instance } from '../../../api/instance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getNutritions } from '../../../api/config'
 
-import { NutritionType } from '../../../models/Nutrition'
+import { NutritionType } from '../../../@types/Nutrition'
 
 export const nutritionsA = createAsyncThunk<NutritionType, string, { rejectValue: string }>(
     'nutritionRecipe/nutritionsA',

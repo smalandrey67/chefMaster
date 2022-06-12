@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { Splide } from '@splidejs/react-splide'
-import '@splidejs/splide/dist/css/splide.min.css'
 import { recipesA } from '../../store/slices/recipes/recipesA'
 
 import { RandomEl } from './Recipes.styled'
@@ -12,10 +11,10 @@ import { Recipe } from '../Recipe/Recipe'
 
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../models/Status'
-import { RecipeResultType } from '../../models/Recipe'
+import { StatusEnum } from '../../@types/Status'
+import { RecipeResultType } from '../../@types/Recipe'
 
-import { splide } from '../../utils/constants/splide.constants'
+import { splideOptions } from '../../utils/constants/splide.constants'
 
 export const Recipes: FC = () => {
     const { recipes, status, error } = useAppSelector(state => state.recipesR)
@@ -28,7 +27,7 @@ export const Recipes: FC = () => {
     return (
         <RandomEl>
             <Container>
-                <Splide options={splide}>
+                <Splide options={splideOptions(3)}>
                     {status === StatusEnum.PENDING ?
                         <SpinnerWrapper height='50vh'>
                             <Spinner src={SpinnerBg} alt='spinner' />

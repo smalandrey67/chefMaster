@@ -4,7 +4,11 @@ export const DetailsCookingSubtitle = styled.h4`
     margin: 5px 0;
     padding: 10px;
     text-align: left;
+    display: grid;
     grid-auto-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
     font-size: var(--fs-sm);
 `
 

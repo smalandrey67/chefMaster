@@ -4,7 +4,7 @@ import { instance } from '../../../api/instance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getRecipes } from '../../../api/config'
 
-import { RecipeType, RecipeResultType } from '../../../models/Recipe'
+import { RecipeType, RecipeResultType } from '../../../@types/Recipe'
 
 export const recipesA = createAsyncThunk<RecipeResultType[], void, { rejectValue: string }>(
     'randomRecipe/recipesA',

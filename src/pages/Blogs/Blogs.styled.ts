@@ -29,14 +29,13 @@ export const BlogsAdd = styled(Link).attrs({
    }
 
 
-   @media(min-width: 768px){
+   @media (hover: hover) {
       transition: all 0.5s ease;
       &:hover{
          background-color: var(--color-categories);
          color: var(--color-white); 
       }
    }
-
 `
 
 export const BlogsWrapper = styled.div`

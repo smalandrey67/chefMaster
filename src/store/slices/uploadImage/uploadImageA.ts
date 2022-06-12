@@ -3,7 +3,7 @@ import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { uploadImage } from '../../../api/config'
 
-import { UploadImageType } from '../../../models/UploadImage'
+import { UploadImageType } from '../../../@types/UploadImage'
 
 export const uploadImageA = createAsyncThunk<UploadImageType, FormData, { rejectValue: string }>(
    'uploadImage/uploadImageA',

@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'styled-normalize'
 
+import '@splidejs/splide/dist/css/splide.min.css'
+
 export const Global = createGlobalStyle`
     ${normalize}
 

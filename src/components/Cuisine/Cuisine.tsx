@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { CuisineResultsType } from '../../models/Cuisine'
+import { CuisineResultsType } from '../../@types/Cuisine'
 
 import { SubTitle } from '../../assets/styled/Reused.styled'
 import { RecipeEl } from '../Recipe/Recipe.styled'

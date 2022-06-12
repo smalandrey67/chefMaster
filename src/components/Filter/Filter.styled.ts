@@ -20,6 +20,7 @@ export const FilterEl = styled.div<FilterElProps>`
    background-color: var(--color-white);
    box-shadow: var(--shadow);
    transition: all 0.5s ease;
+   z-index: 500;
 
    ${(props) => {
       switch (props.isFilterOpen) {
@@ -58,12 +59,20 @@ export const FilterOption = styled(Button)<FilterOptionProps>`
    background-color: ${({ active }) => active ? 'var(--color-categories)': 'var(--color-white)'};
    color: ${({ active }) => active ? 'var(--color-white)' : 'var(--color-black)'};
 
-   @media (min-width: 768px) {
-      &:hover {
-         background-color: var(--color-categories);
-         color: var(--color-white);
-      }  
+   &:active {
+      background-color: var(--color-categories);
+      color: var(--color-white);
    }
+
+
+   @media (hover: hover) {
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: var(--color-categories);
+            color: var(--color-white);
+        }
+    }
+
 
    @media (min-width: 410px) {
       flex: 0 1 30.333%;

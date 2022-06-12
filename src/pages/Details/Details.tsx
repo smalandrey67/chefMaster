@@ -31,7 +31,7 @@ import { BsClock } from 'react-icons/bs'
 import { AiOutlineLike } from 'react-icons/ai'
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
 
-import { StatusEnum } from '../../models/Status'
+import { StatusEnum } from '../../@types/Status'
 import { motion } from '../../utils/constants/motion.constants'
 
 export const Details: FC = () => {

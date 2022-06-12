@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { cuisineA } from './cuisineA'
 
-import { CuisineResultsType } from '../../../models/Cuisine'
-import { StatusEnum } from '../../../models/Status'
+import { CuisineResultsType } from '../../../@types/Cuisine'
+import { StatusEnum } from '../../../@types/Status'
 
 type CuisineState = {
     cuisine: CuisineResultsType[];

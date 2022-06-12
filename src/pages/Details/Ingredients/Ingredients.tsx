@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { DetailsType, IngredientsType } from '../../../models/Details'
+import { DetailsType, IngredientsType } from '../../../@types/Details'
 
 import { stringCut } from '../../../utils/helpers/string.helpers'
 import { motion } from '../../../utils/constants/motion.constants'

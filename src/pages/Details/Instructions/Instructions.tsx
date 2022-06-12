@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { DetailsType } from '../../../models/Details'
+import { DetailsType } from '../../../@types/Details'
 
 import { removeTags } from '../../../utils/helpers/tags.helpers'
 import { motion } from '../../../utils/constants/motion.constants'

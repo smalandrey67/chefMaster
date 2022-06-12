@@ -38,24 +38,23 @@ export const SearchInput = styled(Input).attrs({
 `
 
 export const SearchFilter = styled(Button)`
-    display: grid;
-    grid-auto-flow: column;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
     flex: 0 1 25%;
     height: 50px; 
 
-    &:active{
+    &:active {
         background-color: var(--color-categories);
         color: var(--color-white);
     }
 
-    @media(min-width: 768px){
+
+    @media (hover: hover) {
         transition: all 0.5s ease;
-        &:hover{
+        &:hover {
             background-color: var(--color-categories);
             color: var(--color-white);
         }
-    }
+    } 
 `

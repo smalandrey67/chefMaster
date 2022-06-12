@@ -4,7 +4,7 @@ import { instance } from '../../../api/instance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getAnswer } from '../../../api/config'
 
-import { AnswerResponseType } from '../../../models/Answer'
+import { AnswerResponseType } from '../../../@types/Answer'
 
 export const answerA = createAsyncThunk<AnswerResponseType, string, { rejectValue: string }>(
    'quickAnswer/quickAnswerAsync',

@@ -4,7 +4,7 @@ import { instance } from '../../../api/instance'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getDetails } from '../../../api/config'
 
-import { DetailsType } from '../../../models/Details'
+import { DetailsType } from '../../../@types/Details'
 
 export const detailsA = createAsyncThunk<DetailsType, string, { rejectValue: string }>(
     'detailsRecipe/detailsA',

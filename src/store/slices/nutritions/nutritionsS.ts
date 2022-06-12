@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { nutritionsA } from './nutritionsA'
 
-import { NutritionType } from '../../../models/Nutrition'
-import { StatusEnum } from '../../../models/Status'
+import { NutritionType } from '../../../@types/Nutrition'
+import { StatusEnum } from '../../../@types/Status'
 
 type nutritionState = {
     nutrition: NutritionType,

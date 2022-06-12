@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Input, Button } from '../../assets/styled/Reused.styled'
 
-import { UploadImageType } from '../../models/UploadImage'
+import { UploadImageType } from '../../@types/UploadImage'
 
 type BlogsCreatePreviewImageProps = {
    url: UploadImageType | null
@@ -89,13 +89,14 @@ export const BlogsCreateButton = styled(Button)`
       color: var(--color-white);
    }
 
-   @media(min-width: 768px){
+   @media (hover: hover) {
+      transition: all 0.5s ease;
       &:hover{
-         transition: all 0.5s ease;
          background-color: var(--color-categories);
          color: var(--color-white);
       }
-   } 
+   }
+
 `
 
 export const BlogsCreatePreview = styled.div`

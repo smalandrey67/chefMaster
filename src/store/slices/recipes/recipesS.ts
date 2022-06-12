@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { recipesA } from './recipesA';
 
-import { RecipeResultType } from '../../../models/Recipe'
-import { StatusEnum } from '../../../models/Status'
+import { RecipeResultType } from '../../../@types/Recipe'
+import { StatusEnum } from '../../../@types/Status'
 
 type randomRecipeState = {
     recipes: RecipeResultType[];

@@ -55,8 +55,20 @@ export const AnswerFormButton = styled(Button).attrs({
    name: 'tab',
 })`
    flex: 0 1 30%;
-   background-color: var(--color-categories);
-   color: var(--color-white);
+
+
+   &:active {
+      background-color: var(--color-white);
+      color: var(--color-black);
+   }
+
+   @media (hover: hover) {
+      transition: all 0.5s ease;
+      &:hover {
+         background-color: var(--color-categories);
+         color: var(--color-white);
+      }
+   }
 `
 
 

@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { blogsA } from './blogsA'
 
-import { BlogsType } from '../../../models/Blogs'
-import { StatusEnum } from '../../../models/Status'
+import { BlogsType } from '../../../@types/Blogs'
+import { StatusEnum } from '../../../@types/Status'
 
 type BlogState = {
    blogs: BlogsType[];

@@ -22,15 +22,14 @@ import {
    BlogsCreateLabelWrapper,
 } from './BlogsCreate.styled'
 
-import { StatusEnum } from '../../models/Status'
-import { DataType } from '../../models/Blogs'
+import { StatusEnum } from '../../@types/Status'
+import { DataType } from '../../@types/Blogs'
 
 import SpinnerSm from '../../assets/images/spinner-sm.svg'
 import { BiError } from 'react-icons/bi'
 
 import { useImage } from './hook/image'
 import { useSubmit } from './hook/submit'
-
 
 export const BlogsCreate: FC = () => {
    const {

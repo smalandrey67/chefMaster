@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { detailsA } from './detailsA'
 
-import { DetailsType } from '../../../models/Details'
-import { StatusEnum } from '../../../models/Status'
+import { DetailsType } from '../../../@types/Details'
+import { StatusEnum } from '../../../@types/Status'
 
 type detailsState = {
     details: DetailsType

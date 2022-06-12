@@ -11,7 +11,7 @@ import {
 } from './Blog.styled'
 import { Title, Text, SpecialTitle } from '../../assets/styled/Reused.styled'
 
-import { BlogType } from '../../models/Blogs'
+import { BlogType } from '../../@types/Blogs'
 
 export const Blog: FC<BlogType> = ({ title, file, author, description }) => {
 

@@ -1,9 +1,9 @@
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { UploadImageType } from '../../../models/UploadImage'
-import { BlogType, DataType } from '../../../models/Blogs'
-import { UseSubmitType } from '../../../models/Hooks'
+import { UploadImageType } from '../../../@types/UploadImage'
+import { BlogType, DataType } from '../../../@types/Blogs'
+import { UseSubmitType } from '../../../@types/Hooks'
 
 import { useAppDispatch } from '../../../hooks/useRedux'
 import { uploadBlogA } from '../../../store/slices/uploadBlog/uploadBlogA'
@@ -22,13 +22,16 @@ export const useSubmit = (
       if (url) {
          const post: BlogType = { ...data, file: url }
 
-         dispatch(uploadBlogA(post))
+         dispatch(uploadBlogA({ post, navigateHandler }))
          dispatch(resetUrl())
 
          setFileName('')
-         navigate('/blogs')
          reset()
       }
+   }
+
+   const navigateHandler = (): void => {
+      navigate('/blogs')
    }
 
    return {

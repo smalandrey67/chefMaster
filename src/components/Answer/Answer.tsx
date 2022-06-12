@@ -23,8 +23,9 @@ import { Popup } from '../Popup/Popup'
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../models/Status'
-import { AnswerResponseType, AnswerType } from '../../models/Answer'
+import { StatusEnum } from '../../@types/Status'
+import { AnswerResponseType, AnswerType } from '../../@types/Answer'
+
 
 type AnswerProps = {
    popupHandler: (answer?: AnswerResponseType | null) => void
@@ -41,7 +42,6 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
    const dispatch = useAppDispatch()
    const { answer, status, error } = useAppSelector(state => state.answerR)
 
-   
    const submitHandler: SubmitHandler<AnswerType> = (data): void => {
       dispatch(answerA(data.question))
       reset()

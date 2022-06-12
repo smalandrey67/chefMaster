@@ -11,7 +11,7 @@ import { GiPaperArrow, GiRawEgg } from 'react-icons/gi'
 import { ImFire } from 'react-icons/im'
 import { BiError } from 'react-icons/bi'
 
-import { StatusEnum } from '../../../models/Status'
+import { StatusEnum } from '../../../@types/Status'
 
 type NutritionProps = {
     id: string;

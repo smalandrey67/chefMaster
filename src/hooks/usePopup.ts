@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch } from './useRedux'
 import { resetAnswer } from '../store/slices/answer/answerS'
 
-import { AnswerResponseType } from '../models/Answer'
-import { UsePopupType } from '../models/Hooks'
+import { AnswerResponseType } from '../@types/Answer'
+import { UsePopupType } from '../@types/Hooks'
 
 export const usePopup = (): UsePopupType => {
-
    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
    const dispatch = useAppDispatch()
 
