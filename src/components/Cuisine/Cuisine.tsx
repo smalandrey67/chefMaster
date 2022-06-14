@@ -10,7 +10,9 @@ import { RecipeCuisineImageWrapper, RecipeCuisineImage } from './Cuisine.styled'
 export const RecipeCuisine: FC<CuisineResultsType> = ({ id, title, image }) => {
     const navigate: NavigateFunction = useNavigate()
   
-    const detailsNavigateHandler = (): void => navigate(`/details/${id}`)
+    const detailsNavigateHandler = (): void => {
+        navigate(`/details/${id}`)
+    }
 
     return (
         <RecipeEl onClick={detailsNavigateHandler}>

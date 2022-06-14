@@ -17,7 +17,7 @@ import {
 import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { detailsA } from '../../store/slices/details/detailsA'
+import { detailsAsync } from '../../store/slices/details/detailsAsync'
 
 import { Ingredients } from './Ingredients/Ingredients'
 import { Instructions } from './Instructions/Instructions'
@@ -37,13 +37,13 @@ import { motion } from '../../utils/constants/motion.constants'
 export const Details: FC = () => {
     const [activeTab, setActiveTab] = useState<string>('instructions')
 
-    const { details, status, error } = useAppSelector(state => state.detailsR)
+    const { details, status, error } = useAppSelector(state => state.detailsReducer)
     const dispatch = useAppDispatch()
 
     const { id } = useParams() as any
 
     useEffect(() => {
-        dispatch(detailsA(id))
+        dispatch(detailsAsync(id))
     }, [id, dispatch])
 
 

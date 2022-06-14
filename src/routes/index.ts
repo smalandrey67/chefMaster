@@ -9,8 +9,8 @@ import { Searched } from '../pages/Searched/Searched'
 import { NotFound } from '../pages/NotFound/NotFound'
 
 export type Route = {
-   path: string 
-   component: ComponentType
+   path: string;
+   component: ComponentType;
 }
 
 enum RoutePath {
@@ -20,7 +20,7 @@ enum RoutePath {
    BLOGS = '/blogs',
    BLOGSCREATE = '/blogs/create',
    SEARCHED = '/searched/:name',
-   NOTFOUND = '*'
+   NOTFOUND = '*',
 }
 
 export const routes: Route[] = [

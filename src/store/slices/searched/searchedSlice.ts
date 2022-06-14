@@ -1,43 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { cuisineA } from './cuisineA'
+import { searchedAsync } from './searchedAsync'
 
 import { CuisineResultsType } from '../../../@types/Cuisine'
 import { StatusEnum } from '../../../@types/Status'
 
-type CuisineState = {
-    cuisine: CuisineResultsType[];
-    status: StatusEnum,
-    error: string,
+type SearchedState = {
+    searched: CuisineResultsType[];
+    status: StatusEnum;
+    error: string;
 }
 
-const initialState: CuisineState = {
-    cuisine: [],
+const initialState: SearchedState = {
+    searched: [],
     status: StatusEnum.IDKE,
     error: '',
 }
 
-const cuisineS = createSlice({
-    name: 'cuisineRecipes',
+const searchedSlice = createSlice({
+    name: 'searchedRecipes',
     initialState,
     reducers: {},
 
+
     extraReducers: (builder): void => {
         builder
-            .addCase(cuisineA.pending, (state): void => {
+            .addCase(searchedAsync.pending, (state): void => {
                 state.status = StatusEnum.PENDING
             })
-            .addCase(cuisineA.fulfilled, (state, action): void => {
+            .addCase(searchedAsync.fulfilled, (state, action): void => {
                 state.status = StatusEnum.FULFILLED
-                state.cuisine = action.payload
+                state.searched = action.payload
             })
-            .addCase(cuisineA.rejected, (state, action): void => {
+            .addCase(searchedAsync.rejected, (state, action): void => {
                 state.status = StatusEnum.REJECTED
                 state.error = action.payload as string
             })
     }
 })
 
-
-export default cuisineS.reducer
+export default searchedSlice.reducer
 
 

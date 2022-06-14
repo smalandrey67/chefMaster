@@ -6,7 +6,7 @@ import { ErrorMessage } from '../../assets/styled/Reused.styled'
 import { ErrorFallbackWrapper } from './ErrorFallback.styled'
 
 type ErrorFallbackProps = {
-  height: string
+  height: string;
 }
 
 export const ErrorFallback: FC<ErrorFallbackProps> = ({ height }) => {
@@ -15,7 +15,7 @@ export const ErrorFallback: FC<ErrorFallbackProps> = ({ height }) => {
     <ErrorFallbackWrapper height={height} >
       <ErrorMessage justifyContent='center'>
         <BiError />
-        someting went wrong. Server error
+        something went wrong. Server error
       </ErrorMessage>
     </ErrorFallbackWrapper>
   )

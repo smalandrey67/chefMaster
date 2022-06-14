@@ -16,7 +16,7 @@ import {
 } from './Ingredients.styled'
 
 type IngredientsProps = {
-    details: DetailsType
+    details: DetailsType;
 }
 
 export const Ingredients: FC<IngredientsProps> = ({ details }) => {

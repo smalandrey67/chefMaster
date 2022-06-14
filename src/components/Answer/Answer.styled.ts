@@ -14,7 +14,6 @@ export const AnswerHeaderTitle = styled.h4`
    font-size: var(--fs-md);
 `
 
-
 export const AnswerSubtitle = styled.p`
    display: flex;
    align-items: center;
@@ -26,7 +25,6 @@ export const AnswerSubtitle = styled.p`
 export const AnswerForm = styled.form`
    margin-bottom: 20px;
 `
-
 
 export const AnswerFormBody = styled.div`
    display: flex;
@@ -70,7 +68,6 @@ export const AnswerFormButton = styled(Button).attrs({
       }
    }
 `
-
 
 export const AnswerAnswer = styled.div`
    display: flex;

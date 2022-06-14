@@ -6,8 +6,8 @@ import { BlogType, DataType } from '../../../@types/Blogs'
 import { UseSubmitType } from '../../../@types/Hooks'
 
 import { useAppDispatch } from '../../../hooks/useRedux'
-import { uploadBlogA } from '../../../store/slices/uploadBlog/uploadBlogA'
-import { resetUrl } from '../../../store/slices/uploadImage/uploadImageS'
+import { uploadBlogAsync } from '../../../store/slices/uploadBlog/uploadBlogAsync'
+import { resetUrl } from '../../../store/slices/uploadImage/uploadImageSlice'
 
 export const useSubmit = (
    url: UploadImageType | null,
@@ -22,7 +22,7 @@ export const useSubmit = (
       if (url) {
          const post: BlogType = { ...data, file: url }
 
-         dispatch(uploadBlogA({ post, navigateHandler }))
+         dispatch(uploadBlogAsync({ post, navigateHandler }))
          dispatch(resetUrl())
 
          setFileName('')

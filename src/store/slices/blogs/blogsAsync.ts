@@ -4,8 +4,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getBlogs } from '../../../api/config'
 import { BlogsType } from '../../../@types/Blogs'
 
-export const blogsA = createAsyncThunk<BlogsType[], void, { rejectValue: string }>(
-   'blogs/blogsA',
+export const blogsAsync = createAsyncThunk<BlogsType[], void, { rejectValue: string }>(
+   'blogs/blogsAsync',
 
    async (_, { rejectWithValue }) => {
       try {

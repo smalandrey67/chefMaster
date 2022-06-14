@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { answerA } from '../../store/slices/answer/answerA'
+import { answerAsync } from '../../store/slices/answer/answerAsync'
 
 import {
    AnswerHeader,
@@ -26,9 +26,8 @@ import { BiError } from 'react-icons/bi'
 import { StatusEnum } from '../../@types/Status'
 import { AnswerResponseType, AnswerType } from '../../@types/Answer'
 
-
 type AnswerProps = {
-   popupHandler: (answer?: AnswerResponseType | null) => void
+   popupHandler: (answer?: AnswerResponseType | null) => void;
 }
 
 export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
@@ -40,10 +39,10 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
    } = useForm<AnswerType>({ mode: 'onSubmit' })
 
    const dispatch = useAppDispatch()
-   const { answer, status, error } = useAppSelector(state => state.answerR)
+   const { answer, status, error } = useAppSelector(state => state.answerReducer)
 
    const submitHandler: SubmitHandler<AnswerType> = (data): void => {
-      dispatch(answerA(data.question))
+      dispatch(answerAsync(data.question))
       reset()
    }
 
@@ -83,26 +82,24 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
 
          </AnswerForm>
 
-         {/* if status PENDING => showed spinner */}
+         {/* if status PENDING => show spinner */}
          {
             status === StatusEnum.PENDING ?
                <SpinnerWrapper height='15vh'>
                   <Spinner src={SpinnerSm} alt='spinner' />
-               </SpinnerWrapper>
-               : null
+               </SpinnerWrapper> : null
          }
 
-         {/* if status FULFILLED and there are some values into ANSWER => showed answer */}
+         {/* if status FULFILLED and there are some values into ANSWER => show answer */}
          {
             (status === StatusEnum.FULFILLED && Object.keys(answer || []).length) ?
                <AnswerAnswer>
                   <AnswerImage src={answer?.image} alt='Product' />
                   {answer?.answer}
-               </AnswerAnswer>
-               : null
+               </AnswerAnswer> : null
          }
 
-         {/* if status FULFILLED and there is no value into ANSWER => showed warning */}
+         {/* if status FULFILLED and there is no value into ANSWER => show warning */}
          {
             (status === StatusEnum.FULFILLED && !Object.keys(answer || []).length) ?
                <SearchedWarning>
@@ -111,7 +108,7 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
                </SearchedWarning> : null
          }
 
-         {/* if status REJECTED => showed error */}
+         {/* if status REJECTED => show error */}
          {
             status === StatusEnum.REJECTED && <ErrorMessage>
                <BiError />

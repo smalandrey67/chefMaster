@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAppDispatch } from './useRedux'
-import { resetAnswer } from '../store/slices/answer/answerS'
+import { resetAnswer } from '../store/slices/answer/answerSlice'
 
 import { AnswerResponseType } from '../@types/Answer'
 import { UsePopupType } from '../@types/Hooks'

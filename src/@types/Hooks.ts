@@ -6,19 +6,19 @@ import { AnswerResponseType } from './Answer'
 import { DataType } from './Blogs'
 
 export type UseImageType = {
-   imageHandler: (e: ChangeEvent<HTMLInputElement>) => void
-   fileName: string
-   setFileName: React.Dispatch<React.SetStateAction<string>>
-   url: UploadImageType | null
-   status: StatusEnum
-   error: string
+   imageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+   fileName: string;
+   setFileName: React.Dispatch<React.SetStateAction<string>>;
+   url: UploadImageType | null;
+   status: StatusEnum;
+   error: string;
 }
 
 export type UsePopupType = {
-   popupIsActive: boolean
-   popupHandler: (answer?: AnswerResponseType | null) => void
+   popupIsActive: boolean;
+   popupHandler: (answer?: AnswerResponseType | null) => void;
 }
 
 export type UseSubmitType = {
-   submitHandler: (data: DataType) => void
+   submitHandler: (data: DataType) => void;
 }

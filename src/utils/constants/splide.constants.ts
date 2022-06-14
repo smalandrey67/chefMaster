@@ -1,8 +1,8 @@
 type SplideType = {
-   perPage: number
-   arrows: false
-   pagination: false
-   gap: string
+   perPage: number;
+   arrows: false;
+   pagination: false;
+   gap: string;
 }
 
 

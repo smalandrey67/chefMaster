@@ -3,8 +3,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch } from '../../hooks/useRedux'
-import { openFilterPopup } from '../../store/slices/filter/filterS'
-
+import { openFilterPopup } from '../../store/slices/filter/filterSlice'
 
 import { ErrorMessage } from '../../assets/styled/Reused.styled'
 import { SearchWrapper, SearchForm, SearchInput, SearchLabel, SearchFilter } from './Search.styled'
@@ -59,7 +58,7 @@ export const Search: FC = () => {
             </SearchForm>
 
             <SearchFilter onClick={filterHandler}>
-                <GoSettings style={{marginRight: 5}}/>
+                <GoSettings style={{ marginRight: 5 }}/>
                 Filter
             </SearchFilter>
 

@@ -1,23 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { uploadImageA } from './uploadImageA'
+import { uploadImageAsync } from './uploadImageAsync'
 
 import { UploadImageType } from '../../../@types/UploadImage'
 import { StatusEnum } from '../../../@types/Status'
 
-type searhedState = {
+type UploadImageState = {
    url: UploadImageType | null
    status: StatusEnum
    error: string
 }
 
-const initialState: searhedState = {
+const initialState: UploadImageState = {
    url: null,
    status: StatusEnum.IDKE,
    error: '',
 }
 
-
-const uploadImageS = createSlice({
+const uploadImageSlice = createSlice({
    name: 'uploadImage',
    initialState,
    reducers: {
@@ -27,24 +26,23 @@ const uploadImageS = createSlice({
       },
    },
 
-
    extraReducers: (builder): void => {
       builder
-         .addCase(uploadImageA.pending, (state): void => {
+         .addCase(uploadImageAsync.pending, (state): void => {
             state.status = StatusEnum.PENDING
          })
-         .addCase(uploadImageA.fulfilled, (state, action): void => {
+         .addCase(uploadImageAsync.fulfilled, (state, action): void => {
             state.status = StatusEnum.FULFILLED
             state.url = action.payload
          })
-         .addCase(uploadImageA.rejected, (state, action): void => {
+         .addCase(uploadImageAsync.rejected, (state, action): void => {
             state.status = StatusEnum.REJECTED
             state.error = action.payload as string
          })
    }
 })
 
-export const { resetUrl } = uploadImageS.actions
-export default uploadImageS.reducer
+export const { resetUrl } = uploadImageSlice.actions
+export default uploadImageSlice.reducer
 
 

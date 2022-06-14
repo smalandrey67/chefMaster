@@ -6,8 +6,8 @@ import { getNutritions } from '../../../api/config'
 
 import { NutritionType } from '../../../@types/Nutrition'
 
-export const nutritionsA = createAsyncThunk<NutritionType, string, { rejectValue: string }>(
-    'nutritionRecipe/nutritionsA',
+export const nutritionsAsync = createAsyncThunk<NutritionType, string, { rejectValue: string }>(
+    'nutritionRecipe/nutritionsAsync',
 
     async (id, { rejectWithValue }) => {
         try{

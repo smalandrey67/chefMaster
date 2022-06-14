@@ -10,13 +10,10 @@ import { Search } from '../Search/Search'
 
 export const Header: FC = () => {
 
-  
-
     return (
         <HeaderEl>
             <Container>
                 <HeaderWrapper>
-
                     <HeaderBlogsWrapper>
                         <ImSpoonKnife size='25' />
                         <HeaderLogo>ChefMaster</HeaderLogo>
@@ -25,7 +22,6 @@ export const Header: FC = () => {
                     <HeaderBlogs>
                         <IoBookSharp cursor='pointer' size='25' />
                     </HeaderBlogs>
-                
                 </HeaderWrapper>
                 <Search />
             </Container>

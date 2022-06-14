@@ -1,9 +1,9 @@
 import { nanoid } from '@reduxjs/toolkit'
 
 export type DietType = {
-   diet: string
-   active: boolean
-   id: string
+   diet: string;
+   active: boolean;
+   id: string;
 }
 
 enum DietsName {
@@ -11,7 +11,7 @@ enum DietsName {
    VEGETARIAN = 'vegetarian',
    PESCETARIAN = 'pescetarian',
    PALEO = 'paleo',
-   WHOLE30 = 'Whole30'
+   WHOLE30 = 'Whole30',
 }
 
 export const diets: DietType[] = [

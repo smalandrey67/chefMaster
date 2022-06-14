@@ -6,8 +6,8 @@ import { getCuisine } from '../../../api/config'
 
 import { CuisineType, CuisineResultsType } from '../../../@types/Cuisine'
 
-export const cuisineA = createAsyncThunk<CuisineResultsType[], string, { rejectValue: string }>(
-    'cuisineRecipes/cuisineA',
+export const cuisineAsync = createAsyncThunk<CuisineResultsType[], string, { rejectValue: string }>(
+    'cuisineRecipes/cuisineAsync',
 
     async (country, { rejectWithValue }) => {
         try {

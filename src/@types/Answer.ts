@@ -1,8 +1,8 @@
 export type AnswerType = {
-   question: string
+   question: string;
 }
 
 export type AnswerResponseType = {
-   answer: string
-   image: string
+   answer: string;
+   image: string;
 }

@@ -13,7 +13,7 @@ type InstructionsProps = {
 }
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {
-
+    
     return (
         <DetailsInfoDescription {...motion}>
             <Text margin='0 0 10px 0'>{removeTags(details.summary)}</Text>

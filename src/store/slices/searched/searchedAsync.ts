@@ -6,11 +6,10 @@ import { getSearched } from '../../../api/config'
 
 import { CuisineType, CuisineResultsType } from '../../../@types/Cuisine'
 
-export const searchedA = createAsyncThunk<CuisineResultsType[], string , { rejectValue: string }>(
-    'searchedRecipes/searchedA',
+export const searchedAsync = createAsyncThunk<CuisineResultsType[], string , { rejectValue: string }>(
+    'searchedRecipes/searchedAsync',
 
     async (name, { rejectWithValue }) => {
-       
         try {
             const response = await instance.get<CuisineType>(getSearched(name))
 

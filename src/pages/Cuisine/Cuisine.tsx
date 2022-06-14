@@ -5,7 +5,7 @@ import { CuisineEl, CuisineWrapper } from './Cuisine.styled'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner, Title } from '../../assets/styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { cuisineA } from '../../store/slices/cuisine/cuisineA'
+import { cuisineAsync } from '../../store/slices/cuisine/cuisineAsync'
 
 import SpinnerBg  from '../../assets/images/spinner-bg.svg'
 import { RecipeCuisine } from '../../components/Cuisine/Cuisine'
@@ -19,12 +19,12 @@ import { motion } from '../../utils/constants/motion.constants'
 
 export const Cuisine: FC = () => {
     const dispatch = useAppDispatch()
-    const { cuisine, status, error } = useAppSelector(state => state.cuisineR)
+    const { cuisine, status, error } = useAppSelector(state => state.cuisineReducer)
 
     const { type } = useParams() as any
 
     useEffect(() => {
-        dispatch(cuisineA(type))
+        dispatch(cuisineAsync(type))
     }, [type, dispatch])
 
     return (

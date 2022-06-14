@@ -2,17 +2,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { diets, DietType } from '../../../utils/constants/diets.constants'
 
-type filterState = {
-   diets: DietType[]
-   isFilterOpen: boolean
+type FilterState = {
+   diets: DietType[];
+   isFilterOpen: boolean;
 }
 
-const initialState: filterState = {
+const initialState: FilterState = {
    diets,
    isFilterOpen: false,
 }
 
-const filterS = createSlice({
+const filterSlice = createSlice({
    name: 'filter',
    initialState,
    reducers: {
@@ -34,6 +34,5 @@ const filterS = createSlice({
    }
 })
 
-export const { openFilterPopup, changeStatusActive } = filterS.actions
-
-export default filterS.reducer
+export const { openFilterPopup, changeStatusActive } = filterSlice.actions
+export default filterSlice.reducer

@@ -2,14 +2,13 @@ import styled, { css } from 'styled-components'
 import { Button } from '../../assets/styled/Reused.styled'
 
 type FilterElProps = {
-   isFilterOpen: boolean
+   isFilterOpen: boolean;
 }
 
 type FilterOptionProps = {
-   isFilterOpen: boolean
-   active: boolean
+   isFilterOpen: boolean;
+   active: boolean;
 }
-
 
 export const FilterEl = styled.div<FilterElProps>`
    width: 100%;
@@ -64,7 +63,6 @@ export const FilterOption = styled(Button)<FilterOptionProps>`
       color: var(--color-white);
    }
 
-
    @media (hover: hover) {
         transition: all 0.3s ease;
         &:hover {
@@ -72,7 +70,6 @@ export const FilterOption = styled(Button)<FilterOptionProps>`
             color: var(--color-white);
         }
     }
-
 
    @media (min-width: 410px) {
       flex: 0 1 30.333%;

@@ -1,42 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { recipesA } from './recipesA';
+import { recipesAsync } from './recipesAsync';
 
 import { RecipeResultType } from '../../../@types/Recipe'
 import { StatusEnum } from '../../../@types/Status'
 
-type randomRecipeState = {
+type RandomRecipeState = {
     recipes: RecipeResultType[];
-    status: StatusEnum
-    error: string
+    status: StatusEnum;
+    error: string;
 }
 
-const initialState: randomRecipeState = {
+const initialState: RandomRecipeState = {
     recipes: [],
     status: StatusEnum.IDKE,
     error: '',
 }
 
-const recipesS = createSlice({
+const recipesSlice = createSlice({
     name: 'randomRecipe',
     initialState,
     reducers: {},
 
     extraReducers: (builder): void => {
         builder
-            .addCase(recipesA.pending, (state): void => {
+            .addCase(recipesAsync.pending, (state): void => {
                 state.status = StatusEnum.PENDING
             })
-            .addCase(recipesA.fulfilled, (state, action): void => {
+            .addCase(recipesAsync.fulfilled, (state, action): void => {
                 state.status = StatusEnum.FULFILLED
                 state.recipes = action.payload
             })
-            .addCase(recipesA.rejected, (state, action): void => {
+            .addCase(recipesAsync.rejected, (state, action): void => {
                 state.status = StatusEnum.REJECTED
                 state.error = action.payload as string
             })
     }
 })
 
-export default recipesS.reducer
+export default recipesSlice.reducer
 
 

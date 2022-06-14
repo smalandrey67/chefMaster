@@ -2,10 +2,9 @@ import { IconType } from 'react-icons'
 import { FaPizzaSlice, FaHamburger, FaDrumstickBite } from 'react-icons/fa'
 import { GiFoodChain, GiTacos, GiSushis, GiPotato, GiSlicedBread } from 'react-icons/gi'
 
-
 export type CategoriesType = {
-   cuisine: string
-   Icon: IconType
+   cuisine: string;
+   Icon: IconType;
 }
 
 enum CategoriesCuisine {
@@ -16,7 +15,7 @@ enum CategoriesCuisine {
    KOREAN = 'Korean',
    SPANISH = 'Spanish',
    GERMAN = 'German',
-   VIETNAMESE = 'Vietnamese'
+   VIETNAMESE = 'Vietnamese',
 }
 
 export const categories: CategoriesType[] = [

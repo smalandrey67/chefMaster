@@ -1,3 +1,3 @@
 export type SearchType = {
-   term: string
+   term: string;
 }

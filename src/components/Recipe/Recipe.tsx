@@ -6,7 +6,6 @@ import { SplideSlide } from '@splidejs/react-splide'
 
 import { RecipeEl, RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from './Recipe.styled'
 
-
 export const Recipe: FC<RecipeResultType> = ({ id, title, image, healthScore }) => {
     const navigate: NavigateFunction = useNavigate()
     

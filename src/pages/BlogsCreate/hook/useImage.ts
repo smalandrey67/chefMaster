@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
-import { uploadImageA } from '../../../store/slices/uploadImage/uploadImageA'
+import { uploadImageAsync } from '../../../store/slices/uploadImage/uploadImageAsync'
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
 
 import { UseImageType } from '../../../@types/Hooks'
@@ -9,7 +9,7 @@ export const useImage = (): UseImageType => {
    const [fileName, setFileName] = useState<string>('')
 
    const dispatch = useAppDispatch()
-   const { url, status, error } = useAppSelector(state => state.uploadImageR)
+   const { url, status, error } = useAppSelector(state => state.uploadImageReducer)
 
    const imageHandler = (e: ChangeEvent<HTMLInputElement>): void => {
       const files: FileList | null = e.target.files
@@ -22,7 +22,7 @@ export const useImage = (): UseImageType => {
          formData.append('file', files[0])
          formData.append('upload_preset', 'ees8ffne')
 
-         dispatch(uploadImageA(formData))
+         dispatch(uploadImageAsync(formData))
       }
    }
 

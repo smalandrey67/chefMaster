@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { DetailsInfoButton, DetailsInfoWrapper } from './Tabs.styled'
 
 type InstructionsProps = {
-    activeTab: string,
+    activeTab: string;
     tabHandler: (string: string) => void;
 }
 

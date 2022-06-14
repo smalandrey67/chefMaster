@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from '../../hooks/useRedux'
-import { searchedA } from '../../store/slices/searched/searchedA'
+import { searchedAsync } from '../../store/slices/searched/searchedAsync'
 
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
 import { RecipeCuisine } from '../../components/Cuisine/Cuisine'
@@ -18,13 +18,12 @@ import { CuisineResultsType } from '../../@types/Cuisine'
 
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()
-    const { searched, status, error } = useAppSelector(state => state.searchedR)
+    const { searched, status, error } = useAppSelector(state => state.searchedReducer)
  
-
     const { name } = useParams() as any
 
     useEffect(() => {
-        dispatch(searchedA(name))
+        dispatch(searchedAsync(name))
     }, [name, dispatch])
 
     return (

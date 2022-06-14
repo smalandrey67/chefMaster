@@ -6,11 +6,10 @@ import { getRecipes } from '../../../api/config'
 
 import { RecipeType, RecipeResultType } from '../../../@types/Recipe'
 
-export const recipesA = createAsyncThunk<RecipeResultType[], void, { rejectValue: string }>(
-    'randomRecipe/recipesA',
+export const recipesAsync = createAsyncThunk<RecipeResultType[], void, { rejectValue: string }>(
+    'randomRecipe/recipesAsync',
 
     async (_, { rejectWithValue }) => {
-
         try{
             const response = await instance.get<RecipeType>(getRecipes())
             

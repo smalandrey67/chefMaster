@@ -1,9 +1,9 @@
 import { FC, useEffect, } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { blogsA } from '../../store/slices/blogs/blogsA'
+import { blogsAsync } from '../../store/slices/blogs/blogsAsync'
 
-import { BlogsEl, BolgsAddWrapper, BlogsAdd, BlogsWrapper } from './Blogs.styled'
+import { BlogsEl, BlogsAddWrapper, BlogsAdd, BlogsWrapper } from './Blogs.styled'
 import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../assets/styled/Reused.styled'
 
 import { Blog } from '../../components/Blog/Blog'
@@ -15,30 +15,31 @@ import { BlogsType } from '../../@types/Blogs'
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'
 
-
 export const Blogs: FC = () => {
    const dispatch = useAppDispatch()
-   const { blogs, status, error } = useAppSelector(state => state.blogsR)
+   const { blogs, status, error } = useAppSelector(state => state.blogsReducer)
 
    useEffect(() => {
-      dispatch(blogsA())
+      dispatch(blogsAsync())
    }, [dispatch])
 
    return (
       <BlogsEl>
          <Container>
 
-            <BolgsAddWrapper>
+            <BlogsAddWrapper>
                <BlogsAdd>
                   add blog
                   <HiPlus />
                </BlogsAdd>
-            </BolgsAddWrapper>
+            </BlogsAddWrapper>-
 
-            {!blogs.length && !error && status !== StatusEnum.PENDING ? <SearchedWarning>
-               <BiError />
-               No posts yet
-            </SearchedWarning> : null}
+            {
+               !blogs.length && !error && status !== StatusEnum.PENDING ? <SearchedWarning>
+                  <BiError />
+                  No posts yet
+               </SearchedWarning> : null
+            }
 
             <BlogsWrapper>
                {status === StatusEnum.PENDING ?
@@ -46,8 +47,7 @@ export const Blogs: FC = () => {
                      <Spinner src={SpinnerBg} alt='spinner' />
                   </SpinnerWrapper>
                   :
-                  blogs.map(({ id, ...blog }: BlogsType): JSX.Element => <Blog key={id} {...blog} />)
-               }
+                  blogs.map(({ id, ...blog }: BlogsType): JSX.Element => <Blog key={id} {...blog} />)}
 
                {error && <ErrorMessage>
                   <BiError />

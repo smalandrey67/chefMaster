@@ -1,27 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { answerA } from './answerA'
+import { answerAsync } from './answerAsync'
 
 import { AnswerResponseType } from '../../../@types/Answer'
 import { StatusEnum } from '../../../@types/Status'
 
 type AnswerState = {
-   answer: AnswerResponseType | null,
-   status: StatusEnum,
-   error: string
+   answer: AnswerResponseType | null;
+   status: StatusEnum;
+   error: string;
 }
 
 const initialState: AnswerState = {
-   answer: null,
+   answer: {} as AnswerResponseType,
    status: StatusEnum.IDKE,
    error: '',
 }
 
-const answerS = createSlice({
+const answerSlice = createSlice({
    name: 'quickAnswer',
    initialState,
    reducers: {
 
-      // #when popop will be closed we reset the state
+      // #when popup will be closed we reset the state
       resetAnswer: (state) => {
          state.answer = null
          state.status = StatusEnum.IDKE
@@ -30,22 +30,21 @@ const answerS = createSlice({
 
    extraReducers: (builder): void => {
       builder
-         .addCase(answerA.pending, (state): void => {
+         .addCase(answerAsync.pending, (state): void => {
             state.status = StatusEnum.PENDING
          })
-         .addCase(answerA.fulfilled, (state, action): void => {
+         .addCase(answerAsync.fulfilled, (state, action): void => {
             state.status = StatusEnum.FULFILLED
             state.answer = action.payload
          })
-         .addCase(answerA.rejected, (state, action): void => {
+         .addCase(answerAsync.rejected, (state, action): void => {
             state.status = StatusEnum.REJECTED
             state.error = action.payload as string
          })
    }
 })
 
-
-export const { resetAnswer } = answerS.actions
-export default answerS.reducer
+export const { resetAnswer } = answerSlice.actions
+export default answerSlice.reducer
 
 

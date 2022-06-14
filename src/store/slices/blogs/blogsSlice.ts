@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { blogsA } from './blogsA'
+import { blogsAsync } from './blogsAsync'
 
 import { BlogsType } from '../../../@types/Blogs'
 import { StatusEnum } from '../../../@types/Status'
 
 type BlogState = {
    blogs: BlogsType[];
-   status: StatusEnum,
-   error: string,
+   status: StatusEnum;
+   error: string;
 }
 
 const initialState: BlogState = {
@@ -16,27 +16,27 @@ const initialState: BlogState = {
    error: '',
 }
 
-const blogsS = createSlice({
+const blogsSlice = createSlice({
    name: 'blogs',
    initialState,
    reducers: {},
 
    extraReducers: (builder): void => {
       builder
-         .addCase(blogsA.pending, (state): void => {
+         .addCase(blogsAsync.pending, (state): void => {
             state.status = StatusEnum.PENDING
          })
-         .addCase(blogsA.fulfilled, (state, action): void => {
+         .addCase(blogsAsync.fulfilled, (state, action): void => {
             state.status = StatusEnum.FULFILLED
             state.blogs = action.payload
          })
-         .addCase(blogsA.rejected, (state, action): void => {
+         .addCase(blogsAsync.rejected, (state, action): void => {
             state.status = StatusEnum.REJECTED
             state.error = action.payload as string
          })
    }
 })
 
-export default blogsS.reducer
+export default blogsSlice.reducer
 
 

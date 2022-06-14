@@ -5,5 +5,5 @@ export type CuisineResultsType = {
 }
 
 export type CuisineType = {
-    results: CuisineResultsType[],
+    results: CuisineResultsType[];
 }

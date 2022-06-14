@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-
 export const HeaderEl = styled.header`
     position: fixed;
     top: 0;
@@ -26,7 +25,6 @@ export const HeaderWrapper = styled.div`
     margin-bottom: 10px;
 `
 
-
 export const HeaderBlogsWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -40,7 +38,6 @@ export const HeaderLogo = styled(Link).attrs({
     font-weight: var(--fw-bold);
     margin-right: 10px;
 `
-
 
 export const HeaderBlogs = styled(Link).attrs({
     to: '/blogs'

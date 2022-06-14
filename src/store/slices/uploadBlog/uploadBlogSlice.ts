@@ -1,28 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { uploadBlogA } from './uploadBlogA'
+import { uploadBlogAsync } from './uploadBlogAsync'
 
-type searhedState = {
+type UploadBlogState = {
    errorUploadBlog: string
 }
 
-const initialState: searhedState = {
+const initialState: UploadBlogState = {
    errorUploadBlog: '',
 }
 
-const uploadBlogS = createSlice({
+const uploadBlogSlice = createSlice({
    name: 'uploadBlog',
    initialState,
    reducers: {},
 
-
    extraReducers: (builder): void => {
       builder
-         .addCase(uploadBlogA.rejected, (state, action): void => {
+         .addCase(uploadBlogAsync.rejected, (state, action): void => {
             state.errorUploadBlog = action.payload as string
          })
    }
 })
 
-export default uploadBlogS.reducer
+export default uploadBlogSlice.reducer
 
 

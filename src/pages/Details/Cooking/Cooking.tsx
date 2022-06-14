@@ -21,7 +21,6 @@ import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
-
 type StepsProps = {
     details: DetailsType
 }
@@ -36,7 +35,7 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
 
         setStepIsActive(index)
     }
-  
+
     return (
         <DetailsList {...motion} >
 
@@ -48,14 +47,14 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
 
 
             {details.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index): JSX.Element => (
-                <Fragment key={index}> {/* Item name posible could be empty string. There is no another way to give a unique key */}
+                <Fragment key={index}> {/* Item name possible could be empty string. There is no another way to give a unique key */}
 
                     {name.length ?
                         <DetailsCookingSubtitle>
                             <IoFootstepsSharp />
                             {stringCut(name, 40)}
                         </DetailsCookingSubtitle>
-                    : null}
+                        : null}
 
 
                     {steps.map(({ number, step, ingredients }: StepsType): JSX.Element =>

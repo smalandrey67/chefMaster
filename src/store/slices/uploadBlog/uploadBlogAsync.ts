@@ -5,13 +5,13 @@ import { getBlogs } from '../../../api/config'
 
 import { BlogType, BlogResponse } from '../../../@types/Blogs'
 
-type uploadType = {
-   post: BlogType
-   navigateHandler: () => void
+type UploadType = {
+   post: BlogType;
+   navigateHandler: () => void;
 }
 
-export const uploadBlogA = createAsyncThunk<BlogResponse, uploadType, { rejectValue: string }>(
-   'uploadBlog/uploadBlogA',
+export const uploadBlogAsync = createAsyncThunk<BlogResponse, UploadType, { rejectValue: string }>(
+   'uploadBlog/uploadBlogAsync',
    
     //@ts-ignore
    async (data, { rejectWithValue, fulfillWithValue }) => {

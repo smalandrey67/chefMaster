@@ -28,8 +28,8 @@ import { DataType } from '../../@types/Blogs'
 import SpinnerSm from '../../assets/images/spinner-sm.svg'
 import { BiError } from 'react-icons/bi'
 
-import { useImage } from './hook/image'
-import { useSubmit } from './hook/submit'
+import { useImage } from './hook/useImage'
+import { useSubmit } from './hook/useSubmit'
 
 export const BlogsCreate: FC = () => {
    const {
@@ -42,7 +42,7 @@ export const BlogsCreate: FC = () => {
    const { imageHandler, fileName, setFileName, url, status, error } = useImage()
    const { submitHandler } = useSubmit(url, setFileName, reset)
 
-   const { errorUploadBlog } = useAppSelector(state => state.uploadBlogR)
+   const { errorUploadBlog } = useAppSelector(state => state.uploadBlogReducer)
 
    return (
       <BlogsCreateEl>

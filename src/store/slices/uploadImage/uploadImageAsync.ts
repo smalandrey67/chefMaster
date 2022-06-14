@@ -5,11 +5,10 @@ import { uploadImage } from '../../../api/config'
 
 import { UploadImageType } from '../../../@types/UploadImage'
 
-export const uploadImageA = createAsyncThunk<UploadImageType, FormData, { rejectValue: string }>(
-   'uploadImage/uploadImageA',
+export const uploadImageAsync = createAsyncThunk<UploadImageType, FormData, { rejectValue: string }>(
+   'uploadImage/uploadImageAsync',
 
    async (data, { rejectWithValue }) => {
-
       try {
          const response = await axios.post<UploadImageType>(uploadImage(), data)
 

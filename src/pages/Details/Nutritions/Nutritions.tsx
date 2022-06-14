@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
-import { nutritionsA } from '../../../store/slices/nutritions/nutritionsA'
+import { nutritionsAsync } from '../../../store/slices/nutritions/nutritionsAsync'
 
 import { ErrorMessage, SpinnerWrapper, Spinner } from '../../../assets/styled/Reused.styled'
 import { NutritionWrapper, NutritionItem } from './Nutritions.styled'
@@ -18,11 +18,11 @@ type NutritionProps = {
 }
 
 export const Nutritions: FC<NutritionProps> = ({ id }) => {
-    const { nutrition, status, error } = useAppSelector(state => state.nutritionsR)
+    const { nutrition, status, error } = useAppSelector(state => state.nutritionsReducer)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(nutritionsA(id))
+        dispatch(nutritionsAsync(id))
     }, [id, dispatch])
 
     return (

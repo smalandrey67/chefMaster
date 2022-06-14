@@ -1,3 +1,3 @@
 export type UploadImageType = {
-   secure_url: string
+   secure_url: string;
 }

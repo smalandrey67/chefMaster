@@ -4,12 +4,12 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { routes } from './routes'
 
 import { Header } from './components/Header/Header'
-import { Categories } from './components/Сategories/Categories'
+import { Categories } from './components/Categories/Categories'
 import { ErrorFallback } from './components/ErrorFallback/ErrorFallback'
 
 export const Home: FC = () => {
     return (
-        <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh'/>}>
+        <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh' />}>
             <Header />
             <Categories /> 
 

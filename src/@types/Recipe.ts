@@ -6,5 +6,5 @@ export type RecipeResultType = {
 }
 
 export type RecipeType = {
-    recipes: RecipeResultType[]
+    recipes: RecipeResultType[];
 }

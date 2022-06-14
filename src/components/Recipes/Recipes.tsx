@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { Splide } from '@splidejs/react-splide'
-import { recipesA } from '../../store/slices/recipes/recipesA'
+import { recipesAsync } from '../../store/slices/recipes/recipesAsync'
 
 import { RandomEl } from './Recipes.styled'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
@@ -17,11 +17,11 @@ import { RecipeResultType } from '../../@types/Recipe'
 import { splideOptions } from '../../utils/constants/splide.constants'
 
 export const Recipes: FC = () => {
-    const { recipes, status, error } = useAppSelector(state => state.recipesR)
+    const { recipes, status, error } = useAppSelector(state => state.recipesReducer)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(recipesA())
+        dispatch(recipesAsync())
     }, [dispatch])
 
     return (

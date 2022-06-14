@@ -1,28 +1,27 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import recipesR  from './slices/recipes/recipesS'
-import cuisineR from './slices/cuisine/cuisineS'
-import detailsR from './slices/details/detailsS'
-import searchedR from './slices/searched/searchedS'
-import nutritionsR from './slices/nutritions/nutritionsS'
-import answerR from './slices/answer/answerS'
-import blogsR from './slices/blogs/blogsS'
-import uploadImageR from './slices/uploadImage/uploadImageS'
-import uploadBlogR from './slices/uploadBlog/uploadBlogS'
-import filterR from './slices/filter/filterS'
-
+import recipesReducer  from './slices/recipes/recipesSlice'
+import cuisineReducer from './slices/cuisine/cuisineSlice'
+import detailsReducer from './slices/details/detailsSlice'
+import searchedReducer from './slices/searched/searchedSlice'
+import nutritionsReducer from './slices/nutritions/nutritionsSlice'
+import answerReducer from './slices/answer/answerSlice'
+import blogsReducer from './slices/blogs/blogsSlice'
+import uploadImageReducer from './slices/uploadImage/uploadImageSlice'
+import uploadBlogReducer from './slices/uploadBlog/uploadBlogSlice'
+import filterReducer from './slices/filter/filterSlice'
 
 const rootReducer = combineReducers({
-    recipesR,
-    cuisineR,
-    detailsR, 
-    searchedR, 
-    nutritionsR, 
-    answerR,
-    blogsR,
-    uploadImageR,
-    uploadBlogR,
-    filterR,
+    recipesReducer,
+    cuisineReducer,
+    detailsReducer, 
+    searchedReducer, 
+    nutritionsReducer, 
+    answerReducer,
+    blogsReducer,
+    uploadImageReducer,
+    uploadBlogReducer,
+    filterReducer,
 })
 
 export const setupStore = () => {

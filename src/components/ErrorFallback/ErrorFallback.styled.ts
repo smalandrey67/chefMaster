@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type ErrorFallbackWrapperProps = {
-   height: string
+   height: string;
 }
 
 export const ErrorFallbackWrapper = styled.div<ErrorFallbackWrapperProps>`
@@ -9,5 +9,5 @@ export const ErrorFallbackWrapper = styled.div<ErrorFallbackWrapperProps>`
    align-items: center;
    justify-content: center;
 
-   height: ${({ height }) => height || 'auto'}
+   height: ${({ height }) => height || 'auto'};
 `

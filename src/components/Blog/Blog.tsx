@@ -19,7 +19,6 @@ export const Blog: FC<BlogType> = ({ title, file, author, description }) => {
       <BlogEl>
          <BlogBody>
             <Title>{title}</Title>
-
             <BlogFigure>
                <BlogFigureImage src={`${file}`} alt={title} />
                <BlogFigCaption>

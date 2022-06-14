@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import ReactDOM from 'react-dom'
-import { ErrorBoundary } from 'react-error-boundary'
 
 import { Recipes } from '../../components/Recipes/Recipes'
 import { About } from '../../components/About/About'
@@ -11,8 +10,6 @@ import { MainEl, MainChatWrapper } from './Main.styled'
 import { BsChatRightText } from 'react-icons/bs'
 
 import { usePopup } from '../../hooks/usePopup'
-
-
 
 export const Main: FC = () => {
     const { popupIsActive, popupHandler } = usePopup()

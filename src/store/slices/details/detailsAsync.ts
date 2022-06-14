@@ -6,8 +6,8 @@ import { getDetails } from '../../../api/config'
 
 import { DetailsType } from '../../../@types/Details'
 
-export const detailsA = createAsyncThunk<DetailsType, string, { rejectValue: string }>(
-    'detailsRecipe/detailsA',
+export const detailsAsync = createAsyncThunk<DetailsType, string, { rejectValue: string }>(
+    'detailsRecipe/detailsAsync',
 
     async (id, { rejectWithValue }) => {
         try {
@@ -19,7 +19,7 @@ export const detailsA = createAsyncThunk<DetailsType, string, { rejectValue: str
                 return rejectWithValue(e.message)
             }
 
-            return rejectWithValue('Can\'t download details of this recipe. Server error')
+            return rejectWithValue('Could not download details of this recipe. Server error')
         }
     }
 )

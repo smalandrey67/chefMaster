@@ -4,7 +4,7 @@ import { Input, Button } from '../../assets/styled/Reused.styled'
 import { UploadImageType } from '../../@types/UploadImage'
 
 type BlogsCreatePreviewImageProps = {
-   url: UploadImageType | null
+   url: UploadImageType | null;
 }
 
 export const BlogsCreateEl = styled.section``

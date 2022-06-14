@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { detailsA } from './detailsA'
+import { detailsAsync } from './detailsAsync'
 
 import { DetailsType } from '../../../@types/Details'
 import { StatusEnum } from '../../../@types/Status'
 
-type detailsState = {
-    details: DetailsType
-    status: StatusEnum
-    error: string,
+type DetailsState = {
+    details: DetailsType;
+    status: StatusEnum;
+    error: string;
 }
 
-const initialState: detailsState = {
+const initialState: DetailsState = {
     details: {} as DetailsType,
     status: StatusEnum.IDKE,
     error: '',
@@ -21,17 +21,16 @@ const detailsS = createSlice({
     initialState,
     reducers: {},
 
-
     extraReducers: (builder): void => {
         builder
-            .addCase(detailsA.pending, (state): void => {
+            .addCase(detailsAsync.pending, (state): void => {
                 state.status = StatusEnum.PENDING
             })
-            .addCase(detailsA.fulfilled, (state, action): void => {
+            .addCase(detailsAsync.fulfilled, (state, action): void => {
                 state.status = StatusEnum.FULFILLED
                 state.details = action.payload
             })
-            .addCase(detailsA.rejected, (state, action): void => {
+            .addCase(detailsAsync.rejected, (state, action): void => {
                 state.status = StatusEnum.REJECTED
                 state.error = action.payload as string
             })

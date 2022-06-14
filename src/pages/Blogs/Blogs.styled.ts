@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const BlogsEl = styled.section``
 
-export const BolgsAddWrapper = styled.div`
+export const BlogsAddWrapper = styled.div`
    display: flex;
    justify-content: flex-end;
    margin-bottom: 10px;

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Input, Button } from '../../assets/styled/Reused.styled'
 
-
 export const SearchWrapper = styled.div`
     display: flex;
     align-items: flex-start;

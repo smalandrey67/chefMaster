@@ -1,10 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-
-//==================Details======================//
 export const DetailsEl = styled(motion.article)``
-
 
 export const DetailsWrapper = styled.div`
     @media(min-width: 768px){
@@ -24,8 +21,6 @@ export const DetailWrapperImage = styled.figure`
     }
 `
 
-
-
 export const DetailsWrapperTitle = styled.figcaption`
     font-size: var(--fs-bg);
     font-weight: var(--fw-semiBold);
@@ -36,7 +31,6 @@ export const DetailsWrapperTitle = styled.figcaption`
         margin: 0 0 30px 0;
     }
 `
-
 
 export const DetailsOverImage = styled.div`
     position: relative;
@@ -51,7 +45,6 @@ export const DetailsReadyMinutes = styled.span`
     grid-auto-flow: column;
     align-items: center;
     gap: 7px;
-
     font-weight: var(--fw-bold);
 `
 
