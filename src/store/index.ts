@@ -12,16 +12,16 @@ import uploadBlogReducer from './slices/uploadBlog/uploadBlogSlice'
 import filterReducer from './slices/filter/filterSlice'
 
 const rootReducer = combineReducers({
-    recipesReducer,
-    cuisineReducer,
-    detailsReducer, 
-    searchedReducer, 
-    nutritionsReducer, 
-    answerReducer,
-    blogsReducer,
-    uploadImageReducer,
-    uploadBlogReducer,
-    filterReducer,
+    recipes: recipesReducer,
+    cuisine: cuisineReducer,
+    details: detailsReducer, 
+    searched: searchedReducer, 
+    nutritions: nutritionsReducer, 
+    answer: answerReducer,
+    blogs: blogsReducer,
+    uploadImage: uploadImageReducer,
+    uploadBlog: uploadBlogReducer,
+    filter: filterReducer,
 })
 
 export const setupStore = () => {

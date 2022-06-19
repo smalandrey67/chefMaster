@@ -17,10 +17,9 @@ const initialState: SearchedState = {
 }
 
 const searchedSlice = createSlice({
-    name: 'searchedRecipes',
+    name: 'searched',
     initialState,
     reducers: {},
-
 
     extraReducers: (builder): void => {
         builder

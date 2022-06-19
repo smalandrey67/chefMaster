@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAppDispatch } from './useRedux'
 import { resetAnswer } from '../store/slices/answer/answerSlice'
 
-import { AnswerResponseType } from '../@types/Answer'
+import { AnswerType } from '../@types/Answer'
 import { UsePopupType } from '../@types/Hooks'
 
 export const usePopup = (): UsePopupType => {
@@ -20,7 +20,7 @@ export const usePopup = (): UsePopupType => {
       document.body.style.overflow = 'visible'
    }, [popupIsActive])
 
-   const popupHandler = (answer?: AnswerResponseType | null): void => {
+   const popupHandler = (answer?: AnswerType | null): void => {
       setPopupIsActive(prevState => !prevState)
 
       if (answer) {

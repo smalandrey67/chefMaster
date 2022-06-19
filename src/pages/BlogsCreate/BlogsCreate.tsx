@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useAppSelector } from '../../hooks/useRedux'
 
 import { stringCut } from '../../utils/helpers/string.helpers'
+import { extension } from '../../utils/constants/extension.constants'
 
 import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from '../../assets/styled/Reused.styled'
 import {
@@ -23,7 +24,7 @@ import {
 } from './BlogsCreate.styled'
 
 import { StatusEnum } from '../../@types/Status'
-import { DataType } from '../../@types/Blogs'
+import { SubmitBlogType } from '../../@types/Blogs'
 
 import SpinnerSm from '../../assets/images/spinner-sm.svg'
 import { BiError } from 'react-icons/bi'
@@ -37,12 +38,12 @@ export const BlogsCreate: FC = () => {
       formState: { errors },
       handleSubmit,
       reset
-   } = useForm<DataType>({ mode: 'onChange' })
+   } = useForm<SubmitBlogType>({ mode: 'onChange' })
 
    const { imageHandler, fileName, setFileName, url, status, error } = useImage()
    const { submitHandler } = useSubmit(url, setFileName, reset)
 
-   const { errorUploadBlog } = useAppSelector(state => state.uploadBlogReducer)
+   const { errorUploadBlog } = useAppSelector(state => state.uploadBlog)
 
    return (
       <BlogsCreateEl>
@@ -105,7 +106,7 @@ export const BlogsCreate: FC = () => {
                                  required: 'Field is required',
                               })}
                               type='file'
-                              accept=".png,.jpg,.jpeg"
+                              accept={extension.join(',')}
                               onChange={imageHandler}
                               hidden
                            />

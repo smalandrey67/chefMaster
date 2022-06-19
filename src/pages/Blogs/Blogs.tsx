@@ -1,10 +1,11 @@
-import { FC, useEffect, } from 'react'
+import { FC, useEffect } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
+import { useBack } from '../../hooks/useBack'
 import { blogsAsync } from '../../store/slices/blogs/blogsAsync'
 
-import { BlogsEl, BlogsAddWrapper, BlogsAdd, BlogsWrapper } from './Blogs.styled'
-import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../assets/styled/Reused.styled'
+import { BlogsEl, BlogsAdd, BlogsWrapper } from './Blogs.styled'
+import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning, ButtonBack } from '../../assets/styled/Reused.styled'
 
 import { Blog } from '../../components/Blog/Blog'
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
@@ -14,10 +15,15 @@ import { BlogsType } from '../../@types/Blogs'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'
+import { IoCaretBackOutline } from 'react-icons/io5'
+
+import { BackButton } from '../../components/BackButton/BackButton'
 
 export const Blogs: FC = () => {
    const dispatch = useAppDispatch()
-   const { blogs, status, error } = useAppSelector(state => state.blogsReducer)
+   const { blogs, status, error } = useAppSelector(state => state.blogs)
+
+   const { pageBackHandler } = useBack()
 
    useEffect(() => {
       dispatch(blogsAsync())
@@ -26,14 +32,13 @@ export const Blogs: FC = () => {
    return (
       <BlogsEl>
          <Container>
-
-            <BlogsAddWrapper>
+            <BackButton>
                <BlogsAdd>
                   add blog
                   <HiPlus />
                </BlogsAdd>
-            </BlogsAddWrapper>-
-
+            </BackButton>
+            
             {
                !blogs.length && !error && status !== StatusEnum.PENDING ? <SearchedWarning>
                   <BiError />

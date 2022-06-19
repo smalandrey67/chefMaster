@@ -58,10 +58,9 @@ export const Search: FC = () => {
             </SearchForm>
 
             <SearchFilter onClick={filterHandler}>
-                <GoSettings style={{ marginRight: 5 }}/>
-                Filter
+                <GoSettings size='23' />
+                {/* Filter */}
             </SearchFilter>
-
 
             <Filter />
         </SearchWrapper>

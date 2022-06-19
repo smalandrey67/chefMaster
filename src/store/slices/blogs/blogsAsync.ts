@@ -11,13 +11,13 @@ export const blogsAsync = createAsyncThunk<BlogsType[], void, { rejectValue: str
       try {
          const response = await axios.get<BlogsType[]>(getBlogs())
 
-         return response.data as BlogsType[]
+         return response.data
       } catch (e) {
          if (axios.isAxiosError(e)) {
             return rejectWithValue(e.message)
          }
 
-         return rejectWithValue('Can\'t download this cuisine. Server error')
+         return rejectWithValue('Could not download any of those blogs. Server error')
       }
    }
 )

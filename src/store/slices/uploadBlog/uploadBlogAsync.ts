@@ -3,22 +3,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { getBlogs } from '../../../api/config'
 
-import { BlogType, BlogResponse } from '../../../@types/Blogs'
+import { PostType, UploadBlogType } from '../../../@types/Blogs'
 
 type UploadType = {
-   post: BlogType;
+   post: PostType;
    navigateHandler: () => void;
 }
 
-export const uploadBlogAsync = createAsyncThunk<BlogResponse, UploadType, { rejectValue: string }>(
+export const uploadBlogAsync = createAsyncThunk<void, UploadType, { rejectValue: string }>(
    'uploadBlog/uploadBlogAsync',
    
-    //@ts-ignore
    async (data, { rejectWithValue, fulfillWithValue }) => {
       try {
-         await axios.post<BlogResponse>(getBlogs(), data.post)
+         await axios.post<UploadBlogType>(getBlogs(), data.post)
 
-         // @redirect after fulfilled post request
+         // #redirect after fulfilled post request
          fulfillWithValue(
             data.navigateHandler()
          )

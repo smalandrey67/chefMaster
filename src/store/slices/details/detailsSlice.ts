@@ -17,7 +17,7 @@ const initialState: DetailsState = {
 }
 
 const detailsS = createSlice({
-    name: 'detailsRecipe',
+    name: 'details',
     initialState,
     reducers: {},
 

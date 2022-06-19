@@ -7,13 +7,13 @@ import { getSearched } from '../../../api/config'
 import { CuisineType, CuisineResultsType } from '../../../@types/Cuisine'
 
 export const searchedAsync = createAsyncThunk<CuisineResultsType[], string , { rejectValue: string }>(
-    'searchedRecipes/searchedAsync',
+    'searched/searchedAsync',
 
     async (name, { rejectWithValue }) => {
         try {
             const response = await instance.get<CuisineType>(getSearched(name))
 
-            return response.data.results as CuisineResultsType[]
+            return response.data.results
         } catch (e) {
             if (axios.isAxiosError(e)) {
                 return rejectWithValue(e.message)

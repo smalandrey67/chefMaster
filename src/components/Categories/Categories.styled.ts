@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export const CategoriesNav = styled.nav`
     margin: 140px 0 20px 0;   
+    height: 45px;
 
     @media(min-width: 768px){
         margin: 17px 0 20px 0;  

@@ -25,6 +25,7 @@ import { Tabs } from './Tabs/Tabs'
 import { Cooking } from './Cooking/Cooking'
 import { Nutritions } from './Nutritions/Nutritions'
 import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback'
+import { BackButton } from '../../components/BackButton/BackButton'
 
 import { BiError } from 'react-icons/bi'
 import { BsClock } from 'react-icons/bs'
@@ -33,11 +34,12 @@ import SpinnerBg from '../../assets/images/spinner-bg.svg'
 
 import { StatusEnum } from '../../@types/Status'
 import { motion } from '../../utils/constants/motion.constants'
+import { stringCut } from '../../utils/helpers/string.helpers'
 
 export const Details: FC = () => {
     const [activeTab, setActiveTab] = useState<string>('instructions')
 
-    const { details, status, error } = useAppSelector(state => state.detailsReducer)
+    const { details, status, error } = useAppSelector(state => state.details)
     const dispatch = useAppDispatch()
 
     const { id } = useParams() as any
@@ -45,7 +47,6 @@ export const Details: FC = () => {
     useEffect(() => {
         dispatch(detailsAsync(id))
     }, [id, dispatch])
-
 
     const tabHandler = (string: string): void => setActiveTab(string)
 
@@ -61,10 +62,12 @@ export const Details: FC = () => {
                         <>
                             <DetailsWrapperLeft>
                                 <DetailWrapperImage>
-                                    <DetailsWrapperTitle>
-                                        {details.title}
-                                    </DetailsWrapperTitle>
-
+                                    <BackButton>
+                                        <DetailsWrapperTitle>
+                                            {stringCut(details.title, 17)}
+                                        </DetailsWrapperTitle>
+                                    </BackButton>
+                              
                                     <DetailsOverImage>
                                         <DetailsImage src={details.image} alt={details?.title} />
 
@@ -81,7 +84,7 @@ export const Details: FC = () => {
 
                                 </DetailWrapperImage>
 
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh'/> }>
+                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
                                     <Nutritions id={id} />
                                 </ErrorBoundary>
                             </DetailsWrapperLeft>

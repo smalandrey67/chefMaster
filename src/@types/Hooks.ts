@@ -2,8 +2,8 @@ import { ChangeEvent } from 'react'
 
 import { StatusEnum } from './Status'
 import { UploadImageType } from './UploadImage'
-import { AnswerResponseType } from './Answer'
-import { DataType } from './Blogs'
+import { AnswerType } from './Answer'
+import { SubmitBlogType } from './Blogs'
 
 export type UseImageType = {
    imageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -16,9 +16,13 @@ export type UseImageType = {
 
 export type UsePopupType = {
    popupIsActive: boolean;
-   popupHandler: (answer?: AnswerResponseType | null) => void;
+   popupHandler: (answer?: AnswerType | null) => void;
 }
 
 export type UseSubmitType = {
-   submitHandler: (data: DataType) => void;
+   submitHandler: (data: SubmitBlogType) => void;
+}
+
+export type UseBackType = {
+   pageBackHandler: () => void;
 }

@@ -1,6 +1,6 @@
 import { FC, useState, Fragment } from 'react'
 
-import { DetailsType, AnalyzedInstructionsType, StepsType, StepsIngredientsType } from '../../../@types/Details'
+import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from '../../../@types/Details'
 
 import { motion } from '../../../utils/constants/motion.constants'
 import { stringCut } from '../../../utils/helpers/string.helpers'
@@ -21,11 +21,11 @@ import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
-type StepsProps = {
+type CookingProps = {
     details: DetailsType
 }
 
-export const Cooking: FC<StepsProps> = ({ details }) => {
+export const Cooking: FC<CookingProps> = ({ details }) => {
     const [stepIsActive, setStepIsActive] = useState<string | null>(null)
 
     const stepHandler = (index: string): void => {
@@ -57,7 +57,7 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
                         : null}
 
 
-                    {steps.map(({ number, step, ingredients }: StepsType): JSX.Element =>
+                    {steps.map(({ number, step, ingredients }: CookingStepType): JSX.Element =>
                         <DetailsCookingItem key={number}>
                             <DetailsCookingHeader onClick={(): void => stepHandler(step)}>
                                 <DetailsCookingStep>Step {number}</DetailsCookingStep>
@@ -69,10 +69,10 @@ export const Cooking: FC<StepsProps> = ({ details }) => {
                             <DetailsCookingContent className={stepIsActive === step ? 'active' : ''}>
                                 <DetailsCookingIngredients className={ingredients.length ? '' : 'hide'}>
 
-                                    {ingredients.length && ingredients.map(({ id, image, name }: StepsIngredientsType): JSX.Element =>
+                                    {ingredients.length && ingredients.map(({ id, image, name }: StepType): JSX.Element =>
                                         <DetailsCookingIngredientsPhoto
                                             key={id}
-                                            src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`}
+                                            src={`${process.env.REACT_APP_IMAGE_URL}${image}`}
                                             alt={name}
                                         />
                                     )}

@@ -48,7 +48,6 @@ export const SearchFilter = styled(Button)`
         color: var(--color-white);
     }
 
-
     @media (hover: hover) {
         transition: all 0.5s ease;
         &:hover {

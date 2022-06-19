@@ -17,7 +17,7 @@ const initialState: RandomRecipeState = {
 }
 
 const recipesSlice = createSlice({
-    name: 'randomRecipe',
+    name: 'recipes',
     initialState,
     reducers: {},
 

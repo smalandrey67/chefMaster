@@ -1,6 +1,6 @@
 export enum StatusEnum {
-   IDKE,
-   PENDING,
-   FULFILLED,
-   REJECTED
+   IDKE = 'idke',
+   PENDING = 'pending',
+   FULFILLED = 'fulfilled',
+   REJECTED = 'rejected'
 }

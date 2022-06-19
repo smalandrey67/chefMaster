@@ -31,7 +31,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                 {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }: IngredientsType): JSX.Element =>
                     <DetailsIngredientsItem key={id}>
                         <DetailsIngredientsImage
-                            src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`}
+                            src={`${process.env.REACT_APP_IMAGE_URL}${image}`}
                             alt={nameClean}
                         />
                         <DetailsIngredientsTitle>{stringCut(nameClean, 13)}</DetailsIngredientsTitle>

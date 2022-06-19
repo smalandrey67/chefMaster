@@ -12,6 +12,26 @@ export const BlogBody = styled.div`
    align-items: flex-start;
 `
 
+export const BlogHeader = styled.div`
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+`
+
+export const BlogHeaderAvatar = styled.div`
+   width: 35px;
+   height: 35px;
+   border-radius: 50%;
+   overflow: hidden;
+   margin-right: 10px;
+` 
+
+export const BlogHeaderImage = styled.img`
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+`
+
 export const BlogFigure = styled.figure`
    width: 100%;
    height: 200px;

@@ -18,7 +18,7 @@ import { CuisineResultsType } from '../../@types/Cuisine'
 
 export const Searched: FC = () => {
     const dispatch = useAppDispatch()
-    const { searched, status, error } = useAppSelector(state => state.searchedReducer)
+    const { searched, status, error } = useAppSelector(state => state.searched)
  
     const { name } = useParams() as any
 

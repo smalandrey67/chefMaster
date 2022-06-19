@@ -17,7 +17,7 @@ const initialState: CuisineState = {
 }
 
 const cuisineSlice = createSlice({
-    name: 'cuisineRecipes',
+    name: 'cuisine',
     initialState,
     reducers: {},
 

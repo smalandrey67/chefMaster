@@ -17,7 +17,7 @@ import { RecipeResultType } from '../../@types/Recipe'
 import { splideOptions } from '../../utils/constants/splide.constants'
 
 export const Recipes: FC = () => {
-    const { recipes, status, error } = useAppSelector(state => state.recipesReducer)
+    const { recipes, status, error } = useAppSelector(state => state.recipes)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

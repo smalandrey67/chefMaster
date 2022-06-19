@@ -24,10 +24,10 @@ import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
 import { StatusEnum } from '../../@types/Status'
-import { AnswerResponseType, AnswerType } from '../../@types/Answer'
+import { AnswerType, SubmitAnswerType } from '../../@types/Answer'
 
 type AnswerProps = {
-   popupHandler: (answer?: AnswerResponseType | null) => void;
+   popupHandler: (answer?: AnswerType | null) => void;
 }
 
 export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
@@ -36,12 +36,12 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
       formState: { errors },
       handleSubmit,
       reset,
-   } = useForm<AnswerType>({ mode: 'onSubmit' })
+   } = useForm<SubmitAnswerType>({ mode: 'onSubmit' })
 
    const dispatch = useAppDispatch()
-   const { answer, status, error } = useAppSelector(state => state.answerReducer)
+   const { answer, status, error } = useAppSelector(state => state.answer)
 
-   const submitHandler: SubmitHandler<AnswerType> = (data): void => {
+   const submitHandler: SubmitHandler<SubmitAnswerType> = (data): void => {
       dispatch(answerAsync(data.question))
       reset()
    }

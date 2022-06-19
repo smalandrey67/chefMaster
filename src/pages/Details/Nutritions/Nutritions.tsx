@@ -18,7 +18,7 @@ type NutritionProps = {
 }
 
 export const Nutritions: FC<NutritionProps> = ({ id }) => {
-    const { nutrition, status, error } = useAppSelector(state => state.nutritionsReducer)
+    const { nutrition, status, error } = useAppSelector(state => state.nutritions)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

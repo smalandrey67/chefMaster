@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type ErrorMessageProps = {
-    justifyContent?: string
+    justifyContent?: string;
 }
 
 type SpinnerProps = {
@@ -9,14 +9,18 @@ type SpinnerProps = {
 }
 
 type MarginProps = {
-    margin?: string
+    margin?: string;
 }
 
 type SpecialTitleProps = {
-    margin?: string
-    fontWeight?: string
-    color?: string
-    fontSize?: string
+    margin?: string; 
+    fontWeight?: string;
+    color?: string;
+    fontSize?: string;
+}
+
+type TitleProps = {
+    margin?: string;
 }
 
 
@@ -80,8 +84,8 @@ export const Input = styled.input`
 `
 
 // #Texts
-export const Title = styled.h2`
-    margin: 0 0 10px 0;
+export const Title = styled.h2<TitleProps>`
+    margin: ${props => props.margin || 0};
     font-size: var(--fs-bg);
 `
 
@@ -103,3 +107,9 @@ export const SpecialTitle = styled.span<SpecialTitleProps>`
     color: ${({ color }) => color || 'var(--color-black)'}
 `
 
+export const ButtonBack = styled(Button)`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 0 1 90px;
+`

@@ -24,12 +24,6 @@ export const DetailWrapperImage = styled.figure`
 export const DetailsWrapperTitle = styled.figcaption`
     font-size: var(--fs-bg);
     font-weight: var(--fw-semiBold);
-    margin: 0 0 10px 0;
-
-
-    @media(min-width: 768px){
-        margin: 0 0 30px 0;
-    }
 `
 
 export const DetailsOverImage = styled.div`

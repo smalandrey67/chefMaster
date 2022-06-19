@@ -7,13 +7,13 @@ import { getNutritions } from '../../../api/config'
 import { NutritionType } from '../../../@types/Nutrition'
 
 export const nutritionsAsync = createAsyncThunk<NutritionType, string, { rejectValue: string }>(
-    'nutritionRecipe/nutritionsAsync',
+    'nutritions/nutritionsAsync',
 
     async (id, { rejectWithValue }) => {
         try{
             const response = await instance.get<NutritionType>(getNutritions(id))
 
-            return response.data as NutritionType   
+            return response.data
         }catch(e){
             if (axios.isAxiosError(e)) {
                 return rejectWithValue(e.message)

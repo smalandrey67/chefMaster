@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const NotFoundWrapper = styled.div`
     display: flex;
@@ -17,6 +18,12 @@ export const NotFoundImage = styled.img`
 `
 
 export const NotFoundTitle = styled.h3``
+
+export const NotFoundRedirect = styled(Link)`
+    color: var(--color-categories-text);
+    text-decoration: underline;
+`
+
 
 
 

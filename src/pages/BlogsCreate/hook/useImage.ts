@@ -9,7 +9,7 @@ export const useImage = (): UseImageType => {
    const [fileName, setFileName] = useState<string>('')
 
    const dispatch = useAppDispatch()
-   const { url, status, error } = useAppSelector(state => state.uploadImageReducer)
+   const { url, status, error } = useAppSelector(state => state.uploadImage)
 
    const imageHandler = (e: ChangeEvent<HTMLInputElement>): void => {
       const files: FileList | null = e.target.files

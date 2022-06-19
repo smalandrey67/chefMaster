@@ -10,7 +10,7 @@ import { DietType } from '../../utils/constants/diets.constants'
 
 export const Filter: FC = () => {
    const dispatch = useAppDispatch()
-   const { diets, isFilterOpen } = useAppSelector(state => state.filterReducer)
+   const { diets, isFilterOpen } = useAppSelector(state => state.filter)
 
    const navigate = useNavigate()
 
@@ -24,7 +24,7 @@ export const Filter: FC = () => {
    return (
       <FilterEl isFilterOpen={isFilterOpen}>
          <FilterBody>
-            <SpecialTitle fontSize='15px' fontWeight='var(--fw-semiBold)'>diets:</SpecialTitle>
+            <SpecialTitle fontSize='17px' fontWeight='var(--fw-semiBold)'>Diets</SpecialTitle>
             <FilterWrapper>
                {diets.map(({ diet, active, id }: DietType): JSX.Element =>
                   <FilterOption

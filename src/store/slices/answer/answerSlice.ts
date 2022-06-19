@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { answerAsync } from './answerAsync'
 
-import { AnswerResponseType } from '../../../@types/Answer'
+import { AnswerType } from '../../../@types/Answer'
 import { StatusEnum } from '../../../@types/Status'
 
 type AnswerState = {
-   answer: AnswerResponseType | null;
+   answer: AnswerType | null;
    status: StatusEnum;
    error: string;
 }
 
 const initialState: AnswerState = {
-   answer: {} as AnswerResponseType,
+   answer: {} as AnswerType,
    status: StatusEnum.IDKE,
    error: '',
 }

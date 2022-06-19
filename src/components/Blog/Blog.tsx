@@ -3,6 +3,9 @@ import { FC } from 'react'
 import {
    BlogEl,
    BlogBody,
+   BlogHeader,
+   BlogHeaderAvatar,
+   BlogHeaderImage,
    BlogFigure,
    BlogFigCaption,
    BlogFigureImage,
@@ -13,12 +16,18 @@ import { Title, Text, SpecialTitle } from '../../assets/styled/Reused.styled'
 
 import { BlogType } from '../../@types/Blogs'
 
-export const Blog: FC<BlogType> = ({ title, file, author, description }) => {
+export const Blog: FC<BlogType> = ({ title, file, author, description, avatar }) => {
 
    return (
       <BlogEl>
          <BlogBody>
-            <Title>{title}</Title>
+            <BlogHeader>
+               <BlogHeaderAvatar>
+                  <BlogHeaderImage src={avatar} alt={author} />
+               </BlogHeaderAvatar> 
+               <Title>{title}</Title>
+            </BlogHeader> 
+
             <BlogFigure>
                <BlogFigureImage src={`${file}`} alt={title} />
                <BlogFigCaption>

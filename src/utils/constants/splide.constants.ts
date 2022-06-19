@@ -5,7 +5,6 @@ type SplideType = {
    gap: string;
 }
 
-
 export const splideOptions = (page: number): SplideType => {
    return {
       perPage: page,

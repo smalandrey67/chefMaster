@@ -11,7 +11,7 @@ enum DietsName {
    VEGETARIAN = 'vegetarian',
    PESCETARIAN = 'pescetarian',
    PALEO = 'paleo',
-   WHOLE30 = 'Whole30',
+   WHOLE30 = 'whole30',
 }
 
 export const diets: DietType[] = [

@@ -1,33 +1,25 @@
 import { UploadImageType } from './UploadImage'
 
-export type BlogResponse = {
-   id: string;
-   createAt: string;
-   title: string
+export type BlogsType = {
+   title: string;
    file: UploadImageType;
    author: string;
    description: string;
+   avatar: string;
+   id: string;
+   createdAt: string;
 }
 
-export type DataType = {
+export type SubmitBlogType = {
    title: string;
    file: FileList;
    author: string;
    description: string;
 }
 
-export type BlogType = {
-   title: string;
-   file: UploadImageType;
-   author: string;
-   description: string;
-}
+export type BlogType = Omit<BlogsType, 'createdAt' | 'id'>
 
-export type BlogsType = {
-   id: string;
-   title: string;
-   file: UploadImageType;
-   author: string;
-   createdAt: string;
-   description: string;
-}
+export type PostType = Omit<BlogsType, 'avatar' | 'createdAt' | 'id'>
+
+export type UploadBlogType = Omit<BlogsType, 'avatar' | 'createdAt'>
+

@@ -17,7 +17,7 @@ const initialState: NutritionState = {
 }
 
 const nutritionsSlice = createSlice({
-    name: 'nutritionRecipe',
+    name: 'nutritions',
     initialState,
     reducers: {},
 
