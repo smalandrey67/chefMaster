@@ -1,13 +1,12 @@
 import { FC } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { CuisineResultsType } from '../../@types/Cuisine'
+import { CuisineResultsType } from '../../../@types/Cuisine'
 
-import { SubTitle } from '../../assets/styled/Reused.styled'
-import { RecipeEl } from '../Recipe/Recipe.styled'
-import { RecipeCuisineImageWrapper, RecipeCuisineImage } from './Cuisine.styled'
+import { SubTitle, RecipeEl } from '../../../assets/styled/Reused.styled'
+import { RecipeCuisineImageWrapper, RecipeCuisineImage } from './CuisineCard.styled'
 
-export const RecipeCuisine: FC<CuisineResultsType> = ({ id, title, image }) => {
+export const CuisineCard: FC<CuisineResultsType> = ({ id, title, image }) => {
     const navigate: NavigateFunction = useNavigate()
   
     const detailsNavigateHandler = (): void => {

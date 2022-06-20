@@ -4,10 +4,6 @@ type RecipeProps = {
     healthScore: number;
 }
 
-export const RecipeEl = styled.article`
-    cursor: pointer;
-`
-
 export const RecipeBody = styled.div`
     position: relative;
 `

@@ -32,13 +32,6 @@ export const DetailsOverImage = styled.div`
     position: relative;
 `
 
-export const DetailsButtonFavorites = styled.button`
-    background: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-`
-
 export const DetailsReadyMinutes = styled.span`
     position: absolute;
     bottom: 10px;

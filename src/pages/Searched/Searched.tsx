@@ -5,10 +5,9 @@ import { useAppSelector, useAppDispatch } from '../../hooks/useRedux'
 import { searchedAsync } from '../../store/slices/searched/searchedAsync'
 
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
-import { RecipeCuisine } from '../../components/Cuisine/Cuisine'
+import { CuisineCard } from '../../components/Cards/CuisineCard/CuisineCard'
 
-import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
-import { CuisineWrapper } from '../Cuisine/Cuisine.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from '../../assets/styled/Reused.styled'
 import { SearchedWarning } from '../../assets/styled/Reused.styled'
 
 import { BiError } from 'react-icons/bi'
@@ -28,7 +27,7 @@ export const Searched: FC = () => {
 
     return (
         <Container>
-            <CuisineWrapper>
+            <RecipesWrapper>
 
                 {status === StatusEnum.PENDING ?
                     <SpinnerWrapper height='50vh'>
@@ -37,7 +36,7 @@ export const Searched: FC = () => {
                     :
                     searched.length ?
                         searched.map((recipe: CuisineResultsType): JSX.Element =>
-                            <RecipeCuisine key={recipe.id} {...recipe} />
+                            <CuisineCard key={recipe.id} {...recipe} />
                         )
                         :
                         <SearchedWarning>
@@ -50,7 +49,7 @@ export const Searched: FC = () => {
                     <BiError />
                     {error}
                 </ErrorMessage>}
-            </CuisineWrapper>
+            </RecipesWrapper>
         </Container>
     )
 }

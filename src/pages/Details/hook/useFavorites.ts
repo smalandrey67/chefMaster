@@ -8,6 +8,8 @@ import { addFavorite } from '../../../store/slices/favorites/favoritesSlice'
 export const useFavorites = (): UseFavoritesType => {
    const dispatch = useAppDispatch()
 
+   const status = false
+   
    const favoritesHandler = (data: DetailsType): void => {
       const { id, title, image } = data
 
@@ -15,7 +17,7 @@ export const useFavorites = (): UseFavoritesType => {
          id,
          title,
          image,
-         isActive: !false,
+         isActive: !status,
       }
 
       dispatch(addFavorite(preparedObject))

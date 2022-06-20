@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 
 import { Main } from '../pages/Main/Main'
-import { Cuisine } from '../pages/Cuisine/Cuisine'
+import { Cuisines } from '../pages/Cuisines/Cuisines'
 import { Details } from '../pages/Details/Details'
 import { Blogs } from '../pages/Blogs/Blogs'
 import { BlogsCreate } from '../pages/BlogsCreate/BlogsCreate'
@@ -27,7 +27,7 @@ enum RoutePath {
 
 export const routes: Route[] = [
    { path: RoutePath.MAIN, component: Main },
-   { path: RoutePath.CUISINE, component: Cuisine },
+   { path: RoutePath.CUISINE, component: Cuisines },
    { path: RoutePath.DETAILS, component: Details },
    { path: RoutePath.BLOGS, component: Blogs },
    { path: RoutePath.BLOGSCREATE, component: BlogsCreate}, 

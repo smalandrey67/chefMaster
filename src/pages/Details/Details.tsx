@@ -13,9 +13,8 @@ import {
     DetailsOverImage,
     DetailsReadyMinutes,
     DetailsAggregateLikes,
-    DetailsButtonFavorites,
 } from './Details.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner, ButtonHeart } from '../../assets/styled/Reused.styled'
 
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { useFavorites } from './hook/useFavorites'
@@ -86,12 +85,12 @@ export const Details: FC = () => {
                                     <DetailsOverImage>
                                         <DetailsImage src={details.image} alt={details.title} />
 
-                                        <DetailsButtonFavorites onClick={() => favoritesHandler(details)}>
+                                        <ButtonHeart onClick={() => favoritesHandler(details)}>
                                             <BsSuitHeartFill 
                                                 color={getStatus()}
                                                 size='20' 
                                             />
-                                        </DetailsButtonFavorites>
+                                        </ButtonHeart>
 
                                         <DetailsReadyMinutes>
                                             <BsClock size='20' />

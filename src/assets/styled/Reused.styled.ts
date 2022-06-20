@@ -59,7 +59,7 @@ export const SearchedWarning = styled.h4`
     font-size: var(--fs-md);
 `
 
-// #Base style of button
+// #Base styles of button
 export const Button = styled.button`
     height: 40px;
     padding: 0 15px;
@@ -69,7 +69,7 @@ export const Button = styled.button`
     background-color: var(--color-white); 
 `
 
-// #Base styled of input
+// #Base styles of input
 export const Input = styled.input`
     -webkit-appearance: none;
 
@@ -81,6 +81,13 @@ export const Input = styled.input`
         font-weight: var(--fw-semiBold);
         color: var(--color-alternative);
     }
+`
+// #Base styles of back button
+export const ButtonBack = styled(Button)`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 0 1 90px;
 `
 
 // #Texts
@@ -107,9 +114,24 @@ export const SpecialTitle = styled.span<SpecialTitleProps>`
     color: ${({ color }) => color || 'var(--color-black)'}
 `
 
-export const ButtonBack = styled(Button)`
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex: 0 1 90px;
+// #Recipe article element for each card
+export const RecipeEl = styled.article`
+    cursor: pointer;
 `
+
+// #RecipesWrapper for cards
+export const RecipesWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-gap: 1rem;
+`
+
+// #Recipe heart button
+export const ButtonHeart = styled.button`
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+`
+
+

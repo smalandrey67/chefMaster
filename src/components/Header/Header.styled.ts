@@ -42,11 +42,6 @@ export const HeaderBlogs = styled(Link)`
     align-items: center;
     font-size: var(--fs-md);
 
-    animation-name: jump-blog;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-
     &:active{
         animation-play-state: paused;
     }
@@ -54,14 +49,6 @@ export const HeaderBlogs = styled(Link)`
     @media (hover: hover) {
         &:hover{
             animation-play-state: paused;
-        }
-    }
-
-    @keyframes jump-blog {
-        0%{
-            transform: scale(0.8)
-        }100%{
-            transform: scale(1)
         }
     }
 `

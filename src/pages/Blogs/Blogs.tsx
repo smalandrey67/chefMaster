@@ -5,7 +5,7 @@ import { useBack } from '../../hooks/useBack'
 import { blogsAsync } from '../../store/slices/blogs/blogsAsync'
 
 import { BlogsEl, BlogsAdd, BlogsWrapper } from './Blogs.styled'
-import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning, ButtonBack } from '../../assets/styled/Reused.styled'
+import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../assets/styled/Reused.styled'
 
 import { Blog } from '../../components/Blog/Blog'
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
@@ -15,7 +15,6 @@ import { BlogsType } from '../../@types/Blogs'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'
-import { IoCaretBackOutline } from 'react-icons/io5'
 
 import { BackButton } from '../../components/BackButton/BackButton'
 
@@ -32,6 +31,7 @@ export const Blogs: FC = () => {
    return (
       <BlogsEl>
          <Container>
+
             <BackButton>
                <BlogsAdd>
                   add blog

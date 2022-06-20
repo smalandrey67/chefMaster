@@ -7,7 +7,7 @@ import { RandomEl } from './Recipes.styled'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
 
 import SpinnerBg from '../../assets/images/spinner-bg.svg'
-import { Recipe } from '../Recipe/Recipe'
+import { RecipeCard } from '../Cards/RecipeCard/RecipeCard'
 
 import { BiError } from 'react-icons/bi'
 
@@ -33,7 +33,7 @@ export const Recipes: FC = () => {
                             <Spinner src={SpinnerBg} alt='spinner' />
                         </SpinnerWrapper>
                         :
-                        recipes.map((recipe: RecipeResultType): JSX.Element => <Recipe key={recipe.id} {...recipe} />)
+                        recipes.map((recipe: RecipeResultType): JSX.Element => <RecipeCard key={recipe.id} {...recipe} />)
                     }
                 </Splide>
                 {error && <ErrorMessage>
