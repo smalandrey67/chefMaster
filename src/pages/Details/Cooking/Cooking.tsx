@@ -46,7 +46,7 @@ export const Cooking: FC<CookingProps> = ({ details }) => {
                 </SearchedWarning> : null}
 
 
-            {details.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index): JSX.Element => (
+            {details.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index: number): JSX.Element => (
                 <Fragment key={index}> {/* Item name possible could be empty string. There is no another way to give a unique key */}
 
                     {name.length ?

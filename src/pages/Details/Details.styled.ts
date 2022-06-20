@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
+
 export const DetailsEl = styled(motion.article)``
 
 export const DetailsWrapper = styled.div`
@@ -21,13 +22,21 @@ export const DetailWrapperImage = styled.figure`
     }
 `
 
-export const DetailsWrapperTitle = styled.figcaption`
+export const DetailsWrapperTitle = styled.figcaption`  
+    margin-left: 5px;
     font-size: var(--fs-bg);
     font-weight: var(--fw-semiBold);
 `
 
 export const DetailsOverImage = styled.div`
     position: relative;
+`
+
+export const DetailsButtonFavorites = styled.button`
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 `
 
 export const DetailsReadyMinutes = styled.span`
@@ -44,8 +53,8 @@ export const DetailsReadyMinutes = styled.span`
 
 export const DetailsAggregateLikes = styled.span`
     position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 11px;
+    left: 90px;
     color: var(--color-white);
     display: grid;
     grid-auto-flow: column;

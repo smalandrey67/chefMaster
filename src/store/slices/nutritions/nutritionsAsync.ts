@@ -11,7 +11,14 @@ export const nutritionsAsync = createAsyncThunk<NutritionType, string, { rejectV
 
     async (id, { rejectWithValue }) => {
         try{
+            if (localStorage.getItem('nutritions')) {
+                return JSON.parse(localStorage.getItem('nutritions') || '')
+            }
+
+
             const response = await instance.get<NutritionType>(getNutritions(id))
+
+            localStorage.setItem('nutritions', JSON.stringify(response.data))
 
             return response.data
         }catch(e){

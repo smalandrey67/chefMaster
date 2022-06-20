@@ -11,7 +11,13 @@ export const detailsAsync = createAsyncThunk<DetailsType, string, { rejectValue:
 
     async (id, { rejectWithValue }) => {
         try {
+            if (localStorage.getItem('details')) {
+                return JSON.parse(localStorage.getItem('details') || '')
+            }
+
             const response = await instance.get<DetailsType>(getDetails(id))
+   
+            localStorage.setItem('details', JSON.stringify(response.data))
 
             return response.data
         } catch (e) {

@@ -10,6 +10,7 @@ import blogsReducer from './slices/blogs/blogsSlice'
 import uploadImageReducer from './slices/uploadImage/uploadImageSlice'
 import uploadBlogReducer from './slices/uploadBlog/uploadBlogSlice'
 import filterReducer from './slices/filter/filterSlice'
+import favoritesReducer from './slices/favorites/favoritesSlice'
 
 const rootReducer = combineReducers({
     recipes: recipesReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     uploadImage: uploadImageReducer,
     uploadBlog: uploadBlogReducer,
     filter: filterReducer,
+    favorites: favoritesReducer,
 })
 
 export const setupStore = () => {

@@ -11,9 +11,11 @@ export const recipesAsync = createAsyncThunk<RecipeResultType[], void, { rejectV
 
     async (_, { rejectWithValue }) => {
         try{
-            const response = await instance.get<RecipeType>(getRecipes())
+            // const response = await instance.get<RecipeType>(getRecipes())
+            const response = await instance.get<RecipeType>('')
             
-            return response.data.recipes
+            return []
+            // return response.data.recipes
         }catch(e){
             if (axios.isAxiosError(e)) {
                 return rejectWithValue(e.message)

@@ -30,18 +30,14 @@ export const HeaderBlogsWrapper = styled.div`
     align-items: center;
 `
 
-export const HeaderLogo = styled(Link).attrs({
-    to: '/'
-})`
+export const HeaderLogo = styled(Link)`
     margin-left: 5px; 
     font-size: var(--fs-bg);
     font-weight: var(--fw-bold);
     margin-right: 10px;
 `
 
-export const HeaderBlogs = styled(Link).attrs({
-    to: '/blogs'
-})`
+export const HeaderBlogs = styled(Link)`
     display: flex;
     align-items: center;
     font-size: var(--fs-md);
@@ -70,6 +66,13 @@ export const HeaderBlogs = styled(Link).attrs({
     }
 `
 
+export const HeaderFunctionality = styled.div`
+    display: flex;
+    align-items: center;
+`
 
+export const HeaderFavorites = styled(Link)`
+    margin-right: 10px;
+`
 
 

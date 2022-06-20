@@ -1,0 +1,27 @@
+import { UseFavoritesType } from '../../../@types/Hooks'
+import { DetailsType } from '../../../@types/Details'
+import { FavoritesType } from '../../../@types/Favorites'
+
+import { useAppDispatch } from '../../../hooks/useRedux'
+import { addFavorite } from '../../../store/slices/favorites/favoritesSlice'
+
+export const useFavorites = (): UseFavoritesType => {
+   const dispatch = useAppDispatch()
+
+   const favoritesHandler = (data: DetailsType): void => {
+      const { id, title, image } = data
+
+      const preparedObject: FavoritesType = {
+         id,
+         title,
+         image,
+         isActive: !false,
+      }
+
+      dispatch(addFavorite(preparedObject))
+   }
+
+   return {
+      favoritesHandler,
+   }
+}
