@@ -1,14 +1,13 @@
 import { FC } from 'react'
 import ReactDOM from 'react-dom'
 
-import { Recipes } from '../../components/Recipes/Recipes'
-import { About } from '../../components/About/About'
-import { Answer } from '../../components/Answer/Answer'
+import { Recipes } from '../../components/ui/Recipes/Recipes'
+import { About } from '../../components/ui/About/About'
+import { Answer } from '../../components/ui/Answer/Answer'
 
 import { MainEl, MainChatWrapper } from './Main.styled'
 
 import { BsChatRightText } from 'react-icons/bs'
-
 import { usePopup } from '../../hooks/usePopup'
 
 export const Main: FC = () => {
@@ -37,3 +36,5 @@ export const Main: FC = () => {
         </MainEl>
     )
 }
+
+

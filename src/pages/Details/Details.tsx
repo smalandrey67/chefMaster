@@ -2,6 +2,28 @@ import { FC, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 
+import { BsClock, BsSuitHeartFill } from 'react-icons/bs'
+import { AiOutlineLike } from 'react-icons/ai'
+import { BiError } from 'react-icons/bi'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner, ButtonHeart } from '../../assets/styled/Reused.styled'
+
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
+import { detailsAsync } from '../../store/slices/details/detailsAsync'
+import { ErrorFallback } from '../../components/reusable/ErrorFallback/ErrorFallback'
+import { BackButton } from '../../components/reusable/BackButton/BackButton'
+import SpinnerBg from '../../assets/images/spinner-bg.svg'
+import { motion } from '../../utils/constants/motion.constants'
+import { stringCut } from '../../utils/helpers/string.helpers'
+import { StatusEnum } from '../../@types/Status'
+import { FavoritesType } from '../../@types/Favorites'
+import { useFavorites } from './hook/useFavorites'
+
+import { Ingredients } from './Ingredients/Ingredients'
+import { Instructions } from './Instructions/Instructions'
+import { Tabs } from './Tabs/Tabs'
+import { Cooking } from './Cooking/Cooking'
+import { Nutritions } from './Nutritions/Nutritions'
+
 import {
     DetailsEl,
     DetailsWrapperLeft,
@@ -12,31 +34,8 @@ import {
     DetailsInfo,
     DetailsOverImage,
     DetailsReadyMinutes,
-    DetailsAggregateLikes,
+    DetailsAggregateLikes
 } from './Details.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner, ButtonHeart } from '../../assets/styled/Reused.styled'
-
-import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { useFavorites } from './hook/useFavorites'
-import { detailsAsync } from '../../store/slices/details/detailsAsync'
-
-import { Ingredients } from './Ingredients/Ingredients'
-import { Instructions } from './Instructions/Instructions'
-import { Tabs } from './Tabs/Tabs'
-import { Cooking } from './Cooking/Cooking'
-import { Nutritions } from './Nutritions/Nutritions'
-import { ErrorFallback } from '../../components/ErrorFallback/ErrorFallback'
-import { BackButton } from '../../components/BackButton/BackButton'
-
-import { BiError } from 'react-icons/bi'
-import { BsClock, BsSuitHeartFill } from 'react-icons/bs'
-import { AiOutlineLike } from 'react-icons/ai'
-import SpinnerBg from '../../assets/images/spinner-bg.svg'
-
-import { StatusEnum } from '../../@types/Status'
-import { motion } from '../../utils/constants/motion.constants'
-import { stringCut } from '../../utils/helpers/string.helpers'
-import { FavoritesType } from '../../@types/Favorites'
 
 export const Details: FC = () => {
     const [activeTab, setActiveTab] = useState<string>('instructions')
@@ -46,7 +45,7 @@ export const Details: FC = () => {
     const { favorites } = useAppSelector(state => state.favorites)
     const dispatch = useAppDispatch()
 
-    const { id } = useParams() as any
+    const { id } = useParams() as never
 
     useEffect(() => {
         dispatch(detailsAsync(id))
@@ -59,9 +58,9 @@ export const Details: FC = () => {
 
         if (element?.isActive) {
             return 'red'
-        } else {
-            return 'black'
-        }
+        } 
+        
+        return 'black'
     }
 
     return (
@@ -88,7 +87,7 @@ export const Details: FC = () => {
                                         <ButtonHeart onClick={() => favoritesHandler(details)}>
                                             <BsSuitHeartFill 
                                                 color={getStatus()}
-                                                size='20' 
+                                                size='25' 
                                             />
                                         </ButtonHeart>
 

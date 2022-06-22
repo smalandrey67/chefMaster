@@ -9,7 +9,7 @@ type FilterState = {
 
 const initialState: FilterState = {
    diets,
-   isFilterOpen: false,
+   isFilterOpen: false
 }
 
 const filterSlice = createSlice({

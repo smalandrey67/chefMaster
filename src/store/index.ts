@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
     uploadImage: uploadImageReducer,
     uploadBlog: uploadBlogReducer,
     filter: filterReducer,
-    favorites: favoritesReducer,
+    favorites: favoritesReducer
 })
 
 export const setupStore = () => {

@@ -13,7 +13,7 @@ type UploadImageState = {
 const initialState: UploadImageState = {
    url: null,
    status: StatusEnum.IDKE,
-   error: '',
+   error: ''
 }
 
 const uploadImageSlice = createSlice({
@@ -23,7 +23,7 @@ const uploadImageSlice = createSlice({
       resetUrl: (state): void => {
          state.url = null
          state.status = StatusEnum.IDKE
-      },
+      }
    },
 
    extraReducers: (builder): void => {

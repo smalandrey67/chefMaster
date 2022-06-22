@@ -23,6 +23,10 @@ type TitleProps = {
     margin?: string;
 }
 
+type ErrorWrapperProps = {
+    flexDirection?: string;
+    height: string;    
+}
 
 export const Container = styled.div`
     max-width: 1130px;
@@ -30,6 +34,7 @@ export const Container = styled.div`
     padding: 0 15px;
 `
 
+// #errors base styles
 export const ErrorMessage = styled.span<ErrorMessageProps>`
     color: var(--color-error);
     font-size: var(--fs-small);
@@ -39,6 +44,18 @@ export const ErrorMessage = styled.span<ErrorMessageProps>`
     justify-content: ${({ justifyContent }) => justifyContent || 'center'};
 `
 
+export const ErrorWrapper = styled.div<ErrorWrapperProps>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: ${props => props.flexDirection || 'row'};
+    height: ${props => props.height || 'auto'};
+`
+
+// #spinner base styles
+export const Spinner = styled.img``
+
 export const SpinnerWrapper = styled.div<SpinnerProps>`
     height: ${({ height }) => height || 'auto'};
     display: flex;
@@ -46,8 +63,6 @@ export const SpinnerWrapper = styled.div<SpinnerProps>`
     justify-content: center;
     width: 100%;
 `
-
-export const Spinner = styled.img``
 
 export const SearchedWarning = styled.h4`
     display: grid;
@@ -82,6 +97,7 @@ export const Input = styled.input`
         color: var(--color-alternative);
     }
 `
+
 // #Base styles of back button
 export const ButtonBack = styled(Button)`
     display: flex;
@@ -117,6 +133,14 @@ export const SpecialTitle = styled.span<SpecialTitleProps>`
 // #Recipe article element for each card
 export const RecipeEl = styled.article`
     cursor: pointer;
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+
+        &:hover {
+            transform: scale(1.01)
+        }
+    }
 `
 
 // #RecipesWrapper for cards
@@ -132,6 +156,14 @@ export const ButtonHeart = styled.button`
     position: absolute;
     top: 10px;
     right: 10px;
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+        
+        &:hover {
+            transform: scale(0.9)
+        }
+   }
 `
 
 

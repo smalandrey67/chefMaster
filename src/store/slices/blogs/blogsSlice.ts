@@ -13,7 +13,7 @@ type BlogState = {
 const initialState: BlogState = {
    blogs: [],
    status: StatusEnum.IDKE,
-   error: '',
+   error: ''
 }
 
 const blogsSlice = createSlice({

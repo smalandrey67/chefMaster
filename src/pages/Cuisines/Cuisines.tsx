@@ -7,8 +7,8 @@ import { Container, ErrorMessage, SpinnerWrapper, Spinner, Title, RecipesWrapper
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { cuisineAsync } from '../../store/slices/cuisine/cuisineAsync'
 
-import { CuisineCard } from '../../components/Cards/CuisineCard/CuisineCard'
-import { BackButton } from '../../components/BackButton/BackButton'
+import { CuisineCard } from '../../components/ui/CuisineCard/CuisineCard'
+import { BackButton } from '../../components/reusable/BackButton/BackButton'
 
 import { StatusEnum } from '../../@types/Status'
 import { CuisineResultsType } from '../../@types/Cuisine'
@@ -21,7 +21,7 @@ export const Cuisines: FC = () => {
     const dispatch = useAppDispatch()
     const { cuisine, status, error } = useAppSelector(state => state.cuisine)
 
-    const { type } = useParams() as any
+    const { type } = useParams() as never
  
     useEffect(() => {
         dispatch(cuisineAsync(type))

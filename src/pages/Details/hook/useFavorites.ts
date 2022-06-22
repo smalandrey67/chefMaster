@@ -17,13 +17,13 @@ export const useFavorites = (): UseFavoritesType => {
          id,
          title,
          image,
-         isActive: !status,
+         isActive: !status
       }
 
       dispatch(addFavorite(preparedObject))
    }
 
    return {
-      favoritesHandler,
+      favoritesHandler
    }
 }

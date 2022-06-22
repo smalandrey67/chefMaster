@@ -13,7 +13,7 @@ type SearchedState = {
 const initialState: SearchedState = {
     searched: [],
     status: StatusEnum.IDKE,
-    error: '',
+    error: ''
 }
 
 const searchedSlice = createSlice({

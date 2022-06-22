@@ -13,7 +13,7 @@ import {
     DetailsCookingStep,
     DetailsCookingContent,
     DetailsCookingIngredients,
-    DetailsCookingIngredientsPhoto,
+    DetailsCookingIngredientsPhoto
 } from './Cooking.styled'
 import { SearchedWarning } from '../../../assets/styled/Reused.styled'
 

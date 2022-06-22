@@ -6,7 +6,7 @@ type UploadBlogState = {
 }
 
 const initialState: UploadBlogState = {
-   errorUploadBlog: '',
+   errorUploadBlog: ''
 }
 
 const uploadBlogSlice = createSlice({

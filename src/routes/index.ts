@@ -1,17 +1,11 @@
-import { ComponentType } from 'react'
+import { lazy, ComponentType, LazyExoticComponent, FC } from 'react'
 
-import { Main } from '../pages/Main/Main'
-import { Cuisines } from '../pages/Cuisines/Cuisines'
-import { Details } from '../pages/Details/Details'
-import { Blogs } from '../pages/Blogs/Blogs'
-import { BlogsCreate } from '../pages/BlogsCreate/BlogsCreate'
-import { Searched } from '../pages/Searched/Searched'
-import { Favorites } from '../pages/Favorites/Favorites'
+import { Searched } from '../pages/Searched/Searched';
 import { NotFound } from '../pages/NotFound/NotFound'
 
-export type Route = {
+export type RouteType = {
    path: string;
-   component: ComponentType;
+   component: LazyExoticComponent<FC<string | unknown>> | ComponentType;
 }
 
 enum RoutePath {
@@ -25,13 +19,49 @@ enum RoutePath {
    NOTFOUND = '*',
 }
 
-export const routes: Route[] = [
+const Main = lazy(() =>
+   import(/* webpackChunkName: "Main" */'../pages/Main/Main').then(module => ({
+      default: module.Main
+   }))
+)
+
+const Cuisines = lazy(() =>
+   import('../pages/Cuisines/Cuisines').then(module => ({
+      default: module.Cuisines
+   }))
+)
+
+const Details = lazy(() =>
+   import(/* webpackChunkName: "Details" */'../pages/Details/Details').then(module => ({
+      default: module.Details
+   }))
+)
+
+const Blogs = lazy(() => 
+   import(/* webpackChunkName: "Blogs" */'../pages/Blogs/Blogs').then(module => ({
+      default: module.Blogs
+   }))
+)
+
+const BlogsCreate = lazy(() => 
+   import(/* webpackChunkName: "BlogsCreate" */'../pages/BlogsCreate/BlogsCreate').then(module => ({
+      default: module.BlogsCreate
+   }))
+)
+
+const Favorites = lazy(() => 
+   import(/* webpackChunkName: "Favorites" */'../pages/Favorites/Favorites').then(module => ({
+      default: module.Favorites
+   }))
+)
+
+export const routes: RouteType[] = [
    { path: RoutePath.MAIN, component: Main },
    { path: RoutePath.CUISINE, component: Cuisines },
    { path: RoutePath.DETAILS, component: Details },
    { path: RoutePath.BLOGS, component: Blogs },
-   { path: RoutePath.BLOGSCREATE, component: BlogsCreate}, 
+   { path: RoutePath.BLOGSCREATE, component: BlogsCreate },
    { path: RoutePath.SEARCHED, component: Searched },
    { path: RoutePath.FAVORITES, component: Favorites },
-   { path: RoutePath.NOTFOUND, component: NotFound},
+   { path: RoutePath.NOTFOUND, component: NotFound }
 ]

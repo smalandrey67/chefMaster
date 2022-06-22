@@ -1,14 +1,16 @@
 import { FC } from 'react'
 
 import { FavoritesEl } from './Favorites.styled'
-import { Container, RecipesWrapper } from '../../assets/styled/Reused.styled'
+import { Container, RecipesWrapper, Title } from '../../assets/styled/Reused.styled'
 
 import { useAppSelector } from '../../hooks/useRedux'
 
 import { FavoritesType } from '../../@types/Favorites'
 import { motion } from '../../utils/constants/motion.constants'
 
-import { FavoriteCard } from '../../components/Cards/FavoriteCard/FavoriteCard'
+import { FavoriteCard } from '../../components/ui/FavoriteCard/FavoriteCard'
+import { BackButton } from '../../components/reusable/BackButton/BackButton'
+import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
 
 export const Favorites: FC = () => {
    const { favorites } = useAppSelector(state => state.favorites)
@@ -16,8 +18,18 @@ export const Favorites: FC = () => {
    return (
       <FavoritesEl {...motion}>
          <Container>
+            <BackButton>
+               <Title>Favorites</Title>
+            </BackButton>
+
             <RecipesWrapper>
-               {favorites.map((item: FavoritesType): JSX.Element => <FavoriteCard key={item.id} {...item} />)}
+               {
+                  favorites.length ?
+                  favorites.map((item: FavoritesType): JSX.Element => <FavoriteCard key={item.id} {...item} />)
+                     :
+                     <ErrorNoResult description='No favorites yet' height='50vh' />
+               }
+
             </RecipesWrapper>
          </Container>
       </FavoritesEl>

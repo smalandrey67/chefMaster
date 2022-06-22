@@ -13,7 +13,7 @@ type CuisineState = {
 const initialState: CuisineState = {
     cuisine: [],
     status: StatusEnum.IDKE,
-    error: '',
+    error: ''
 }
 
 const cuisineSlice = createSlice({

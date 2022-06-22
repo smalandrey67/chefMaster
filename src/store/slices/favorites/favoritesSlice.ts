@@ -6,7 +6,7 @@ type FavoritesState = {
 }
 
 const initialState: FavoritesState = {
-   favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites') || '') : [],
+   favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites') || '') : []
 }
 
 const favoritesSlice = createSlice({
@@ -32,7 +32,7 @@ const favoritesSlice = createSlice({
             localStorage.setItem('favorites', JSON.stringify(state.favorites))
          }
 
-      },
+      }
    }
 })
 

@@ -9,7 +9,10 @@ export const NotFoundWrapper = styled.div`
     height: 40vh;
 ` 
 
-export const NotFoundImageWrapper = styled.div``
+export const NotFoundImageWrapper = styled.div`
+    width: 140px;
+    height: 140px;
+`
 
 export const NotFoundImage = styled.img`
     width: 100%;

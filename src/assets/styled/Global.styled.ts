@@ -6,7 +6,7 @@ import '@splidejs/splide/dist/css/splide.min.css'
 export const Global = createGlobalStyle`
     ${normalize}
 
-    *{
+    * {
         box-sizing: border-box;
     }
 

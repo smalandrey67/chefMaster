@@ -19,5 +19,5 @@ export const diets: DietType[] = [
    { diet: DietsName.VEGETARIAN, active: false, id: nanoid() },
    { diet: DietsName.PESCETARIAN, active: false, id: nanoid() },
    { diet: DietsName.PALEO, active: false, id: nanoid() },
-   { diet: DietsName.WHOLE30, active: false, id: nanoid() },
+   { diet: DietsName.WHOLE30, active: false, id: nanoid() }
 ]
