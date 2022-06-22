@@ -13,7 +13,7 @@ type DetailsState = {
 const initialState: DetailsState = {
     details: {} as DetailsType,
     status: StatusEnum.IDKE,
-    error: '',
+    error: ''
 }
 
 const detailsS = createSlice({

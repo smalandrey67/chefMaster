@@ -1,5 +1,5 @@
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 
 import { UploadImageType } from '../../../@types/UploadImage'
 import { PostType, SubmitBlogType } from '../../../@types/Blogs'
@@ -12,11 +12,11 @@ import { resetUrl } from '../../../store/slices/uploadImage/uploadImageSlice'
 export const useSubmit = (
    url: UploadImageType | null,
    setFileName: React.Dispatch<React.SetStateAction<string>>,
-   reset: UseFormReset<SubmitBlogType>,
+   reset: UseFormReset<SubmitBlogType>
 ): UseSubmitType => {
    
    const dispatch = useAppDispatch()
-   const navigate = useNavigate()
+   const navigate: NavigateFunction = useNavigate()
 
    const submitHandler: SubmitHandler<SubmitBlogType> = (data): void => {
       if (url) {
@@ -35,6 +35,6 @@ export const useSubmit = (
    }
 
    return {
-      submitHandler,
+      submitHandler
    }
 }

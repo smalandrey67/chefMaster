@@ -13,7 +13,7 @@ type AnswerState = {
 const initialState: AnswerState = {
    answer: {} as AnswerType,
    status: StatusEnum.IDKE,
-   error: '',
+   error: ''
 }
 
 const answerSlice = createSlice({

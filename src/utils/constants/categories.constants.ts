@@ -27,7 +27,7 @@ export const categories: CategoriesType[] = [
    { cuisine: CategoriesCuisine.KOREAN, Icon: GiFoodChain },
    { cuisine: CategoriesCuisine.SPANISH, Icon: GiSlicedBread },
    { cuisine: CategoriesCuisine.GERMAN, Icon: GiPotato },
-   { cuisine: CategoriesCuisine.VIETNAMESE, Icon: GiTacos },
+   { cuisine: CategoriesCuisine.VIETNAMESE, Icon: GiTacos }
 ]
 
 

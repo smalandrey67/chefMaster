@@ -11,7 +11,6 @@ export const getDetails = (id: string): string => {
 }
 
 export const getSearched = (name: string): string => {
-  
    return `/complexSearch?apiKey=${process.env.REACT_APP_KEY}&query=${name}`
 }
 

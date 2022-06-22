@@ -14,7 +14,7 @@ export const answerAsync = createAsyncThunk<AnswerType, string, { rejectValue: s
          const response = await instance.get<AnswerType>(getAnswer(question))
 
          return response.data
-      }catch (e) {
+      } catch (e) {
          if (axios.isAxiosError(e)) {
             return rejectWithValue(e.message)
          }

@@ -10,6 +10,6 @@ export const splideOptions = (page: number): SplideType => {
       perPage: page,
       arrows: false,
       pagination: false,
-      gap: '10px',
+      gap: '10px'
    }
 }  

@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Container } from '../../assets/styled/Reused.styled'
 import { NotFoundWrapper, NotFoundImageWrapper, NotFoundImage, NotFoundTitle, NotFoundRedirect } from './NotFound.styled'
 
-import Error from '../../assets/images/error.png'
+import Error from '../../assets/images/error.svg'
 
 export const NotFound: FC = () => {
     return (

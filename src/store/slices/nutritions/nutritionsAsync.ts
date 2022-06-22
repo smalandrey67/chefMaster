@@ -10,7 +10,7 @@ export const nutritionsAsync = createAsyncThunk<NutritionType, string, { rejectV
     'nutritions/nutritionsAsync',
 
     async (id, { rejectWithValue }) => {
-        try{
+        try {
             // if (localStorage.getItem('nutritions')) {
             //     return JSON.parse(localStorage.getItem('nutritions') || '')
             // }
@@ -21,7 +21,7 @@ export const nutritionsAsync = createAsyncThunk<NutritionType, string, { rejectV
             // localStorage.setItem('nutritions', JSON.stringify(response.data))
 
             return response.data
-        }catch(e){
+        } catch (e) {
             if (axios.isAxiosError(e)) {
                 return rejectWithValue(e.message)
             }

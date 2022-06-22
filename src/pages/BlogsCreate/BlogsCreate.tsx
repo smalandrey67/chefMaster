@@ -20,7 +20,7 @@ import {
    BlogsCreatePreview,
    BlogsCreatePreviewImage,
    BlogsCreateFieldWrapper,
-   BlogsCreateLabelWrapper,
+   BlogsCreateLabelWrapper
 } from './BlogsCreate.styled'
 
 import { StatusEnum } from '../../@types/Status'

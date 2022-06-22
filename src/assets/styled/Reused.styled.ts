@@ -23,6 +23,10 @@ type TitleProps = {
     margin?: string;
 }
 
+type ErrorWrapperProps = {
+    flexDirection?: string;
+    height: string;    
+}
 
 export const Container = styled.div`
     max-width: 1130px;
@@ -37,6 +41,15 @@ export const ErrorMessage = styled.span<ErrorMessageProps>`
     align-items: flex-start;
     gap: 3px;
     justify-content: ${({ justifyContent }) => justifyContent || 'center'};
+`
+
+export const ErrorWrapper = styled.div<ErrorWrapperProps>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: ${props => props.flexDirection || 'row'};
+    height: ${props => props.height || 'auto'};
 `
 
 export const SpinnerWrapper = styled.div<SpinnerProps>`
@@ -117,6 +130,14 @@ export const SpecialTitle = styled.span<SpecialTitleProps>`
 // #Recipe article element for each card
 export const RecipeEl = styled.article`
     cursor: pointer;
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+
+        &:hover {
+            transform: scale(1.01)
+        }
+    }
 `
 
 // #RecipesWrapper for cards
@@ -132,6 +153,14 @@ export const ButtonHeart = styled.button`
     position: absolute;
     top: 10px;
     right: 10px;
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+        
+        &:hover {
+            transform: scale(0.9)
+        }
+   }
 `
 
 

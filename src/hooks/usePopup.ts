@@ -9,7 +9,6 @@ export const usePopup = (): UsePopupType => {
    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
    const dispatch = useAppDispatch()
 
-
    useEffect(() => {
       if (popupIsActive) {
          document.body.style.overflow = 'hidden'
@@ -30,6 +29,6 @@ export const usePopup = (): UsePopupType => {
 
    return {
       popupIsActive,
-      popupHandler,
+      popupHandler
    }
 }

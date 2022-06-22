@@ -1,0 +1,38 @@
+{
+   "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+   ],
+   "rules": {
+      "no-console": "warn",
+      "quotes": [ "warn", "single"],
+      "jsx-quotes": ["warn", "prefer-single"],
+      "no-empty": ["warn", {
+         "allowEmptyCatch": true
+      }],
+      "no-empty-function": "warn",
+      "array-bracket-spacing": "warn",
+      "comma-dangle": [
+         "warn",
+         {
+            "arrays": "never",
+            "objects": "never",
+            "imports": "never",
+            "exports": "never",
+            "functions": "never"
+         }
+      ],
+      "keyword-spacing": [
+         "warn",
+         {
+            "after": true
+         }
+      ],
+      "no-else-return": "warn",
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "arrow-spacing": "warn"
+   }
+}

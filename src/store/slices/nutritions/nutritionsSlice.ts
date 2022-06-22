@@ -13,7 +13,7 @@ type NutritionState = {
 const initialState: NutritionState = {
     nutrition: {} as NutritionType,
     status: StatusEnum.IDKE,
-    error: '',
+    error: ''
 }
 
 const nutritionsSlice = createSlice({

@@ -13,7 +13,7 @@ type RandomRecipeState = {
 const initialState: RandomRecipeState = {
     recipes: [],
     status: StatusEnum.IDKE,
-    error: '',
+    error: ''
 }
 
 const recipesSlice = createSlice({
