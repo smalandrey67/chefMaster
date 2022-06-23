@@ -56,7 +56,7 @@ export const BlogsCreate: FC = () => {
                            {...register('author', {
                               required: 'Field is required',
                               minLength: { value: 3, message: 'Min 3 symbols' },
-                              maxLength: { value: 30, message: 'Max 20 symbols' },
+                              maxLength: { value: 30, message: 'Max 20 symbols' }
                            })}
                            placeholder='Author'
                            type='text'
@@ -73,7 +73,7 @@ export const BlogsCreate: FC = () => {
                            {...register('title', {
                               required: 'Field is required',
                               minLength: { value: 3, message: 'Min 3 symbols' },
-                              maxLength: { value: 30, message: 'Max 20 symbols' },
+                              maxLength: { value: 30, message: 'Max 20 symbols' }
                            })}
                            placeholder='Title'
                            type='text'
@@ -88,7 +88,7 @@ export const BlogsCreate: FC = () => {
                         <BlogsCreateTextarea
                            {...register('description', {
                               required: 'Field is required',
-                              minLength: { value: 3, message: 'Min 3 symbols' },
+                              minLength: { value: 3, message: 'Min 3 symbols' }
                            })}
                            placeholder='Description'
                            autoComplete='off'
@@ -103,7 +103,7 @@ export const BlogsCreate: FC = () => {
                         <BlogsCreateLabelFile>
                            <BlogsCreateInputFile
                               {...register('file', {
-                                 required: 'Field is required',
+                                 required: 'Field is required'
                               })}
                               type='file'
                               accept={extension.join(',')}

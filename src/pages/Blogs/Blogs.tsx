@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { blogsAsync } from '../../store/slices/blogs/blogsAsync'
 
 import { BlogsEl, BlogsAdd, BlogsWrapper } from './Blogs.styled'
-import { Container, SpinnerWrapper, Spinner, ErrorMessage, SearchedWarning } from '../../assets/styled/Reused.styled'
+import { Container, SpinnerWrapper, Spinner, ErrorMessage } from '../../assets/styled/Reused.styled'
 
 import { BlogCard } from '../../components/ui/BlogCard/BlogCard'
 import { BackButton } from '../../components/reusable/BackButton/BackButton'

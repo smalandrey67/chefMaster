@@ -50,7 +50,7 @@ export const AnswerFormInput = styled(Input).attrs({
 
 export const AnswerFormButton = styled(Button).attrs({
    type: 'submit',
-   name: 'tab',
+   name: 'tab'
 })`
    flex: 0 1 30%;
 
