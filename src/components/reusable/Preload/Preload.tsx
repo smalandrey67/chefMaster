@@ -4,7 +4,6 @@ import { HeaderBlogsWrapper, HeaderLogo } from '../../ui/Header/Header.styled'
 import { ImSpoonKnife } from 'react-icons/im'
 
 export const Preload = () => {
-   
    return (
       <SpinnerWrapper height='50vh'>
          <HeaderBlogsWrapper>

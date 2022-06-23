@@ -11,7 +11,6 @@ type ErrorNotResultProps = {
 }
 
 export const ErrorNoResult: FC<ErrorNotResultProps> = ({ description, height }) => {
-   
    return (
       <ErrorWrapper height={height} flexDirection='column'>
          <ErrorNoResultWrapperImage>
