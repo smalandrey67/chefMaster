@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react'
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
@@ -38,8 +38,6 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
       reset
    } = useForm<SubmitAnswerType>({ mode: 'onSubmit' })
 
-   const inputRef = useRef<HTMLInputElement>(null) 
-
    const dispatch = useAppDispatch()
    const { answer, status, error } = useAppSelector(state => state.answer)
 
@@ -47,10 +45,6 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
       dispatch(answerAsync(data.question))
       reset()
    }
-
-   useEffect(() => {
-      inputRef.current?.focus()
-   }, [])
 
    return (
       <Popup>
