@@ -68,7 +68,6 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
                   {...register('question', {
                      required: 'Field is required'
                   })}
-                  ref={inputRef}
                />
                <AnswerFormButton>ask</AnswerFormButton>
             </AnswerFormBody>
