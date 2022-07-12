@@ -17,6 +17,8 @@ import { useGetBlogsQuery } from '../../services/BlogsService'
 export const Blogs: FC = () => {
    const { data: blogs, error, isLoading } = useGetBlogsQuery()
 
+   console.log(blogs)
+
    return (
       <BlogsEl>
          <Container>

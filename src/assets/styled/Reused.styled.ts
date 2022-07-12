@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { ErrorMessageProps, SpinnerProps, MarginProps, SpecialTitleProps, TitleProps, ErrorWrapperProps } from './Styled.types'
 
