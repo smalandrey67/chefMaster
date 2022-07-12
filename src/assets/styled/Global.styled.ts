@@ -3,8 +3,45 @@ import { normalize } from 'styled-normalize'
 
 import '@splidejs/splide/dist/css/splide.min.css'
 
+import QuicksandRegularWoff2 from '../fonts/Quicksand-Regular.woff2'
+import QuicksandRegularWoff from '../fonts/Quicksand-Regular.woff'
+import QuicksandSemiBoldWoff2 from '../fonts/Quicksand-SemiBold.woff2'
+import QuicksandSemiBoldWoff from '../fonts/Quicksand-SemiBold.woff'
+import QuicksandBoldWoff2 from '../fonts/Quicksand-Bold.woff2'
+import QuicksandBoldWoff from '../fonts/Quicksand-Bold.woff'
+
 export const Global = createGlobalStyle`
     ${normalize}
+
+    @font-face {
+        font-family: 'Quicksand';
+        src: local('Quicksand'), local('Quicksand'),
+        url(${QuicksandRegularWoff2}) format('woff2'),
+        url(${QuicksandRegularWoff}) format('woff');
+        font-weight: 400;
+        font-display: swap;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Quicksand';
+        src: local('Quicksand'), local('Quicksand'),
+        url(${QuicksandSemiBoldWoff2}) format('woff2'),
+        url(${QuicksandSemiBoldWoff}) format('woff');
+        font-weight: 600;
+        font-display: swap;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Quicksand';
+        src: local('Quicksand'), local('Quicksand'),
+        url(${QuicksandBoldWoff2}) format('woff2'),
+        url(${QuicksandBoldWoff}) format('woff');
+        font-weight: 700;
+        font-display: swap;
+        font-style: normal;
+    }
 
     * {
         box-sizing: border-box;
@@ -68,5 +105,5 @@ export const Global = createGlobalStyle`
     ul {
         list-style: none;
     }
-` 
+`
 

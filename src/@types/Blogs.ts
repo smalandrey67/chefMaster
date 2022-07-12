@@ -21,5 +21,12 @@ export type BlogType = Omit<BlogsType, 'createdAt' | 'id'>
 
 export type PostType = Omit<BlogsType, 'avatar' | 'createdAt' | 'id'>
 
+export type PostSubmit = {
+   title: string;
+   file: string;
+   author: string;
+   description: string;
+}
+
 export type UploadBlogType = Omit<BlogsType, 'avatar' | 'createdAt'>
 

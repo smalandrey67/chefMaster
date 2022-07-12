@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { Global } from './assets/styled/Global.styled'
 
 import { Home } from './Home'
-import { setupStore } from './store'
+import { setupStore } from './store/store'
 
 const store = setupStore()
 
@@ -13,8 +13,8 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <Provider store={store}>
-    <Global />
     <BrowserRouter>
+      <Global />
       <Home />
     </BrowserRouter>
   </Provider>

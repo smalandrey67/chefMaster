@@ -1,32 +1,6 @@
 import styled from 'styled-components'
 
-type ErrorMessageProps = {
-    justifyContent?: string;
-}
-
-type SpinnerProps = {
-    height: string;
-}
-
-type MarginProps = {
-    margin?: string;
-}
-
-type SpecialTitleProps = {
-    margin?: string; 
-    fontWeight?: string;
-    color?: string;
-    fontSize?: string;
-}
-
-type TitleProps = {
-    margin?: string;
-}
-
-type ErrorWrapperProps = {
-    flexDirection?: string;
-    height: string;    
-}
+import { ErrorMessageProps, SpinnerProps, MarginProps, SpecialTitleProps, TitleProps, ErrorWrapperProps } from './Styled.types'
 
 export const Container = styled.div`
     max-width: 1130px;
@@ -62,16 +36,6 @@ export const SpinnerWrapper = styled.div<SpinnerProps>`
     align-items: center;
     justify-content: center;
     width: 100%;
-`
-
-export const SearchedWarning = styled.h4`
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-content: center;
-    margin: 15px 0 0 0;
-    gap: 5px;
-    font-size: var(--fs-md);
 `
 
 // #Base styles of button

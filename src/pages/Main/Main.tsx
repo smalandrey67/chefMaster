@@ -1,25 +1,24 @@
 import { FC } from 'react'
 import ReactDOM from 'react-dom'
 
-import { Recipes } from '../../components/ui/Recipes/Recipes'
-import { About } from '../../components/ui/About/About'
-import { Answer } from '../../components/ui/Answer/Answer'
+import { Recipes } from '../../components/business/Recipes/Recipes'
+import { About } from '../../components/business/About/About'
+import { Answer } from '../../components/business/Answer/Answer'
 
 import { MainEl, MainChatWrapper } from './Main.styled'
-
 import { BsChatRightText } from 'react-icons/bs'
 import { usePopup } from '../../hooks/usePopup'
 
 export const Main: FC = () => {
     const { popupIsActive, popupHandler } = usePopup()
-
+    
     return (
         <MainEl>
             <Recipes />
             <About />
 
-            {/* The button which open the chat for answer a question */}
-            <MainChatWrapper onClick={() => popupHandler()}>
+            {/* The button which open the chat for answering */}
+            <MainChatWrapper onClick={popupHandler}>
                 <BsChatRightText
                     size='25'
                     cursor='pointer'
@@ -27,12 +26,10 @@ export const Main: FC = () => {
                 />
             </MainChatWrapper>
 
-            {
-                popupIsActive &&
+            {popupIsActive &&
                 ReactDOM.createPortal(
                     <Answer popupHandler={popupHandler} />, document.getElementById('popup')!
-                )
-            }
+                )}
         </MainEl>
     )
 }

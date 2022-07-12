@@ -1,26 +1,28 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 
-import { StatusEnum } from './Status'
 import { UploadImageType } from './UploadImage'
-import { AnswerType } from './Answer'
 import { SubmitBlogType } from './Blogs'
 import { DetailsType } from './Details'
 
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
+import { SerializedError } from '@reduxjs/toolkit'
+
 export type UseImageType = {
-   imageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+   changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
    fileName: string;
    setFileName: Dispatch<SetStateAction<string>>;
-   url: UploadImageType | null;
-   status: StatusEnum;
-   error: string;
+   image: UploadImageType | undefined;
+   isLoading: boolean;
+   errorImage: FetchBaseQueryError | SerializedError | undefined;
 }
 
 export type UsePopupType = {
    popupIsActive: boolean;
-   popupHandler: (answer?: AnswerType | null) => void;
+   popupHandler: () => void;
 }
 
 export type UseSubmitType = {
+   errorBlog: FetchBaseQueryError | SerializedError | undefined;
    submitHandler: (data: SubmitBlogType) => void;
 }
 
@@ -29,9 +31,9 @@ export type UseBackType = {
 }
 
 export type UseFavoritesType = {
-   favoritesHandler: (data: DetailsType) => void;
+   favoritesHandler: (data: DetailsType | undefined) => void;
 }
 
 export type UseRedirectType = {
-   navigateHandler: (id: number) => void;
+   navigateHandler: (query: string, params?: string | number) => void;
 }

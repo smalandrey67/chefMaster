@@ -1,28 +1,32 @@
 import { FC } from 'react'
 
+import { selectTabName, changeTabName } from '../../../store/slices/tabsSlice'
+import { useAppSelector, useAppDispatch } from '../../../hooks/useRedux'
+
 import { DetailsInfoButton, DetailsInfoWrapper } from './Tabs.styled'
 
-type InstructionsProps = {
-    activeTab: string;
-    tabHandler: (string: string) => void;
-}
+export const Tabs: FC = () => {
+    const dispatch = useAppDispatch()
+    const tabName = useAppSelector(selectTabName)
 
-export const Tabs: FC<InstructionsProps> = ({ activeTab, tabHandler }) => {
+    const tabHandler = (name: string) => {
+        dispatch(changeTabName(name))
+    }
+
     return (
         <DetailsInfoWrapper>
             <DetailsInfoButton
-                className={activeTab === 'instructions' ? 'active' : ''}
+                className={`${tabName === 'instructions' && 'active'}`}
                 onClick={() => tabHandler('instructions')}
             >Instructions</DetailsInfoButton>
 
             <DetailsInfoButton
-                className={activeTab === 'ingredients' ? 'active' : ''}
+                className={`${tabName === 'ingredients' && 'active'}`}
                 onClick={() => tabHandler('ingredients')}
-             
             >Ingredients</DetailsInfoButton>
 
             <DetailsInfoButton
-                className={activeTab === 'cooking' ? 'active' : ''}
+                className={`${tabName === 'cooking' && 'active'}`}
                 onClick={() => tabHandler('cooking')}
             >Cooking</DetailsInfoButton>
         </DetailsInfoWrapper>

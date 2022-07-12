@@ -1,50 +1,39 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useAppSelector, useAppDispatch } from '../../hooks/useRedux'
-import { searchedAsync } from '../../store/slices/searched/searchedAsync'
-
-import SpinnerBg from '../../assets/images/spinner-bg.svg'
-import { CuisineCard } from '../../components/ui/CuisineCard/CuisineCard'
+import { CuisineCard } from '../../components/business/CuisineCard/CuisineCard'
 import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
 
+import SpinnerBg from '../../assets/images/icons/spinner-bg.svg'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from '../../assets/styled/Reused.styled'
 
 import { BiError } from 'react-icons/bi'
-
-import { StatusEnum } from '../../@types/Status'
 import { CuisineResultsType } from '../../@types/Cuisine'
+import { useGetSearchedQuery } from '../../services/RecipesService'
 
 export const Searched: FC = () => {
-    const dispatch = useAppDispatch()
-    const { searched, status, error } = useAppSelector(state => state.searched)
-
-    const { name } = useParams() as never
-
-    useEffect(() => {
-        dispatch(searchedAsync(name))
-    }, [name, dispatch])
+    const params = useParams<{ name: string }>()
+    const { data: recipes, error, isLoading } = useGetSearchedQuery(params.name)
 
     return (
         <Container>
             <RecipesWrapper>
-                {status === StatusEnum.PENDING ?
+
+                {/* if isLoading true and data?.results actually are so we are rendering them. If not show the error result */}
+                {isLoading ?
                     <SpinnerWrapper height='50vh'>
                         <Spinner src={SpinnerBg} alt='spinner' />
                     </SpinnerWrapper>
                     :
-                    searched.length ?
-                        searched.map((recipe: CuisineResultsType): JSX.Element =>
+                    recipes?.results.length ?
+                        recipes.results.map((recipe: CuisineResultsType): JSX.Element =>
                             <CuisineCard key={recipe.id} {...recipe} />
                         )
                         :
                         <ErrorNoResult description='Nothing was found' height='50vh' />
                 }
 
-                {error && <ErrorMessage>
-                    <BiError />
-                    {error}
-                </ErrorMessage>}
+                {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
             </RecipesWrapper>
         </Container>
     )

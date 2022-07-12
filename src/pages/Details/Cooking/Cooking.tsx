@@ -1,36 +1,33 @@
-import { FC, useState, Fragment } from 'react'
-
-import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from '../../../@types/Details'
+import { FC, useState, Fragment, memo } from 'react'
 
 import { motion } from '../../../utils/constants/motion.constants'
 import { stringCut } from '../../../utils/helpers/string.helpers'
 
 import { DetailsList } from '../Ingredients/Ingredients.styled'
 import {
-    DetailsCookingSubtitle,
-    DetailsCookingItem,
-    DetailsCookingHeader,
-    DetailsCookingStep,
-    DetailsCookingContent,
+    DetailsCookingSubtitle, DetailsCookingItem, DetailsCookingHeader, DetailsCookingStep, DetailsCookingContent,
     DetailsCookingIngredients,
     DetailsCookingIngredientsPhoto
 } from './Cooking.styled'
-import { SearchedWarning } from '../../../assets/styled/Reused.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
-import { BiError } from 'react-icons/bi'
+
+import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from '../../../@types/Details'
+import { ErrorNoResult } from '../../../components/reusable/ErrorNoResult/ErrorNoResult'
 
 type CookingProps = {
-    details: DetailsType
+    details: DetailsType | undefined;
 }
 
-export const Cooking: FC<CookingProps> = ({ details }) => {
+export const Cooking: FC<CookingProps> = memo(({ details }) => {
     const [stepIsActive, setStepIsActive] = useState<string | null>(null)
 
     const stepHandler = (index: string): void => {
         if (index === stepIsActive) {
-            return setStepIsActive(null)
+            setStepIsActive(null)
+
+            return
         }
 
         setStepIsActive(index)
@@ -38,23 +35,14 @@ export const Cooking: FC<CookingProps> = ({ details }) => {
 
     return (
         <DetailsList {...motion} >
-
-            {!details.analyzedInstructions.length ?
-                <SearchedWarning>
-                    <BiError size={20} />
-                    No instructions for cooking
-                </SearchedWarning> : null}
-
-
-            {details.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index: number): JSX.Element => (
-                <Fragment key={index}> {/* Item name possible could be empty string. There is no another way to give a unique key */}
+            {details?.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index: number): JSX.Element => (
+                <Fragment key={index}> {/* Item name possible could be the empty string. There is no another way to give an unique key */}
 
                     {name.length ?
                         <DetailsCookingSubtitle>
                             <IoFootstepsSharp />
                             {stringCut(name, 40)}
-                        </DetailsCookingSubtitle>
-                        : null}
+                        </DetailsCookingSubtitle> : null}
 
 
                     {steps.map(({ number, step, ingredients }: CookingStepType): JSX.Element =>
@@ -76,7 +64,6 @@ export const Cooking: FC<CookingProps> = ({ details }) => {
                                             alt={name}
                                         />
                                     )}
-
                                 </DetailsCookingIngredients>
                                 {step}
                             </DetailsCookingContent>
@@ -84,8 +71,10 @@ export const Cooking: FC<CookingProps> = ({ details }) => {
                     )}
                 </Fragment>
             ))}
+
+            {!details?.analyzedInstructions.length && <ErrorNoResult description='No instruction for cooking' height='25vh' />}
         </DetailsList>
     )
-}
+})
 
 

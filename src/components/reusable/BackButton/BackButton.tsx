@@ -4,7 +4,6 @@ import { BackButtonWrapper } from './BackButton.styled'
 import { ButtonBack } from '../../../assets/styled/Reused.styled'
 
 import { useBack } from '../../../hooks/useBack'
-
 import { IoMdArrowRoundBack } from 'react-icons/io'
 
 type BackButtonProps = {

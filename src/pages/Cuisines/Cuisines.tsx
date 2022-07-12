@@ -1,52 +1,38 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { CuisineEl } from './Cuisines.styled'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner, Title, RecipesWrapper } from '../../assets/styled/Reused.styled'
+import SpinnerBg from '../../assets/images/icons/spinner-bg.svg'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { cuisineAsync } from '../../store/slices/cuisine/cuisineAsync'
-
-import { CuisineCard } from '../../components/ui/CuisineCard/CuisineCard'
+import { CuisineCard } from '../../components/business/CuisineCard/CuisineCard'
 import { BackButton } from '../../components/reusable/BackButton/BackButton'
 
-import { StatusEnum } from '../../@types/Status'
 import { CuisineResultsType } from '../../@types/Cuisine'
-
 import { motion } from '../../utils/constants/motion.constants'
-import SpinnerBg from '../../assets/images/spinner-bg.svg'
 import { BiError } from 'react-icons/bi'
+import { useGetCuisineQuery } from '../../services/RecipesService'
 
 export const Cuisines: FC = () => {
-    const dispatch = useAppDispatch()
-    const { cuisine, status, error } = useAppSelector(state => state.cuisine)
-
-    const { type } = useParams() as never
- 
-    useEffect(() => {
-        dispatch(cuisineAsync(type))
-    }, [type, dispatch])
+    const params = useParams<{ type: string }>()
+    const { data: cuisines, error, isLoading } = useGetCuisineQuery(params.type)
 
     return (
         <CuisineEl {...motion} >
             <Container>
-
                 <BackButton>
-                    <Title>{type}</Title>
+                    <Title>{params?.type}</Title>
                 </BackButton>
              
                 <RecipesWrapper>
-                    {status === StatusEnum.PENDING ?
+                    {isLoading ?
                         <SpinnerWrapper height='40vh'>
                             <Spinner src={SpinnerBg} alt='spinner' />
                         </SpinnerWrapper>
                         :
-                        cuisine.map((recipe: CuisineResultsType): JSX.Element => <CuisineCard key={recipe.id} {...recipe} />)
+                        cuisines?.results.map((recipe: CuisineResultsType): JSX.Element => <CuisineCard key={recipe.id} {...recipe} />)
                     }
-                    {error && <ErrorMessage>
-                        <BiError />
-                        {error}
-                    </ErrorMessage>}
+                    {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
                 </RecipesWrapper>
             </Container>
         </CuisineEl>

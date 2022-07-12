@@ -1,40 +1,34 @@
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
-import { NavigateFunction, useNavigate } from 'react-router-dom'
 
 import { UploadImageType } from '../../../@types/UploadImage'
-import { PostType, SubmitBlogType } from '../../../@types/Blogs'
+import { PostSubmit, SubmitBlogType } from '../../../@types/Blogs'
 import { UseSubmitType } from '../../../@types/Hooks'
 
-import { useAppDispatch } from '../../../hooks/useRedux'
-import { uploadBlogAsync } from '../../../store/slices/uploadBlog/uploadBlogAsync'
-import { resetUrl } from '../../../store/slices/uploadImage/uploadImageSlice'
+import { useUploadBlogMutation } from '../../../services/BlogsService'
+import { useRedirect } from '../../../hooks/useRedirect'
 
 export const useSubmit = (
-   url: UploadImageType | null,
+   image: UploadImageType | undefined,
    setFileName: React.Dispatch<React.SetStateAction<string>>,
    reset: UseFormReset<SubmitBlogType>
 ): UseSubmitType => {
-   
-   const dispatch = useAppDispatch()
-   const navigate: NavigateFunction = useNavigate()
+   const [uploadBlog, { error: errorBlog }] = useUploadBlogMutation()
+   const { navigateHandler } = useRedirect()
 
-   const submitHandler: SubmitHandler<SubmitBlogType> = (data): void => {
-      if (url) {
-         const post: PostType = { ...data, file: url }
+   const submitHandler: SubmitHandler<SubmitBlogType> = async (data): Promise<void> => {
+      if (image) {
+         const post: PostSubmit = { ...data, file: image.secure_url }
 
-         dispatch(uploadBlogAsync({ post, navigateHandler }))
-         dispatch(resetUrl())
-
+         await uploadBlog(post).unwrap()
+         
+         navigateHandler('/blogs')
          setFileName('')
          reset()
       }
    }
 
-   const navigateHandler = (): void => {
-      navigate('/blogs')
-   }
-
    return {
+      errorBlog,
       submitHandler
    }
 }

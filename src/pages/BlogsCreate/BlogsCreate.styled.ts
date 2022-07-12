@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 import { Input, Button } from '../../assets/styled/Reused.styled'
 
-import { UploadImageType } from '../../@types/UploadImage'
-
 type BlogsCreatePreviewImageProps = {
-   url: UploadImageType | null;
+   url: string | undefined;
 }
 
 export const BlogsCreateEl = styled.section``

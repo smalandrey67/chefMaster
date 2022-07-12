@@ -1,59 +1,41 @@
-import { FC, useEffect } from 'react'
-
-import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
-import { blogsAsync } from '../../store/slices/blogs/blogsAsync'
+import { FC } from 'react'
 
 import { BlogsEl, BlogsAdd, BlogsWrapper } from './Blogs.styled'
 import { Container, SpinnerWrapper, Spinner, ErrorMessage } from '../../assets/styled/Reused.styled'
+import SpinnerBg from '../../assets/images/icons/spinner-bg.svg'
 
-import { BlogCard } from '../../components/ui/BlogCard/BlogCard'
+import { BlogCard } from '../../components/business/BlogCard/BlogCard'
 import { BackButton } from '../../components/reusable/BackButton/BackButton'
 import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
-import SpinnerBg from '../../assets/images/spinner-bg.svg'
-
-import { StatusEnum } from '../../@types/Status'
-import { BlogsType } from '../../@types/Blogs'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'
 
-export const Blogs: FC = () => {
-   const dispatch = useAppDispatch()
-   const { blogs, status, error } = useAppSelector(state => state.blogs)
+import { BlogsType } from '../../@types/Blogs'
+import { useGetBlogsQuery } from '../../services/BlogsService'
 
-   useEffect(() => {
-      dispatch(blogsAsync())
-   }, [dispatch])
+export const Blogs: FC = () => {
+   const { data: blogs, error, isLoading } = useGetBlogsQuery()
 
    return (
       <BlogsEl>
          <Container>
-
             <BackButton>
-               <BlogsAdd>
-                  add blog
-                  <HiPlus />
-               </BlogsAdd>
+               <BlogsAdd>add blog <HiPlus /></BlogsAdd>
             </BackButton>
-            
-            {
-               !blogs.length && !error && status !== StatusEnum.PENDING ? 
-                <ErrorNoResult description=' No posts yet' height='50vh' />
-               : null
-            }
 
             <BlogsWrapper>
-               {status === StatusEnum.PENDING ?
+               {isLoading ?
                   <SpinnerWrapper height='40vh'>
                      <Spinner src={SpinnerBg} alt='spinner' />
                   </SpinnerWrapper>
                   :
-                  blogs.map(({ id, ...blog }: BlogsType): JSX.Element => <BlogCard key={id} {...blog} />)}
+                  blogs?.map(({ id, ...blog }: BlogsType): JSX.Element => <BlogCard key={id} {...blog} />)
+               }
 
-               {error && <ErrorMessage>
-                  <BiError />
-                  {error}
-               </ErrorMessage>}
+               {!blogs?.length && !error && !isLoading ? <ErrorNoResult description=' No posts yet' height='50vh' /> : null}
+
+               {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
             </BlogsWrapper>
          </Container>
       </BlogsEl>

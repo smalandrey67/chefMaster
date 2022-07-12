@@ -1,20 +1,13 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useAppSelector } from '../../hooks/useRedux'
-
 import { stringCut } from '../../utils/helpers/string.helpers'
 import { extension } from '../../utils/constants/extension.constants'
+import { validation } from '../../utils/constants/validation.constants'
 
+import SpinnerSm from '../../assets/images/icons/spinner-sm.svg'
 import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from '../../assets/styled/Reused.styled'
-import {
-   BlogsCreateEl,
-   BlogsCreateBody,
-   BlogsCreateForm,
-   BlogsCreateLabel,
-   BlogsCreateInput,
-   BlogsCreateLabelFile,
-   BlogsCreateInputFile,
+import { BlogsCreateEl, BlogsCreateBody, BlogsCreateForm, BlogsCreateLabel, BlogsCreateInput, BlogsCreateLabelFile, BlogsCreateInputFile,
    BlogsCreateTextarea,
    BlogsCreateButton,
    BlogsCreatePreview,
@@ -23,27 +16,17 @@ import {
    BlogsCreateLabelWrapper
 } from './BlogsCreate.styled'
 
-import { StatusEnum } from '../../@types/Status'
 import { SubmitBlogType } from '../../@types/Blogs'
-
-import SpinnerSm from '../../assets/images/spinner-sm.svg'
 import { BiError } from 'react-icons/bi'
 
 import { useImage } from './hook/useImage'
 import { useSubmit } from './hook/useSubmit'
 
 export const BlogsCreate: FC = () => {
-   const {
-      register,
-      formState: { errors },
-      handleSubmit,
-      reset
-   } = useForm<SubmitBlogType>({ mode: 'onChange' })
+   const { register, formState: { errors }, handleSubmit, reset } = useForm<SubmitBlogType>({ mode: 'onChange' })
 
-   const { imageHandler, fileName, setFileName, url, status, error } = useImage()
-   const { submitHandler } = useSubmit(url, setFileName, reset)
-
-   const { errorUploadBlog } = useAppSelector(state => state.uploadBlog)
+   const { changeFileHandler, fileName, setFileName, image, isLoading, errorImage } = useImage()
+   const { errorBlog, submitHandler } = useSubmit(image, setFileName, reset)
 
    return (
       <BlogsCreateEl>
@@ -53,11 +36,7 @@ export const BlogsCreate: FC = () => {
                   <BlogsCreateFieldWrapper>
                      <BlogsCreateLabel>
                         <BlogsCreateInput
-                           {...register('author', {
-                              required: 'Field is required',
-                              minLength: { value: 3, message: 'Min 3 symbols' },
-                              maxLength: { value: 30, message: 'Max 20 symbols' }
-                           })}
+                           {...register('author', validation.author)}
                            placeholder='Author'
                            type='text'
                            autoComplete='off'
@@ -66,15 +45,10 @@ export const BlogsCreate: FC = () => {
                      {errors?.author && <ErrorMessage justifyContent='flex-start'>{errors?.author?.message}</ErrorMessage>}
                   </BlogsCreateFieldWrapper>
 
-
                   <BlogsCreateFieldWrapper>
                      <BlogsCreateLabel>
                         <BlogsCreateInput
-                           {...register('title', {
-                              required: 'Field is required',
-                              minLength: { value: 3, message: 'Min 3 symbols' },
-                              maxLength: { value: 30, message: 'Max 20 symbols' }
-                           })}
+                           {...register('title', validation.title)}
                            placeholder='Title'
                            type='text'
                            autoComplete='off'
@@ -86,10 +60,7 @@ export const BlogsCreate: FC = () => {
                   <BlogsCreateFieldWrapper>
                      <BlogsCreateLabel>
                         <BlogsCreateTextarea
-                           {...register('description', {
-                              required: 'Field is required',
-                              minLength: { value: 3, message: 'Min 3 symbols' }
-                           })}
+                           {...register('description', validation.description)}
                            placeholder='Description'
                            autoComplete='off'
                         />
@@ -97,57 +68,45 @@ export const BlogsCreate: FC = () => {
                      {errors?.description && <ErrorMessage justifyContent='flex-start'>{errors?.description?.message}</ErrorMessage>}
                   </BlogsCreateFieldWrapper>
 
-
                   <BlogsCreateFieldWrapper>
                      <BlogsCreateLabelWrapper>
                         <BlogsCreateLabelFile>
                            <BlogsCreateInputFile
-                              {...register('file', {
-                                 required: 'Field is required'
-                              })}
+                              {...register('file', validation.file)}
                               type='file'
                               accept={extension.join(',')}
-                              onChange={imageHandler}
+                              onChange={changeFileHandler}
                               hidden
                            />
                            Upload image
                         </BlogsCreateLabelFile>
 
+                        {/* name of file */}
                         <SpecialTitle fontSize='var(--fs-sm)'>
-                           {stringCut(fileName,23)}
+                           {stringCut(fileName, 23)}
                         </SpecialTitle>
 
                      </BlogsCreateLabelWrapper>
                      {errors?.file && <ErrorMessage justifyContent='flex-start'>{errors?.file?.message}</ErrorMessage>}
                   </BlogsCreateFieldWrapper>
 
-
-                  {/* Preview for upload image */}
                   <BlogsCreatePreview>
-                     {status === StatusEnum.PENDING ?
+                     {isLoading ?
                         <SpinnerWrapper height='15vh'>
                            <Spinner src={SpinnerSm} alt='spinner' />
                         </SpinnerWrapper>
                         :
-                        <BlogsCreatePreviewImage url={url} src={`${url}`} alt='preview' />
+                        <BlogsCreatePreviewImage url={image?.secure_url} src={`${image?.secure_url}`} alt='preview' />
                      }
 
-                     {/* Error if i'll get an error while i'll be uploading image */}
-                     {error && <ErrorMessage>
-                        <BiError />
-                        {error}
-                     </ErrorMessage>}
+                     {/* Error while image uploading */}
+                     {errorImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
                   </BlogsCreatePreview>
 
+                  {/* Error while post uploading*/}
+                  {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
 
                   <BlogsCreateButton type='submit' name='submit'>Create</BlogsCreateButton>
-
-                  {/* Error if i'll get an error while i'll be uploading the whole post */}
-                  {errorUploadBlog && <ErrorMessage>
-                     <BiError />
-                     {error}
-                  </ErrorMessage>}
-
                </BlogsCreateForm>
             </BlogsCreateBody>
          </Container>
