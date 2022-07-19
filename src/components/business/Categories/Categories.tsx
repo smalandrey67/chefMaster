@@ -16,7 +16,7 @@ export const Categories: FC = () => {
             <Container>
                 <Splide options={splideOptions(4)}>
                     {categories.map(({ cuisine, Icon }: CategoriesType): JSX.Element =>
-                        <SplideSlide key={cuisine}>
+                        <SplideSlide key={cuisine} style={{ display: 'flex', justifyContent: 'center' }}>
                             <CategoriesLink to={`cuisine/${cuisine}`}>
                                 <Icon color='var(--color-categories)' size='25' />
                                 {cuisine}

@@ -18,7 +18,7 @@ export const Main: FC = () => {
             <About />
 
             {/* The button which open the chat for answering */}
-            <MainChatWrapper onClick={popupHandler}>
+            <MainChatWrapper aria-label='ask question' onClick={popupHandler}>
                 <BsChatRightText
                     size='25'
                     cursor='pointer'

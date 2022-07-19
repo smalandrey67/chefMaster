@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const MainEl = styled.main``
 
-export const MainChatWrapper = styled.div`
+export const MainChatWrapper = styled.button`
    position: fixed;
    bottom: 15px;
    right: 15px;

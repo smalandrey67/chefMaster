@@ -46,6 +46,9 @@ export const Button = styled.button`
     box-shadow: var(--shadow);
     font-weight: var(--fw-semiBold);
     background-color: var(--color-white); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 // #Base styles of input

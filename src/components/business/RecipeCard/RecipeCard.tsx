@@ -5,7 +5,9 @@ import { SplideSlide } from '@splidejs/react-splide'
 import { useRedirect } from '../../../hooks/useRedirect'
 
 import { RecipeEl } from '../../../assets/styled/Reused.styled'
-import { RecipeBody, RecipeWrapper, RecipeImage, RecipeTitle, RecipeGradient, RecipeScore } from './RecipeCard.styled'
+import { RecipeBody, RecipeWrapper, RecipeTitle, RecipeGradient, RecipeScore } from './RecipeCard.styled'
+
+import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 export const RecipeCard: FC<RecipeResultType> = ({ id, title, image, healthScore }) => {
     const { navigateHandler } = useRedirect()
@@ -15,7 +17,12 @@ export const RecipeCard: FC<RecipeResultType> = ({ id, title, image, healthScore
             <RecipeEl onClick={() => navigateHandler('/details/', id)}>
                 <RecipeBody>
                     <RecipeWrapper>
-                        <RecipeImage src={image} alt={title} />
+                        <LazyImage 
+                            image={image} 
+                            alt={title}
+                            width='100%'
+                            height='100%'
+                        />
                     </RecipeWrapper>
 
                     <RecipeTitle>{title}</RecipeTitle>

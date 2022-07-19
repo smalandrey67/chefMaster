@@ -1,16 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { diets, DietType } from '../../utils/constants/diets.constants'
+import { filterCategories, filterCategoriesTypes, DishType } from '../../utils/constants/filterTypes.constants'
 import { RootState } from '../store';
 
-type FilterState = {
-   diets: DietType[];
-   isFilterMenuOpen: boolean;
+type FilterParamsType = {
+   [key: string]: string;
 }
 
+type FilterState = {
+   filterCategories: filterCategoriesTypes[];
+   isFilterMenuOpen: boolean;
+   filterParams: FilterParamsType;
+} 
+
 const initialState: FilterState = {
-   diets,
-   isFilterMenuOpen: false
+   filterCategories,
+   isFilterMenuOpen: false,
+   filterParams: {}
 }
 
 const filterSlice = createSlice({
@@ -20,16 +26,30 @@ const filterSlice = createSlice({
       changeStatusOfFilterMenu: (state): void => {
          state.isFilterMenuOpen = !state.isFilterMenuOpen
       },
-      changeActiveOfOption: (state, { payload }: PayloadAction<string>): void => {
-         state.diets = state.diets.map(diet => {
-            if (diet.id === payload) {
-               diet.active = !diet.active
-            } else {
-               diet.active = false
-            }
+      changeActiveOfOption: (state, { payload }: PayloadAction<{ id: string, query: string}>): void => {
+         const groupOfOptions: filterCategoriesTypes | undefined = state.filterCategories.find(item => item.group.query === payload.query)
 
-            return diet
-         })
+         if (groupOfOptions) {
+            let nameOfActiveElement = {} as DishType
+
+            groupOfOptions.type.forEach(item => {
+               if (item.id === payload.id) {
+                  item.active = !item.active
+                  nameOfActiveElement = item
+               } else {
+                  item.active = false
+               }
+            })
+
+            const indexItem: number = state.filterCategories.indexOf(groupOfOptions)
+            state.filterCategories[indexItem] = groupOfOptions
+
+            if (nameOfActiveElement.active) {
+               state.filterParams[payload.query] = nameOfActiveElement.name
+            } else {
+               delete state.filterParams[payload.query]
+            }
+         }
       }
    }
 })

@@ -9,11 +9,7 @@ export const FavoriteCardImageWrapper = styled.div`
     position: relative;
 `
 
-export const FavoriteCardImage = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`
+
 
 export const FavoriteCardTitle = styled.h3`
     position: absolute;
@@ -22,7 +18,6 @@ export const FavoriteCardTitle = styled.h3`
 
     color: var(--color-white);
 `
-
 
 
 

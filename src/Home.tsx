@@ -15,6 +15,7 @@ export const Home: FC = () => {
         <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh' />}>
             <Header />
             <Categories />
+            
             <Suspense fallback={<Preload />}>
                 <Routes>
                     {routes.map((route: RouteType): JSX.Element =>

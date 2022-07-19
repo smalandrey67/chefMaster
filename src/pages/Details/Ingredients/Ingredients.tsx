@@ -1,11 +1,12 @@
 import { FC } from 'react'
 
 import { DetailsType, IngredientsType } from '../../../@types/Details'
-import { stringCut } from '../../../utils/helpers/string.helpers'
+import { stringCut } from '../../../utils/helpers/string.helper'
 import { motion } from '../../../utils/constants/motion.constants'
 
+import { LazyImage } from '../../../components/reusable/LazyImage/LazyImage'
 import { ErrorNoResult } from '../../../components/reusable/ErrorNoResult/ErrorNoResult'
-import { DetailsIngredientsCount, DetailsList, DetailsIngredientsItem, DetailsIngredientsImage, DetailsIngredientsTitle,
+import { DetailsIngredientsCount, DetailsList, DetailsIngredientsItem, DetailsIngredientsTitle,
     DetailsIngredientsUnit,
     DetailsIngredientsUnitSpan
 } from './Ingredients.styled'
@@ -25,9 +26,12 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
             <DetailsList {...motion} >
                 {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }: IngredientsType): JSX.Element =>
                     <DetailsIngredientsItem key={id}>
-                        <DetailsIngredientsImage
-                            src={`${process.env.REACT_APP_IMAGE_URL}${image}`}
+                        <LazyImage
+                            image={`${process.env.REACT_APP_IMAGE_URL}${image}`}
                             alt={nameClean}
+                            width='100px'
+                            height='100%'
+                            style={{ 'objectFit': 'contain' }}
                         />
                         <DetailsIngredientsTitle>{stringCut(nameClean, 13)}</DetailsIngredientsTitle>
                         <DetailsIngredientsUnit>

@@ -5,7 +5,6 @@ import {
    BlogBody,
    BlogHeader,
    BlogHeaderAvatar,
-   BlogHeaderImage,
    BlogFigure,
    BlogFigCaption,
    BlogFigureImage
@@ -13,6 +12,7 @@ import {
 import { Title, Text, SpecialTitle } from '../../../assets/styled/Reused.styled'
 
 import { BlogType } from '../../../@types/Blogs'
+import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 export const BlogCard: FC<BlogType> = ({ title, file, author, description, avatar }) => {
 
@@ -21,10 +21,15 @@ export const BlogCard: FC<BlogType> = ({ title, file, author, description, avata
          <BlogBody>
             <BlogHeader>
                <BlogHeaderAvatar>
-                  <BlogHeaderImage src={avatar} alt={author} />
-               </BlogHeaderAvatar> 
+                  <LazyImage
+                     image={avatar}
+                     alt={author}
+                     width='100%'
+                     height='100%'
+                  />
+               </BlogHeaderAvatar>
                <Title>{title}</Title>
-            </BlogHeader> 
+            </BlogHeader>
 
             <BlogFigure>
                <BlogFigureImage src={`${file}`} alt={title} />

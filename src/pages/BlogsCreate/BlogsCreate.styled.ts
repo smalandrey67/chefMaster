@@ -14,6 +14,16 @@ export const BlogsCreateForm = styled.form`
    margin: 0 auto;
 `
 
+export const BlogsCreateFieldset = styled.fieldset`
+   border-color: transparent;
+`
+
+export const BlogsCreateLegend = styled.legend`
+   text-align: center;
+   font-weight: var(--fw-semiBold);
+   font-size: var(--fs-md);
+`
+
 export const BlogsCreateLabel = styled.label`
    display: flex;
    align-items: center;

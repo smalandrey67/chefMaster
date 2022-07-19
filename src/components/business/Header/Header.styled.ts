@@ -40,26 +40,34 @@ export const HeaderBlogs = styled(Link)`
     display: flex;
     align-items: center;
     font-size: var(--fs-md);
-
-    &:active{
-        animation-play-state: paused;
-    }
-
-    @media (hover: hover) {
-        &:hover{
-            animation-play-state: paused;
-        }
-    }
 `
 
-export const HeaderFunctionality = styled.div`
+export const HeaderFunctionality = styled.nav``
+
+export const HeaderList = styled.ul`
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
 `
 
+export const HeaderItem = styled.li`
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+`
+
 export const HeaderFavorites = styled(Link)`
+    height: 100%;
+    width: 100%;
     position: relative;
-    margin-right: 15px;
 `
 
 export const HeaderFavoritesImage = styled.img`

@@ -1,7 +1,7 @@
 import { FC, useState, Fragment, memo } from 'react'
 
 import { motion } from '../../../utils/constants/motion.constants'
-import { stringCut } from '../../../utils/helpers/string.helpers'
+import { stringCut } from '../../../utils/helpers/string.helper'
 
 import { DetailsList } from '../Ingredients/Ingredients.styled'
 import {
@@ -15,6 +15,7 @@ import { IoFootstepsSharp } from 'react-icons/io5'
 
 import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from '../../../@types/Details'
 import { ErrorNoResult } from '../../../components/reusable/ErrorNoResult/ErrorNoResult'
+
 
 type CookingProps = {
     details: DetailsType | undefined;
@@ -61,7 +62,7 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
                                         <DetailsCookingIngredientsPhoto
                                             key={id}
                                             src={`${process.env.REACT_APP_IMAGE_URL}${image}`}
-                                            alt={name}
+                                            alt={name}  
                                         />
                                     )}
                                 </DetailsCookingIngredients>

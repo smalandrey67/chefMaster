@@ -16,6 +16,7 @@ export const CategoriesLink = styled(NavLink)`
     align-items: center;
     gap: 5px;
     font-weight: var(--fw-semiBold);
+    width: 50px;
 
     &.active{
         color: var(--color-categories-text);

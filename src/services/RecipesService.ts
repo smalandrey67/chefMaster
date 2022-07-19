@@ -5,6 +5,7 @@ import { RecipeType } from '../@types/Recipe'
 import { DetailsType } from '../@types/Details'
 import { NutritionType } from '../@types/Nutrition'
 import { AnswerType } from '../@types/Answer'
+import { ParamsType } from '../@types/Params'
 
 export const recipesApi = createApi({
    reducerPath: 'recipesService',
@@ -37,11 +38,11 @@ export const recipesApi = createApi({
             }
          })
       }),
-      getSearched: builder.query<CuisineType, string | undefined>({
-         query: (name) => ({
+      getSearched: builder.query<CuisineType, ParamsType>({
+         query: (params) => ({
             url: '/complexSearch',
             params: {
-               query: name ?? '',
+               ...params,
                apiKey: process.env.REACT_APP_KEY
             }
          })

@@ -1,10 +1,11 @@
 import { FC, MouseEvent } from 'react'
 
 import { FavoritesType } from '../../../@types/Favorites'
-import { stringCut } from '../../../utils/helpers/string.helpers'
+import { stringCut } from '../../../utils/helpers/string.helper'
+import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 import { RecipeEl, ButtonHeart } from '../../../assets/styled/Reused.styled'
-import { FavoriteCardImageWrapper, FavoriteCardImage, FavoriteCardTitle } from './FavoriteCard.styled'
+import { FavoriteCardImageWrapper, FavoriteCardTitle } from './FavoriteCard.styled'
 import { BsSuitHeartFill } from 'react-icons/bs'
 
 import { useRedirect } from '../../../hooks/useRedirect'
@@ -23,8 +24,13 @@ export const FavoriteCard: FC<FavoritesType> = ({ id, title, image, isActive }) 
    return (
       <RecipeEl onClick={() => navigateHandler('/details/', id)}>
          <FavoriteCardImageWrapper>
-            <FavoriteCardImage src={image} alt={title} />
-            <ButtonHeart onClick={removeFavoriteHandler}>
+            <LazyImage 
+               image={image} 
+               alt={title}
+               width='100%'
+               height='100%'
+             />
+            <ButtonHeart aria-label='remove this recipe from favorite' onClick={removeFavoriteHandler}>
                <BsSuitHeartFill 
                   color={`${isActive ? 'red' : 'black'}`}
                   size='25' 

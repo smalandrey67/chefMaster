@@ -20,7 +20,7 @@ import { Nutritions } from './Nutritions/Nutritions'
 import { Social } from './Social/Social'
 
 import { motion } from '../../utils/constants/motion.constants'
-import { stringCut } from '../../utils/helpers/string.helpers'
+import { stringCut } from '../../utils/helpers/string.helper'
 
 import { useAppSelector } from '../../hooks/useRedux'
 import { selectTabName } from '../../store/slices/tabsSlice'
@@ -52,7 +52,7 @@ export const Details: FC = () => {
 
                                     <DetailsOverImage>
                                         <DetailsImage src={details?.image} alt={details?.title} />
-
+                                        
                                         {/* Social component actually means functionality over the image */}
                                         <Social details={details} />
                                     </DetailsOverImage>

@@ -26,12 +26,6 @@ export const BlogHeaderAvatar = styled.div`
    margin-right: 10px;
 ` 
 
-export const BlogHeaderImage = styled.img`
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-`
-
 export const BlogFigure = styled.figure`
    width: 100%;
    height: 200px;

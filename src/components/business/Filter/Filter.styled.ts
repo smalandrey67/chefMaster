@@ -25,7 +25,7 @@ export const FilterEl = styled.div<FilterElProps>`
       switch (props.isFilterMenuOpen) {
          case true:
             return css`
-               min-height: 100px;
+               min-height: 100%;
                opacity: 1;
                visibility: visible;
             `
@@ -37,7 +37,6 @@ export const FilterEl = styled.div<FilterElProps>`
             `
       }
    }}
-
 `
 
 export const FilterBody = styled.div`
@@ -48,12 +47,18 @@ export const FilterWrapper = styled.div`
    display: flex;
    align-items: center;
    flex-wrap: wrap;
+
+   &:not(:last-child) {
+      margin-bottom: 5px;
+   }
 `
 
 export const FilterOption = styled(Button) <FilterOptionProps>`
+   font-size: var(--fs-sl);
+   font-weight: var(--fw-bold);
    transition: all 0.5s ease;
    margin: 3px;
-   flex: 0 1 46%;
+   flex: 0 1 30.333%;
 
    background-color: ${props => props.active ? 'var(--color-categories)' : 'var(--color-white)'};
    color: ${props => props.active ? 'var(--color-white)' : 'var(--color-black)'};
@@ -71,10 +76,6 @@ export const FilterOption = styled(Button) <FilterOptionProps>`
         }
     }
 
-   @media (min-width: 410px) {
-      flex: 0 1 30.333%;
-   }
-
    ${(props) => {
       switch (props.isFilterMenuOpen) {
          case true:
@@ -91,4 +92,9 @@ export const FilterOption = styled(Button) <FilterOptionProps>`
             `
       }
    }}
+`
+
+export const FilterShowResult = styled(Button)`
+   margin: 0 auto;
+   padding: 0 30px;
 `

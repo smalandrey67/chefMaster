@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { DetailsType } from '../../../@types/Details'
-import { removeTags } from '../../../utils/helpers/tags.helpers'
+import { removeTags } from '../../../utils/helpers/tags.helper'
 import { motion } from '../../../utils/constants/motion.constants'
 
 import { DetailsInfoDescription } from './Instructions.styled'

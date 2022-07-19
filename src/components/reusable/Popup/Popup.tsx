@@ -10,7 +10,7 @@ export type PopupProps = {
 export const Popup: FC<PopupProps> = ({ children }) => {
    
    return (
-      <PopupEl {...motion}>
+      <PopupEl role='alert' {...motion}>
          <PopupBody>
             <PopupContent>
                {children}

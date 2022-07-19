@@ -2,7 +2,9 @@ import { FC } from 'react'
 
 import { HeaderEl, HeaderWrapper, HeaderLogo, HeaderBlogsWrapper, HeaderBlogs, HeaderFunctionality, HeaderFavorites, 
     HeaderFavoritesCount,
-    HeaderFavoritesImage
+    HeaderFavoritesImage,
+    HeaderList,
+    HeaderItem
 } from './Header.styled'
 
 import Basket from '../../../assets/images/icons/basket.svg'
@@ -28,16 +30,22 @@ export const Header: FC = () => {
                     </HeaderBlogsWrapper>
 
                     <HeaderFunctionality>
-                        <HeaderFavorites to='/favorites'>
-                            <HeaderFavoritesImage src={Basket} alt='basket' />
-                            {favorites.length ? <HeaderFavoritesCount>
-                                {favorites.length}
-                            </HeaderFavoritesCount> : null}
-                        </HeaderFavorites>
+                        <HeaderList>
+                            <HeaderItem>
+                                <HeaderFavorites aria-label='favorites basket' to='/favorites'>
+                                    <HeaderFavoritesImage src={Basket} alt='basket' />
+                                    {favorites.length ? <HeaderFavoritesCount>
+                                        {favorites.length}
+                                    </HeaderFavoritesCount> : null}
+                                </HeaderFavorites>
+                            </HeaderItem> 
 
-                        <HeaderBlogs to='/blogs'>
-                            <BsFillPeopleFill cursor='pointer' size='30' />
-                        </HeaderBlogs>
+                            <HeaderItem>
+                                <HeaderBlogs aria-label='blogs' to='/blogs'>
+                                    <BsFillPeopleFill cursor='pointer' size='30' />
+                                </HeaderBlogs>
+                            </HeaderItem> 
+                        </HeaderList>
                     </HeaderFunctionality>
                 </HeaderWrapper>
                 <Search />

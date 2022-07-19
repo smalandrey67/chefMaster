@@ -32,7 +32,7 @@ export const Social: FC<SocialProps> = memo(({ details }) => {
 
    return (
       <>
-         <ButtonHeart onClick={() => favoritesHandler(details)}>
+         <ButtonHeart aria-label='make this recipe a favorite' onClick={() => favoritesHandler(details)}>
             <BsSuitHeartFill color={getColorOfHeart()} size='25' />
          </ButtonHeart>
 

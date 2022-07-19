@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 import { CuisineCard } from '../../components/business/CuisineCard/CuisineCard'
 import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
@@ -11,14 +11,20 @@ import { BiError } from 'react-icons/bi'
 import { CuisineResultsType } from '../../@types/Cuisine'
 import { useGetSearchedQuery } from '../../services/RecipesService'
 
+
+
 export const Searched: FC = () => {
     const params = useParams<{ name: string }>()
-    const { data: recipes, error, isLoading } = useGetSearchedQuery(params.name)
+    const [searchParams] = useSearchParams()
 
+    const type: string | null = searchParams.get('type') || null
+    const diet: string | null  = searchParams.get('diet') || null
+
+    const { data: recipes, error, isLoading } = useGetSearchedQuery({ query: params.name, type, diet })
+    
     return (
         <Container>
             <RecipesWrapper>
-
                 {/* if isLoading true and data?.results actually are so we are rendering them. If not show the error result */}
                 {isLoading ?
                     <SpinnerWrapper height='50vh'>
