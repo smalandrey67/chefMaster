@@ -1,61 +1,36 @@
 import { FC, memo, Fragment } from 'react'
 
 import { FilterEl, FilterBody, FilterWrapper, FilterOption, FilterShowResult } from './Filter.styled'
-import { SpecialTitle } from '../../../assets/styled/Reused.styled'
+import { SpecialTitle } from 'assets/styled/Reused.styled'
 
-import { changeActiveOfOption, changeStatusOfFilterMenu, selectFilterState } from '../../../store/slices/filterSlice'
-import { DishType, filterCategoriesTypes } from '../../../utils/constants/filterTypes.constants'
-import { generateParams } from '../../../utils/helpers/params.helper'
+import { selectFilterState } from 'store/slices/filterSlice'
+import { CategoryType, FilterCategoriesTypes } from 'utils/constants/filterTypes.constants'
 
-import { useAppDispatch, useAppSelector } from '../../../hooks/useRedux'
-import { useRedirect } from '../../../hooks/useRedirect'
-
-import { ParamsArgumentsType } from '../../../@types/Params'
+import { useAppSelector } from 'hooks/useRedux'
+import { useFilter } from './hook/useFilter'
 
 export const Filter: FC = memo(() => {
-   const dispatch = useAppDispatch()
-   const { navigateHandler } = useRedirect()
-
-   const { filterCategories, isFilterMenuOpen, filterParams } = useAppSelector(selectFilterState)
-
-   const optionsHandler = (id: string, query: string): void => {
-      dispatch(changeActiveOfOption({ id, query }))
-   }
-
-   const showResultHandler = (): void => {
-      const objectOfParams: ParamsArgumentsType = {
-         type: filterParams.type,
-         diet: filterParams.diet
-      }
-
-      const { typeParameter, dietParameter } = generateParams(objectOfParams)
-
-      navigateHandler(
-         '/searched',
-         `${typeParameter}${dietParameter}`
-      )
-      dispatch(changeStatusOfFilterMenu())
-   }
+   const { optionHandler, showResultHandler } = useFilter()
+   const { filterCategories, isFilterMenuOpen } = useAppSelector(selectFilterState)
 
    return (
       <FilterEl isFilterMenuOpen={isFilterMenuOpen}>
          <FilterBody>
-            {filterCategories.map(({ id, group, type }: filterCategoriesTypes): JSX.Element =>
+            {filterCategories.map(({ id, group, type }: FilterCategoriesTypes): JSX.Element =>
                <Fragment key={id}>
                   <SpecialTitle fontSize='14px' fontWeight='var(--fw-semiBold)'>{group.text}</SpecialTitle>
                   <FilterWrapper>
-                     {type.map(({ id, active, name }: DishType): JSX.Element =>
+                     {type.map(({ typeId, active, name }: CategoryType): JSX.Element =>
                         <FilterOption
                            isFilterMenuOpen={isFilterMenuOpen}
-                           key={id}
+                           key={typeId}
                            active={active}
-                           onClick={() => optionsHandler(id, group.query)}
+                           onClick={() => optionHandler(typeId, group.query)}
                         >{name}</FilterOption>
                      )}
                   </FilterWrapper>
                </Fragment>
             )}
-
             <FilterShowResult onClick={showResultHandler}>Show Result</FilterShowResult> 
          </FilterBody>
       </FilterEl>

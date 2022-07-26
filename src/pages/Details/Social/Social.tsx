@@ -1,17 +1,17 @@
 import { FC, memo, useCallback } from 'react'
 
-import { useAppSelector } from '../../../hooks/useRedux'
-import { selectFavorites } from '../../../store/slices/favoritesSlice'
+import { useAppSelector } from 'hooks/useRedux'
+import { selectFavorites } from 'store/slices/favoritesSlice'
 import { useFavorites } from '../hook/useFavorites'
 
 import { BsClock, BsSuitHeartFill } from 'react-icons/bs'
 import { AiOutlineLike } from 'react-icons/ai'
 
-import { ButtonHeart } from '../../../assets/styled/Reused.styled'
+import { ButtonHeart } from 'assets/styled/Reused.styled'
 import { SocialReadyMinutes, SocialAgreeLikes } from './Social.styled'
 
-import { FavoritesType } from '../../../@types/Favorites'
-import { DetailsType } from '../../../@types/Details'
+import { FavoritesType } from 'types/Favorites'
+import { DetailsType } from 'types/Details'
 
 type SocialProps = {
   details: DetailsType | undefined;

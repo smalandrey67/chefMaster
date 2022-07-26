@@ -1,26 +1,17 @@
-type GenerateParamsArgumentsType = {
-   product?: string;
-   type: string;
-   diet: string;
-}
+import { FilterParamsType } from 'types/Params'
 
-type GenerateParamsReturnsType = {
-   productWithLowerCase?: string;
-   typeParameter: string;
-   dietParameter: string;
-}
+export const generateParams = (params: FilterParamsType): string => {
+   const entriesFromParams = Object.entries(params)
+   
+   let stringOfParams = ''
 
-export const generateParams = (params: GenerateParamsArgumentsType): GenerateParamsReturnsType => {
-   const { product, type, diet } = params
-
-   const productWithLowerCase: string | undefined = product?.trim().toLocaleLowerCase()
-
-   const typeParameter: string = type ? `?type=${type}` : ''
-   const dietParameter: string = diet ? `&diet=${diet}` : ''
-
-   return {
-      productWithLowerCase,
-      typeParameter,
-      dietParameter
+   for (let i = 0; i < entriesFromParams.length; i++) {
+      if (i === 0) {
+         stringOfParams += `?${entriesFromParams[i][0]}=${entriesFromParams[i][1]}`
+      } else {
+         stringOfParams += `&${entriesFromParams[i][0]}=${entriesFromParams[i][1]}`
+      }
    }
+
+   return stringOfParams
 }

@@ -1,34 +1,35 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
-import { CuisineType } from '../@types/Cuisine'
-import { RecipeType } from '../@types/Recipe'
-import { DetailsType } from '../@types/Details'
-import { NutritionType } from '../@types/Nutrition'
-import { AnswerType } from '../@types/Answer'
-import { ParamsType } from '../@types/Params'
+import { CuisineType, CuisineResultsType } from 'types/Cuisine'
+import { RecipeType, RecipeResultType } from 'types/Recipe'
+import { DetailsType } from 'types/Details'
+import { NutritionType } from 'types/Nutrition'
+import { AnswerType } from 'types/Answer'
 
 export const recipesApi = createApi({
    reducerPath: 'recipesService',
    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_URL }),
 
    endpoints: (builder) => ({
-      getRandomRecipes: builder.query<RecipeType, void>({
+      getRandomRecipes: builder.query<RecipeResultType[], void>({
          query: () => ({
             url: '/random',
             params: {
                number: 12,
                apiKey: process.env.REACT_APP_KEY
             }
-         })
+         }),
+         transformResponse: (response: RecipeType): RecipeResultType[] => response.recipes 
       }),
-      getCuisine: builder.query<CuisineType, string | undefined>({
+      getCuisine: builder.query<CuisineResultsType[], string | undefined>({
          query: (country) => ({
             url: '/complexSearch',
             params: {
                cuisine: country ?? '',
                apiKey: process.env.REACT_APP_KEY
             }
-         })
+         }),
+         transformResponse: (response: CuisineType): CuisineResultsType[] => response.results
       }),
       getDetails: builder.query<DetailsType, string | undefined>({
          query: (id) => ({
@@ -38,14 +39,15 @@ export const recipesApi = createApi({
             }
          })
       }),
-      getSearched: builder.query<CuisineType, ParamsType>({
+      getSearched: builder.query<CuisineResultsType[], {[key: string]: string}>({ // !!change type of arguments
          query: (params) => ({
             url: '/complexSearch',
             params: {
                ...params,
                apiKey: process.env.REACT_APP_KEY
             }
-         })
+         }),
+         transformResponse: (response: CuisineType): CuisineResultsType[] => response.results 
       }),
       getNutritions: builder.query<NutritionType, string | undefined>({
          query: (id) => ({

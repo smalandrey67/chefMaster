@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
-import { DetailsType } from '../../../@types/Details'
-import { removeTags } from '../../../utils/helpers/tags.helper'
-import { motion } from '../../../utils/constants/motion.constants'
+import { DetailsType } from 'types/Details'
+import { removeTags } from 'utils/helpers/tags.helper'
+import { motion } from 'utils/constants/motion.constants'
 
 import { DetailsInfoDescription } from './Instructions.styled'
-import { Text } from '../../../assets/styled/Reused.styled'
-import { ErrorNoResult } from '../../../components/reusable/ErrorNoResult/ErrorNoResult'
+import { Text } from 'assets/styled/Reused.styled'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
 type InstructionsProps = {
     details: DetailsType | undefined;

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { FavoritesType } from '../../@types/Favorites'
+import { FavoritesType } from 'types/Favorites'
 import { RootState } from '../store';
 
 type FavoritesState = {

@@ -1,18 +1,18 @@
 import { FC } from 'react'
 
 import { BlogsEl, BlogsAdd, BlogsWrapper } from './Blogs.styled'
-import { Container, SpinnerWrapper, Spinner, ErrorMessage } from '../../assets/styled/Reused.styled'
-import SpinnerBg from '../../assets/images/icons/spinner-bg.svg'
+import { Container, SpinnerWrapper, Spinner, ErrorMessage } from 'assets/styled/Reused.styled'
+import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
-import { BlogCard } from '../../components/business/BlogCard/BlogCard'
-import { BackButton } from '../../components/reusable/BackButton/BackButton'
-import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
+import { BlogCard } from 'components/business/BlogCard/BlogCard'
+import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'
 
-import { BlogsType } from '../../@types/Blogs'
-import { useGetBlogsQuery } from '../../services/BlogsService'
+import { BlogsType } from 'types/Blogs'
+import { useGetBlogsQuery } from 'services/BlogsService'
 
 export const Blogs: FC = () => {
    const { data: blogs, error, isLoading } = useGetBlogsQuery()

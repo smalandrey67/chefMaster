@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 
-import { UseImageType } from '../../../@types/Hooks'
+import { UseImageType } from 'types/Hooks'
 
-import { useUploadImageMutation } from '../../../services/ImageUploadService'
+import { useUploadImageMutation } from 'services/ImageUploadService'
 
 export const useImage = (): UseImageType => {
    const [uploadImage, { data: image, error: errorImage, isLoading }] = useUploadImageMutation()

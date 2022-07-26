@@ -1,7 +1,7 @@
 import { FC, useState, Fragment, memo } from 'react'
 
-import { motion } from '../../../utils/constants/motion.constants'
-import { stringCut } from '../../../utils/helpers/string.helper'
+import { motion } from 'utils/constants/motion.constants'
+import { stringCut } from 'utils/helpers/string.helper'
 
 import { DetailsList } from '../Ingredients/Ingredients.styled'
 import {
@@ -13,8 +13,8 @@ import {
 import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
 
-import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from '../../../@types/Details'
-import { ErrorNoResult } from '../../../components/reusable/ErrorNoResult/ErrorNoResult'
+import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from 'types/Details'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
 
 type CookingProps = {

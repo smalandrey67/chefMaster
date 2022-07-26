@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
-import { BlogsType, UploadBlogType, PostSubmit } from '../@types/Blogs'
+import { BlogsType, UploadBlogType, PostSubmit } from 'types/Blogs'
 
 export const blogsApi = createApi({
    reducerPath: 'blogsService',

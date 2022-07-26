@@ -4,10 +4,10 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { routes, RouteType } from './routes/routes'
 
-import { Preload } from './components/reusable/Preload/Preload'
-import { Header } from './components/business/Header/Header'
-import { Categories } from './components/business/Categories/Categories'
-import { ErrorFallback } from './components/reusable/ErrorFallback/ErrorFallback'
+import { Preload } from 'components/reusable/Preload/Preload'
+import { Header } from 'components/business/Header/Header'
+import { Categories } from 'components/business/Categories/Categories'
+import { ErrorFallback } from 'components/reusable/ErrorFallback/ErrorFallback'
 
 export const Home: FC = () => {
 

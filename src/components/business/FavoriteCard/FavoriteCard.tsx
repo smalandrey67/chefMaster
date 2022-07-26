@@ -1,16 +1,16 @@
 import { FC, MouseEvent } from 'react'
 
-import { FavoritesType } from '../../../@types/Favorites'
-import { stringCut } from '../../../utils/helpers/string.helper'
+import { FavoritesType } from 'types/Favorites'
+import { stringCut } from 'utils/helpers/string.helper'
 import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
-import { RecipeEl, ButtonHeart } from '../../../assets/styled/Reused.styled'
+import { RecipeEl, ButtonHeart } from 'assets/styled/Reused.styled'
 import { FavoriteCardImageWrapper, FavoriteCardTitle } from './FavoriteCard.styled'
 import { BsSuitHeartFill } from 'react-icons/bs'
 
-import { useRedirect } from '../../../hooks/useRedirect'
-import { useAppDispatch } from '../../../hooks/useRedux'
-import { removeFavorite } from '../../../store/slices/favoritesSlice'
+import { useRedirect } from 'hooks/useRedirect'
+import { useAppDispatch } from 'hooks/useRedux'
+import { removeFavorite } from 'store/slices/favoritesSlice'
 
 export const FavoriteCard: FC<FavoritesType> = ({ id, title, image, isActive }) => {
    const dispatch = useAppDispatch()

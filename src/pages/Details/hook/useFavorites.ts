@@ -1,9 +1,9 @@
-import { UseFavoritesType } from '../../../@types/Hooks'
-import { DetailsType } from '../../../@types/Details'
-import { FavoritesType } from '../../../@types/Favorites'
+import { UseFavoritesType } from 'types/Hooks'
+import { DetailsType } from 'types/Details'
+import { FavoritesType } from 'types/Favorites'
 
-import { useAppDispatch } from '../../../hooks/useRedux'
-import { addFavorite } from '../../../store/slices/favoritesSlice'
+import { useAppDispatch } from 'hooks/useRedux'
+import { addFavorite } from 'store/slices/favoritesSlice'
 
 export const useFavorites = (): UseFavoritesType => {
    const dispatch = useAppDispatch()

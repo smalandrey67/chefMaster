@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { stringCut } from '../../utils/helpers/string.helper'
-import { extension } from '../../utils/constants/extension.constants'
-import { validation } from '../../utils/constants/validation.constants'
+import { stringCut } from 'utils/helpers/string.helper'
+import { extension } from 'utils/constants/extension.constants'
+import { validation } from 'utils/constants/validation.constants'
 
-import SpinnerSm from '../../assets/images/icons/spinner-sm.svg'
-import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from '../../assets/styled/Reused.styled'
+import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
+import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from 'assets/styled/Reused.styled'
 import {
    BlogsCreateEl, BlogsCreateBody, BlogsCreateForm, BlogsCreateFieldset, BlogsCreateLegend, BlogsCreateLabel, BlogsCreateInput,
    BlogsCreateLabelFile,
@@ -19,7 +19,7 @@ import {
    BlogsCreateLabelWrapper
 } from './BlogsCreate.styled'
 
-import { SubmitBlogType } from '../../@types/Blogs'
+import { SubmitBlogType } from 'types/Blogs'
 import { BiError } from 'react-icons/bi'
 
 import { useImage } from './hook/useImage'

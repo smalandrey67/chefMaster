@@ -1,11 +1,11 @@
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
 
-import { UploadImageType } from '../../../@types/UploadImage'
-import { PostSubmit, SubmitBlogType } from '../../../@types/Blogs'
-import { UseSubmitType } from '../../../@types/Hooks'
+import { UploadImageType } from 'types/UploadImage'
+import { PostSubmit, SubmitBlogType } from 'types/Blogs'
+import { UseSubmitType } from 'types/Hooks'
 
-import { useUploadBlogMutation } from '../../../services/BlogsService'
-import { useRedirect } from '../../../hooks/useRedirect'
+import { useUploadBlogMutation } from 'services/BlogsService'
+import { useRedirect } from 'hooks/useRedirect'
 
 export const useSubmit = (
    image: UploadImageType | undefined,

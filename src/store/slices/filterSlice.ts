@@ -1,22 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { filterCategories, filterCategoriesTypes, DishType } from '../../utils/constants/filterTypes.constants'
 import { RootState } from '../store';
 
-type FilterParamsType = {
-   [key: string]: string;
+import { filterCategories, FilterCategoriesTypes, CategoryType } from 'utils/constants/filterTypes.constants'
+import { FilterParamsType } from 'types/Params'
+
+type PayloadActiveType = {
+   typeId: string;
+   query: keyof FilterParamsType;
 }
 
 type FilterState = {
-   filterCategories: filterCategoriesTypes[];
+   filterCategories: FilterCategoriesTypes[];
    isFilterMenuOpen: boolean;
    filterParams: FilterParamsType;
-} 
+}
 
 const initialState: FilterState = {
    filterCategories,
    isFilterMenuOpen: false,
-   filterParams: {}
+   filterParams: {} as FilterParamsType
 }
 
 const filterSlice = createSlice({
@@ -26,28 +29,42 @@ const filterSlice = createSlice({
       changeStatusOfFilterMenu: (state): void => {
          state.isFilterMenuOpen = !state.isFilterMenuOpen
       },
-      changeActiveOfOption: (state, { payload }: PayloadAction<{ id: string, query: string}>): void => {
-         const groupOfOptions: filterCategoriesTypes | undefined = state.filterCategories.find(item => item.group.query === payload.query)
+      changeActiveOfOption: {
+         reducer: (state, { payload }: PayloadAction<PayloadActiveType>): void => {
+            // getting a specific group from all existing groups, (src/utils/constants/filterTypes.constants.ts) 
+            const groupOfOption = state.filterCategories.find(item => item.group.query === payload.query)
 
-         if (groupOfOptions) {
-            let nameOfActiveElement = {} as DishType
+            if (groupOfOption) {
+               let activeElement = {} as CategoryType
 
-            groupOfOptions.type.forEach(item => {
-               if (item.id === payload.id) {
-                  item.active = !item.active
-                  nameOfActiveElement = item
+               // going throw each individual type 
+               groupOfOption.type.forEach(item => {
+                  if (item.typeId === payload.typeId) {
+                     item.active = !item.active
+                     activeElement = item
+                  } else {
+                     item.active = false 
+                  }
+               })
+
+               // find an index of group among the existing groups
+               const indexGroup = state.filterCategories.indexOf(groupOfOption)
+
+               // replace a group that contains only one active element
+               state.filterCategories[indexGroup] = groupOfOption
+
+               if (activeElement.active) {
+
+                  // if an active element is true, we put an item inside of object 
+                  state.filterParams[payload.query] = activeElement.value
                } else {
-                  item.active = false
+                  delete state.filterParams[payload.query]
                }
-            })
-
-            const indexItem: number = state.filterCategories.indexOf(groupOfOptions)
-            state.filterCategories[indexItem] = groupOfOptions
-
-            if (nameOfActiveElement.active) {
-               state.filterParams[payload.query] = nameOfActiveElement.name
-            } else {
-               delete state.filterParams[payload.query]
+            }
+         },
+         prepare: (typeId: string, query: keyof FilterParamsType) => {
+            return {
+               payload: { typeId, query }
             }
          }
       }
@@ -57,4 +74,5 @@ const filterSlice = createSlice({
 export const { changeStatusOfFilterMenu, changeActiveOfOption } = filterSlice.actions
 export default filterSlice.reducer
 
-export const selectFilterState = (state: RootState): FilterState => state.filter 
+export const selectFilterState = (state: RootState): FilterState => state.filter
+

@@ -1,19 +1,19 @@
 import { FC } from 'react'
 
 import { RandomEl } from './Recipes.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../../assets/styled/Reused.styled'
-import SpinnerBg from '../../../assets/images/icons/spinner-bg.svg'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
+import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { BiError } from 'react-icons/bi'
-import { RecipeResultType } from '../../../@types/Recipe'
+import { RecipeResultType } from 'types/Recipe'
 
-import { splideOptions } from '../../../utils/constants/splide.constants'
-import { useGetRandomRecipesQuery } from '../../../services/RecipesService'
+import { splideOptions } from 'utils/constants/splide.constants'
+import { useGetRandomRecipesQuery } from 'services/RecipesService'
 import { Splide } from '@splidejs/react-splide'
 
 export const Recipes: FC = () => {
-    const { data, error, isLoading } = useGetRandomRecipesQuery()
+    const { data: recipes, error, isLoading } = useGetRandomRecipesQuery()
 
     return (
         <RandomEl>
@@ -24,7 +24,7 @@ export const Recipes: FC = () => {
                             <Spinner src={SpinnerBg} alt='spinner' />
                         </SpinnerWrapper>
                         :
-                        data?.recipes.map((recipe: RecipeResultType): JSX.Element => <RecipeCard key={recipe.id} {...recipe} />)
+                        recipes?.map((recipe: RecipeResultType): JSX.Element => <RecipeCard key={recipe.id} {...recipe} />)
                     }
                 </Splide>
 

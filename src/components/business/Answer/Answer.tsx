@@ -12,18 +12,18 @@ import {
    AnswerAnswer,
    AnswerImage
 } from './Answer.styled'
-import { ErrorMessage, SpinnerWrapper, Spinner, SpecialTitle } from '../../../assets/styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner, SpecialTitle } from 'assets/styled/Reused.styled'
 
-import SpinnerSm from '../../../assets/images/icons/spinner-sm.svg'
+import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 import { Popup } from '../../reusable/Popup/Popup'
 
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
 
-import { SubmitAnswerType } from '../../../@types/Answer'
+import { SubmitAnswerType } from 'types/Answer'
 
-import { useLazyGetAnswerQuery } from '../../../services/RecipesService'
-import { validation } from '../../../utils/constants/validation.constants'
+import { useLazyGetAnswerQuery } from 'services/RecipesService'
+import { validation } from 'utils/constants/validation.constants'
 import { ErrorNoResult } from '../../reusable/ErrorNoResult/ErrorNoResult'
 
 type AnswerProps = {

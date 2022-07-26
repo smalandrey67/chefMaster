@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { UsePopupType } from '../@types/Hooks'
+import { UsePopupType } from 'types/Hooks'
 
 export const usePopup = (): UsePopupType => {
    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)

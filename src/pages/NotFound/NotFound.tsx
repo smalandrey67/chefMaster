@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { Container } from '../../assets/styled/Reused.styled'
+import { Container } from 'assets/styled/Reused.styled'
 import { NotFoundWrapper, NotFoundImageWrapper, NotFoundImage, NotFoundTitle, NotFoundRedirect } from './NotFound.styled'
-import Error from '../../assets/images/icons/error.svg'
+import Error from 'assets/images/icons/error.svg'
 
 export const NotFound: FC = () => {
 

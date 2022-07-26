@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { DetailsType, IngredientsType } from '../../../@types/Details'
-import { stringCut } from '../../../utils/helpers/string.helper'
-import { motion } from '../../../utils/constants/motion.constants'
+import { DetailsType, IngredientsType } from 'types/Details'
+import { stringCut } from 'utils/helpers/string.helper'
+import { motion } from 'utils/constants/motion.constants'
 
-import { LazyImage } from '../../../components/reusable/LazyImage/LazyImage'
-import { ErrorNoResult } from '../../../components/reusable/ErrorNoResult/ErrorNoResult'
+import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 import { DetailsIngredientsCount, DetailsList, DetailsIngredientsItem, DetailsIngredientsTitle,
     DetailsIngredientsUnit,
     DetailsIngredientsUnitSpan

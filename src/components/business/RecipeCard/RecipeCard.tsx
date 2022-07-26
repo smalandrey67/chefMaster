@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
-import { RecipeResultType } from '../../../@types/Recipe'
+import { RecipeResultType } from 'types/Recipe'
 import { SplideSlide } from '@splidejs/react-splide'
-import { useRedirect } from '../../../hooks/useRedirect'
+import { useRedirect } from 'hooks/useRedirect'
 
-import { RecipeEl } from '../../../assets/styled/Reused.styled'
+import { RecipeEl } from 'assets/styled/Reused.styled'
 import { RecipeBody, RecipeWrapper, RecipeTitle, RecipeGradient, RecipeScore } from './RecipeCard.styled'
 
 import { LazyImage } from '../../reusable/LazyImage/LazyImage'

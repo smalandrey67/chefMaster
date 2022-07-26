@@ -1,26 +1,19 @@
 import { FC } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
-
-import { CuisineCard } from '../../components/business/CuisineCard/CuisineCard'
-import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
-
-import SpinnerBg from '../../assets/images/icons/spinner-bg.svg'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from '../../assets/styled/Reused.styled'
-
 import { BiError } from 'react-icons/bi'
-import { CuisineResultsType } from '../../@types/Cuisine'
-import { useGetSearchedQuery } from '../../services/RecipesService'
 
+import { CuisineCard } from 'components/business/CuisineCard/CuisineCard'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
+import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from 'assets/styled/Reused.styled'
+
+import { CuisineResultsType } from 'types/Cuisine'
+import { useGetSearchedQuery } from 'services/RecipesService'
+import { useValidateParams } from './hook/useValidateParams' 
 
 export const Searched: FC = () => {
-    const params = useParams<{ name: string }>()
-    const [searchParams] = useSearchParams()
-
-    const type: string | null = searchParams.get('type') || null
-    const diet: string | null  = searchParams.get('diet') || null
-
-    const { data: recipes, error, isLoading } = useGetSearchedQuery({ query: params.name, type, diet })
+    const { params } = useValidateParams()
+    const { data: recipes, error, isLoading } = useGetSearchedQuery(params)
     
     return (
         <Container>
@@ -31,8 +24,8 @@ export const Searched: FC = () => {
                         <Spinner src={SpinnerBg} alt='spinner' />
                     </SpinnerWrapper>
                     :
-                    recipes?.results.length ?
-                        recipes.results.map((recipe: CuisineResultsType): JSX.Element =>
+                    recipes?.length ?
+                        recipes.map((recipe: CuisineResultsType): JSX.Element =>
                             <CuisineCard key={recipe.id} {...recipe} />
                         )
                         :

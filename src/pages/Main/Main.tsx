@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import ReactDOM from 'react-dom'
 
-import { Recipes } from '../../components/business/Recipes/Recipes'
-import { About } from '../../components/business/About/About'
-import { Answer } from '../../components/business/Answer/Answer'
+import { Recipes } from 'components/business/Recipes/Recipes'
+import { About } from 'components/business/About/About'
+import { Answer } from 'components/business/Answer/Answer'
 
 import { MainEl, MainChatWrapper } from './Main.styled'
 import { BsChatRightText } from 'react-icons/bs'
-import { usePopup } from '../../hooks/usePopup'
+import { usePopup } from 'hooks/usePopup'
 
 export const Main: FC = () => {
     const { popupIsActive, popupHandler } = usePopup()

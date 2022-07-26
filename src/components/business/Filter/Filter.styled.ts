@@ -20,18 +20,19 @@ export const FilterEl = styled.div<FilterElProps>`
    box-shadow: var(--shadow);
    transition: all 0.5s ease;
    z-index: 500;
+   overflow: auto;
 
    ${props => {
       switch (props.isFilterMenuOpen) {
          case true:
             return css`
-               min-height: 100%;
+               height: 290px;
                opacity: 1;
                visibility: visible;
             `
          default:
             return css`
-               min-height: 0;
+               height: 0;
                opacity: 0;
                visibility: hidden;
             `

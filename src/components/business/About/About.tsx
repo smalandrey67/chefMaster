@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { Container, Text } from '../../../assets/styled/Reused.styled'
+import { Container, Text } from 'assets/styled/Reused.styled'
 import { AboutEl, AboutWrapper, AboutWrapperImage, AboutImage, AboutDescriptionWrapper } from './About.styled'
 
-import Background from '../../../assets/images/production/cooking-bg.jpg'
+import Background from 'assets/images/production/cooking-bg.webp'
 
 export const About: FC = () => {
 
@@ -28,7 +28,6 @@ export const About: FC = () => {
                      If you eat and drink too little, you'll lose weight.
                   </Text>
                </AboutDescriptionWrapper>
-
             </AboutWrapper>
          </Container>
       </AboutEl>

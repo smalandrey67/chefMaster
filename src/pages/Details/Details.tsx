@@ -7,11 +7,11 @@ import { DetailsEl, DetailsWrapperLeft, DetailsWrapper, DetailWrapperImage, Deta
     DetailsInfo, 
     DetailsOverImage
 } from './Details.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner } from '../../assets/styled/Reused.styled'
-import SpinnerBg from '../../assets/images/icons/spinner-bg.svg'
+import { Container, ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
+import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
-import { ErrorFallback } from '../../components/reusable/ErrorFallback/ErrorFallback'
-import { BackButton } from '../../components/reusable/BackButton/BackButton'
+import { ErrorFallback } from 'components/reusable/ErrorFallback/ErrorFallback'
+import { BackButton } from 'components/reusable/BackButton/BackButton'
 import { Ingredients } from './Ingredients/Ingredients'
 import { Instructions } from './Instructions/Instructions'
 import { Tabs } from './Tabs/Tabs'
@@ -19,12 +19,12 @@ import { Cooking } from './Cooking/Cooking'
 import { Nutritions } from './Nutritions/Nutritions'
 import { Social } from './Social/Social'
 
-import { motion } from '../../utils/constants/motion.constants'
-import { stringCut } from '../../utils/helpers/string.helper'
+import { motion } from 'utils/constants/motion.constants'
+import { stringCut } from 'utils/helpers/string.helper'
 
-import { useAppSelector } from '../../hooks/useRedux'
-import { selectTabName } from '../../store/slices/tabsSlice'
-import { useGetDetailsQuery } from '../../services/RecipesService'
+import { useAppSelector } from 'hooks/useRedux'
+import { selectTabName } from 'store/slices/tabsSlice'
+import { useGetDetailsQuery } from 'services/RecipesService'
 
 export const Details: FC = () => {
     const params = useParams<{ id: string }>()

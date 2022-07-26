@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
-import { SubTitle, RecipeEl } from '../../../assets/styled/Reused.styled'
+import { SubTitle, RecipeEl } from 'assets/styled/Reused.styled'
 import { RecipeCuisineImageWrapper } from './CuisineCard.styled'
 
-import { CuisineResultsType } from '../../../@types/Cuisine'
-import { useRedirect } from '../../../hooks/useRedirect'
+import { CuisineResultsType } from 'types/Cuisine'
+import { useRedirect } from 'hooks/useRedirect'
 import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 export const CuisineCard: FC<CuisineResultsType> = ({ id, title, image }) => {

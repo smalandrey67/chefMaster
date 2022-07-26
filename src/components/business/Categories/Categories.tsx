@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-import { Container } from '../../../assets/styled/Reused.styled'
+import { Container } from 'assets/styled/Reused.styled'
 import { CategoriesNav, CategoriesLink } from './Categories.styled'
 
 import { Splide } from '@splidejs/react-splide'
 import { SplideSlide } from '@splidejs/react-splide'
 
-import { categories, CategoriesType } from '../../../utils/constants/categories.constants'
-import { splideOptions } from '../../../utils/constants/splide.constants'
+import { categories, CategoriesType } from 'utils/constants/categories.constants'
+import { splideOptions } from 'utils/constants/splide.constants'
 
 export const Categories: FC = () => {
 

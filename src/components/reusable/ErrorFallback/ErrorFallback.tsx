@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { BiError } from 'react-icons/bi'
-import { ErrorWrapper, ErrorMessage } from '../../../assets/styled/Reused.styled'
+import { ErrorWrapper, ErrorMessage } from 'assets/styled/Reused.styled'
 
 type ErrorFallbackProps = {
   height: string;

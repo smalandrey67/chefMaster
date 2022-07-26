@@ -1,9 +1,9 @@
 import { FC, ReactNode } from 'react'
 
 import { BackButtonWrapper } from './BackButton.styled'
-import { ButtonBack } from '../../../assets/styled/Reused.styled'
+import { ButtonBack } from 'assets/styled/Reused.styled'
 
-import { useBack } from '../../../hooks/useBack'
+import { useBack } from 'hooks/useBack'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 
 type BackButtonProps = {

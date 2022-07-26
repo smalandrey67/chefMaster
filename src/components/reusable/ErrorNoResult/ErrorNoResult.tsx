@@ -1,7 +1,7 @@
 import { FC } from 'react' 
 
-import ManShrugging from '../../../assets/images/production/man-shrugging.svg'
-import { ErrorWrapper } from '../../../assets/styled/Reused.styled'
+import ManShrugging from 'assets/images/production/man-shrugging.svg'
+import { ErrorWrapper } from 'assets/styled/Reused.styled'
 import { ErrorNoResultWrapperImage, ErrorNoResultImage, ErrorNoResultTitle } from './ErrorNoResult.styled'
 
 type ErrorNotResultProps = {

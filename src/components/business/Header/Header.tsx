@@ -7,15 +7,15 @@ import { HeaderEl, HeaderWrapper, HeaderLogo, HeaderBlogsWrapper, HeaderBlogs, H
     HeaderItem
 } from './Header.styled'
 
-import Basket from '../../../assets/images/icons/basket.svg'
-import { Container } from '../../../assets/styled/Reused.styled'
+import Basket from 'assets/images/icons/basket.svg'
+import { Container } from 'assets/styled/Reused.styled'
 
 import { ImSpoonKnife } from 'react-icons/im'
 import { BsFillPeopleFill } from 'react-icons/bs'
 
 import { Search } from '../Search/Search'
-import { useAppSelector } from '../../../hooks/useRedux'
-import { selectFavorites } from '../../../store/slices/favoritesSlice'
+import { useAppSelector } from 'hooks/useRedux'
+import { selectFavorites } from 'store/slices/favoritesSlice'
 
 export const Header: FC = () => {
     const favorites = useAppSelector(selectFavorites)

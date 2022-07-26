@@ -1,14 +1,14 @@
 import { FC, memo } from 'react'
 
-import { ErrorMessage, SpinnerWrapper, Spinner } from '../../../assets/styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
 import { NutritionWrapper, NutritionItem } from './Nutritions.styled'
-import SpinnerSm from '../../../assets/images/icons/spinner-sm.svg'
+import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 
 import { GiPaperArrow, GiRawEgg } from 'react-icons/gi'
 import { ImFire } from 'react-icons/im'
 import { BiError } from 'react-icons/bi'
 
-import { useGetNutritionsQuery } from '../../../services/RecipesService'
+import { useGetNutritionsQuery } from 'services/RecipesService'
 
 type NutritionProps = {
     id: string | undefined;

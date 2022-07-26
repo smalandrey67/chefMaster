@@ -1,17 +1,17 @@
 import { FC } from 'react'
 
 import { FavoritesEl } from './Favorites.styled'
-import { Container, RecipesWrapper, Title } from '../../assets/styled/Reused.styled'
+import { Container, RecipesWrapper, Title } from 'assets/styled/Reused.styled'
 
-import { useAppSelector } from '../../hooks/useRedux'
-import { selectFavorites } from '../../store/slices/favoritesSlice'
+import { useAppSelector } from 'hooks/useRedux'
+import { selectFavorites } from 'store/slices/favoritesSlice'
 
-import { FavoritesType } from '../../@types/Favorites'
-import { motion } from '../../utils/constants/motion.constants'
+import { FavoritesType } from 'types/Favorites'
+import { motion } from 'utils/constants/motion.constants'
 
-import { FavoriteCard } from '../../components/business/FavoriteCard/FavoriteCard'
-import { BackButton } from '../../components/reusable/BackButton/BackButton'
-import { ErrorNoResult } from '../../components/reusable/ErrorNoResult/ErrorNoResult'
+import { FavoriteCard } from 'components/business/FavoriteCard/FavoriteCard'
+import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
 export const Favorites: FC = () => {
    const favorites = useAppSelector(selectFavorites)

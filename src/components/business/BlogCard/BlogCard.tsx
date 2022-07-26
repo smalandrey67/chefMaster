@@ -9,9 +9,9 @@ import {
    BlogFigCaption,
    BlogFigureImage
 } from './BlogCard.styled'
-import { Title, Text, SpecialTitle } from '../../../assets/styled/Reused.styled'
+import { Title, Text, SpecialTitle } from 'assets/styled/Reused.styled'
 
-import { BlogType } from '../../../@types/Blogs'
+import { BlogType } from 'types/Blogs'
 import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 export const BlogCard: FC<BlogType> = ({ title, file, author, description, avatar }) => {
