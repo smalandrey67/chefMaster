@@ -1,9 +1,9 @@
-type SplideType = {
+type SplideType = Readonly<{
    perPage: number;
    arrows: false;
    pagination: false;
    gap: string;
-}
+}>
 
 export const splideOptions = (page: number): SplideType => {
    return {

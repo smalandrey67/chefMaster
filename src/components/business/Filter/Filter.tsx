@@ -10,7 +10,7 @@ import { useAppSelector } from 'hooks/useRedux'
 import { useFilter } from './hook/useFilter'
 
 export const Filter: FC = memo(() => {
-   const { optionHandler, showResultHandler } = useFilter()
+   const { disabledShowResultBtn, optionHandler, showResultHandler } = useFilter()
    const { filterCategories, isFilterMenuOpen } = useAppSelector(selectFilterState)
 
    return (
@@ -31,7 +31,7 @@ export const Filter: FC = memo(() => {
                   </FilterWrapper>
                </Fragment>
             )}
-            <FilterShowResult onClick={showResultHandler}>Show Result</FilterShowResult> 
+            <FilterShowResult disabled={!disabledShowResultBtn}  onClick={showResultHandler}>Show Result</FilterShowResult> 
          </FilterBody>
       </FilterEl>
    )

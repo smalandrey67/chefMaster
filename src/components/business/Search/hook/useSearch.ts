@@ -1,7 +1,9 @@
+import { useCallback } from 'react'
 import { SubmitHandler, UseFormReset } from 'react-hook-form'
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
+import { useOverflow } from 'hooks/useOverflow'
 import { changeStatusOfFilterMenu, selectFilterState } from 'store/slices/filterSlice'
 
 import { SearchType } from '../Search.types'
@@ -12,12 +14,13 @@ export const useSearch = (reset: UseFormReset<SearchType>): UseSearchType => {
 	const dispatch = useAppDispatch()
 	const { isFilterMenuOpen, filterParams } = useAppSelector(selectFilterState)
 
+    useOverflow(isFilterMenuOpen)
 	const { navigateHandler } = useRedirect()
 
- 	const openFilterMenuHandler = (): void => {
-        dispatch(changeStatusOfFilterMenu())
-    }
-
+    const openFilterMenuHandler = useCallback((): void => {
+       dispatch(changeStatusOfFilterMenu())
+    }, [dispatch])
+    
     const searchSubmitHandler: SubmitHandler<SearchType> = (data): void => {
         const product = data.product.trim().toLowerCase()
         const stringOfParams = generateParams(filterParams)
@@ -26,7 +29,7 @@ export const useSearch = (reset: UseFormReset<SearchType>): UseSearchType => {
         reset()
 
         if (isFilterMenuOpen) {
-            openFilterMenuHandler()
+            dispatch(changeStatusOfFilterMenu())
         }
     }  
 

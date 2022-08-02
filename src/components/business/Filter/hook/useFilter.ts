@@ -9,25 +9,28 @@ import { changeActiveOfOption, changeStatusOfFilterMenu, selectFilterState } fro
 
 export const useFilter = (): UseFilterType => {
 	const dispatch = useAppDispatch()
-	const { filterParams, isFilterMenuOpen } = useAppSelector(selectFilterState)
+	const { isFilterMenuOpen, filterParams } = useAppSelector(selectFilterState)
 
 	const { navigateHandler } = useRedirect()
 
+	const disabledShowResultBtn = !!Object.values(filterParams).length
+
 	const optionHandler = (typeId: string, query: keyof FilterParamsType): void => {
-      dispatch(changeActiveOfOption(typeId, query))
-   }	
+		dispatch(changeActiveOfOption(typeId, query))
+	}
 
 	const showResultHandler = (): void => {
-	    const stringOfParams = generateParams(filterParams)
+		const stringOfParams = generateParams(filterParams)
 
-	    navigateHandler('/searched', `${stringOfParams}`)
+		navigateHandler('/searched', `${stringOfParams}`)
 
-	    if (isFilterMenuOpen) {
-	    	dispatch(changeStatusOfFilterMenu())
-	    }
+		if (isFilterMenuOpen) {
+			dispatch(changeStatusOfFilterMenu())
+		}
 	}
 
 	return {
+		disabledShowResultBtn,
 		optionHandler,
 		showResultHandler
 	}

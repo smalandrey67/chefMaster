@@ -40,6 +40,7 @@ export type UseRedirectType = {
 }
 
 export type UseFilterType = {
+   disabledShowResultBtn: boolean;
    optionHandler: (id: string, query: keyof FilterParamsType) => void;
    showResultHandler: () => void;
 }

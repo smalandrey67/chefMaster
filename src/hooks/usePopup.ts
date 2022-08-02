@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { UsePopupType } from 'types/Hooks'
+
+import { useOverflow } from './useOverflow'
 
 export const usePopup = (): UsePopupType => {
    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
 
-   useEffect(() => {
-      if (popupIsActive) {
-         document.body.style.overflow = 'hidden'
-
-         return
-      }
-
-      document.body.style.overflow = 'visible'
-   }, [popupIsActive])
+   useOverflow(popupIsActive)
 
    const popupHandler = (): void => {
       setPopupIsActive(prevState => !prevState)

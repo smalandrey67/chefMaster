@@ -1,1 +1,1 @@
-export const extension: string[]= ['.png', '.jpg', '.jpeg']
+export const extension: readonly string[]= ['.png', '.jpg', '.jpeg']

@@ -14,18 +14,23 @@ type FilterState = {
    filterCategories: FilterCategoriesTypes[];
    isFilterMenuOpen: boolean;
    filterParams: FilterParamsType;
+   isHamburgerMenu: boolean;
 }
 
 const initialState: FilterState = {
    filterCategories,
    isFilterMenuOpen: false,
-   filterParams: {} as FilterParamsType
+   filterParams: {} as FilterParamsType,
+   isHamburgerMenu: false
 }
 
 const filterSlice = createSlice({
    name: 'filter',
    initialState,
    reducers: {
+      changeStatusOfHamburgerMenu: (state): void => {
+         state.isHamburgerMenu = !state.isHamburgerMenu
+      },
       changeStatusOfFilterMenu: (state): void => {
          state.isFilterMenuOpen = !state.isFilterMenuOpen
       },
@@ -71,7 +76,7 @@ const filterSlice = createSlice({
    }
 })
 
-export const { changeStatusOfFilterMenu, changeActiveOfOption } = filterSlice.actions
+export const { changeStatusOfHamburgerMenu, changeStatusOfFilterMenu, changeActiveOfOption } = filterSlice.actions
 export default filterSlice.reducer
 
 export const selectFilterState = (state: RootState): FilterState => state.filter

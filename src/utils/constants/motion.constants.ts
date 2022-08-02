@@ -1,17 +1,17 @@
-type MotionType = {
+type MotionType = Readonly<{
    animate: {
       opacity: number;
-   },
+   };
    initial: {
       opacity: number;
-   },
+   };
    exit: {
       opacity: number;
-   },
+   };
    transition: {
       duration: number;
-   },
-}
+   };
+}>
 
 export const motion: MotionType = {
    animate: { opacity: 1 },

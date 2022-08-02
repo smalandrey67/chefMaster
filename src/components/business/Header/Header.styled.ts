@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+type HeaderFunctionalityProps = {
+    isHamburgerMenu?: boolean
+}
+
 export const HeaderEl = styled.header`
     position: fixed;
     top: 0;
@@ -42,18 +46,52 @@ export const HeaderBlogs = styled(Link)`
     font-size: var(--fs-md);
 `
 
-export const HeaderFunctionality = styled.nav``
+export const HeaderNav = styled.nav<HeaderFunctionalityProps>`
+    @media (max-width: 768px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: var(--color-white);
+        z-index: 200;
+        padding: 50px 20px 0 20px;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        transform: ${props => props.isHamburgerMenu ? 'translateX(0)' : 'translateX(-700px)'};
+    }
+`
 
 export const HeaderList = styled.ul`
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center;
+    
+    @media (min-width: 768px) {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `
 
 export const HeaderItem = styled.li`
-    &:not(:last-child) {
-        margin-right: 15px;
+    display: flex;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
     }
 
     @media (hover: hover) {
@@ -64,33 +102,31 @@ export const HeaderItem = styled.li`
     }
 `
 
-export const HeaderFavorites = styled(Link)`
-    height: 100%;
-    width: 100%;
-    position: relative;
+export const HeaderLink = styled(Link)`
+    font-size: var(--fs-bg);
+    margin-left: 10px;
 `
 
-export const HeaderFavoritesImage = styled.img`
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
+export const HeaderLine = styled.div`
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-categories);
+        position: absolute;
+        bottom: 80px;
+        left: 0;
+    }
 `
 
-export const HeaderFavoritesCount = styled.span`
-    position: absolute;
-    bottom: -2px;
-    font-size: var(--fs-sl);
-    right: -5px;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow);
-    color: var(--color-categories);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+export const HeaderVerticalLine = styled.div`
+    
+    @media (max-width: 768px) {
+        width: 2px;
+        height: 100%;
+        background-color: var(--color-categories);
+        position: absolute;
+        bottom: 0;
+        right: 55px;
+    }
 `
-
-

@@ -33,7 +33,7 @@ export const SearchInput = styled(Input).attrs({
     placeholder: 'Search'
 })`
     width: 100%;
-    height: 100%;
+    height: 90%;
     font-weight: var(--fw-bold);
 `
 

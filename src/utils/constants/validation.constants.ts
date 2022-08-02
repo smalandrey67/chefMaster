@@ -1,23 +1,22 @@
-type validationLengthType = {
+type validationLengthType = Readonly<{
    value: number;
    message: string;
-}
+}>
 
-type validationFieldType = {
+type validationFieldType = Readonly<{
    required: string;
    minLength?: validationLengthType;
    maxLength?: validationLengthType;
+}>
 
-}
-
-type validationType = {
+type validationType = Readonly<{
    author: validationFieldType;
    title: validationFieldType;
    description: validationFieldType;
    file: validationFieldType;
    product: validationFieldType;
    question: validationFieldType;
-}
+}>
 
 export const validation: validationType = {
    author: {

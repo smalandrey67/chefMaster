@@ -2,7 +2,7 @@ import { FC, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { routes, RouteType } from './routes/routes'
+import { routes, RouteType } from 'routes/routes'
 
 import { Preload } from 'components/reusable/Preload/Preload'
 import { Header } from 'components/business/Header/Header'
