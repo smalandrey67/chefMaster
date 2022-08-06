@@ -35,3 +35,10 @@ export const Favorites = lazy(() =>
       default: module.Favorites
    }))
 )
+
+export const MealPlan = lazy(() =>
+   import(/* webpackChunkName: "MealPlan" */'pages/MealPlan/MealPlan').then(module => ({
+      default: module.MealPlan
+   }))
+)
+

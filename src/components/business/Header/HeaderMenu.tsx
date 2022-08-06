@@ -8,7 +8,7 @@ import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice'
 
 import { HeaderNav, HeaderList, HeaderItem, HeaderLink, HeaderHorizontalLine, HeaderVerticalLine } from './Header.styled'
 
-import { BsFillPeopleFill, BsFillBasket3Fill } from 'react-icons/bs'
+import { BsFillPeopleFill, BsFillBasket3Fill, BsFillCalendarWeekFill } from 'react-icons/bs'
 
 export const HeaderMenu: FC = () => {
    const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
@@ -35,6 +35,10 @@ export const HeaderMenu: FC = () => {
             <HeaderItem>
                <BsFillPeopleFill size='20' />
                <HeaderLink to='/blogs'>Blogs</HeaderLink>
+            </HeaderItem>
+            <HeaderItem>
+               <BsFillCalendarWeekFill size='20' />
+               <HeaderLink to='/meal/plan'>Meal Plan</HeaderLink>
             </HeaderItem>
          </HeaderList>
          <HeaderHorizontalLine />

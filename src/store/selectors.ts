@@ -1,17 +1,20 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from './store'
 
-// #favorites reducer
+// #favorites selectors
 export const selectFavorites = (state: RootState) => state.favorites.favorites
 
-// #filter reducer
+// #filter selectors
 export const selectFilterCategories = (state: RootState) => state.filter.filterCategories
 export const selectIsFilterMenuOpen = (state: RootState) =>  state.filter.isFilterMenuOpen
 export const selectParams = (state: RootState) => state.filter.filterParams
 export const selectIsHamburgerMenu = (state: RootState) => state.filter.isHamburgerMenu
 
-// #tabs reducer
+// #tabs selectors
 export const selectTabName = (state: RootState) => state.tabs.tabName
+
+// #mealPlan selectors
+export const selectWeekPlan = (state: RootState) => state.mealPlan.weekPlan
 
 export const selectValidatedParams = createSelector(
    [selectParams],
