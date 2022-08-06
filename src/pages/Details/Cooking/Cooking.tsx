@@ -45,7 +45,7 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
 
                     {steps.map(({ number, step, ingredients }: CookingStepType): JSX.Element =>
                         <DetailsCookingItem key={number}>
-                            <DetailsCookingHeader onClick={(): void => stepHandler(step)}>
+                            <DetailsCookingHeader onClick={() => stepHandler(step)}>
                                 <DetailsCookingStep>Step {number}</DetailsCookingStep>
                                 <BsChevronDown
                                     style={{ transform: stepIsActive === step ? 'rotate(180deg)' : 'rotate(0)' }}

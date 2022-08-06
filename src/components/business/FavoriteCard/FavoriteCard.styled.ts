@@ -9,8 +9,6 @@ export const FavoriteCardImageWrapper = styled.div`
     position: relative;
 `
 
-
-
 export const FavoriteCardTitle = styled.h3`
     position: absolute;
     bottom: 0px;

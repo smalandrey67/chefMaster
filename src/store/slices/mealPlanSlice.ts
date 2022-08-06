@@ -1,32 +1,52 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { WeekPlanType } from 'types/MealPlan'
+import { mealPLan } from 'utils/constants/mealPlan.constants'
+
+import { WeekPlanType, DishType } from 'types/MealPlan'
 
 type MealPlanState = {
    weekPlan: WeekPlanType[];
 }
 
-const initialState: MealPlanState = { 
-   weekPlan: [
-      { id: nanoid(), weekDay: 'Monday', dishes: [
-         { id: nanoid(), image: 'https://spoonacular.com/recipeImages/715594-556x370.jpg', title: 'Homemade Garlic and Basil French Fries' },
-         { id: nanoid(), image: 'https://spoonacular.com/recipeImages/715594-556x370.jpg', title: 'Homemade Garlic and Basil French Fries' }
-      ]},
-      { id: nanoid(), weekDay: 'Tuesday', dishes: [] },
-      { id: nanoid(), weekDay: 'Wednesday', dishes: [] },
-      { id: nanoid(), weekDay: 'Thursday', dishes: [] },
-      { id: nanoid(), weekDay: 'Friday', dishes: [] },
-      { id: nanoid(), weekDay: 'Saturday', dishes: [] },
-      { id: nanoid(), weekDay: 'Sunday', dishes: [] }
-   ]
+type PayloadAddRecipeType = {
+   idWeek: string;
+   plannedRecipe: DishType;
+}
+
+const initialState: MealPlanState = {
+   weekPlan: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '') : mealPLan
 }
 
 export const mealPlanSlice = createSlice({
    name: 'mealPlan',
    initialState,
    reducers: {
+      addRecipeIntoMeal: {
+         reducer: (state, { payload }: PayloadAction<PayloadAddRecipeType>): void => {
+            state.weekPlan = state.weekPlan.map(dayPlan => {
+               if (dayPlan.id === payload.idWeek) {
+                  dayPlan.dishes.push(payload.plannedRecipe)
+               }
 
+               return dayPlan
+            })
+
+            localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
+         },
+         prepare: (idWeek: string, id: number, title: string, image: string) => {
+            return {
+               payload: {
+                  idWeek,
+                  plannedRecipe: { id: String(id), title, image}
+               }
+            }
+         }
+      },
+      deleteRecipeFromMealPlan: (state, action): void => {
+         console.log('test')  
+      }
    }
 })
 
 export default mealPlanSlice.reducer
+export const { addRecipeIntoMeal } = mealPlanSlice.actions

@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { FavoritesEl } from './Favorites.styled'
 import { Container, RecipesWrapper, Title } from 'assets/styled/Reused.styled'
