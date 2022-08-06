@@ -54,6 +54,7 @@ export const Global = createGlobalStyle`
         --color-grey: grey;
         --color-text: #232526;
         --color-alternative: #414345;
+        --color-scrollbar: #aba9a9; 
         --color-categories: #56ab2f;
         --color-categories-text: #f5af19;
         --color-error: #ed213a;

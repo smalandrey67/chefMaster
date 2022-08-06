@@ -76,8 +76,10 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
             {data?.answer}
          </AnswerAnswer> : null}
 
-         {/* if success and there is no value into ANSWER => show warning */}
-         {isSuccess && !Object.keys(data?.answer || []).length ? <ErrorNoResult description='Nothing was found' height='23vh' /> : null}
+         {/* if success and there is no value inside of ANSWER => show warning */}
+         {isSuccess && !Object.keys(data?.answer || []).length ? 
+            <ErrorNoResult description='Nothing was found' height='23vh' /> 
+         : null}
 
          {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
       </Popup>

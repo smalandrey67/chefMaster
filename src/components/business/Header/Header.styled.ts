@@ -107,7 +107,7 @@ export const HeaderLink = styled(Link)`
     margin-left: 10px;
 `
 
-export const HeaderLine = styled.div`
+export const HeaderHorizontalLine = styled.div`
 
     @media (max-width: 768px) {
         width: 100%;

@@ -1,7 +1,7 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, memo } from 'react'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { selectFavorites } from 'store/slices/favoritesSlice'
+import { selectFavorites } from 'store/selectors'
 import { useFavorites } from '../hook/useFavorites'
 
 import { BsClock, BsSuitHeartFill } from 'react-icons/bs'
@@ -18,16 +18,16 @@ type SocialProps = {
 }
 
 export const Social: FC<SocialProps> = memo(({ details }) => {
-   const { favoritesHandler } = useFavorites()
+   const favoritesHandler = useFavorites()
    const favorites = useAppSelector(selectFavorites)
 
-   const getColorOfHeart = useCallback((): 'red' | 'black' => {
+   const getColorOfHeart = (): 'red' | 'black' => {
       const element: FavoritesType | undefined = favorites.find(item => item.id === details?.id)
 
       if (element?.isActive) return 'red'
 
       return 'black'
-   }, [details?.id, favorites]) // This function checks if we have the same details object in the favorites array
+   } // #This function checks if we have the same details object in the favorites array, make it red rather than black
 
 
    return (

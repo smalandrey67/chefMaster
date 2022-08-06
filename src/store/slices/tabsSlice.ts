@@ -21,5 +21,3 @@ export const tabsSlice = createSlice({
 
 export const { changeTabName } = tabsSlice.actions
 export default tabsSlice.reducer
-
-export const selectTabName = (state: RootState): string => state.tabs.tabName 

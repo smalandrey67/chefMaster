@@ -9,7 +9,7 @@ export const useImage = (): UseImageType => {
    const [fileName, setFileName] = useState<string>('')
 
    const changeFileHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-      const files: FileList | null = e.target.files
+      const files = e.target.files
 
       if (files) {
          setFileName(files[0].name)

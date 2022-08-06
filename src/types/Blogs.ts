@@ -26,6 +26,7 @@ export type PostSubmit = {
    file: string;
    author: string;
    description: string;
+   createdAt: () => string;
 }
 
 export type UploadBlogType = Omit<BlogsType, 'avatar' | 'createdAt'>

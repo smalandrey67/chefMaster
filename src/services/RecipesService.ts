@@ -5,6 +5,7 @@ import { RecipeType, RecipeResultType } from 'types/Recipe'
 import { DetailsType } from 'types/Details'
 import { NutritionType } from 'types/Nutrition'
 import { AnswerType } from 'types/Answer'
+import { FilterParamsType } from 'types/Params'
 
 export const recipesApi = createApi({
    reducerPath: 'recipesService',
@@ -13,7 +14,7 @@ export const recipesApi = createApi({
    endpoints: (builder) => ({
       getRandomRecipes: builder.query<RecipeResultType[], void>({
          query: () => ({
-            url: '/random',
+            url: '/rando',
             params: {
                number: 12,
                apiKey: process.env.REACT_APP_KEY
@@ -39,7 +40,7 @@ export const recipesApi = createApi({
             }
          })
       }),
-      getSearched: builder.query<CuisineResultsType[], {[key: string]: string}>({ // !!change type of arguments
+      getSearched: builder.query<CuisineResultsType[], FilterParamsType>({ 
          query: (params) => ({
             url: '/complexSearch',
             params: {

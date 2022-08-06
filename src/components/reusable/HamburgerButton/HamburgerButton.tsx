@@ -1,13 +1,14 @@
 import { FC } from 'react'
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
-import { selectFilterState } from 'store/slices/filterSlice'
+import { selectIsHamburgerMenu } from 'store/selectors'
 import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice'
 
-import { Hamburger } from './HamburgerButton.styled'
+import { Hamburger, HamburgerLine } from './HamburgerButton.styled'
 
 export const HamburgerButton: FC = () => {
-   const { isHamburgerMenu } = useAppSelector(selectFilterState)
+   const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
+
    const dispatch = useAppDispatch()
 
    const hamburgerHandler = (): void => {
@@ -15,9 +16,8 @@ export const HamburgerButton: FC = () => {
    }
 
    return (
-      <Hamburger
-         isHamburgerMenu={isHamburgerMenu}
-         onClick={hamburgerHandler}
-      />
+      <Hamburger isHamburgerMenu={isHamburgerMenu} onClick={hamburgerHandler}> 
+         <HamburgerLine isHamburgerMenu={isHamburgerMenu}/>
+      </Hamburger>
    )
 }

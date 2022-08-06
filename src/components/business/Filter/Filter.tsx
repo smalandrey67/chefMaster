@@ -3,7 +3,7 @@ import { FC, memo, Fragment } from 'react'
 import { FilterEl, FilterBody, FilterWrapper, FilterOption, FilterShowResult } from './Filter.styled'
 import { SpecialTitle } from 'assets/styled/Reused.styled'
 
-import { selectFilterState } from 'store/slices/filterSlice'
+import { selectFilterCategories, selectIsFilterMenuOpen } from 'store/selectors'
 import { CategoryType, FilterCategoriesTypes } from 'utils/constants/filterTypes.constants'
 
 import { useAppSelector } from 'hooks/useRedux'
@@ -11,7 +11,9 @@ import { useFilter } from './hook/useFilter'
 
 export const Filter: FC = memo(() => {
    const { disabledShowResultBtn, optionHandler, showResultHandler } = useFilter()
-   const { filterCategories, isFilterMenuOpen } = useAppSelector(selectFilterState)
+   
+   const filterCategories = useAppSelector(selectFilterCategories) 
+   const isFilterMenuOpen = useAppSelector(selectIsFilterMenuOpen) 
 
    return (
       <FilterEl isFilterMenuOpen={isFilterMenuOpen}>

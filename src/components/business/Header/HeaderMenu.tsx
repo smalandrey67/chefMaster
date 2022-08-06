@@ -3,18 +3,19 @@ import { useLocation } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 import { useOverflow } from 'hooks/useOverflow'
-import { selectFilterState, changeStatusOfHamburgerMenu } from 'store/slices/filterSlice'
+import { selectIsHamburgerMenu } from 'store/selectors'
+import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice'
 
-import { HeaderNav, HeaderList, HeaderItem, HeaderLink, HeaderLine, HeaderVerticalLine } from './Header.styled'
+import { HeaderNav, HeaderList, HeaderItem, HeaderLink, HeaderHorizontalLine, HeaderVerticalLine } from './Header.styled'
 
 import { BsFillPeopleFill, BsFillBasket3Fill } from 'react-icons/bs'
 
 export const HeaderMenu: FC = () => {
-   const { isHamburgerMenu } = useAppSelector(selectFilterState)
-   useOverflow(isHamburgerMenu)
-
+   const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
+   
    const dispatch = useAppDispatch()
    const location = useLocation()
+   useOverflow(isHamburgerMenu)
 
    useEffect(() => {
       if (isHamburgerMenu) {
@@ -36,7 +37,7 @@ export const HeaderMenu: FC = () => {
                <HeaderLink to='/blogs'>Blogs</HeaderLink>
             </HeaderItem>
          </HeaderList>
-         <HeaderLine />
+         <HeaderHorizontalLine />
          <HeaderVerticalLine />
       </HeaderNav>
    )

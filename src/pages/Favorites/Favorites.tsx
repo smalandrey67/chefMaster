@@ -4,7 +4,7 @@ import { FavoritesEl } from './Favorites.styled'
 import { Container, RecipesWrapper, Title } from 'assets/styled/Reused.styled'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { selectFavorites } from 'store/slices/favoritesSlice'
+import { selectFavorites } from 'store/selectors'
 
 import { FavoritesType } from 'types/Favorites'
 import { motion } from 'utils/constants/motion.constants'

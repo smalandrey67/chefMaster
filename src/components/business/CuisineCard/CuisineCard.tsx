@@ -8,10 +8,10 @@ import { useRedirect } from 'hooks/useRedirect'
 import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 export const CuisineCard: FC<CuisineResultsType> = ({ id, title, image }) => {
-    const { navigateHandler } = useRedirect()
+    const navigateHandler = useRedirect()
 
     return (
-        <RecipeEl onClick={() => navigateHandler('/details/', id)}>
+        <RecipeEl onClick={() => navigateHandler('/details/', String(id))}>
             <RecipeCuisineImageWrapper>
                 <LazyImage
                     image={image}

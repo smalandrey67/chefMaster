@@ -20,23 +20,38 @@ export const FilterEl = styled.div<FilterElProps>`
    box-shadow: var(--shadow);
    transition: all 0.5s ease;
    z-index: 100;
+   overflow: auto;
 
    ${props => {
       switch (props.isFilterMenuOpen) {
          case true:
             return css`
-               height: min-height: 100%;
+               height: 303px;
                opacity: 1;
                visibility: visible;
             `
          default:
             return css`
-               height: min-height: 0;
+               height: 0;
                opacity: 0;
                visibility: hidden;
             `
       }
    }}
+
+   &::-webkit-scrollbar {
+      width: 4px;
+      border-radius: var(--br-radius);
+   }
+
+   &::-webkit-scrollbar-track {
+      background: var(--color-white); 
+   }
+
+   &::-webkit-scrollbar-thumb {
+      opacity: 1;
+      background: var(--color-scrollbar);
+   }
 `
 
 export const FilterBody = styled.div`

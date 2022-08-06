@@ -12,7 +12,7 @@ import { useGetSearchedQuery } from 'services/RecipesService'
 import { useValidateParams } from './hook/useValidateParams' 
 
 export const Searched: FC = () => {
-    const { params } = useValidateParams()
+    const params = useValidateParams()
     const { data: recipes, error, isLoading } = useGetSearchedQuery(params)
     
     return (

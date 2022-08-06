@@ -10,11 +10,11 @@ import { RecipeBody, RecipeWrapper, RecipeTitle, RecipeGradient, RecipeScore } f
 import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 
 export const RecipeCard: FC<RecipeResultType> = ({ id, title, image, healthScore }) => {
-    const { navigateHandler } = useRedirect()
+    const navigateHandler = useRedirect()
 
     return (
         <SplideSlide>
-            <RecipeEl onClick={() => navigateHandler('/details/', id)}>
+            <RecipeEl onClick={() => navigateHandler('/details/', String(id))}>
                 <RecipeBody>
                     <RecipeWrapper>
                         <LazyImage 

@@ -11,7 +11,7 @@ type BackButtonProps = {
 }
 
 export const BackButton: FC<BackButtonProps> = ({ children }) => {
-   const { pageBackHandler } = useBack()
+   const pageBackHandler = useBack()
 
    return (
       <BackButtonWrapper>

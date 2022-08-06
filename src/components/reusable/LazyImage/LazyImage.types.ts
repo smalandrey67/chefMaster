@@ -1,6 +1,4 @@
-type StyleType = {
-   [property: string]: string | number;
-}
+type StyleType = Record<string, string | number>
 
 export type LazyImageProps = {
    image: string;

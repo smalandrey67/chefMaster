@@ -25,5 +25,5 @@ export const useFavorites = (): UseFavoritesType => {
       dispatch(addFavorite(preparedObject))
    }
 
-   return { favoritesHandler }
+   return favoritesHandler
 }

@@ -38,5 +38,3 @@ const favoritesSlice = createSlice({
 
 export const { removeFavorite, addFavorite } = favoritesSlice.actions
 export default favoritesSlice.reducer
-
-export const selectFavorites = (state: RootState): FavoritesType[] => state.favorites.favorites

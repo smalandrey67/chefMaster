@@ -16,7 +16,6 @@ import { IoFootstepsSharp } from 'react-icons/io5'
 import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from 'types/Details'
 import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
-
 type CookingProps = {
     details: DetailsType | undefined;
 }
@@ -38,13 +37,11 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
         <DetailsList {...motion} >
             {details?.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index: number): JSX.Element => (
                 <Fragment key={index}> {/* Item name possible could be the empty string. There is no another way to give an unique key */}
-
                     {name.length ?
                         <DetailsCookingSubtitle>
                             <IoFootstepsSharp />
                             {stringCut(name, 40)}
                         </DetailsCookingSubtitle> : null}
-
 
                     {steps.map(({ number, step, ingredients }: CookingStepType): JSX.Element =>
                         <DetailsCookingItem key={number}>
@@ -62,7 +59,7 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
                                         <DetailsCookingIngredientsPhoto
                                             key={id}
                                             src={`${process.env.REACT_APP_IMAGE_URL}${image}`}
-                                            alt={name}  
+                                            alt={name}
                                         />
                                     )}
                                 </DetailsCookingIngredients>
@@ -72,7 +69,7 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
                     )}
                 </Fragment>
             ))}
-
+            
             {!details?.analyzedInstructions.length && <ErrorNoResult description='No instruction for cooking' height='25vh' />}
         </DetailsList>
     )

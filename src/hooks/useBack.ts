@@ -8,7 +8,5 @@ export const useBack = (): UseBackType => {
       navigate(-1)
    }
 
-   return {
-      pageBackHandler
-   }
+   return pageBackHandler
 }

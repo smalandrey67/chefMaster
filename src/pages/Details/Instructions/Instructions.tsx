@@ -17,7 +17,8 @@ export const Instructions: FC<InstructionsProps> = ({ details }) => {
     return (
         <>
             {!details?.summary.length && !details?.instructions.length ? 
-                <ErrorNoResult description='No instructions here' height='25vh' /> : null}
+                <ErrorNoResult description='No instructions here' height='25vh' /> 
+            : null}
 
             <DetailsInfoDescription {...motion}>
                 <Text margin='0 0 10px 0'>{removeTags(details?.summary)}</Text>

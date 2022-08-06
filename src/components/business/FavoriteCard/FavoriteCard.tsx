@@ -14,7 +14,7 @@ import { removeFavorite } from 'store/slices/favoritesSlice'
 
 export const FavoriteCard: FC<FavoritesType> = ({ id, title, image, isActive }) => {
    const dispatch = useAppDispatch()
-   const { navigateHandler } = useRedirect()
+   const navigateHandler = useRedirect()
   
    const removeFavoriteHandler = (e: MouseEvent): void => {
       e.stopPropagation()
@@ -22,7 +22,7 @@ export const FavoriteCard: FC<FavoritesType> = ({ id, title, image, isActive }) 
    }
 
    return (
-      <RecipeEl onClick={() => navigateHandler('/details/', id)}>
+      <RecipeEl onClick={() => navigateHandler('/details/', String(id))}>
          <FavoriteCardImageWrapper>
             <LazyImage 
                image={image} 

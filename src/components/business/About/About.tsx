@@ -11,7 +11,6 @@ export const About: FC = () => {
       <AboutEl>
          <Container>
             <AboutWrapper>
-
                <AboutWrapperImage>
                   <AboutImage src={Background} alt='cooking-background' />
                </AboutWrapperImage>

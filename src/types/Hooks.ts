@@ -3,7 +3,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { UploadImageType } from './UploadImage'
 import { SubmitBlogType } from './Blogs'
 import { DetailsType } from './Details'
-import { ResultParamsType, FilterParamsType } from './Params' 
+import { FilterParamsType, } from './Params' 
 
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
@@ -27,17 +27,13 @@ export type UseSubmitType = {
    submitHandler: (data: SubmitBlogType) => void;
 }
 
-export type UseBackType = {
-   pageBackHandler: () => void;
-}
+export type UseBackType = () => void;
 
-export type UseFavoritesType = {
-   favoritesHandler: (data: DetailsType | undefined) => void;
-}
+export type UseFavoritesType = (data: DetailsType | undefined) => void;
 
-export type UseRedirectType = {
-   navigateHandler: (query: string, params?: string | number) => void;
-}
+
+export type UseRedirectType = (query: string, params?: string) => void;
+
 
 export type UseFilterType = {
    disabledShowResultBtn: boolean;
@@ -50,6 +46,4 @@ export type UseSearchType = {
    searchSubmitHandler: (data: { product: string }) => void;
 }
 
-export type UseValidateParamsType = {
-   params: ResultParamsType; 
-}
+export type UseValidateParamsType = FilterParamsType; 

@@ -10,12 +10,9 @@ export const blogsApi = createApi({
    endpoints: (builder) => ({
       getBlogs: builder.query<BlogsType[], void>({
          query: () => ({
-            url: '/items',
-            params: {
-               sortBy: 'createdAt',
-               order: 'asc'
-            }
+            url: '/items'
          }),
+         transformResponse: (response: BlogsType[]): BlogsType[] => response.slice().sort((a, b) => Number(b.id) - Number(a.id)),
          providesTags: ['Blogs'] 
       }),
       uploadBlog: builder.mutation<UploadBlogType, PostSubmit>({

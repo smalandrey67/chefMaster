@@ -78,6 +78,3 @@ const filterSlice = createSlice({
 
 export const { changeStatusOfHamburgerMenu, changeStatusOfFilterMenu, changeActiveOfOption } = filterSlice.actions
 export default filterSlice.reducer
-
-export const selectFilterState = (state: RootState): FilterState => state.filter
-
