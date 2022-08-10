@@ -1,11 +1,11 @@
 export type DishType = {
-   id: string;
+   idDish: string;
    image: string;
    title: string;
 }
 
 export type WeekPlanType = {
-   id: string;
+   idWeek: string;
    weekDay: string;
    dishes: DishType[]
 }

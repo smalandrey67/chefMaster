@@ -29,11 +29,12 @@ export const Social: FC<SocialProps> = memo(({ details }) => {
       return 'black'
    } // #This function checks if we have the same details object in the favorites array, make it red rather than black
 
+   const colorType = getColorOfHeart()
 
    return (
       <>
          <ButtonHeart aria-label='make this recipe a favorite' onClick={() => favoritesHandler(details)}>
-            <BsSuitHeartFill color={getColorOfHeart()} size='25' />
+            <BsSuitHeartFill color={colorType} size='25' />
          </ButtonHeart>
 
          <SocialReadyMinutes>

@@ -1,6 +1,13 @@
+export type StateValuesType = {
+   prevPath: string;
+   idWeek: string;
+}
+
 export type LocationStateType = {
-   state: {
-      prevPath: string;
-      idWeek: string;
-   }
+   state: StateValuesType
+}
+
+
+export type FavoriteCardImageWrapperProps = {
+   isExist: boolean | undefined;
 }

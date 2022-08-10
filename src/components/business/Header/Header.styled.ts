@@ -114,7 +114,7 @@ export const HeaderHorizontalLine = styled.div`
         height: 2px;
         background-color: var(--color-categories);
         position: absolute;
-        bottom: 80px;
+        bottom: 120px;
         left: 0;
     }
 `
@@ -127,6 +127,6 @@ export const HeaderVerticalLine = styled.div`
         background-color: var(--color-categories);
         position: absolute;
         bottom: 0;
-        right: 55px;
+        right: 65px;
     }
 `

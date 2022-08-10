@@ -1,24 +1,31 @@
 import { FC, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { deleteRecipeFromMealPlan } from 'store/slices/mealPlanSlice'
 import { useRedirect } from 'hooks/useRedirect'
-import { useAppSelector } from 'hooks/useRedux'
+import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 import { selectWeekPlan } from 'store/selectors'
 
 import { Container, Title } from 'assets/styled/Reused.styled'
-import { MealPlanEl, MealPlanList, MealPlanItem, MealPlanItemTitle, MealPlanItemAdd, MealPlanDishes,
-   MealPlanDish, 
-   MealPlanDishImage,
-   MealPlanSubMenu, 
+import {
+   MealPlanEl, MealPlanList, MealPlanItem, MealPlanItemTitle, MealPlanItemAdd, MealPlanDishes,
+   MealPlanDish,
+   MealPlanSubMenu,
    MealPlanSubMenuItem,
-   MealPlanSubMenuLink
+   MealPlanSubMenuLink,
+   MealPlanCloseButton
 } from './MealPlan.styled'
 
 import { BsFillBasket3Fill } from 'react-icons/bs'
 import { IoMdCreate } from 'react-icons/io'
+import { GrFormClose } from 'react-icons/gr'
+
 import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
 
 export const MealPlan: FC = () => {
+   const dispatch = useAppDispatch()
+
    const weekPlan = useAppSelector(selectWeekPlan)
    const navigateHandler = useRedirect()
 
@@ -34,6 +41,11 @@ export const MealPlan: FC = () => {
       setAddMealIndex(index)
    }
 
+   const deleteRecipeFromMeal = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idDish: string, idWeek: string): void => {
+      e.stopPropagation()
+      dispatch(deleteRecipeFromMealPlan({ idDish, idWeek }))
+   }
+
    return (
       <MealPlanEl>
          <Container>
@@ -43,20 +55,20 @@ export const MealPlan: FC = () => {
 
             <MealPlanList>
                {weekPlan.map((dayPlan, index) =>
-                  <MealPlanItem key={dayPlan.id}>
+                  <MealPlanItem key={dayPlan.idWeek}>
                      <MealPlanItemTitle>
                         {dayPlan.weekDay}
                         <MealPlanItemAdd onClick={() => addMealHandler(index)}>+</MealPlanItemAdd>
 
                         <MealPlanSubMenu style={{ display: addMealIndex === index ? 'block' : 'none' }}>
                            <MealPlanSubMenuItem>
-                              <MealPlanSubMenuLink to='/favorites' state={{ prevPath: location.pathname, idWeek: dayPlan.id }}>
+                              <MealPlanSubMenuLink to='/favorites' state={{ prevPath: location.pathname, idWeek: dayPlan.idWeek }}>
                                  <BsFillBasket3Fill />
                                  Add Saved Recipe
-                              </MealPlanSubMenuLink> 
+                              </MealPlanSubMenuLink>
                            </MealPlanSubMenuItem>
                            <MealPlanSubMenuItem>
-                              <MealPlanSubMenuLink to='/favorites' state={{ prevPath: location.pathname, idWeek: dayPlan.id }}>
+                              <MealPlanSubMenuLink style={{pointerEvents: 'none', opacity: '0.5'}} to='/favorites' state={{ prevPath: location.pathname, idWeek: dayPlan.idWeek }}>
                                  <IoMdCreate />
                                  Create New Recipe
                               </MealPlanSubMenuLink>
@@ -65,12 +77,21 @@ export const MealPlan: FC = () => {
 
                      </MealPlanItemTitle>
                      <MealPlanDishes>
-                        {dayPlan.dishes.map((dish) => 
-                           <MealPlanDish onClick={() => navigateHandler('/details/', dish.id)} key={dish.id}>
-                              <MealPlanDishImage src={dish.image} alt={dish.title}/>
+                        {dayPlan.dishes.map((dish) =>
+                           <MealPlanDish onClick={() => navigateHandler('/details/', dish.idDish)} key={dish.idDish}>
+                              <LazyImage
+                                 image={dish.image}
+                                 alt={dish.title}
+                                 width='150px'
+                                 height='100%'
+                                 style={{ 'objectFit': 'contain', 'borderRadius': 'var(--br-radius)' }}
+                              />
+                              <MealPlanCloseButton onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => deleteRecipeFromMeal(e, dish.idDish, dayPlan.idWeek)}>
+                                 <GrFormClose size='25' />
+                              </MealPlanCloseButton>
                            </MealPlanDish>
                         )}
-                     </MealPlanDishes> 
+                     </MealPlanDishes>
                   </MealPlanItem>
                )}
             </MealPlanList>

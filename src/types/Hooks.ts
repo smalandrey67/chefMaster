@@ -3,10 +3,12 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { UploadImageType } from './UploadImage'
 import { SubmitBlogType } from './Blogs'
 import { DetailsType } from './Details'
-import { FilterParamsType, } from './Params' 
+import { FilterParamsType } from './Params' 
 
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
+
+import { StateValuesType } from 'components/business/FavoriteCard/FavoriteCard.types'
 
 export type UseImageType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -47,3 +49,10 @@ export type UseSearchType = {
 }
 
 export type UseValidateParamsType = FilterParamsType; 
+
+export type useFavoriteType = {
+   removeFavoriteHandler: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+   addRecipeIntoWeekPlan: () => void;
+   expectedPath: string;
+   state: StateValuesType;
+}
