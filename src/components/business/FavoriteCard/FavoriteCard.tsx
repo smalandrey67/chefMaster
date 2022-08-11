@@ -17,7 +17,7 @@ export const FavoriteCard: FC<FavoritesType> = ({ id, title, image, isActive }) 
    const isExist = useAlreadyExist(state, id)
 
    const navigateHandler = useRedirect()
-   const isCanAdd = state && state.prevPath === expectedPath && !isExist
+   const isCanAdd: boolean = state && state.prevPath === expectedPath && !isExist
 
    return (
       <RecipeEl onClick={() => isCanAdd ? addRecipeIntoWeekPlan() : navigateHandler('/details/', String(id))}>

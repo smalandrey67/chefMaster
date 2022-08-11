@@ -15,7 +15,6 @@ export const FavoriteCardTitle = styled.h3`
     position: absolute;
     bottom: 0px;
     left: 10px;
-
     color: var(--color-white);
 `
 

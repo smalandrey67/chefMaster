@@ -7,10 +7,12 @@ export const useAlreadyExist = (state: StateValuesType, id: number): boolean | u
    const weekPlan = useAppSelector(selectWeekPlan)
 
    const isAlreadyExistHandler = (): boolean | undefined => {
-      const currentWeek = weekPlan.find(week => week.idWeek === state.idWeek)
+      if (state) {
+         const currentWeek = weekPlan.find(week => week.idWeek === state.idWeek)
 
-      if (currentWeek) {
-         return currentWeek.dishes.some(dish => dish.idDish === String(id))
+         if (currentWeek) {
+            return currentWeek.dishes.some(dish => dish.idDish === String(id))
+         }
       }
    }
    const isExist = isAlreadyExistHandler()

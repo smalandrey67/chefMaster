@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 import { Link } from 'react-router-dom'
 
@@ -38,7 +39,7 @@ export const MealPlanItemAdd = styled.button`
    color: var(--color-white);
 `
 
-export const MealPlanSubMenu = styled.ul`
+export const MealPlanSubMenu = styled(motion.ul)`
    margin: 0;
    padding: 0;
    display: none;
@@ -82,6 +83,7 @@ export const MealPlanDish = styled.div`
    width: 150px;
    height: 100%;
    position: relative;
+   cursor: pointer;
 
    &:not(:last-child) {
       margin-right: 4px;

@@ -3,7 +3,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { mealPLan } from 'utils/constants/mealPlan.constants'
 
 import { WeekPlanType, DishType } from 'types/MealPlan'
-import { isWeakSet } from 'util/types';
+
+type PayloadDeleteType = {
+   idDish: string;
+   idWeek: string;
+}
 
 type MealPlanState = {
    weekPlan: WeekPlanType[];
@@ -51,7 +55,7 @@ export const mealPlanSlice = createSlice({
             }
          }
       },
-      deleteRecipeFromMealPlan: (state, { payload }: PayloadAction<{idDish: string, idWeek: string}>): void => {
+      deleteRecipeFromMealPlan: (state, { payload }: PayloadAction<PayloadDeleteType>): void => {
          state.weekPlan = state.weekPlan.map(week => {
             if (week.idWeek === payload.idWeek) {
                return {

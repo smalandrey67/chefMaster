@@ -58,7 +58,7 @@ export const HeaderNav = styled.nav<HeaderFunctionalityProps>`
         padding: 50px 20px 0 20px;
         transition: all 0.5s ease;
         overflow: hidden;
-        transform: ${props => props.isHamburgerMenu ? 'translateX(0)' : 'translateX(-700px)'};
+        transform: ${props => props.isHamburgerMenu ? 'translateX(0)' : 'translateX(-900px)'};
     }
 `
 

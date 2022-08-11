@@ -46,7 +46,8 @@ export const Details: FC = () => {
                                 <DetailWrapperImage>
                                     <BackButton>
                                         <DetailsWrapperTitle>
-                                            {stringCut(details?.title, 15)}
+                                            {/* {details?.title} */}
+                                            {stringCut(details?.title, 22)}
                                         </DetailsWrapperTitle>
                                     </BackButton>
 
@@ -67,7 +68,7 @@ export const Details: FC = () => {
                                 <Tabs />
 
                                 {tabName === 'instructions' && 
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                                    <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
                                         <Instructions details={details} />
                                     </ErrorBoundary>
                                 }

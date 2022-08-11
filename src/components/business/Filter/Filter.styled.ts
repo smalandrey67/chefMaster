@@ -1,16 +1,8 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { Button } from '../../../assets/styled/Reused.styled'
 
-type FilterElProps = {
-   isFilterMenuOpen: boolean;
-}
-
-type FilterOptionProps = {
-   isFilterMenuOpen: boolean;
-   active: boolean;
-}
-
-export const FilterEl = styled.div<FilterElProps>`
+export const FilterEl = styled(motion.div)`
    width: 100%;
    position: absolute;
    top: 55px;
@@ -21,23 +13,7 @@ export const FilterEl = styled.div<FilterElProps>`
    transition: all 0.5s ease;
    z-index: 100;
    overflow: auto;
-
-   ${props => {
-      switch (props.isFilterMenuOpen) {
-         case true:
-            return css`
-               height: 303px;
-               opacity: 1;
-               visibility: visible;
-            `
-         default:
-            return css`
-               height: 0;
-               opacity: 0;
-               visibility: hidden;
-            `
-      }
-   }}
+   height: 303px;
 
    &::-webkit-scrollbar {
       width: 4px;
@@ -68,15 +44,22 @@ export const FilterWrapper = styled.div`
    }
 `
 
-export const FilterOption = styled(Button) <FilterOptionProps>`
+export const FilterOption = styled(motion.button)`
    font-size: var(--fs-sl);
    font-weight: var(--fw-bold);
    transition: all 0.5s ease;
    margin: 3px;
    flex: 0 1 30.333%;
 
-   background-color: ${props => props.active ? 'var(--color-categories)' : 'var(--color-white)'};
-   color: ${props => props.active ? 'var(--color-white)' : 'var(--color-black)'};
+   height: 40px;
+   padding: 0 15px;
+   border-radius: var(--br-radius);
+   box-shadow: var(--shadow);
+   font-weight: var(--fw-semiBold);
+   background-color: var(--color-white); 
+   display: flex;
+   align-items: center;
+   justify-content: center;
 
    &:active {
       background-color: var(--color-categories);
@@ -90,23 +73,6 @@ export const FilterOption = styled(Button) <FilterOptionProps>`
             color: var(--color-white);
         }
     }
-
-   ${(props) => {
-      switch (props.isFilterMenuOpen) {
-         case true:
-            return css`
-               height: 40px;
-               opacity: 1;
-               visibility: visible;
-            `
-         default:
-            return css`
-               height: 0;
-               opacity: 0;
-               visibility: hidden;
-            `
-      }
-   }}
 `
 
 export const FilterShowResult = styled(Button)`

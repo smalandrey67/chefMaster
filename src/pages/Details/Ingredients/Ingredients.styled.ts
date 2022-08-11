@@ -12,6 +12,7 @@ export const DetailsIngredientsCount = styled.span`
 export const DetailsList = styled(motion.ul)`
     margin: 0;
     padding: 0;
+    width: 100%;
 `
 
 export const DetailsIngredientsItem = styled.li`
