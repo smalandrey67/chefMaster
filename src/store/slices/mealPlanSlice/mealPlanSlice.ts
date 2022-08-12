@@ -1,22 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { mealPLan } from 'utils/constants/mealPlan.constants'
-
-import { WeekPlanType, DishType } from 'types/MealPlan'
-
-type PayloadDeleteType = {
-   idDish: string;
-   idWeek: string;
-}
-
-type MealPlanState = {
-   weekPlan: WeekPlanType[];
-}
-
-type PayloadAddRecipeType = {
-   idWeek: string;
-   plannedRecipe: DishType;
-}
+import { PayloadDeleteType, MealPlanState, PayloadAddRecipeType } from './mealPlanSlice.types'
 
 const initialState: MealPlanState = {
    weekPlan: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '') : mealPLan

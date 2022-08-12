@@ -8,8 +8,6 @@ import { FilterParamsType } from './Params'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
 
-import { StateValuesType } from 'components/business/FavoriteCard/FavoriteCard.types'
-
 export type UseImageType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
    fileName: string;
@@ -50,9 +48,6 @@ export type UseSearchType = {
 
 export type UseValidateParamsType = FilterParamsType; 
 
-export type useFavoriteType = {
-   removeFavoriteHandler: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-   addRecipeIntoWeekPlan: () => void;
-   expectedPath: string;
-   state: StateValuesType;
-}
+export type useFavoriteType = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+   
+export type useAddIntoWeekPlanType = () => void;

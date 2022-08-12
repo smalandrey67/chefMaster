@@ -1,7 +1,7 @@
-import { useAppSelector } from 'hooks/useRedux'
-import { selectWeekPlan } from 'store/selectors'
+import { selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
+import { useAppSelector } from './useRedux'
 
-import { StateValuesType } from '../FavoriteCard.types'
+import { StateValuesType } from 'types/Location'
 
 export const useAlreadyExist = (state: StateValuesType, id: number): boolean | undefined => {
    const weekPlan = useAppSelector(selectWeekPlan)
@@ -9,12 +9,13 @@ export const useAlreadyExist = (state: StateValuesType, id: number): boolean | u
    const isAlreadyExistHandler = (): boolean | undefined => {
       if (state) {
          const currentWeek = weekPlan.find(week => week.idWeek === state.idWeek)
-
+   
          if (currentWeek) {
             return currentWeek.dishes.some(dish => dish.idDish === String(id))
          }
       }
    }
+
    const isExist = isAlreadyExistHandler()
 
    return isExist

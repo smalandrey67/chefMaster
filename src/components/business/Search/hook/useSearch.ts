@@ -3,11 +3,11 @@ import { SubmitHandler, UseFormReset } from 'react-hook-form'
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
 import { useOverflow } from 'hooks/useOverflow'
-import { changeStatusOfFilterMenu } from 'store/slices/filterSlice'
+import { changeStatusOfFilterMenu } from 'store/slices/filterSlice/filterSlice'
 
 import { SearchType } from '../Search.types'
 import { UseSearchType } from 'types/Hooks'
-import { selectIsFilterMenuOpen, selectValidatedParams } from 'store/selectors'
+import { selectIsFilterMenuOpen, selectValidatedParams } from 'store/slices/filterSlice/filterSlice.selectors'
 
 export const useSearch = (reset: UseFormReset<SearchType>): UseSearchType => {
 	const dispatch = useAppDispatch()

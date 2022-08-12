@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 import { useOverflow } from 'hooks/useOverflow'
-import { selectIsHamburgerMenu } from 'store/selectors'
-import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice'
+import { selectIsHamburgerMenu } from 'store/slices/filterSlice/filterSlice.selectors'
+import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice/filterSlice'
 
 import { HeaderNav, HeaderList, HeaderItem, HeaderLink, HeaderHorizontalLine, HeaderVerticalLine } from './Header.styled'
 

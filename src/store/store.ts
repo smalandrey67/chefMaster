@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import filterReducer from './slices/filterSlice'
-import favoritesReducer from './slices/favoritesSlice'
-import tabReducer from './slices/tabsSlice'
-import mealPlanReducer from './slices/mealPlanSlice'
+import filterReducer from './slices/filterSlice/filterSlice'
+import favoritesReducer from './slices/favoriteSlice/favoritesSlice'
+import tabReducer from './slices/tabsSlice/tabsSlice'
+import mealPlanReducer from './slices/mealPlanSlice/mealPlanSlice'
 
 import { recipesApi } from '../services/RecipesService'
 import { blogsApi } from '../services/BlogsService'

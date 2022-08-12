@@ -1,7 +1,9 @@
 import { FC } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { useRedirect } from 'hooks/useRedirect'
-import { useFavorite } from './hook/useFavorite'
+import { useAlreadyExist } from 'hooks/useAlreadyExist'
+import { useRemoveFromFavorite } from './hook/useRemoveFromFavorite'
 
 import { FavoritesType } from 'types/Favorites'
 import { stringCut } from 'utils/helpers/string.helper'
@@ -10,14 +12,19 @@ import { LazyImage } from '../../reusable/LazyImage/LazyImage'
 import { RecipeEl, ButtonHeart } from 'assets/styled/Reused.styled'
 import { FavoriteCardImageWrapper, FavoriteCardTitle } from './FavoriteCard.styled'
 import { BsSuitHeartFill } from 'react-icons/bs'
-import { useAlreadyExist } from './hook/useAlreadyExist'
+import { LocationStateType } from 'types/Location'
+import { useAddIntoWeekPlan } from 'hooks/useAddIntoWeekPlan'
 
 export const FavoriteCard: FC<FavoritesType> = ({ id, title, image, isActive }) => {
-   const { removeFavoriteHandler, addRecipeIntoWeekPlan, expectedPath, state } = useFavorite(id, title, image)
-   const isExist = useAlreadyExist(state, id)
+   const location = useLocation()
+   const { state } = location as LocationStateType
 
+   const isExist = useAlreadyExist(state, id)
+   const addRecipeIntoWeekPlan = useAddIntoWeekPlan(state, id, title, image)
+   const removeFavoriteHandler = useRemoveFromFavorite(id)
+   
    const navigateHandler = useRedirect()
-   const isCanAdd: boolean = state && state.prevPath === expectedPath && !isExist
+   const isCanAdd: boolean = state && state.prevPath === '/meal/plan' && !isExist
 
    return (
       <RecipeEl onClick={() => isCanAdd ? addRecipeIntoWeekPlan() : navigateHandler('/details/', String(id))}>

@@ -3,7 +3,7 @@ import { FC, memo, Fragment } from 'react'
 import { FilterEl, FilterBody, FilterWrapper, FilterOption, FilterShowResult } from './Filter.styled'
 import { SpecialTitle } from 'assets/styled/Reused.styled'
 
-import { selectFilterCategories, selectIsFilterMenuOpen } from 'store/selectors'
+import { selectFilterCategories, selectIsFilterMenuOpen } from 'store/slices/filterSlice/filterSlice.selectors'
 import { CategoryType, FilterCategoriesTypes } from 'utils/constants/filterTypes.constants'
 
 import { useAppSelector } from 'hooks/useRedux'

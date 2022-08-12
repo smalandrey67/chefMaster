@@ -45,6 +45,7 @@ export const recipesApi = createApi({
             url: '/complexSearch',
             params: {
                ...params,
+               number: 20,
                apiKey: process.env.REACT_APP_KEY
             }
          }),

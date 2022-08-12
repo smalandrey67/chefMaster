@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { selectFavorites } from 'store/selectors'
+import { selectFavorites } from 'store/slices/favoriteSlice/favoriteSlice.selectors'
 import { useFavorites } from '../hook/useFavorites'
 
 import { BsClock, BsSuitHeartFill } from 'react-icons/bs'

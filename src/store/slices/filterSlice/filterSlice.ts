@@ -1,19 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { filterCategories, FilterCategoriesTypes, CategoryType } from 'utils/constants/filterTypes.constants'
+import { filterCategories, CategoryType } from 'utils/constants/filterTypes.constants'
 import { FilterParamsType } from 'types/Params'
 
-type PayloadActiveType = {
-   typeId: string;
-   query: keyof FilterParamsType;
-}
-
-type FilterState = {
-   filterCategories: FilterCategoriesTypes[];
-   isFilterMenuOpen: boolean;
-   filterParams: FilterParamsType;
-   isHamburgerMenu: boolean;
-}
+import { PayloadActiveType, FilterState } from './filterSlice.types'
 
 const initialState: FilterState = {
    filterCategories,

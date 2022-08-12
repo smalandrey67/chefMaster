@@ -23,7 +23,7 @@ import { motion } from 'utils/constants/motion.constants'
 import { stringCut } from 'utils/helpers/string.helper'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { selectTabName } from 'store/selectors'
+import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { useGetDetailsQuery } from 'services/RecipesService'
 
 export const Details: FC = () => {

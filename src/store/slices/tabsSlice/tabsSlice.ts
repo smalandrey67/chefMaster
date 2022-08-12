@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type tabsState = {
-   tabName: string;
-}
+import { TabsState } from './tabsSlice.types'
 
-const initialState: tabsState = {
+const initialState: TabsState = {
    tabName: 'instructions'
 }
 

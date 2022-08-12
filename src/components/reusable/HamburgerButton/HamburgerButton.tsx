@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
-import { selectIsHamburgerMenu } from 'store/selectors'
-import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice'
+import { selectIsHamburgerMenu } from 'store/slices/filterSlice/filterSlice.selectors'
+import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice/filterSlice'
 
 import { Hamburger, HamburgerLine } from './HamburgerButton.styled'
 

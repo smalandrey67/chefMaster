@@ -3,7 +3,7 @@ import { GrFormClose } from 'react-icons/gr'
 
 import { useAppDispatch } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
-import { deleteRecipeFromMealPlan } from 'store/slices/mealPlanSlice'
+import { deleteRecipeFromMealPlan } from 'store/slices/mealPlanSlice/mealPlanSlice'
 
 import { DishType } from 'types/MealPlan'
 import { MealPlanCloseButton, MealPlanDish } from './MealPlan.styled'
@@ -26,8 +26,8 @@ export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek 
             image={image}
             alt={title}
             width='150px'
-            height='100%'
-            style={{ 'objectFit': 'contain', 'borderRadius': 'var(--br-radius)' }}
+            height='102px'
+            style={{ 'objectFit': 'cover', 'borderRadius': 'var(--br-radius)' }}
          />
          <MealPlanCloseButton onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => deleteRecipeFromMeal(e, idDish, idWeek)}>
             <GrFormClose size='25' />

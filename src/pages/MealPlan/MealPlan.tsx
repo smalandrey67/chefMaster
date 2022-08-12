@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { selectWeekPlan } from 'store/selectors'
+import { selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
 import { Container, Title } from 'assets/styled/Reused.styled'
 import {
@@ -9,7 +9,7 @@ import {
    MealPlanSubMenu
 } from './MealPlan.styled'
 
-import { BsFillBasket3Fill } from 'react-icons/bs'
+import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
 import { IoMdCreate } from 'react-icons/io'
 
 import { BackButton } from 'components/reusable/BackButton/BackButton'
@@ -48,7 +48,8 @@ export const MealPlan: FC = () => {
                            style={{ display: addMealIndex === index ? 'block' : 'none' }}
                         >
                            <SubMenuItem idWeek={dayPlan.idWeek} path='/favorites' title='Add Saved Recipe' Icon={BsFillBasket3Fill} />
-                           <SubMenuItem idWeek={dayPlan.idWeek} path='/favorites' title='Create New Recipe' Icon={IoMdCreate} />
+                           <SubMenuItem idWeek={dayPlan.idWeek} path='/searched' title='Search New Recipe' Icon={BsSearch} />
+                           <SubMenuItem idWeek={dayPlan.idWeek} path='/searched' title='Create New Recipe' Icon={IoMdCreate} />
                         </MealPlanSubMenu>
 
                      </MealPlanItemTitle>

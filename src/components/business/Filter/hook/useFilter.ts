@@ -4,8 +4,8 @@ import { useRedirect } from 'hooks/useRedirect'
 import { UseFilterType } from 'types/Hooks'
 import { FilterParamsType } from 'types/Params'
 
-import { changeActiveOfOption, changeStatusOfFilterMenu } from 'store/slices/filterSlice'
-import { selectValidatedParams, selectIsFilterMenuOpen } from 'store/selectors'
+import { changeActiveOfOption, changeStatusOfFilterMenu } from 'store/slices/filterSlice/filterSlice'
+import { selectValidatedParams, selectIsFilterMenuOpen } from 'store/slices/filterSlice/filterSlice.selectors'
 
 export const useFilter = (): UseFilterType => {
 	const dispatch = useAppDispatch()
