@@ -19,9 +19,19 @@ export const DetailsInfoButton = styled(Button).attrs({
     name: 'tab'
 })`
     flex: 0 1 100%;
+    
+    @media(min-width: 768px){
+        flex: 0 1 25%;
+    }
 
     &:not(:last-child){
-        margin: 0 7px 0px 0;
+        margin: 0 0 5px 0;
+    }
+
+    @media(min-width: 375px){
+        &:not(:last-child){
+            margin: 0 10px 0 0;
+        }   
     }
 
     &.active{

@@ -49,7 +49,6 @@ export const MealPlan: FC = () => {
                         >
                            <SubMenuItem idWeek={dayPlan.idWeek} path='/favorites' title='Add Saved Recipe' Icon={BsFillBasket3Fill} />
                            <SubMenuItem idWeek={dayPlan.idWeek} path='/searched' title='Search New Recipe' Icon={BsSearch} />
-                           <SubMenuItem idWeek={dayPlan.idWeek} path='/searched' title='Create New Recipe' Icon={IoMdCreate} />
                         </MealPlanSubMenu>
 
                      </MealPlanItemTitle>

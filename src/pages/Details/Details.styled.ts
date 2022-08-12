@@ -4,38 +4,31 @@ import { motion } from 'framer-motion'
 export const DetailsEl = styled(motion.article)``
 
 export const DetailsWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    @media (min-width: 768px) {
+        display: flex;
+        gap: 15px;
+    } 
 `
 
-export const DetailsWrapperLeft = styled.div`
-    width: 70%;
-
-    @media (max-width: 768px) {
-        width: 100%
-    }
-    
-`
+export const DetailsWrapperLeft = styled.div``
 
 export const DetailWrapperImage = styled.figure`
     margin: 0 0 5px 0;
 
     @media (min-width: 768px) {
-        width: 100%;
+        flex: 0 1 50%;
         margin-bottom: 0;
     }
 `
 
 export const DetailsWrapperTitle = styled.figcaption`  
-    margin-left: 10px;
-
-    font-size: var(--fs-md);
-    font-weight: var(--fw-semiBold);
-
-    @media (min-width: 768px) {
-        font-size: var(--fs-bg);
+    @media (max-width: 768px) {
+        font-size: var(--fs-md);
     }
+
+    margin-left: 5px;
+    font-size: var(--fs-bg);
+    font-weight: var(--fw-semiBold);
 `
 
 export const DetailsOverImage = styled.div`
@@ -50,7 +43,7 @@ export const DetailsImage = styled.img`
 
 export const DetailsInfo = styled.div`
     @media (min-width: 768px) {
-        flex: 0 1 530px;
+        flex: 0 1 50%;
     }
 `
 

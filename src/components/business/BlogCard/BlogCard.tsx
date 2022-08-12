@@ -5,9 +5,9 @@ import {
    BlogBody,
    BlogHeader,
    BlogHeaderAvatar,
+   BlogHeaderAvatarImage,
    BlogFigure,
    BlogFigCaption,
-   BlogFigureImage
 } from './BlogCard.styled'
 import { Title, Text, SpecialTitle } from 'assets/styled/Reused.styled'
 
@@ -21,18 +21,18 @@ export const BlogCard: FC<BlogType> = ({ title, file, author, description, avata
          <BlogBody>
             <BlogHeader>
                <BlogHeaderAvatar>
-                  <LazyImage
-                     image={avatar}
-                     alt={author}
-                     width='100%'
-                     height='100%'
-                  />
+                  <BlogHeaderAvatarImage src={avatar} alt={author} /> 
                </BlogHeaderAvatar>
                <Title>{title}</Title>
             </BlogHeader>
 
             <BlogFigure>
-               <BlogFigureImage src={`${file}`} alt={title} />
+               <LazyImage 
+                  image={`${file}`}
+                  alt={author}
+                  width='100%'
+                  height='100%'
+               />
                <BlogFigCaption>
                   written by
                   <SpecialTitle margin='0 0 0 5px' fontWeight='var(--fw-bold)' color='var(--color-categories)'>
