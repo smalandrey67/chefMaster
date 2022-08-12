@@ -1,10 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { FavoritesType } from 'types/Favorites'
-import { RootState } from '../store';
 
-type FavoritesState = {
-   favorites: FavoritesType[];
-}
+import { FavoritesType } from 'types/Favorites'
+import { FavoritesState } from './favoriteSlice.types'
 
 const initialState: FavoritesState = {
    favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites') || '') : []

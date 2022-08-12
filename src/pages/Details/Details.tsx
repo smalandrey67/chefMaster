@@ -23,7 +23,7 @@ import { motion } from 'utils/constants/motion.constants'
 import { stringCut } from 'utils/helpers/string.helper'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { selectTabName } from 'store/selectors'
+import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { useGetDetailsQuery } from 'services/RecipesService'
 
 export const Details: FC = () => {
@@ -46,7 +46,8 @@ export const Details: FC = () => {
                                 <DetailWrapperImage>
                                     <BackButton>
                                         <DetailsWrapperTitle>
-                                            {stringCut(details?.title, 15)}
+                                            {/* {details?.title} */}
+                                            {stringCut(details?.title, 22)}
                                         </DetailsWrapperTitle>
                                     </BackButton>
 
@@ -67,7 +68,7 @@ export const Details: FC = () => {
                                 <Tabs />
 
                                 {tabName === 'instructions' && 
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                                    <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
                                         <Instructions details={details} />
                                     </ErrorBoundary>
                                 }

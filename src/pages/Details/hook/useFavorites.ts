@@ -3,7 +3,7 @@ import { DetailsType } from 'types/Details'
 import { FavoritesType } from 'types/Favorites'
 
 import { useAppDispatch } from 'hooks/useRedux'
-import { addFavorite } from 'store/slices/favoritesSlice'
+import { addFavorite } from 'store/slices/favoriteSlice/favoritesSlice'
 
 export const useFavorites = (): UseFavoritesType => {
    const dispatch = useAppDispatch()

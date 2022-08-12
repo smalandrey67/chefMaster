@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { selectTabName } from 'store/selectors'
-import { changeTabName } from 'store/slices/tabsSlice'
+import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
+import { changeTabName } from 'store/slices/tabsSlice/tabsSlice'
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 
 import { DetailsInfoButton, DetailsInfoWrapper } from './Tabs.styled'

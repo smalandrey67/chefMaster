@@ -3,7 +3,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { UploadImageType } from './UploadImage'
 import { SubmitBlogType } from './Blogs'
 import { DetailsType } from './Details'
-import { FilterParamsType, } from './Params' 
+import { FilterParamsType } from './Params' 
 
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
@@ -47,3 +47,7 @@ export type UseSearchType = {
 }
 
 export type UseValidateParamsType = FilterParamsType; 
+
+export type useFavoriteType = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+   
+export type useAddIntoWeekPlanType = () => void;
