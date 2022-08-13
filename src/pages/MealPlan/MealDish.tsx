@@ -30,7 +30,7 @@ export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek 
             style={{ 'objectFit': 'cover', 'borderRadius': 'var(--br-radius)' }}
          />
          <MealPlanCloseButton onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => deleteRecipeFromMeal(e, idDish, idWeek)}>
-            <GrFormClose size='25' />
+            <GrFormClose size='15' />
          </MealPlanCloseButton>
       </MealPlanDish>
    )

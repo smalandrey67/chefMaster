@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-
 import { Link } from 'react-router-dom'
+
+import { Button } from 'assets/styled/Reused.styled'
 
 export const MealPlanEl = styled.section``
 
@@ -12,6 +13,7 @@ export const MealPlanList = styled.ul`
 
 export const MealPlanItem = styled.li`
    padding: 15px 0 5px 0;
+   position: relative;
    &:not(:last-child) {
       border-bottom: 1px solid var(--color-black);
    } 
@@ -23,20 +25,16 @@ export const MealPlanItemTitle = styled.h4`
    justify-content: space-between;
    margin: 0 0 10px 0;
    font-size: var(--fs-md);
-   position: relative;
 `
 
-export const MealPlanItemAdd = styled.button`
-   font-size: var(--fs-md);
-   font-weight: var(--fw-bold);
-   display: flex;
-   align-items: center;
-   justify-content: center;
+export const MealPlanItemAdd = styled(Button)`
    width: 25px;
-   height: 25px;
+   height: 24px;
+   padding: 0;
    border-radius: 50%;
    background-color: var(--color-categories);
    color: var(--color-white);
+   display: block;
 `
 
 export const MealPlanSubMenu = styled(motion.ul)`
@@ -44,7 +42,7 @@ export const MealPlanSubMenu = styled(motion.ul)`
    padding: 0;
    display: none;
    position: absolute;
-   top: 25px;
+   top: 45px;
    right: 0;
    background-color: var(--color-white);
    box-shadow: var(--shadow);
@@ -73,10 +71,10 @@ export const MealPlanSubMenuLink = styled(Link)`
 `
 
 export const MealPlanDishes = styled.div`
-   min-height: 0;
+   height: 105px;
    display: flex;
    align-items: center;
-   overflow: auto;
+   overflow: scroll;
 `
 
 export const MealPlanDish = styled.div`
@@ -93,6 +91,8 @@ export const MealPlanDish = styled.div`
 export const MealPlanCloseButton = styled.button`
    position: absolute;
    top: 5px;
+   width: 22px;
+   height: 22px;
    right: 3px;
    background-color: var(--color-scrollbar);
    border-radius: 50%;
@@ -100,7 +100,7 @@ export const MealPlanCloseButton = styled.button`
    align-items: center;
    justify-content: center;
    opacity: 0.7;
-   padding: 3px;
-   width: 20px;
-   height: 20px;
+   padding: 0;
+   margin: 0;
+   display: block;
 `

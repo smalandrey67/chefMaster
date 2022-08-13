@@ -40,17 +40,17 @@ export const MealPlan: FC = () => {
                      <MealPlanItemTitle>
                         {dayPlan.weekDay}
                         <MealPlanItemAdd onClick={() => addMealHandler(index)}>+</MealPlanItemAdd>
-
-                        <MealPlanSubMenu
-                           animate={{ scale: addMealIndex === index ? 1 : 0 }}
-                           transition={{ type: 'tween', duration: 0.2 }}
-                           style={{ display: addMealIndex === index ? 'block' : 'none' }}
-                        >
-                           <SubMenuItem idWeek={dayPlan.idWeek} path='/favorites' title='Add Saved Recipe' Icon={BsFillBasket3Fill} />
-                           <SubMenuItem idWeek={dayPlan.idWeek} path='/searched' title='Search New Recipe' Icon={BsSearch} />
-                        </MealPlanSubMenu>
-
                      </MealPlanItemTitle>
+                     
+                     <MealPlanSubMenu
+                        animate={{ scale: addMealIndex === index ? 1 : 0 }}
+                        transition={{ type: 'tween', duration: 0.2 }}
+                        style={{ display: addMealIndex === index ? 'block' : 'none' }}
+                     >
+                        <SubMenuItem idWeek={dayPlan.idWeek} path='/favorites' title='Add Saved Recipe' Icon={BsFillBasket3Fill} />
+                        <SubMenuItem idWeek={dayPlan.idWeek} path='/searched' title='Search New Recipe' Icon={BsSearch} />
+                     </MealPlanSubMenu>
+
                      <MealPlanDishes>
                         {dayPlan.dishes.map(dish => <MealDish {...dish} key={dish.idDish} idWeek={dayPlan.idWeek} />)}
                      </MealPlanDishes>
