@@ -11,7 +11,7 @@ export const Tabs: FC = () => {
     const tabName = useAppSelector(selectTabName)
 
     const tabHandler = (name: string): void => {
-        dispatch(changeTabName(name))
+        dispatch(changeTabName({ name }))
     }
 
     return (

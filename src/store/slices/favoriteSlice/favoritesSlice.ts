@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { FavoritesType } from 'types/Favorites'
-import { FavoritesState } from './favoriteSlice.types'
+import { FavoritesState, RemoveFavoritePayload } from './favoriteSlice.types'
 
 const initialState: FavoritesState = {
    favorites: localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites') || '') : []
@@ -11,8 +11,8 @@ const favoritesSlice = createSlice({
    name: 'favorites',
    initialState,
    reducers: {
-      removeFavorite: (state, { payload }: PayloadAction<number>): void => {
-         state.favorites = state.favorites.filter((item: FavoritesType): boolean => item.id !== payload)
+      removeFavorite: (state, { payload }: PayloadAction<RemoveFavoritePayload>): void => {
+         state.favorites = state.favorites.filter((item: FavoritesType): boolean => item.id !== payload.id)
          
          localStorage.setItem('favorites', JSON.stringify(state.favorites))
       },

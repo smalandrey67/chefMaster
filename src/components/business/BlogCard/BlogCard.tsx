@@ -7,7 +7,7 @@ import {
    BlogHeaderAvatar,
    BlogHeaderAvatarImage,
    BlogFigure,
-   BlogFigCaption,
+   BlogFigCaption
 } from './BlogCard.styled'
 import { Title, Text, SpecialTitle } from 'assets/styled/Reused.styled'
 

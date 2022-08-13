@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { TabsState } from './tabsSlice.types'
+import { TabsState, ChangeTabNamePayload } from './tabsSlice.types'
 
 const initialState: TabsState = {
    tabName: 'instructions'
@@ -10,8 +10,8 @@ export const tabsSlice = createSlice({
    name: 'tabs',
    initialState,
    reducers: {
-      changeTabName: (state, { payload }: PayloadAction<string>): void => {
-         state.tabName = payload
+      changeTabName: (state, { payload }: PayloadAction<ChangeTabNamePayload>): void => {
+         state.tabName = payload.name
       }
    }
 })

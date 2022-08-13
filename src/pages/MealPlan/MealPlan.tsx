@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
 
 import { useAppSelector } from 'hooks/useRedux'
 import { selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
@@ -9,8 +10,6 @@ import {
    MealPlanSubMenu
 } from './MealPlan.styled'
 
-import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
-import { IoMdCreate } from 'react-icons/io'
 
 import { BackButton } from 'components/reusable/BackButton/BackButton'
 import { SubMenuItem } from './SubMenuItem'

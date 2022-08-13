@@ -8,7 +8,7 @@ export const useRemoveFromFavorite = (id: number): useFavoriteType => {
 
    const removeFavoriteHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
       e.stopPropagation()
-      dispatch(removeFavorite(id))
+      dispatch(removeFavorite({ id }))
    }
 
    return removeFavoriteHandler
