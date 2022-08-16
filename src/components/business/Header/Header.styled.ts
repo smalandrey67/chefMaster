@@ -47,6 +47,11 @@ export const HeaderBlogs = styled(Link)`
 `
 
 export const HeaderNav = styled.nav<HeaderFunctionalityProps>`
+    @media (min-width: 768px) {
+        display: flex;
+        align-items: center;
+    }
+
     @media (max-width: 768px) {
         position: absolute;
         top: 0;
@@ -102,19 +107,40 @@ export const HeaderItem = styled.li`
     }
 `
 
+export const HeaderItemProfile = styled.li`
+    display: flex;
+    align-items: center;
+    padding: 10px 0 0 20px;
+
+    @media (min-width: 768px) {
+        padding: 0;
+        margin-right: 10px;
+    }
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+`
+
 export const HeaderLink = styled(Link)`
     font-size: var(--fs-bg);
     margin-left: 10px;
 `
 
 export const HeaderHorizontalLine = styled.div`
+    @media (min-width: 768px) {
+        margin-left: 20px;
+    }
 
     @media (max-width: 768px) {
         width: 100%;
         height: 2px;
         background-color: var(--color-categories);
         position: absolute;
-        bottom: 120px;
+        bottom: 170px;
         left: 0;
     }
 `

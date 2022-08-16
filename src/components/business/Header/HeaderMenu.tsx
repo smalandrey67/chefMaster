@@ -6,9 +6,11 @@ import { useOverflow } from 'hooks/useOverflow'
 import { selectIsHamburgerMenu } from 'store/slices/filterSlice/filterSlice.selectors'
 import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice/filterSlice'
 
-import { HeaderNav, HeaderList, HeaderItem, HeaderLink, HeaderHorizontalLine, HeaderVerticalLine } from './Header.styled'
+import { HeaderNav, HeaderList, HeaderItem, HeaderItemProfile, 
+HeaderLink, HeaderHorizontalLine, HeaderVerticalLine } from './Header.styled'
 
 import { BsFillPeopleFill, BsFillBasket3Fill, BsFillCalendarWeekFill } from 'react-icons/bs'
+import { FaUserTie } from 'react-icons/fa'
 
 export const HeaderMenu: FC = () => {
    const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
@@ -41,7 +43,14 @@ export const HeaderMenu: FC = () => {
                <HeaderLink to='/meal/plan'>Meal Plan</HeaderLink>
             </HeaderItem>
          </HeaderList>
-         <HeaderHorizontalLine />
+         <HeaderHorizontalLine>
+            <HeaderList>
+               <HeaderItemProfile>
+                  <FaUserTie size='20' />
+                  <HeaderLink to='/profile'>Profile</HeaderLink>
+               </HeaderItemProfile>
+            </HeaderList>
+         </HeaderHorizontalLine>
          <HeaderVerticalLine />
       </HeaderNav>
    )

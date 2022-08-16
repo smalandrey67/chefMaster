@@ -42,3 +42,9 @@ export const MealPlan = lazy(() =>
    }))
 )
 
+export const Profile = lazy(() =>
+   import(/* webpackChunkName: "Profile" */'pages/Profile/Profile').then(module => ({
+      default: module.Profile
+   }))
+)
+

@@ -38,9 +38,6 @@ export const BlogsCreateLabel = styled.label`
       margin-bottom: 5px;
    }
 `
-export const BlogsCreateFieldWrapper = styled.div`
-   margin-bottom: 10px;
-`
 
 export const BlogsCreateLabelWrapper = styled.div`
    display: flex;
