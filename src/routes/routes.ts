@@ -6,7 +6,6 @@ import { Login } from 'pages/Login/Login'
 import { Registration } from 'pages/Registration/Registration'
 import { ResetPassword } from 'pages/ResetPassword/ResetPassword'
 
-<<<<<<< HEAD
 // import { Main } from 'pages/Main/Main'
 // import { Cuisines } from 'pages/Cuisines/Cuisines'
 // import { Details } from 'pages/Details/Details'
@@ -24,24 +23,6 @@ import { BlogsCreate } from './routesChunks'
 import { Favorites } from './routesChunks'
 import { MealPlan } from './routesChunks'
 import { Profile } from './routesChunks'
-=======
-import { Main } from 'pages/Main/Main'
-import { Cuisines } from 'pages/Cuisines/Cuisines'
-import { Details } from 'pages/Details/Details'
-import { Blogs } from 'pages/Blogs/Blogs'
-import { BlogsCreate } from 'pages/BlogsCreate/BlogsCreate'
-import { Favorites } from 'pages/Favorites/Favorites'
-import { MealPlan } from 'pages/MealPlan/MealPlan'
-import { Profile } from 'pages/Profile/Profile'
-
-// import { Main } from './routesChunks'
-// import { Cuisines } from './routesChunks'
-// import { Details } from './routesChunks'
-// import { Blogs } from './routesChunks'
-// import { BlogsCreate } from './routesChunks'
-// import { Favorites } from './routesChunks'
-// import { MealPlan } from './routesChunks'
->>>>>>> 8ecaf4ec61f707acd3c94aeede4e58d4b1d476a0
 
 export type RouteType = Readonly<{
    path: string;

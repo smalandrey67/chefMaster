@@ -14,7 +14,7 @@ export const recipesApi = createApi({
    endpoints: (builder) => ({
       getRandomRecipes: builder.query<RecipeResultType[], void>({
          query: () => ({
-            url: '/ran',
+            url: '/random',
             params: {
                number: 12,
                apiKey: process.env.REACT_APP_KEY
