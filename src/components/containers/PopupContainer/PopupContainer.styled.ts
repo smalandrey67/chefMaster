@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const PopupEl = styled(motion.div)`
+export const Popup = styled(motion.div)`
    position: fixed;
    width: 100%;
    height: 100%;
@@ -23,6 +23,6 @@ export const PopupContent = styled.div`
    background-color: var(--color-white);
    color: var(--color-text);
    width: 500px;
-   padding: 10px;
+   padding: 15px;
    border-radius: var(--br-radius);
 `

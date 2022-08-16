@@ -58,6 +58,7 @@ export const Global = createGlobalStyle`
         --color-categories: #56ab2f;
         --color-categories-text: #f5af19;
         --color-error: #ed213a;
+        --color-links: #1f1cd4;
         --color-gradient: rgba(0, 0, 0, 0.8);
 
         //typography

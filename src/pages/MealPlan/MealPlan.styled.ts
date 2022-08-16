@@ -71,10 +71,10 @@ export const MealPlanSubMenuLink = styled(Link)`
 `
 
 export const MealPlanDishes = styled.div`
-   height: 105px;
+   min-height: 0;
    display: flex;
    align-items: center;
-   overflow: scroll;
+   overflow: auto;
 `
 
 export const MealPlanDish = styled.div`

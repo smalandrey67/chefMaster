@@ -3,6 +3,7 @@ import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
 
 import { useAppSelector } from 'hooks/useRedux'
 import { selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
+import { selectUser } from 'store/slices/authSlice/authSlice.selectors'
 
 import { Container, Title } from 'assets/styled/Reused.styled'
 import {
@@ -10,13 +11,16 @@ import {
    MealPlanSubMenu
 } from './MealPlan.styled'
 
-
-import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { Login } from 'pages/Login/Login'
 import { SubMenuItem } from './SubMenuItem'
 import { MealDish } from './MealDish'
+import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { NotAuthorisation } from 'components/reusable/NotAuthorisation/NotAuthorisation'
+
 
 export const MealPlan: FC = () => {
    const weekPlan = useAppSelector(selectWeekPlan)
+   const user = useAppSelector(selectUser)
    const [addMealIndex, setAddMealIndex] = useState<number | null>(null)
 
    const addMealHandler = (index: number): void => {
@@ -28,7 +32,7 @@ export const MealPlan: FC = () => {
       setAddMealIndex(index)
    }
 
-   return (
+   return Object.values(user || {}).length ?
       <MealPlanEl>
          <Container>
             <BackButton>
@@ -41,7 +45,7 @@ export const MealPlan: FC = () => {
                         {dayPlan.weekDay}
                         <MealPlanItemAdd onClick={() => addMealHandler(index)}>+</MealPlanItemAdd>
                      </MealPlanItemTitle>
-                     
+
                      <MealPlanSubMenu
                         animate={{ scale: addMealIndex === index ? 1 : 0 }}
                         transition={{ type: 'tween', duration: 0.2 }}
@@ -58,6 +62,5 @@ export const MealPlan: FC = () => {
                )}
             </MealPlanList>
          </Container>
-      </MealPlanEl>
-   )
+      </MealPlanEl> : <NotAuthorisation /> 
 }

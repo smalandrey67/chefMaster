@@ -12,7 +12,7 @@ export type UseImageType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
    fileName: string;
    setFileName: Dispatch<SetStateAction<string>>;
-   image: UploadImageType | undefined;
+   image: string | undefined;
    isLoading: boolean;
    errorImage: FetchBaseQueryError | SerializedError | undefined;
 }

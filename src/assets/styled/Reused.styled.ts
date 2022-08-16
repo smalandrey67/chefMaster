@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
+
 
 import { ErrorMessageProps, SpinnerProps, MarginProps, SpecialTitleProps, TitleProps, ErrorWrapperProps } from './Styled.types'
 
@@ -133,4 +135,19 @@ export const ButtonHeart = styled.button`
    }
 `
 
+// #Form Login and Register and ClogsCreate
+export const FieldBlock = styled.div`
+   margin-bottom: 10px;
+`
 
+export const FormLink = styled(Link)`
+   color: var(--color-links);
+   text-decoration: underline;
+   display: inline;
+` 
+
+export const FormFooter = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+`

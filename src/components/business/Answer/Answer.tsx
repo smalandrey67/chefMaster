@@ -15,7 +15,7 @@ import {
 import { ErrorMessage, SpinnerWrapper, Spinner, SpecialTitle } from 'assets/styled/Reused.styled'
 
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
-import { Popup } from '../../reusable/Popup/Popup'
+import { PopupContainer } from '../../containers/PopupContainer/PopupContainer'
 
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
@@ -41,7 +41,7 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
    }
 
    return (
-      <Popup>
+      <PopupContainer>
          <AnswerHeader>
             <AnswerHeaderTitle>Quick answer</AnswerHeaderTitle>
             <IoCloseSharp // The button which close the popup
@@ -82,6 +82,6 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
          : null}
 
          {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-      </Popup>
+      </PopupContainer>
    )
 }

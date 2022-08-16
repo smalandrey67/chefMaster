@@ -9,7 +9,7 @@ import { useUploadBlogMutation } from 'services/BlogsService'
 import { useRedirect } from 'hooks/useRedirect'
 
 export const useSubmit = (
-   image: UploadImageType | undefined,
+   image: string | undefined,
    setFileName: Dispatch<SetStateAction<string>>,
    reset: UseFormReset<SubmitBlogType>
 ): UseSubmitType => {
@@ -26,7 +26,7 @@ export const useSubmit = (
 
    const submitHandler: SubmitHandler<SubmitBlogType> = (data): void => {
       if (image) {
-         const post: PostSubmit = { ...data, file: image.secure_url, createdAt: new Date().toISOString }
+         const post: PostSubmit = { ...data, file: image, createdAt: new Date().toISOString }
 
          uploadBlog(post)
 

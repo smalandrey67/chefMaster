@@ -6,16 +6,14 @@ import { extension } from 'utils/constants/extension.constants'
 import { validation } from 'utils/constants/validation.constants'
 
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
-import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage } from 'assets/styled/Reused.styled'
+import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage, FieldBlock } from 'assets/styled/Reused.styled'
 import {
-   BlogsCreateEl, BlogsCreateBody, BlogsCreateForm, BlogsCreateFieldset, BlogsCreateLegend, BlogsCreateLabel, BlogsCreateInput,
+   BlogsCreateEl, BlogsCreateBody, BlogsCreateLabel,
    BlogsCreateLabelFile,
    BlogsCreateInputFile,
    BlogsCreateTextarea,
-   BlogsCreateButton,
    BlogsCreatePreview,
    BlogsCreatePreviewImage,
-   BlogsCreateFieldWrapper,
    BlogsCreateLabelWrapper
 } from './BlogsCreate.styled'
 
@@ -24,6 +22,9 @@ import { BiError } from 'react-icons/bi'
 
 import { useImage } from './hook/useImage'
 import { useSubmit } from './hook/useSubmit'
+
+import { InputContainer } from 'components/containers/InputContainer/InputContainer'
+import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 
 export const BlogsCreate: FC = () => {
    const { register, formState: { errors }, handleSubmit, reset } = useForm<SubmitBlogType>({ mode: 'onChange' })
@@ -35,85 +36,77 @@ export const BlogsCreate: FC = () => {
       <BlogsCreateEl>
          <Container>
             <BlogsCreateBody>
-               <BlogsCreateForm onSubmit={handleSubmit(submitHandler)}>
-                  <BlogsCreateFieldset>
-                     <BlogsCreateLegend>Create your own post</BlogsCreateLegend>
-                     <BlogsCreateFieldWrapper>
-                        <BlogsCreateLabel>
-                           <BlogsCreateInput
-                              {...register('author', validation.author)}
-                              placeholder='Author'
-                              type='text'
-                              autoComplete='off'
+               <FormContainer title='Create your own post' buttonTitle='Create' handleSubmit={handleSubmit} submitHandler={submitHandler}>
+                  <FieldBlock>
+                     <InputContainer
+                        register={register}
+                        registerName='author'
+                        validationType={validation.author}
+                        placeholder='Author'
+                        type='text'
+                        autoComplete='off'
+                     />
+                     {errors?.author && <ErrorMessage justifyContent='flex-start'>{errors?.author?.message}</ErrorMessage>}
+                  </FieldBlock>
+                  <FieldBlock>
+                     <InputContainer
+                        register={register}
+                        registerName='title'
+                        validationType={validation.file}
+                        placeholder='Title'
+                        type='text'
+                        autoComplete='off'
+                     />
+                     {errors?.title && <ErrorMessage justifyContent='flex-start'>{errors?.title?.message}</ErrorMessage>}
+                  </FieldBlock>
+                  <FieldBlock>
+                     <BlogsCreateLabel>
+                        <BlogsCreateTextarea
+                           {...register('description', validation.description)}
+                           placeholder='Description'
+                           autoComplete='off'
+                        />
+                     </BlogsCreateLabel>
+                     {errors?.description && <ErrorMessage justifyContent='flex-start'>{errors?.description?.message}</ErrorMessage>}
+                  </FieldBlock>
+                  <FieldBlock>
+                     <BlogsCreateLabelWrapper>
+                        <BlogsCreateLabelFile>
+                           <BlogsCreateInputFile
+                              {...register('file', validation.file)}
+                              type='file'
+                              accept={extension.join(',')}
+                              onChange={changeFileHandler}
+                              hidden
                            />
-                        </BlogsCreateLabel>
-                        {errors?.author && <ErrorMessage justifyContent='flex-start'>{errors?.author?.message}</ErrorMessage>}
-                     </BlogsCreateFieldWrapper>
+                           Upload image
+                        </BlogsCreateLabelFile>
 
-                     <BlogsCreateFieldWrapper>
-                        <BlogsCreateLabel>
-                           <BlogsCreateInput
-                              {...register('title', validation.title)}
-                              placeholder='Title'
-                              type='text'
-                              autoComplete='off'
-                           />
-                        </BlogsCreateLabel>
-                        {errors?.title && <ErrorMessage justifyContent='flex-start'>{errors?.title?.message}</ErrorMessage>}
-                     </BlogsCreateFieldWrapper>
+                        {/* name of file */}
+                        <SpecialTitle fontSize='var(--fs-sm)'>
+                           {stringCut(fileName, 23)}
+                        </SpecialTitle>
 
-                     <BlogsCreateFieldWrapper>
-                        <BlogsCreateLabel>
-                           <BlogsCreateTextarea
-                              {...register('description', validation.description)}
-                              placeholder='Description'
-                              autoComplete='off'
-                           />
-                        </BlogsCreateLabel>
-                        {errors?.description && <ErrorMessage justifyContent='flex-start'>{errors?.description?.message}</ErrorMessage>}
-                     </BlogsCreateFieldWrapper>
+                     </BlogsCreateLabelWrapper>
+                     {errors?.file && <ErrorMessage justifyContent='flex-start'>{errors?.file?.message}</ErrorMessage>}
+                  </FieldBlock>
 
-                     <BlogsCreateFieldWrapper>
-                        <BlogsCreateLabelWrapper>
-                           <BlogsCreateLabelFile>
-                              <BlogsCreateInputFile
-                                 {...register('file', validation.file)}
-                                 type='file'
-                                 accept={extension.join(',')}
-                                 onChange={changeFileHandler}
-                                 hidden
-                              />
-                              Upload image
-                           </BlogsCreateLabelFile>
+                  <BlogsCreatePreview>
+                     {isLoading ?
+                        <SpinnerWrapper height='15vh'>
+                           <Spinner src={SpinnerSm} alt='spinner' />
+                        </SpinnerWrapper>
+                        :
+                        <BlogsCreatePreviewImage url={image ?? ''} src={image ?? ''} alt='preview' />
+                     }
 
-                           {/* name of file */}
-                           <SpecialTitle fontSize='var(--fs-sm)'>
-                              {stringCut(fileName, 23)}
-                           </SpecialTitle>
+                     {/* Error while image uploading */}
+                     {errorImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
+                  </BlogsCreatePreview>
 
-                        </BlogsCreateLabelWrapper>
-                        {errors?.file && <ErrorMessage justifyContent='flex-start'>{errors?.file?.message}</ErrorMessage>}
-                     </BlogsCreateFieldWrapper>
-
-                     <BlogsCreatePreview>
-                        {isLoading ?
-                           <SpinnerWrapper height='15vh'>
-                              <Spinner src={SpinnerSm} alt='spinner' />
-                           </SpinnerWrapper>
-                           :
-                           <BlogsCreatePreviewImage url={image?.secure_url} src={`${image?.secure_url}`} alt='preview' />
-                        }
-
-                        {/* Error while image uploading */}
-                        {errorImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-                     </BlogsCreatePreview>
-
-                     {/* Error while post uploading*/}
-                     {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-
-                     <BlogsCreateButton type='submit' name='submit'>Create</BlogsCreateButton>
-                  </BlogsCreateFieldset>
-               </BlogsCreateForm>
+                  {/* Error while post uploading*/}
+                  {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
+               </FormContainer>
             </BlogsCreateBody>
          </Container>
       </BlogsCreateEl>
