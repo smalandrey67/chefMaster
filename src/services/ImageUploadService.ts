@@ -4,7 +4,7 @@ import { UploadImageType } from 'types/UploadImage'
 
 export const imageUploadApi = createApi({
    reducerPath: 'imageUploadService',
-   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BLOGS_UPLOAD_URL }),
+   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_CLOUDINARY }),
    endpoints: (builder) => ({
       uploadImage: builder.mutation<string, FormData>({
          query: (data) => ({

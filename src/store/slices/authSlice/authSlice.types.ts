@@ -1,13 +1,14 @@
-import { User } from 'firebase/auth';
 import { UseRedirectType } from 'types/Hooks'
 
 export type UserType = {
-   email: string;
+   photoURL: string | null;
+   email: string | null;
+   name: string | null;
 }
 
 export type AuthState = {
-   user: User | null;
-   error: string;
+   user: UserType | null;
+   error: string | null;
 }
 
 export type PayloadAddUser = {

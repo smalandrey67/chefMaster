@@ -5,8 +5,6 @@ type BlogsCreatePreviewImageProps = {
    url: string | undefined;
 }
 
-export const BlogsCreateEl = styled.section``
-
 export const BlogsCreateBody = styled.div``
 
 export const BlogsCreateForm = styled.form`

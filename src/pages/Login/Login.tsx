@@ -1,13 +1,11 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Container, ErrorMessage, FieldBlock, FormFooter, FormLink, SpecialTitle } from 'assets/styled/Reused.styled'
+import { Container, ErrorMessage, Form, Fieldset, Legend, Group, Label, Input, Flex, LinkEl, Button } from 'assets/styled/Reused.styled'
 import { SubmitUser } from 'types/Authorisation'
 import { validation } from 'utils/constants/validation.constants'
 
 import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
-import { FormContainer } from 'components/containers/FormContainer/FormContainer'
-import { InputContainer } from 'components/containers/InputContainer/InputContainer'
 
 import { useRedirect } from 'hooks/useRedirect'
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
@@ -21,9 +19,8 @@ export const Login: FC = () => {
    const navigateHandler = useRedirect()
    const dispatch = useAppDispatch()
 
-   const submitHandler: SubmitHandler<SubmitUser> = async (data) => {
+   const submitHandler: SubmitHandler<SubmitUser> = (data): void => {
       const { email, password } = data
-
       dispatch(signInThunk({ email, password, navigateHandler }))
 
       reset()
@@ -32,26 +29,33 @@ export const Login: FC = () => {
    return (
       <Container>
          <PopupContainer>
-            <FormContainer handleSubmit={handleSubmit} submitHandler={submitHandler} title='Log in' buttonTitle='Log in'>
-               <FieldBlock>
-                  <InputContainer
-                     register={register} registerName='email' placeholder='email' type='email' validationType={validation.email}
-                  />
-                  {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
-               </FieldBlock>
-               <FieldBlock>
-                  <InputContainer
-                     register={register} registerName='password' placeholder='password' type='password' validationType={validation.password}
-                  />
-                  {errors?.password && <ErrorMessage justifyContent='flex-start'>{errors?.password?.message}</ErrorMessage>}
-               </FieldBlock>
-               <ErrorMessage color='var(--color-error)'>{authError}</ErrorMessage>
-            </FormContainer>
-
-            <FormFooter>
-               <FormLink to='/registration'>Don't have an account?</FormLink>
-               <FormLink to='/reset/password'>Forgot a password?</FormLink>
-            </FormFooter>
+            <Form onSubmit={handleSubmit(submitHandler)} margin='0 0 10px 0'>
+               <Fieldset>
+                  <Legend>Log in</Legend>
+                  <Group margin='0 0 10px 0'>
+                     <Label>
+                        <Input 
+                           {...register('email', validation.email)} placeholder='email' type='email' 
+                        />
+                     </Label>
+                     {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
+                  </Group>
+                  <Group margin='0 0 10px 0'>
+                     <Label>
+                        <Input 
+                           {...register('password', validation.password)} placeholder='password' type='password' 
+                        />
+                     </Label>
+                     {errors?.password && <ErrorMessage justifyContent='flex-start'>{errors?.password?.message}</ErrorMessage>}
+                  </Group>
+                  {<ErrorMessage>{authError}</ErrorMessage>}
+                  <Button type='submit' name='submit'>Log in</Button> 
+               </Fieldset>
+            </Form>
+            <Flex alignItems='center' justify='space-between'>
+               <LinkEl to='/registration'>Don't have an account?</LinkEl>
+               <LinkEl to='/reset/password'>Forgot a password?</LinkEl>
+            </Flex>
          </PopupContainer>
       </Container>
    )

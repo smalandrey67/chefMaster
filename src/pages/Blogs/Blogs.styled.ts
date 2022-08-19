@@ -2,8 +2,6 @@ import styled from 'styled-components'
 
 import { Link } from 'react-router-dom'
 
-export const BlogsEl = styled.section``
-
 export const BlogsAdd = styled(Link).attrs({
    to: '/blogs/create'
 })`

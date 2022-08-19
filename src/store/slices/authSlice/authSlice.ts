@@ -1,21 +1,32 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User } from 'firebase/auth'
 
-import { AuthState } from './authSlice.types'
+import { AuthState, UserType } from './authSlice.types'
 
 import { signInThunk, registrationThunk, logOutThunk, resetPasswordThunk, updateUserThunk } from './authThunk'
 
 const initialState: AuthState = {
    user: null,
-   error: ''
+   error: null
 }
 
 const authSlice = createSlice({
    name: 'auth',
    initialState,
    reducers: {
-      addUser: (state, { payload }: PayloadAction<User>): void => {
-         state.user = payload
+      addUser: {
+         reducer: (state, { payload }: PayloadAction<UserType>): void => {
+            state.user = payload
+         },
+         prepare: (currentUser: User) => {
+            return {
+               payload: {
+                  photoURL: currentUser.photoURL, 
+                  email: currentUser.email,
+                  name: currentUser.displayName
+               }
+            }
+         }
       },
       removeUser: (state): void => {
          state.user = null
@@ -23,11 +34,9 @@ const authSlice = createSlice({
    },
    extraReducers: (builder): void => {
       builder
-         .addCase(signInThunk.fulfilled, (state, { payload }): void => {
-            if (payload) { 
-               state.user = payload
-               state.error = ''
-            }
+         .addCase(signInThunk.fulfilled, (state, { payload }: PayloadAction<UserType>): void => {
+            state.user = payload
+            state.error = null
          })
          .addCase(signInThunk.rejected, (state, { payload }): void => {
             if (payload) {
@@ -35,10 +44,8 @@ const authSlice = createSlice({
             }
          })
          .addCase(registrationThunk.fulfilled, (state, { payload }): void => {
-            if (payload) {
-               state.user = payload
-               state.error = ''
-            }
+            state.user = payload
+            state.error = null
          })
          .addCase(registrationThunk.rejected, (state, { payload }): void => {
             if (payload) {
@@ -47,7 +54,7 @@ const authSlice = createSlice({
          })
          .addCase(logOutThunk.fulfilled, (state): void => {
             state.user = null 
-            state.error = ''
+            state.error = null
          })
          .addCase(logOutThunk.rejected, (state, { payload }): void => {
             if (payload) {
@@ -56,7 +63,7 @@ const authSlice = createSlice({
          })
          .addCase(resetPasswordThunk.fulfilled, (state): void => {
             state.user = null
-            state.error = ''
+            state.error = null
          })
          .addCase(resetPasswordThunk.rejected, (state, { payload }): void => {
             if (payload) {

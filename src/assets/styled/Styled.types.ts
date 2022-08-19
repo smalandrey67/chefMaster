@@ -25,3 +25,33 @@ export type ErrorWrapperProps = {
    flexDirection?: string;
    height: string;
 }
+
+export type InputProps = {
+   flex?: string;
+}
+
+export type ButtonProps = {
+   flex?: string;
+   height?: string;
+}
+
+export type FormProps = {
+   margin?: string;
+}
+
+export type LegendProps = {
+   align?: string;
+   fontSize?: string;
+   margin?: string;
+}
+
+export type GroupProps = {
+   margin?: string;
+}
+
+export type FlexProps = {
+   justify?: string;
+   alignItems?: string;
+   flexDirection?: string;
+   margin?: string;
+}

@@ -1,6 +1,7 @@
 import { FC, Suspense, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
+import 'react-toastify/dist/ReactToastify.css';
 
 import { routes, RouteType } from 'routes/routes'
 
@@ -19,8 +20,6 @@ export const Home: FC = () => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('onAuthStateChanged works')
-
             if (currentUser) {
                 dispatch(addUser(currentUser))
             }

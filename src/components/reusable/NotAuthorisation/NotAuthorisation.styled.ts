@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const NotAuthorisationEl = styled.div``
-
 export const NotAuthorisationContent = styled.div`
    display: flex;
    flex-direction: column;

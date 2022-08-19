@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { BiError } from 'react-icons/bi'
-import { DetailsEl, DetailsWrapperLeft, DetailsWrapper, DetailWrapperImage, DetailsWrapperTitle, DetailsImage, 
-    DetailsInfo, 
+import {
+    DetailsEl, DetailsWrapperLeft, DetailsWrapper, DetailWrapperImage, DetailsWrapperTitle, DetailsImage,
+    DetailsInfo,
     DetailsOverImage
 } from './Details.styled'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
+import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { ErrorFallback } from 'components/reusable/ErrorFallback/ErrorFallback'
 import { BackButton } from 'components/reusable/BackButton/BackButton'
 import { Ingredients } from './Ingredients/Ingredients'
@@ -33,64 +35,62 @@ export const Details: FC = () => {
     const tabName = useAppSelector(selectTabName)
 
     return (
-        <DetailsEl {...motion} >
-            <Container>
-                <DetailsWrapper>
-                    {isLoading ?
-                        <SpinnerWrapper height='50vh'>
-                            <Spinner src={SpinnerBg} alt='spinner' />
-                        </SpinnerWrapper>
-                        :
-                        <>
-                            <DetailsWrapperLeft>
-                                <DetailWrapperImage>
-                                    <BackButton>
-                                        <DetailsWrapperTitle>
-                                            {/* {details?.title} */}
-                                            {stringCut(details?.title, 22)}
-                                        </DetailsWrapperTitle>
-                                    </BackButton>
+        <SectionContainer motion={motion}>
+            <DetailsWrapper>
+                {isLoading ?
+                    <SpinnerWrapper height='50vh'>
+                        <Spinner src={SpinnerBg} alt='spinner' />
+                    </SpinnerWrapper>
+                    :
+                    <>
+                        <DetailsWrapperLeft>
+                            <DetailWrapperImage>
+                                <BackButton>
+                                    <DetailsWrapperTitle>
+                                        {/* {details?.title} */}
+                                        {stringCut(details?.title, 22)}
+                                    </DetailsWrapperTitle>
+                                </BackButton>
 
-                                    <DetailsOverImage>
-                                        <DetailsImage src={details?.image} alt={details?.title} />
-                                        
-                                        {/* Social component actually means functionality over the image */}
-                                        <Social details={details} />
-                                    </DetailsOverImage>
-                                </DetailWrapperImage>
+                                <DetailsOverImage>
+                                    <DetailsImage src={details?.image} alt={details?.title} />
 
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
-                                    <Nutritions id={params.id} />
+                                    {/* Social component actually means functionality over the image */}
+                                    <Social details={details} />
+                                </DetailsOverImage>
+                            </DetailWrapperImage>
+
+                            <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
+                                <Nutritions id={params.id} />
+                            </ErrorBoundary>
+                        </DetailsWrapperLeft>
+
+                        <DetailsInfo>
+                            <Tabs />
+
+                            {tabName === 'instructions' &&
+                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                                    <Instructions details={details} />
                                 </ErrorBoundary>
-                            </DetailsWrapperLeft>
+                            }
 
-                            <DetailsInfo>
-                                <Tabs />
+                            {tabName === 'ingredients' &&
+                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                                    <Ingredients details={details} />
+                                </ErrorBoundary>
+                            }
 
-                                {tabName === 'instructions' && 
-                                    <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
-                                        <Instructions details={details} />
-                                    </ErrorBoundary>
-                                }
-
-                                {tabName === 'ingredients' &&
-                                    <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
-                                        <Ingredients details={details} />
-                                    </ErrorBoundary>
-                                }
-
-                                {tabName === 'cooking' &&
-                                    <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
-                                        <Cooking details={details} />
-                                    </ErrorBoundary>
-                                }
-                            </DetailsInfo>
-                        </>
-                    }
-                </DetailsWrapper>
-                {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-            </Container>
-        </DetailsEl>
+                            {tabName === 'cooking' &&
+                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                                    <Cooking details={details} />
+                                </ErrorBoundary>
+                            }
+                        </DetailsInfo>
+                    </>
+                }
+            </DetailsWrapper>
+            {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
+        </SectionContainer>
     )
 
 }

@@ -5,10 +5,14 @@ import { stringCut } from 'utils/helpers/string.helper'
 import { extension } from 'utils/constants/extension.constants'
 import { validation } from 'utils/constants/validation.constants'
 
+import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
-import { Container, SpinnerWrapper, Spinner, SpecialTitle, ErrorMessage, FieldBlock } from 'assets/styled/Reused.styled'
 import {
-   BlogsCreateEl, BlogsCreateBody, BlogsCreateLabel,
+   SpinnerWrapper,
+   Spinner, SpecialTitle,
+   ErrorMessage, Form, Fieldset, Legend, Group, Label, Input, Button
+} from 'assets/styled/Reused.styled'
+import { BlogsCreateBody, BlogsCreateLabel,
    BlogsCreateLabelFile,
    BlogsCreateInputFile,
    BlogsCreateTextarea,
@@ -23,9 +27,6 @@ import { BiError } from 'react-icons/bi'
 import { useImage } from './hook/useImage'
 import { useSubmit } from './hook/useSubmit'
 
-import { InputContainer } from 'components/containers/InputContainer/InputContainer'
-import { FormContainer } from 'components/containers/FormContainer/FormContainer'
-
 export const BlogsCreate: FC = () => {
    const { register, formState: { errors }, handleSubmit, reset } = useForm<SubmitBlogType>({ mode: 'onChange' })
 
@@ -33,43 +34,36 @@ export const BlogsCreate: FC = () => {
    const { errorBlog, submitHandler } = useSubmit(image, setFileName, reset)
 
    return (
-      <BlogsCreateEl>
-         <Container>
-            <BlogsCreateBody>
-               <FormContainer title='Create your own post' buttonTitle='Create' handleSubmit={handleSubmit} submitHandler={submitHandler}>
-                  <FieldBlock>
-                     <InputContainer
-                        register={register}
-                        registerName='author'
-                        validationType={validation.author}
-                        placeholder='Author'
-                        type='text'
-                        autoComplete='off'
-                     />
+      <SectionContainer>
+         <BlogsCreateBody>
+            <Form onSubmit={handleSubmit(submitHandler)}>
+               <Fieldset>
+                  <Legend>Create your own post</Legend>
+                  <Group>
+                     <Label>
+                        <Input
+                           {...register('author', validation.author)} placeholder='author' type='text'
+                        />
+                     </Label>
                      {errors?.author && <ErrorMessage justifyContent='flex-start'>{errors?.author?.message}</ErrorMessage>}
-                  </FieldBlock>
-                  <FieldBlock>
-                     <InputContainer
-                        register={register}
-                        registerName='title'
-                        validationType={validation.file}
-                        placeholder='Title'
-                        type='text'
-                        autoComplete='off'
-                     />
+                  </Group>
+                  <Group>
+                     <Label>
+                        <Input
+                           {...register('title', validation.title)} placeholder='Title' type='text'
+                        />
+                     </Label>
                      {errors?.title && <ErrorMessage justifyContent='flex-start'>{errors?.title?.message}</ErrorMessage>}
-                  </FieldBlock>
-                  <FieldBlock>
+                  </Group>
+                  <Group>
                      <BlogsCreateLabel>
                         <BlogsCreateTextarea
-                           {...register('description', validation.description)}
-                           placeholder='Description'
-                           autoComplete='off'
+                           {...register('description', validation.description)} placeholder='Description'
                         />
                      </BlogsCreateLabel>
                      {errors?.description && <ErrorMessage justifyContent='flex-start'>{errors?.description?.message}</ErrorMessage>}
-                  </FieldBlock>
-                  <FieldBlock>
+                  </Group>
+                  <Group>
                      <BlogsCreateLabelWrapper>
                         <BlogsCreateLabelFile>
                            <BlogsCreateInputFile
@@ -89,7 +83,7 @@ export const BlogsCreate: FC = () => {
 
                      </BlogsCreateLabelWrapper>
                      {errors?.file && <ErrorMessage justifyContent='flex-start'>{errors?.file?.message}</ErrorMessage>}
-                  </FieldBlock>
+                  </Group>
 
                   <BlogsCreatePreview>
                      {isLoading ?
@@ -97,18 +91,19 @@ export const BlogsCreate: FC = () => {
                            <Spinner src={SpinnerSm} alt='spinner' />
                         </SpinnerWrapper>
                         :
-                        <BlogsCreatePreviewImage url={image ?? ''} src={image ?? ''} alt='preview' />
+                        <BlogsCreatePreviewImage url={image} src={`${image}`} alt='preview' />
                      }
 
                      {/* Error while image uploading */}
                      {errorImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
                   </BlogsCreatePreview>
 
+                  <Button type='submit' name='submit'>Create</Button>
                   {/* Error while post uploading*/}
                   {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-               </FormContainer>
-            </BlogsCreateBody>
-         </Container>
-      </BlogsCreateEl>
+               </Fieldset>
+            </Form>
+         </BlogsCreateBody>
+      </SectionContainer>
    )
 }

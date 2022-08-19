@@ -19,7 +19,7 @@ export const DetailsInfoButton = styled(Button).attrs({
     name: 'tab'
 })`
     flex: 0 1 100%;
-    
+   
     @media(min-width: 768px){
         flex: 0 1 25%;
     }

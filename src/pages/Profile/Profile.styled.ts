@@ -45,6 +45,7 @@ export const ProfileEmail = styled.h4`
    align-items: center;
    justify-content: space-between;
    margin: 0 0 10px 0;
+   width: 100%;
 `
 
 export const ProfileButtonLogOut = styled(Button)`

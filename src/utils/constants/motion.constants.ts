@@ -1,4 +1,4 @@
-type MotionType = Readonly<{
+export type MotionType = Readonly<{
    animate: {
       opacity: number;
    };

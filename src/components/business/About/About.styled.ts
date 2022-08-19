@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-export const AboutEl = styled.section``
-
 export const AboutWrapper = styled.div`
    display: flex;
    flex-direction: column;
