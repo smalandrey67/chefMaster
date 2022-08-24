@@ -7,14 +7,13 @@ import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from 'assets/styled/Reused.styled'
 
-import { CuisineResultsType } from 'types/Cuisine'
 import { useGetSearchedQuery } from 'services/RecipesService'
-import { useValidateParams } from './hook/useValidateParams' 
+import { useValidateParams } from './hook/useValidateParams'
 
 export const Searched: FC = () => {
     const params = useValidateParams()
     const { data: recipes, error, isLoading } = useGetSearchedQuery(params)
-    
+
     return (
         <Container>
             <RecipesWrapper>
@@ -25,9 +24,7 @@ export const Searched: FC = () => {
                     </SpinnerWrapper>
                     :
                     recipes?.length ?
-                        recipes.map((recipe: CuisineResultsType): JSX.Element =>
-                            <CuisineCard key={recipe.id} {...recipe} />
-                        )
+                        recipes.map(recipe => <CuisineCard key={recipe.id} {...recipe} />)
                         :
                         <ErrorNoResult description='Nothing was found' height='50vh' />
                 }

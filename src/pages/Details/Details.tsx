@@ -4,16 +4,14 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { BiError } from 'react-icons/bi'
 import {
-    DetailsEl, DetailsWrapperLeft, DetailsWrapper, DetailWrapperImage, DetailsWrapperTitle, DetailsImage,
-    DetailsInfo,
-    DetailsOverImage
+    DetailsWrapper, DetailWrapperImage, DetailsWrapperTitle, DetailsOverImage
 } from './Details.styled'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
+import { ErrorMessage, SpinnerWrapper, Spinner, FlexGroup, Image } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { ErrorFallback } from 'components/reusable/ErrorFallback/ErrorFallback'
-import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
 import { Ingredients } from './Ingredients/Ingredients'
 import { Instructions } from './Instructions/Instructions'
 import { Tabs } from './Tabs/Tabs'
@@ -43,17 +41,16 @@ export const Details: FC = () => {
                     </SpinnerWrapper>
                     :
                     <>
-                        <DetailsWrapperLeft>
+                        <FlexGroup flex='0 1 50%'>
                             <DetailWrapperImage>
-                                <BackButton>
+                                <BackButtonContainer>
                                     <DetailsWrapperTitle>
-                                        {/* {details?.title} */}
                                         {stringCut(details?.title, 22)}
                                     </DetailsWrapperTitle>
-                                </BackButton>
+                                </BackButtonContainer>
 
                                 <DetailsOverImage>
-                                    <DetailsImage src={details?.image} alt={details?.title} />
+                                    <Image width='100%' objectFit='cover' src={details?.image} alt={details?.title} />
 
                                     {/* Social component actually means functionality over the image */}
                                     <Social details={details} />
@@ -63,9 +60,9 @@ export const Details: FC = () => {
                             <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
                                 <Nutritions id={params.id} />
                             </ErrorBoundary>
-                        </DetailsWrapperLeft>
+                        </FlexGroup>
 
-                        <DetailsInfo>
+                        <FlexGroup flex='0 1 50%'>
                             <Tabs />
 
                             {tabName === 'instructions' &&
@@ -85,7 +82,7 @@ export const Details: FC = () => {
                                     <Cooking details={details} />
                                 </ErrorBoundary>
                             }
-                        </DetailsInfo>
+                        </FlexGroup>
                     </>
                 }
             </DetailsWrapper>
@@ -94,4 +91,3 @@ export const Details: FC = () => {
     )
 
 }
-

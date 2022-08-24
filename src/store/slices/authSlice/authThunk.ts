@@ -3,13 +3,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile, User } from 'firebase/auth'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
-import { AuthorisationDataType, UserType } from './authSlice.types'
+import { AuthorisationParametersType, UserType } from './authSlice.types'
 import { auth } from '../../../firebase'
-import { LogOutType } from './authSlice.types'
+import { LogOutType, UpdateUserThunkParametersType } from './authSlice.types'
 
 import { useToast } from 'hooks/useToast'
+import { addUser } from './authSlice'
 
-export const signInThunk = createAsyncThunk<UserType, AuthorisationDataType, { rejectValue: string }>(
+export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
    'signIn', async ({ email, password, navigateHandler }, { rejectWithValue, fulfillWithValue }) => {
       try {
          const { user } = await signInWithEmailAndPassword(auth, email, password)
@@ -29,7 +30,7 @@ export const signInThunk = createAsyncThunk<UserType, AuthorisationDataType, { r
    }
 )
 
-export const registrationThunk = createAsyncThunk<UserType, AuthorisationDataType, { rejectValue: string }>(
+export const registrationThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
    'registration', async ({ email, password, navigateHandler }, { rejectWithValue, fulfillWithValue }) => {
       try {
          const { user } = await createUserWithEmailAndPassword(auth, email, password)
@@ -76,22 +77,19 @@ export const resetPasswordThunk = createAsyncThunk<void, { email: string }, { re
    }
 )
 
-export const updateUserThunk = createAsyncThunk<void, { profilePhotoUrl: string | undefined, name: string | undefined }, { rejectValue: string }>(
-   'updateProfile', async ({ profilePhotoUrl, name }, { rejectWithValue, fulfillWithValue }) => {
+export const updateUserThunk = createAsyncThunk<void, UpdateUserThunkParametersType, { rejectValue: string }>(
+   'updateProfile', async (updatesData, { rejectWithValue, fulfillWithValue, dispatch }) => {
       try {
          if (auth.currentUser) {
-            await updateProfile(auth.currentUser, { photoURL: profilePhotoUrl, displayName: name })
-         }
+            await updateProfile(auth.currentUser, { ...updatesData })
+            dispatch(addUser(auth.currentUser))
 
-         fulfillWithValue(
-            useToast()('The profile was updated', 'success')
-         )
+            fulfillWithValue(
+               useToast()('The profile was updated', 'success')
+            )
+         }
       } catch (error) {
          return rejectWithValue('Can\'nt reset a password')
       }
    }
 )
-
-
-
-

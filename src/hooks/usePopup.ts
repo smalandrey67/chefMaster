@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import { UsePopupType } from 'types/Hooks'
+import { UsePopupReturnsType } from 'types/Hooks'
 
 import { useOverflow } from './useOverflow'
 
-export const usePopup = (): UsePopupType => {
+export const usePopup = (): UsePopupReturnsType => {
    const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
-
    useOverflow(popupIsActive)
 
    const popupHandler = (): void => {

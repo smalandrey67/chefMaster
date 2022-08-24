@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react'
 
-import { UseImageType } from 'types/Hooks'
+import { UseUploadImageReturnsType } from 'types/Hooks'
 
 import { useUploadImageMutation } from 'services/ImageUploadService'
 
-export const useImage = (): UseImageType => {
-   const [uploadImage, { data: image, error: errorImage, isLoading }] = useUploadImageMutation()
+export const useUploadImage = (): UseUploadImageReturnsType => {
+   const [uploadUserProfilePhoto, { data: userPhoto, error: errorUploadingImage, isLoading }] = useUploadImageMutation()
    const [fileName, setFileName] = useState<string>('')
 
    const changeFileHandler = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -19,16 +19,16 @@ export const useImage = (): UseImageType => {
          formData.append('file', files[0])
          formData.append('upload_preset', 'ees8ffne')
 
-         uploadImage(formData)
+         uploadUserProfilePhoto(formData)
       }
    }
-   
-   return { 
-      changeFileHandler, 
-      fileName, 
-      setFileName, 
-      image,
-      isLoading, 
-      errorImage
+
+   return {
+      changeFileHandler,
+      fileName,
+      setFileName,
+      userPhoto,
+      isLoading,
+      errorUploadingImage
    }
 }

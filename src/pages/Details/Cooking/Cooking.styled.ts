@@ -11,7 +11,6 @@ export const DetailsCookingSubtitle = styled.h4`
     gap: 5px;
     font-size: var(--fs-sm);
 `
-
 export const DetailsCookingItem = styled.li`
     position: relative;
     box-shadow: var(--shadow);
@@ -23,7 +22,6 @@ export const DetailsCookingItem = styled.li`
     justify-content: center;
     margin-bottom: 5px;
 `
-
 export const DetailsCookingHeader = styled.div`
     display: flex;
     align-items: center;
@@ -32,18 +30,15 @@ export const DetailsCookingHeader = styled.div`
     padding: 10px;
     cursor: pointer;
 `
-
 export const DetailsCookingStep = styled.span`
     font-size: var(--fs-sm);
     font-weight: var(--fw-semiBold);
 `
-
 export const DetailsCookingContent = styled.div`
     position: relative;
     height: 0;
     visibility: hidden;
     overflow: hidden;
-
     &.active{
         transition: all 0.3s ease;
         padding: 0 10px 10px 10px;
@@ -51,19 +46,16 @@ export const DetailsCookingContent = styled.div`
         visibility: visible;
     }
 `
-
 export const DetailsCookingIngredients = styled.div`
     height: 50px;
     display: flex;
     align-items: center;
     overflow: auto;
     margin-bottom: 5px;
-
     &.hide{
         display: none;
     }
 `
-
 export const DetailsCookingIngredientsPhoto = styled.img`
     height: 100%;
     width: 50px;

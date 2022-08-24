@@ -1,11 +1,11 @@
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 
-import { UseRedirectType } from 'types/Hooks'
+import { UseRedirectReturnsType } from 'types/Hooks'
 
-export const useRedirect = (): UseRedirectType => {
+export const useRedirect = (): UseRedirectReturnsType => {
    const navigate: NavigateFunction = useNavigate()
-   
-   const navigateHandler = (query: string, params: string = ''): void => {
+
+   const navigateHandler = (query: string, params = ''): void => {
       navigate(`${query}${params}`)
    }
 

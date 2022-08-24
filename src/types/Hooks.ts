@@ -1,53 +1,69 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction, MouseEvent } from 'react'
 
-import { UploadImageType } from './UploadImage'
 import { SubmitBlogType } from './Blogs'
-import { DetailsType } from './Details'
-import { FilterParamsType } from './Params' 
+import { FilterParamsType } from './Params'
 
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
+import { SubmitHandler } from 'react-hook-form'
+import { SubmitSearchType } from 'components/business/Search/Search.types'
+import { AlertType } from 'hooks/useToast'
 
-export type UseImageType = {
+export type UseUploadImageReturnsType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
    fileName: string;
    setFileName: Dispatch<SetStateAction<string>>;
-   image: string | undefined;
+   userPhoto: string | undefined;
    isLoading: boolean;
-   errorImage: FetchBaseQueryError | SerializedError | undefined;
+   errorUploadingImage: FetchBaseQueryError | SerializedError | undefined;
 }
 
-export type UsePopupType = {
+export type UsePopupReturnsType = {
    popupIsActive: boolean;
    popupHandler: () => void;
 }
 
-export type UseSubmitType = {
+export type UseBlogSubmitReturnsType = {
    errorBlog: FetchBaseQueryError | SerializedError | undefined;
-   submitHandler: (data: SubmitBlogType) => void;
+   submitBlogHandler: (data: SubmitBlogType) => void;
 }
 
-export type UseBackType = () => void;
+export type UseBackReturnsType = () => void;
 
-export type UseFavoritesType = (data: DetailsType | undefined) => void;
+export type UseMakeFavoriteReturnsType = () => void;
 
+export type UseRedirectReturnsType = (query: string, params?: string) => void;
 
-export type UseRedirectType = (query: string, params?: string) => void;
-
-
-export type UseFilterType = {
-   disabledShowResultBtn: boolean;
-   optionHandler: (id: string, query: keyof FilterParamsType) => void;
+export type UseFilterSubmitReturnsType = {
    showResultHandler: () => void;
+   isDisabledShowResultButton: boolean;
 }
+export type UseFilterOptionReturnsType = (typeId: string, query: keyof FilterParamsType) => void;
 
 export type UseSearchType = {
    openFilterMenuHandler: () => void;
    searchSubmitHandler: (data: { product: string }) => void;
 }
 
-export type UseValidateParamsType = FilterParamsType; 
+export type UseSearchSubmitReturnsType = SubmitHandler<SubmitSearchType>;
 
-export type useFavoriteType = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-   
-export type useAddIntoWeekPlanType = () => void;
+export type UseFilterMenuReturnsType = () => void;
+
+export type UseValidateParamsType = FilterParamsType;
+
+export type UseRemoveFromFavoriteReturnsType = (e: MouseEvent<HTMLButtonElement>) => void;
+
+export type UseAddIntoWeekPlanReturnsType = () => void;
+
+export type UseToastReturnsType = (message: string, type: AlertType) => void;
+
+export type UseFileChangeReturnsType = {
+   changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+   profilePhotoUrl: string | undefined;
+   errorOfUploadFile: FetchBaseQueryError | SerializedError | undefined;
+   isLoading: boolean;
+}
+
+export type UseLogOutReturnsType = () => void;
+
+export type UseSubmitUpdatesReturnsType = () => void;

@@ -1,7 +1,7 @@
 import { NavigateFunction, useNavigate } from 'react-router-dom'
-import { UseBackType } from 'types/Hooks'
+import { UseBackReturnsType } from 'types/Hooks'
 
-export const useBack = (): UseBackType => {
+export const useBack = (): UseBackReturnsType => {
    const navigate: NavigateFunction = useNavigate()
 
    const pageBackHandler = (): void => {

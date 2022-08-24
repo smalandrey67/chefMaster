@@ -1,29 +1,26 @@
 import { FC } from 'react'
 
-import { DetailsType } from 'types/Details'
 import { removeTags } from 'utils/helpers/tags.helper'
 import { motion } from 'utils/constants/motion.constants'
 
-import { DetailsInfoDescription } from './Instructions.styled'
-import { Text } from 'assets/styled/Reused.styled'
+import { DetailsInfoDescriptionWrapper } from './Instructions.styled'
+import { Paragraph } from 'assets/styled/Reused.styled'
 import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 
-type InstructionsProps = {
-    details: DetailsType | undefined;
-}
+import { InstructionsProps } from './Instructions.types'
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {
 
     return (
         <>
-            {!details?.summary.length && !details?.instructions.length ? 
-                <ErrorNoResult description='No instructions here' height='25vh' /> 
-            : null}
+            {!details?.summary.length && !details?.instructions.length ?
+                <ErrorNoResult description='No instructions here' height='25vh' />
+                : null}
 
-            <DetailsInfoDescription {...motion}>
-                <Text margin='0 0 10px 0'>{removeTags(details?.summary)}</Text>
-                <Text margin='0 0 10px 0'>{removeTags(details?.instructions)}</Text>
-            </DetailsInfoDescription>
+            <DetailsInfoDescriptionWrapper {...motion}>
+                <Paragraph margin={details?.summary && '0 0 10px 0'}>{removeTags(details?.summary)}</Paragraph>
+                <Paragraph margin={details?.instructions && '0 0 10px 0'}>{removeTags(details?.instructions)}</Paragraph>
+            </DetailsInfoDescriptionWrapper>
         </>
     )
 }

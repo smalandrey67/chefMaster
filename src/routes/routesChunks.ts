@@ -47,4 +47,3 @@ export const Profile = lazy(() =>
       default: module.Profile
    }))
 )
-

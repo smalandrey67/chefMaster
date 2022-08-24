@@ -9,10 +9,7 @@ import { ImFire } from 'react-icons/im'
 import { BiError } from 'react-icons/bi'
 
 import { useGetNutritionsQuery } from 'services/RecipesService'
-
-type NutritionProps = {
-    id: string | undefined;
-}
+import { NutritionProps } from './Nutritions.types'
 
 export const Nutritions: FC<NutritionProps> = memo(({ id }) => {
     const { data: nutrition, error, isLoading } = useGetNutritionsQuery(id)

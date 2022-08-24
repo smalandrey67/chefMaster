@@ -3,4 +3,3 @@ export type NutritionType = {
     carbs: string;
     protein: string;
 }
-

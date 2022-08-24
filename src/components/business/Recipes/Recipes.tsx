@@ -1,12 +1,10 @@
 import { FC } from 'react'
 
-
 import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { BiError } from 'react-icons/bi'
-import { RecipeResultType } from 'types/Recipe'
 
 import { splideOptions } from 'utils/constants/splide.constants'
 import { useGetRandomRecipesQuery } from 'services/RecipesService'
@@ -25,7 +23,7 @@ export const Recipes: FC = () => {
                         <Spinner src={SpinnerBg} alt='spinner' />
                     </SpinnerWrapper>
                     :
-                    recipes?.map((recipe: RecipeResultType): JSX.Element => <RecipeCard key={recipe.id} {...recipe} />)
+                    recipes?.map(recipe => <RecipeCard key={recipe.id} {...recipe} />)
                 }
             </Splide>
 

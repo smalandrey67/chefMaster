@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { Container } from 'assets/styled/Reused.styled'
-import { NotFoundWrapper, NotFoundImageWrapper, NotFoundImage, NotFoundTitle, NotFoundRedirect } from './NotFound.styled'
+import { Container, Group, Image, Title, LinkEl } from 'assets/styled/Reused.styled'
+import { NotFoundWrapper } from './NotFound.styled'
 import Error from 'assets/images/icons/error.svg'
 
 export const NotFound: FC = () => {
@@ -9,12 +9,17 @@ export const NotFound: FC = () => {
     return (
         <Container>
             <NotFoundWrapper>
-                <NotFoundImageWrapper>
-                    <NotFoundImage src={Error} alt='error' /> 
-                </NotFoundImageWrapper>
-                <NotFoundTitle>We could not find this page</NotFoundTitle>
-                <NotFoundRedirect to='/'>Click: Go back to main page</NotFoundRedirect>
-            </NotFoundWrapper> 
+                <Group width='140px' height='140px'>
+                    <Image src={Error} alt='error' />
+                </Group>
+                <Title>We could not find this page</Title>
+                <LinkEl
+                    margin='10px 0 0 0'
+                    color='var(--color-links)'
+                    textDecoration='underline'
+                    to='/'
+                >Click: Go back to main page</LinkEl>
+            </NotFoundWrapper>
         </Container>
     )
 }

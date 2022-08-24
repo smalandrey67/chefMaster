@@ -1,33 +1,25 @@
-import { UploadImageType } from './UploadImage'
-
-export type BlogsType = {
+export type BlogsResultTypeType = {
    title: string;
-   file: UploadImageType;
+   file: string;
    author: string;
    description: string;
    avatar: string;
    id: string;
-   createdAt: string;
 }
-
 export type SubmitBlogType = {
    title: string;
    file: FileList;
    author: string;
    description: string;
 }
-
-export type BlogType = Omit<BlogsType, 'createdAt' | 'id'>
-
-export type PostType = Omit<BlogsType, 'avatar' | 'createdAt' | 'id'>
-
-export type PostSubmit = {
+export type BlogCardPropsType = Omit<BlogsResultTypeType, 'id'>
+export type PreparedPostType = {
    title: string;
    file: string;
    author: string;
    description: string;
-   createdAt: () => string;
+   avatar: string | undefined;
 }
-
-export type UploadBlogType = Omit<BlogsType, 'avatar' | 'createdAt'>
-
+export type UploadImageResponseType = {
+   secure_url: string;
+}

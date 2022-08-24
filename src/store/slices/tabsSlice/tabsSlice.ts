@@ -11,7 +11,7 @@ export const tabsSlice = createSlice({
    initialState,
    reducers: {
       changeTabName: (state, { payload }: PayloadAction<ChangeTabNamePayload>): void => {
-         state.tabName = payload.name
+         state.tabName = payload.tabName
       }
    }
 })

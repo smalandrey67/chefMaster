@@ -26,18 +26,18 @@ const filterSlice = createSlice({
          reducer: (state, { payload }: PayloadAction<PayloadActiveType>): void => {
 
             let activeElement = {} as CategoryType
-   
+
             state.filterCategories = state.filterCategories.map(group => {
-               if (group.group.query === payload.query) {
+               if (group.names.query === payload.query) {
                   return {
                      ...group,
                      type: group.type.map(category => {
                         if (category.typeId === payload.typeId) {
                            activeElement = { ...category, active: !category.active }
-                       
+
                            return { ...category, active: !category.active }
                         }
-                  
+
                         return { ...category, active: false }
                      })
                   }

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FavoritesType } from 'types/Favorites'
+import { FavoriteRecipeType } from 'types/Favorites'
 import { FavoritesState, RemoveFavoritePayload } from './favoriteSlice.types'
 
 const initialState: FavoritesState = {
@@ -12,21 +12,34 @@ const favoritesSlice = createSlice({
    initialState,
    reducers: {
       removeFavorite: (state, { payload }: PayloadAction<RemoveFavoritePayload>): void => {
-         state.favorites = state.favorites.filter((item: FavoritesType): boolean => item.id !== payload.id)
-         
+         state.favorites = state.favorites.filter(item => item.id !== payload.id)
+
          localStorage.setItem('favorites', JSON.stringify(state.favorites))
       },
-      addFavorite: (state, { payload }: PayloadAction<FavoritesType>): void => {
-         const recipe = state.favorites.find((item: FavoritesType): boolean => item.id === payload.id)
 
-         if (recipe && recipe.isActive) {
-            state.favorites = state.favorites.filter((item: FavoritesType): boolean => item.id !== recipe.id)
+      addFavorite: {
+         reducer: (state, { payload }: PayloadAction<FavoriteRecipeType>): void => {
+            const recipe = state.favorites.find(item => item.id === payload.id)
 
-            localStorage.setItem('favorites', JSON.stringify(state.favorites))
-         } else {
-            state.favorites = [payload, ...state.favorites]
+            if (recipe && recipe.isActive) {
+               state.favorites = state.favorites.filter((item: FavoriteRecipeType): boolean => item.id !== recipe.id)
 
-            localStorage.setItem('favorites', JSON.stringify(state.favorites))
+               localStorage.setItem('favorites', JSON.stringify(state.favorites))
+            } else {
+               state.favorites = [payload, ...state.favorites]
+
+               localStorage.setItem('favorites', JSON.stringify(state.favorites))
+            }
+         },
+         prepare: (id: number, title: string, image: string, activeFavoriteStatus: boolean) => {
+            return {
+               payload: {
+                  id,
+                  title,
+                  image,
+                  isActive: !activeFavoriteStatus
+               }
+            }
          }
 
       }

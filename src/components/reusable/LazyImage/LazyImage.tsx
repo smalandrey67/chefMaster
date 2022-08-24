@@ -6,9 +6,9 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import { LazyImageProps } from './LazyImage.types'
 
 export const LazyImage: FC<LazyImageProps> = ({ image, alt, width, height, style }) => {
-   
+
    return (
-      <LazyLoadImage 
+      <LazyLoadImage
          src={image}
          alt={alt}
          width={width}

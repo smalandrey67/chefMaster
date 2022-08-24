@@ -1,76 +1,76 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
+import { config } from 'config/config'
 
-import { CuisineType, CuisineResultsType } from 'types/Cuisine'
-import { RecipeType, RecipeResultType } from 'types/Recipe'
+import { RecipeResultType, RecipesResponseType, RandomRecipeResultType, RandomRecipesResponseType } from 'types/Recipe'
 import { DetailsType } from 'types/Details'
 import { NutritionType } from 'types/Nutrition'
-import { AnswerType } from 'types/Answer'
+import { AnswerResponseType } from 'types/Answer'
 import { FilterParamsType } from 'types/Params'
 
 export const recipesApi = createApi({
    reducerPath: 'recipesService',
-   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_URL }),
+   baseQuery: fetchBaseQuery({ baseUrl: config.spoonacular }),
 
    endpoints: (builder) => ({
-      getRandomRecipes: builder.query<RecipeResultType[], void>({
+      getRandomRecipes: builder.query<RandomRecipeResultType[], void>({
          query: () => ({
             url: '/random',
             params: {
                number: 12,
-               apiKey: process.env.REACT_APP_KEY
+               apiKey: config.apiKey
             }
          }),
-         transformResponse: (response: RecipeType): RecipeResultType[] => response.recipes 
+         transformResponse: (response: RandomRecipesResponseType): RandomRecipeResultType[] => response.recipes
       }),
-      getCuisine: builder.query<CuisineResultsType[], string | undefined>({
+      getCuisine: builder.query<RecipeResultType[], string | undefined>({
          query: (country) => ({
             url: '/complexSearch',
             params: {
                cuisine: country ?? '',
-               apiKey: process.env.REACT_APP_KEY
+               apiKey: config.apiKey
             }
          }),
-         transformResponse: (response: CuisineType): CuisineResultsType[] => response.results
+         transformResponse: (response: RecipesResponseType): RecipeResultType[] => response.results
       }),
       getDetails: builder.query<DetailsType, string | undefined>({
          query: (id) => ({
             url: `/${id ?? ''}/information`,
             params: {
-               apiKey: process.env.REACT_APP_KEY
+               apiKey: config.apiKey
             }
          })
       }),
-      getSearched: builder.query<CuisineResultsType[], FilterParamsType>({ 
+      getSearched: builder.query<RecipeResultType[], FilterParamsType>({
          query: (params) => ({
             url: '/complexSearch',
             params: {
                ...params,
                number: 20,
-               apiKey: process.env.REACT_APP_KEY
+               apiKey: config.apiKey
             }
          }),
-         transformResponse: (response: CuisineType): CuisineResultsType[] => response.results 
+         transformResponse: (response: RecipesResponseType): RecipeResultType[] => response.results
       }),
       getNutritions: builder.query<NutritionType, string | undefined>({
          query: (id) => ({
             url: `/${id ?? ''}/nutritionWidget.json`,
             params: {
-               apiKey: process.env.REACT_APP_KEY
+               apiKey: config.apiKey
             }
          })
       }),
-      getAnswer: builder.query<AnswerType, string>({
+      getAnswer: builder.query<AnswerResponseType, string>({
          query: (question) => ({
             url: `/quickAnswer?q=${question.split(' ').join('+')}`,
             params: {
-               apiKey: process.env.REACT_APP_KEY
+               apiKey: config.apiKey
             }
          })
       })
    })
 })
 
-export const { 
+export const {
    useGetRandomRecipesQuery,
    useGetCuisineQuery,
    useGetDetailsQuery,

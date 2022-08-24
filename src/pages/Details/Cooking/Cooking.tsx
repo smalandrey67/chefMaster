@@ -1,24 +1,21 @@
 import { FC, useState, Fragment, memo } from 'react'
+import { nanoid } from '@reduxjs/toolkit'
 
 import { motion } from 'utils/constants/motion.constants'
 import { stringCut } from 'utils/helpers/string.helper'
+import { config } from 'config/config'
 
-import { DetailsList } from '../Ingredients/Ingredients.styled'
+import { List, Span, Image } from 'assets/styled/Reused.styled'
 import {
-    DetailsCookingSubtitle, DetailsCookingItem, DetailsCookingHeader, DetailsCookingStep, DetailsCookingContent,
-    DetailsCookingIngredients,
-    DetailsCookingIngredientsPhoto
+    DetailsCookingSubtitle, DetailsCookingItem, DetailsCookingHeader, DetailsCookingContent,
+    DetailsCookingIngredients
 } from './Cooking.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
 
-import { DetailsType, AnalyzedInstructionsType, CookingStepType, StepType } from 'types/Details'
+import { CookingProps } from './Cooking.types'
 import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
-
-type CookingProps = {
-    details: DetailsType | undefined;
-}
 
 export const Cooking: FC<CookingProps> = memo(({ details }) => {
     const [stepIsActive, setStepIsActive] = useState<string | null>(null)
@@ -34,19 +31,19 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
     }
 
     return (
-        <DetailsList {...motion} >
-            {details?.analyzedInstructions.map(({ name, steps }: AnalyzedInstructionsType, index: number): JSX.Element => (
-                <Fragment key={index}> {/* Item name possible could be the empty string. There is no another way to give an unique key */}
+        <List {...motion} >
+            {details?.analyzedInstructions.map(({ name, steps }, index: number) => (
+                <Fragment key={nanoid()}> {/* Item name possible could be the empty string. There is no another way to give an unique key */}
                     {name.length ?
                         <DetailsCookingSubtitle>
                             <IoFootstepsSharp />
                             {stringCut(name, 40)}
                         </DetailsCookingSubtitle> : null}
 
-                    {steps.map(({ number, step, ingredients }: CookingStepType): JSX.Element =>
+                    {steps.map(({ number, step, ingredients }) =>
                         <DetailsCookingItem key={number}>
                             <DetailsCookingHeader onClick={() => stepHandler(step)}>
-                                <DetailsCookingStep>Step {number}</DetailsCookingStep>
+                                <Span fontWeight='var(--fw-bold)'>Step {number}</Span>
                                 <BsChevronDown
                                     style={{ transform: stepIsActive === step ? 'rotate(180deg)' : 'rotate(0)' }}
                                 />
@@ -54,11 +51,12 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
 
                             <DetailsCookingContent className={stepIsActive === step ? 'active' : ''}>
                                 <DetailsCookingIngredients className={ingredients.length ? '' : 'hide'}>
-
-                                    {ingredients.length && ingredients.map(({ id, image, name }: StepType): JSX.Element =>
-                                        <DetailsCookingIngredientsPhoto
+                                    {ingredients.length && ingredients.map(({ id, image, name }) =>
+                                        <Image
+                                            width='60px'
+                                            objectFit='contain'
                                             key={id}
-                                            src={`${process.env.REACT_APP_IMAGE_URL}${image}`}
+                                            src={`${config.ingredientsUrl}${image}`}
                                             alt={name}
                                         />
                                     )}
@@ -69,10 +67,8 @@ export const Cooking: FC<CookingProps> = memo(({ details }) => {
                     )}
                 </Fragment>
             ))}
-            
+
             {!details?.analyzedInstructions.length && <ErrorNoResult description='No instruction for cooking' height='25vh' />}
-        </DetailsList>
+        </List>
     )
 })
-
-

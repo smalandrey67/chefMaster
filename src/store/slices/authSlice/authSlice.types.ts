@@ -1,26 +1,23 @@
-import { UseRedirectType } from 'types/Hooks'
+import { UseRedirectReturnsType } from 'types/Hooks'
 
 export type UserType = {
    photoURL: string | null;
    email: string | null;
    name: string | null;
 }
-
 export type AuthState = {
    user: UserType | null;
    error: string | null;
 }
-
-export type PayloadAddUser = {
-   email: string;
-}
-
-export type AuthorisationDataType = {
+export type AuthorisationParametersType = {
    email: string;
    password: string;
-   navigateHandler: UseRedirectType;
+   navigateHandler: UseRedirectReturnsType;
 }
-
 export type LogOutType = {
-   navigateHandler: UseRedirectType;
+   navigateHandler: UseRedirectReturnsType;
 }
+export type UpdateUserThunkParametersType = Partial<{
+   photoURL: string;
+   displayName: string;
+}>

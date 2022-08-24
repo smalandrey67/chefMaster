@@ -29,6 +29,3 @@ export const categories: readonly CategoriesType[] = [
    { cuisine: CategoriesCuisine.GERMAN, Icon: GiPotato },
    { cuisine: CategoriesCuisine.VIETNAMESE, Icon: GiTacos }
 ]
-
-
-

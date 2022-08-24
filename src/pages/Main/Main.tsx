@@ -11,19 +11,15 @@ import { usePopup } from 'hooks/usePopup'
 
 export const Main: FC = () => {
     const { popupIsActive, popupHandler } = usePopup()
-    
+
     return (
         <MainEl>
             <Recipes />
             <About />
 
-            {/* The button which open the chat for answering */}
+            {/* The button which open a popup for answering the question */}
             <MainChatWrapper aria-label='ask question' onClick={popupHandler}>
-                <BsChatRightText
-                    size='25'
-                    cursor='pointer'
-                    color='var(--color-white)'
-                />
+                <BsChatRightText size='25' cursor='pointer' color='var(--color-white)' />
             </MainChatWrapper>
 
             {popupIsActive &&
@@ -33,5 +29,3 @@ export const Main: FC = () => {
         </MainEl>
     )
 }
-
-

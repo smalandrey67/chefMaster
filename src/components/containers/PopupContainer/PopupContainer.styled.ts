@@ -10,7 +10,6 @@ export const Popup = styled(motion.div)`
    left: 0;
    z-index: 150;
 `
-
 export const PopupBody = styled.div`
    min-height: 100%;
    display: flex;
@@ -18,7 +17,6 @@ export const PopupBody = styled.div`
    justify-content: center;
    padding: 30px 10px;
 `
-
 export const PopupContent = styled.div`
    background-color: var(--color-white);
    color: var(--color-text);

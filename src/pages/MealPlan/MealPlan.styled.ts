@@ -1,15 +1,7 @@
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-import { Button } from 'assets/styled/Reused.styled'
-
-export const MealPlanEl = styled.section``
-
-export const MealPlanList = styled.ul`
-   padding: 0;
-   margin: 0;
-`
+import { Button, List, Flex } from 'assets/styled/Reused.styled'
 
 export const MealPlanItem = styled.li`
    padding: 15px 0 5px 0;
@@ -17,8 +9,7 @@ export const MealPlanItem = styled.li`
    &:not(:last-child) {
       border-bottom: 1px solid var(--color-black);
    } 
-` 
-
+`
 export const MealPlanItemTitle = styled.h4`
    display: flex;
    align-items: center;
@@ -26,7 +17,6 @@ export const MealPlanItemTitle = styled.h4`
    margin: 0 0 10px 0;
    font-size: var(--fs-md);
 `
-
 export const MealPlanItemAdd = styled(Button)`
    width: 25px;
    height: 24px;
@@ -36,10 +26,7 @@ export const MealPlanItemAdd = styled(Button)`
    color: var(--color-white);
    display: block;
 `
-
-export const MealPlanSubMenu = styled(motion.ul)`
-   margin: 0;
-   padding: 0;
+export const MealPlanSubMenu = styled(List)`
    display: none;
    position: absolute;
    top: 45px;
@@ -54,13 +41,11 @@ export const MealPlanSubMenu = styled(motion.ul)`
    align-items: center;
    justify-content: center;
 `
-
 export const MealPlanSubMenuItem = styled.li`
    &:not(:last-child){
       margin-bottom: 15px;
    }
 `
-
 export const MealPlanSubMenuLink = styled(Link)`
    display: grid;
    grid-auto-flow: column;
@@ -69,38 +54,26 @@ export const MealPlanSubMenuLink = styled(Link)`
    font-size: var(--fs-sm);
    font-weight: var(--fw-semiBold);
 `
-
-export const MealPlanDishes = styled.div`
-   min-height: 0;
-   display: flex;
-   align-items: center;
+export const MealPlanDishes = styled(Flex)`
+   justify-content: stretch;
    overflow: auto;
 `
-
 export const MealPlanDish = styled.div`
    width: 150px;
    height: 100%;
    position: relative;
    cursor: pointer;
-
    &:not(:last-child) {
       margin-right: 4px;
    }
 `
-
-export const MealPlanCloseButton = styled.button`
+export const MealPlanDeleteButton = styled.button`
    position: absolute;
-   top: 5px;
-   width: 22px;
-   height: 22px;
-   right: 3px;
-   background-color: var(--color-scrollbar);
-   border-radius: 50%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   opacity: 0.7;
+   top: 0;
+   right: 0;
+   width: 30px;
+   height: 30px;
+   background-color: transparent;
    padding: 0;
-   margin: 0;
-   display: block;
+   box-shadow: none;
 `

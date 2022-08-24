@@ -2,7 +2,7 @@ import { nanoid } from '@reduxjs/toolkit'
 
 import { FilterParamsType } from 'types/Params'
 
-export type GroupType = {
+export type NamesType = {
    text: string;
    query: keyof FilterParamsType;
 }
@@ -15,7 +15,7 @@ export type CategoryType = {
 }
 
 export type FilterCategoriesTypes = {
-   group: GroupType;
+   names: NamesType;
    id: string;
    type: CategoryType[];
 }
@@ -38,7 +38,7 @@ enum DishesName {
 
 export const filterCategories: FilterCategoriesTypes[] = [
    {
-      group: { text: 'diets', query: 'diet' },
+      names: { text: 'diets', query: 'diet' },
       id: nanoid(),
       type: [
          { name: DietsName.KETOGENIC, active: false, typeId: nanoid(), value: DietsName.KETOGENIC },
@@ -49,7 +49,7 @@ export const filterCategories: FilterCategoriesTypes[] = [
       ]
    },
    {
-      group: { text: 'dishes', query: 'type' },
+      names: { text: 'dishes', query: 'type' },
       id: nanoid(),
       type: [
          { name: DishesName.SALAD, active: false, typeId: nanoid(), value: DishesName.SALAD },
@@ -60,18 +60,18 @@ export const filterCategories: FilterCategoriesTypes[] = [
       ]
    },
    {
-      group: { text: 'min carbs', query: 'minCarbs' },
+      names: { text: 'min carbs', query: 'minCarbs' },
       id: nanoid(),
       type: [
-         { name: '10g', active: false, typeId: nanoid(), value: '10'},
-         { name: '30g', active: false, typeId: nanoid(), value: '30'},
+         { name: '10g', active: false, typeId: nanoid(), value: '10' },
+         { name: '30g', active: false, typeId: nanoid(), value: '30' },
          { name: '50g', active: false, typeId: nanoid(), value: '50' },
          { name: '70g', active: false, typeId: nanoid(), value: '70' },
          { name: '90g', active: false, typeId: nanoid(), value: '90' }
       ]
    },
    {
-      group: { text: 'min calories', query: 'minCalories' },
+      names: { text: 'min calories', query: 'minCalories' },
       id: nanoid(),
       type: [
          { name: '50g', active: false, typeId: nanoid(), value: '10' },

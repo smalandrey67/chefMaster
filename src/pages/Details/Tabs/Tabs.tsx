@@ -6,29 +6,33 @@ import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 
 import { DetailsInfoButton, DetailsInfoWrapper } from './Tabs.styled'
 
+const INSTRUCTIONS = 'instructions'
+const INGREDIENTS = 'ingredients'
+const COOKING = 'cooking'
+
 export const Tabs: FC = () => {
     const dispatch = useAppDispatch()
     const tabName = useAppSelector(selectTabName)
 
-    const tabHandler = (name: string): void => {
-        dispatch(changeTabName({ name }))
+    const tabHandler = (tabName: string): void => {
+        dispatch(changeTabName({ tabName }))
     }
 
     return (
         <DetailsInfoWrapper>
             <DetailsInfoButton
-                className={`${tabName === 'instructions' && 'active'}`}
-                onClick={() => tabHandler('instructions')}
+                className={`${tabName === INSTRUCTIONS && 'active'}`}
+                onClick={() => tabHandler(INSTRUCTIONS)}
             >Instructions</DetailsInfoButton>
 
             <DetailsInfoButton
-                className={`${tabName === 'ingredients' && 'active'}`}
-                onClick={() => tabHandler('ingredients')}
+                className={`${tabName === INGREDIENTS && 'active'}`}
+                onClick={() => tabHandler(INGREDIENTS)}
             >Ingredients</DetailsInfoButton>
 
             <DetailsInfoButton
-                className={`${tabName === 'cooking' && 'active'}`}
-                onClick={() => tabHandler('cooking')}
+                className={`${tabName === COOKING && 'active'}`}
+                onClick={() => tabHandler(COOKING)}
             >Cooking</DetailsInfoButton>
         </DetailsInfoWrapper>
     )

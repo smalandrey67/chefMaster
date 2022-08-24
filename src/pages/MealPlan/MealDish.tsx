@@ -1,21 +1,19 @@
-import { FC, memo } from 'react'
-import { GrFormClose } from 'react-icons/gr'
+import { FC, memo, MouseEvent } from 'react'
+import { IoIosClose } from 'react-icons/io'
 
 import { useAppDispatch } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
 import { deleteRecipeFromMealPlan } from 'store/slices/mealPlanSlice/mealPlanSlice'
 
-import { DishType } from 'types/MealPlan'
-import { MealPlanCloseButton, MealPlanDish } from './MealPlan.styled'
+import { MealPlanDeleteButton, MealPlanDish } from './MealPlan.styled'
 import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
-
-type MealDishProps = DishType & { idWeek: string }
+import { MealDishProps } from './MealPlan.types'
 
 export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek }) => {
    const navigateHandler = useRedirect()
    const dispatch = useAppDispatch()
 
-   const deleteRecipeFromMeal = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, idDish: string, idWeek: string): void => {
+   const deleteRecipeFromMeal = (e: MouseEvent<HTMLButtonElement>, idDish: string, idWeek: string): void => {
       e.stopPropagation()
       dispatch(deleteRecipeFromMealPlan({ idDish, idWeek }))
    }
@@ -29,9 +27,9 @@ export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek 
             height='102px'
             style={{ 'objectFit': 'cover', 'borderRadius': 'var(--br-radius)' }}
          />
-         <MealPlanCloseButton onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => deleteRecipeFromMeal(e, idDish, idWeek)}>
-            <GrFormClose size='15' />
-         </MealPlanCloseButton>
+         <MealPlanDeleteButton onClick={(e) => deleteRecipeFromMeal(e, idDish, idWeek)}>
+            <IoIosClose color='var(--color-white)' size='30' />
+         </MealPlanDeleteButton>
       </MealPlanDish>
    )
 })

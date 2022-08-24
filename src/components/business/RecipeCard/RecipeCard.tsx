@@ -1,35 +1,26 @@
 import { FC } from 'react'
 
-import { RecipeResultType } from 'types/Recipe'
+import { RandomRecipeResultType } from 'types/Recipe'
 import { SplideSlide } from '@splidejs/react-splide'
 import { useRedirect } from 'hooks/useRedirect'
 
-import { RecipeEl } from 'assets/styled/Reused.styled'
-import { RecipeBody, RecipeWrapper, RecipeTitle, RecipeGradient, RecipeScore } from './RecipeCard.styled'
+import { Article, RecipeImageWrapper } from 'assets/styled/Reused.styled'
+import { RecipeScore, RecipeGradient } from './RecipeCard.styled'
 
-import { LazyImage } from '../../reusable/LazyImage/LazyImage'
+import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
 
-export const RecipeCard: FC<RecipeResultType> = ({ id, title, image, healthScore }) => {
+export const RecipeCard: FC<RandomRecipeResultType> = ({ id, title, image, healthScore }) => {
     const navigateHandler = useRedirect()
 
     return (
         <SplideSlide>
-            <RecipeEl onClick={() => navigateHandler('/details/', String(id))}>
-                <RecipeBody>
-                    <RecipeWrapper>
-                        <LazyImage 
-                            image={image} 
-                            alt={title}
-                            width='100%'
-                            height='100%'
-                        />
-                    </RecipeWrapper>
-
-                    <RecipeTitle>{title}</RecipeTitle>
+            <Article onClick={() => navigateHandler('/details/', String(id))}>
+                <RecipeImageWrapper>
+                    <LazyImage image={image} alt={title} width='100%' height='100%' />
                     <RecipeScore healthScore={healthScore}>{healthScore}</RecipeScore>
                     <RecipeGradient />
-                </RecipeBody>
-            </RecipeEl>
+                </RecipeImageWrapper>
+            </Article>
         </SplideSlide>
     )
 }

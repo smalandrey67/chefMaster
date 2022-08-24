@@ -1,10 +1,11 @@
 import { ChangeEvent } from 'react'
 
 import { useUploadImageMutation } from 'services/ImageUploadService'
+import { UseFileChangeReturnsType } from 'types/Hooks'
 
-export const useFileChange = () => {
-   const [uploadImage, { data: profilePhotoUrl, error: errorOfUploadFile, isLoading }] = useUploadImageMutation()
-   
+export const useFileChange = (): UseFileChangeReturnsType => {
+   const [uploadProfilePhoto, { data: profilePhotoUrl, error: errorOfUploadFile, isLoading }] = useUploadImageMutation()
+
    const changeFileHandler = (e: ChangeEvent<HTMLInputElement>): void => {
       const files = e.target.files
 
@@ -14,7 +15,7 @@ export const useFileChange = () => {
          formData.append('file', files[0])
          formData.append('upload_preset', 'ees8ffne')
 
-         uploadImage(formData)
+         uploadProfilePhoto(formData)
       }
    }
 

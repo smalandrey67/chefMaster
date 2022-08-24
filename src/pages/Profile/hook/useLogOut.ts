@@ -1,13 +1,15 @@
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
 
-import { selectUser } from 'store/slices/authSlice/authSlice.selectors'
+import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 import { logOutThunk } from 'store/slices/authSlice/authThunk'
 
-export const useLogOut = () => {
-   const dispatch = useAppDispatch()
-   const user = useAppSelector(selectUser)
+import { UseLogOutReturnsType } from 'types/Hooks'
 
+export const useLogOut = (): UseLogOutReturnsType => {
+   const user = useAppSelector(selectCurrentUser)
+
+   const dispatch = useAppDispatch()
    const navigateHandler = useRedirect()
 
    const logOutHandler = (): void => {

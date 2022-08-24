@@ -4,25 +4,26 @@ import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
 import { motion } from 'utils/constants/motion.constants'
 import { useAppSelector } from 'hooks/useRedux'
 import { selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
-import { selectUser } from 'store/slices/authSlice/authSlice.selectors'
+import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 
-import { Title } from 'assets/styled/Reused.styled'
-import { MealPlanList, MealPlanItem, MealPlanItemTitle, MealPlanItemAdd, MealPlanDishes,
-   MealPlanSubMenu
+import { Title, List } from 'assets/styled/Reused.styled'
+import {
+   MealPlanItem, MealPlanItemTitle, MealPlanItemAdd,
+   MealPlanDishes, MealPlanSubMenu
 } from './MealPlan.styled'
 
 import { SubMenuItem } from './SubMenuItem'
 import { MealDish } from './MealDish'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
-import { BackButton } from 'components/reusable/BackButton/BackButton'
-import { NotAuthorisation } from 'components/reusable/NotAuthorisation/NotAuthorisation'
+import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
+import { NotAuthorisated } from 'components/reusable/NotAuthorisated/NotAuthorisated'
 
 export const MealPlan: FC = () => {
    const weekPlan = useAppSelector(selectWeekPlan)
-   const user = useAppSelector(selectUser)
+   const user = useAppSelector(selectCurrentUser)
    const [addMealIndex, setAddMealIndex] = useState<number | null>(null)
 
-   const addMealHandler = (index: number): void => {
+   const openSubMenuHandler = (index: number): void => {
       if (index === addMealIndex) {
          setAddMealIndex(null)
 
@@ -33,15 +34,15 @@ export const MealPlan: FC = () => {
 
    return Object.values(user || {}).length ?
       <SectionContainer motion={motion}>
-         <BackButton>
+         <BackButtonContainer>
             <Title>Meal Plan</Title>
-         </BackButton>
-         <MealPlanList>
+         </BackButtonContainer>
+         <List>
             {weekPlan.map((dayPlan, index) =>
                <MealPlanItem key={dayPlan.idWeek}>
                   <MealPlanItemTitle>
                      {dayPlan.weekDay}
-                     <MealPlanItemAdd onClick={() => addMealHandler(index)}>+</MealPlanItemAdd>
+                     <MealPlanItemAdd onClick={() => openSubMenuHandler(index)}>+</MealPlanItemAdd>
                   </MealPlanItemTitle>
 
                   <MealPlanSubMenu
@@ -58,6 +59,6 @@ export const MealPlan: FC = () => {
                   </MealPlanDishes>
                </MealPlanItem>
             )}
-         </MealPlanList>
-      </SectionContainer> : <NotAuthorisation />
+         </List>
+      </SectionContainer> : <NotAuthorisated />
 }

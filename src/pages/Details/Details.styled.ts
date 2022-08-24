@@ -1,31 +1,28 @@
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
 
-export const DetailsEl = styled(motion.article)``
+import { Flex, Figure, Figcaption } from 'assets/styled/Reused.styled'
 
-export const DetailsWrapper = styled.div`
+export const DetailsWrapper = styled(Flex)`
+    flex-direction: column;
+    align-items: stretch;
+    
     @media (min-width: 768px) {
-        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
         gap: 15px;
     } 
 `
 
 export const DetailsWrapperLeft = styled.div``
 
-export const DetailWrapperImage = styled.figure`
-    margin: 0 0 5px 0;
-
-    @media (min-width: 768px) {
-        flex: 0 1 50%;
-        margin-bottom: 0;
-    }
+export const DetailWrapperImage = styled(Figure)`
+    margin-bottom: 5px;
 `
 
-export const DetailsWrapperTitle = styled.figcaption`  
+export const DetailsWrapperTitle = styled(Figcaption)`  
     @media (max-width: 768px) {
         font-size: var(--fs-md);
     }
-
     margin-left: 5px;
     font-size: var(--fs-bg);
     font-weight: var(--fw-semiBold);
@@ -33,36 +30,17 @@ export const DetailsWrapperTitle = styled.figcaption`
 
 export const DetailsOverImage = styled.div`
     position: relative;
+    border-radius: var(--br-radius);
+    overflow: hidden;
 `
 
 export const DetailsImage = styled.img`
     width: 100%;
     object-fit: cover;
-    border-radius: var(--br-radius);
 `
 
 export const DetailsInfo = styled.div`
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) { */
         flex: 0 1 50%;
-    }
+    /* } */
 `
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

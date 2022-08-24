@@ -1,3 +1,3 @@
-export type SearchType = {
+export type SubmitSearchType = {
    product: string;
 }

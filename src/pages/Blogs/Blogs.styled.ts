@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
+import { Flex } from 'assets/styled/Reused.styled'
 import { Link } from 'react-router-dom'
 
-export const BlogsAdd = styled(Link).attrs({
-   to: '/blogs/create'
-})`
+export const BlogsAdd = styled(Link)`
    height: 40px;
    padding: 0 15px;
    border-radius: var(--br-radius);
@@ -14,13 +13,10 @@ export const BlogsAdd = styled(Link).attrs({
    align-items: center;
    justify-content: space-between;
    flex: 0 1 110px;
-
    &:active { 
       background-color: var(--color-categories);
       color: var(--color-white); 
    }
-
-
    @media (hover: hover) {
       transition: all 0.5s ease;
       &:hover{
@@ -29,10 +25,6 @@ export const BlogsAdd = styled(Link).attrs({
       }
    }
 `
-
-export const BlogsWrapper = styled.div`
-   display: flex;
+export const BlogsWrapper = styled(Flex)`
    flex-direction: column; 
-   align-items: center;
 `
-

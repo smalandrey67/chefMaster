@@ -1,19 +1,16 @@
 import { FC } from 'react'
 
-import { DetailsType, IngredientsType } from 'types/Details'
 import { stringCut } from 'utils/helpers/string.helper'
 import { motion } from 'utils/constants/motion.constants'
 
 import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
 import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
-import { DetailsIngredientsCount, DetailsList, DetailsIngredientsItem, DetailsIngredientsTitle,
-    DetailsIngredientsUnit,
-    DetailsIngredientsUnitSpan
-} from './Ingredients.styled'
 
-type IngredientsProps = {
-    details: DetailsType | undefined;
-}
+import { List, Span } from 'assets/styled/Reused.styled'
+import { DetailsIngredientsCount, DetailsIngredientsItem, DetailsIngredientsTitle, DetailsIngredientsUnit } from './Ingredients.styled'
+
+import { IngredientsType } from 'types/Details'
+import { IngredientsProps } from './Ingredients.types'
 
 export const Ingredients: FC<IngredientsProps> = ({ details }) => {
 
@@ -23,7 +20,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                 {details?.extendedIngredients.length} items
             </DetailsIngredientsCount>
 
-            <DetailsList {...motion} >
+            <List {...motion} >
                 {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }: IngredientsType): JSX.Element =>
                     <DetailsIngredientsItem key={id}>
                         <LazyImage
@@ -35,15 +32,14 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                         />
                         <DetailsIngredientsTitle>{stringCut(nameClean, 13)}</DetailsIngredientsTitle>
                         <DetailsIngredientsUnit>
-                            <DetailsIngredientsUnitSpan>{amount}</DetailsIngredientsUnitSpan>
+                            <Span margin='0 5px 0 0'>{amount}</Span>
                             {unit}
                         </DetailsIngredientsUnit>
                     </DetailsIngredientsItem>
                 )}
-            </DetailsList>
-            
+            </List>
+
             {!details?.extendedIngredients.length && <ErrorNoResult description='No ingredients here' height='25vh' />}
         </>
     )
 }
-

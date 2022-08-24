@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
+import { config } from 'config/config'
 
-import { UploadImageType } from 'types/UploadImage'
+import { UploadImageResponseType } from 'types/Blogs'
 
 export const imageUploadApi = createApi({
    reducerPath: 'imageUploadService',
-   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_CLOUDINARY }),
+   baseQuery: fetchBaseQuery({ baseUrl: config.cloudinary }),
    endpoints: (builder) => ({
       uploadImage: builder.mutation<string, FormData>({
          query: (data) => ({
@@ -12,7 +13,7 @@ export const imageUploadApi = createApi({
             method: 'POST',
             body: data
          }),
-         transformResponse: (response: UploadImageType) => response.secure_url
+         transformResponse: (response: UploadImageResponseType): string => response.secure_url
       })
    })
 })

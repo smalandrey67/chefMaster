@@ -1,48 +1,37 @@
 import { FC } from 'react'
 
 import {
-   BlogEl,
-   BlogBody,
-   BlogHeader,
-   BlogHeaderAvatar,
-   BlogHeaderAvatarImage,
-   BlogFigure,
-   BlogFigCaption
+   BlogArticle, BlogWrapper, BlogHeader,
+   BlogHeaderAvatar, BlogFigure, BlogFigcaption
 } from './BlogCard.styled'
-import { Title, Text, SpecialTitle } from 'assets/styled/Reused.styled'
+import { Title, Span, Image, Paragraph } from 'assets/styled/Reused.styled'
 
-import { BlogType } from 'types/Blogs'
-import { LazyImage } from '../../reusable/LazyImage/LazyImage'
+import { BlogCardPropsType } from 'types/Blogs'
+import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
 
-export const BlogCard: FC<BlogType> = ({ title, file, author, description, avatar }) => {
+export const BlogCard: FC<BlogCardPropsType> = ({ title, file, author, description, avatar }) => {
 
    return (
-      <BlogEl>
-         <BlogBody>
+      <BlogArticle>
+         <BlogWrapper>
             <BlogHeader>
                <BlogHeaderAvatar>
-                  <BlogHeaderAvatarImage src={avatar} alt={author} /> 
+                  <Image src={avatar} alt={author} objectFit='cover' />
                </BlogHeaderAvatar>
                <Title>{title}</Title>
             </BlogHeader>
 
             <BlogFigure>
-               <LazyImage 
-                  image={`${file}`}
-                  alt={author}
-                  width='100%'
-                  height='100%'
-               />
-               <BlogFigCaption>
+               <LazyImage image={`${file}`} alt={author} width='100%' height='100%' />
+               <BlogFigcaption>
                   written by
-                  <SpecialTitle margin='0 0 0 5px' fontWeight='var(--fw-bold)' color='var(--color-categories)'>
+                  <Span margin='0 0 0 5px' fontSize='var(--fs-md)' fontWeight='var(--fw-bold)' color='var(--color-categories)'>
                      {author}
-                  </SpecialTitle>
-               </BlogFigCaption>
+                  </Span>
+               </BlogFigcaption>
             </BlogFigure>
-
-            <Text>{description}</Text>
-         </BlogBody>
-      </BlogEl>
+            <Paragraph>{description}</Paragraph>
+         </BlogWrapper>
+      </BlogArticle>
    )
 }

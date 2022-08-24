@@ -12,7 +12,7 @@ export const selectValidatedParams = createSelector(
       const entriesFromParams = Object.entries(params)
 
       let stringOfParams = ''
-      const disabledShowResultBtn = !!Object.values(params).length
+      const isDisabledShowResultButton = !!Object.values(params).length
 
       for (let i = 0; i < entriesFromParams.length; i++) {
          if (i === 0) {
@@ -22,6 +22,6 @@ export const selectValidatedParams = createSelector(
          }
       }
 
-      return { stringOfParams, disabledShowResultBtn }
+      return { stringOfParams, isDisabledShowResultButton }
    }
 )

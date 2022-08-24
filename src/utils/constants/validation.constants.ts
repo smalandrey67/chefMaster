@@ -16,7 +16,6 @@ export type ValidationFieldType = Readonly<{
 }>
 
 type ValidationType = Readonly<{
-   author: ValidationFieldType;
    title: ValidationFieldType;
    description: ValidationFieldType;
    file: ValidationFieldType;
@@ -27,11 +26,6 @@ type ValidationType = Readonly<{
 }>
 
 export const validation: ValidationType = {
-   author: {
-      required: 'Field is required',
-      minLength: { value: 3, message: 'Min 3 symbols' },
-      maxLength: { value: 30, message: 'Min 30 symbols' }
-   },
    title: {
       required: 'Field is required',
       minLength: { value: 3, message: 'Min 3 symbols' },
@@ -55,9 +49,9 @@ export const validation: ValidationType = {
       required: 'Email is required',
       minLength: { value: 3, message: 'Min 3 symbols' },
       maxLength: { value: 60, message: 'Max 20 symbols' },
-      pattern: { 
-         value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 
-         message: 'Please enter a valid email' 
+      pattern: {
+         value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+         message: 'Please enter a valid email'
       }
    },
    password: {
@@ -66,5 +60,3 @@ export const validation: ValidationType = {
       maxLength: { value: 20, message: 'Max 20 symbols' }
    }
 }
-
-

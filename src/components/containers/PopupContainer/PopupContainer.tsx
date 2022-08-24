@@ -6,7 +6,7 @@ import { motion } from 'utils/constants/motion.constants'
 import { PopupContainerProps } from './PopupContainer.types'
 
 export const PopupContainer: FC<PopupContainerProps> = ({ children }) => {
-   
+
    return (
       <Popup role='alert' {...motion}>
          <PopupBody>

@@ -1,22 +1,14 @@
 import { FC, memo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { IconType } from 'react-icons'
 
-import {  MealPlanSubMenuItem, MealPlanSubMenuLink } from './MealPlan.styled'
-
-type SubMenuProps = {
-   idWeek: string;
-   path: string;
-   title: string;
-   Icon: IconType;
-}
+import { MealPlanSubMenuItem, MealPlanSubMenuLink } from './MealPlan.styled'
+import { SubMenuProps } from './MealPlan.types'
 
 export const SubMenuItem: FC<SubMenuProps> = memo(({ idWeek, path, title, Icon }) => {
    const location = useLocation()
 
    return (
       <MealPlanSubMenuItem>
-         {true ? 5 : 3}
          <MealPlanSubMenuLink to={path} state={{ prevPath: location.pathname, idWeek }}>
             <Icon />
             {title}

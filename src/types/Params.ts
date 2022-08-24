@@ -5,10 +5,3 @@ export type FilterParamsType = Partial<{
    minCarbs: string;
    minCalories: string;
 }>
-
-// export type FilterParamsType = Partial<{
-//    query: string;
-//    type: string;
-//    diet: string;
-//    minCarbs: string;
-// }>

@@ -6,9 +6,8 @@ import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { CuisineCard } from 'components/business/CuisineCard/CuisineCard'
-import { BackButton } from 'components/reusable/BackButton/BackButton'
+import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
 
-import { CuisineResultsType } from 'types/Cuisine'
 import { motion } from 'utils/constants/motion.constants'
 import { BiError } from 'react-icons/bi'
 import { useGetCuisineQuery } from 'services/RecipesService'
@@ -19,16 +18,16 @@ export const Cuisines: FC = () => {
 
     return (
         <SectionContainer motion={motion}>
-            <BackButton>
+            <BackButtonContainer>
                 <Title>{params?.type}</Title>
-            </BackButton>
+            </BackButtonContainer>
             <RecipesWrapper>
                 {isLoading ?
                     <SpinnerWrapper height='40vh'>
                         <Spinner src={SpinnerBg} alt='spinner' />
                     </SpinnerWrapper>
                     :
-                    cuisines?.map((recipe: CuisineResultsType): JSX.Element => <CuisineCard key={recipe.id} {...recipe} />)
+                    cuisines?.map(recipe => <CuisineCard key={recipe.id} {...recipe} />)
                 }
                 {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
             </RecipesWrapper>

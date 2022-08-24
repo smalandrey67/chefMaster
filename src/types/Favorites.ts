@@ -1,4 +1,4 @@
-export type FavoritesType = {
+export type FavoriteRecipeType = {
    id: number;
    title: string;
    image: string;

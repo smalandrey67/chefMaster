@@ -21,7 +21,7 @@ const authSlice = createSlice({
          prepare: (currentUser: User) => {
             return {
                payload: {
-                  photoURL: currentUser.photoURL, 
+                  photoURL: currentUser.photoURL,
                   email: currentUser.email,
                   name: currentUser.displayName
                }
@@ -34,7 +34,7 @@ const authSlice = createSlice({
    },
    extraReducers: (builder): void => {
       builder
-         .addCase(signInThunk.fulfilled, (state, { payload }: PayloadAction<UserType>): void => {
+         .addCase(signInThunk.fulfilled, (state, { payload }): void => {
             state.user = payload
             state.error = null
          })
@@ -53,7 +53,7 @@ const authSlice = createSlice({
             }
          })
          .addCase(logOutThunk.fulfilled, (state): void => {
-            state.user = null 
+            state.user = null
             state.error = null
          })
          .addCase(logOutThunk.rejected, (state, { payload }): void => {
@@ -74,7 +74,7 @@ const authSlice = createSlice({
             if (payload) {
                state.error = payload
             }
-         })  
+         })
    }
 })
 

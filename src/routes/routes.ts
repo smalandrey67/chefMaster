@@ -62,5 +62,3 @@ export const routes: readonly RouteType[] = [
    { path: RoutePath.Profile, component: Profile },
    { path: RoutePath.NotFound, component: NotFound }
 ]
-
-

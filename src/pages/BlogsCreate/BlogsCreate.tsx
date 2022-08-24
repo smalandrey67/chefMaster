@@ -5,104 +5,97 @@ import { stringCut } from 'utils/helpers/string.helper'
 import { extension } from 'utils/constants/extension.constants'
 import { validation } from 'utils/constants/validation.constants'
 
+import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
+
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 import {
-   SpinnerWrapper,
-   Spinner, SpecialTitle,
-   ErrorMessage, Form, Fieldset, Legend, Group, Label, Input, Button
+   SpinnerWrapper, Spinner, Span,
+   ErrorMessage, Legend, Group, Label,
+   Input, Button
 } from 'assets/styled/Reused.styled'
-import { BlogsCreateBody, BlogsCreateLabel,
-   BlogsCreateLabelFile,
-   BlogsCreateInputFile,
-   BlogsCreateTextarea,
-   BlogsCreatePreview,
+import {
+   BlogsCreateBody, BlogsCreateLabelFile,
+   BlogsCreateTextarea, BlogsCreatePreview,
    BlogsCreatePreviewImage,
-   BlogsCreateLabelWrapper
+   BlogsCreateFileWrapper
 } from './BlogsCreate.styled'
 
 import { SubmitBlogType } from 'types/Blogs'
 import { BiError } from 'react-icons/bi'
 
-import { useImage } from './hook/useImage'
-import { useSubmit } from './hook/useSubmit'
+import { useUploadImage } from './hook/useUploadImage'
+import { useBlogSubmit } from './hook/useBlogSubmit'
 
 export const BlogsCreate: FC = () => {
    const { register, formState: { errors }, handleSubmit, reset } = useForm<SubmitBlogType>({ mode: 'onChange' })
 
-   const { changeFileHandler, fileName, setFileName, image, isLoading, errorImage } = useImage()
-   const { errorBlog, submitHandler } = useSubmit(image, setFileName, reset)
+   const { changeFileHandler, fileName, setFileName, userPhoto, isLoading, errorUploadingImage } = useUploadImage()
+   const { errorBlog, submitBlogHandler } = useBlogSubmit(userPhoto, setFileName, reset)
 
    return (
       <SectionContainer>
          <BlogsCreateBody>
-            <Form onSubmit={handleSubmit(submitHandler)}>
-               <Fieldset>
-                  <Legend>Create your own post</Legend>
-                  <Group>
-                     <Label>
+            <FormContainer handleSubmit={handleSubmit} submitHandler={submitBlogHandler}>
+               <Legend>Create your own post</Legend>
+               <Group margin='0 0 20px 0' width='100%' height='50px'>
+                  <Label>
+                     <Input
+                        {...register('title', validation.title)} placeholder='Title' type='text'
+                     />
+                  </Label>
+                  {errors?.title && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+                     {errors?.title?.message}
+                  </ErrorMessage>}
+               </Group>
+               <Group margin='0 0 10px 0' width='100%'>
+                  <Label>
+                     <BlogsCreateTextarea
+                        {...register('description', validation.description)} placeholder='Description'
+                     />
+                  </Label>
+                  {errors?.description && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+                     {errors?.description?.message}
+                  </ErrorMessage>}
+               </Group>
+
+               <Group margin='0 0 20px 0' width='100%' height='50px'>
+                  <BlogsCreateFileWrapper>
+                     <BlogsCreateLabelFile as='label'>
                         <Input
-                           {...register('author', validation.author)} placeholder='author' type='text'
+                           {...register('file', validation.file)}
+                           type='file'
+                           accept={extension.join(',')}
+                           onChange={changeFileHandler}
+                           hidden
                         />
-                     </Label>
-                     {errors?.author && <ErrorMessage justifyContent='flex-start'>{errors?.author?.message}</ErrorMessage>}
-                  </Group>
-                  <Group>
-                     <Label>
-                        <Input
-                           {...register('title', validation.title)} placeholder='Title' type='text'
-                        />
-                     </Label>
-                     {errors?.title && <ErrorMessage justifyContent='flex-start'>{errors?.title?.message}</ErrorMessage>}
-                  </Group>
-                  <Group>
-                     <BlogsCreateLabel>
-                        <BlogsCreateTextarea
-                           {...register('description', validation.description)} placeholder='Description'
-                        />
-                     </BlogsCreateLabel>
-                     {errors?.description && <ErrorMessage justifyContent='flex-start'>{errors?.description?.message}</ErrorMessage>}
-                  </Group>
-                  <Group>
-                     <BlogsCreateLabelWrapper>
-                        <BlogsCreateLabelFile>
-                           <BlogsCreateInputFile
-                              {...register('file', validation.file)}
-                              type='file'
-                              accept={extension.join(',')}
-                              onChange={changeFileHandler}
-                              hidden
-                           />
-                           Upload image
-                        </BlogsCreateLabelFile>
+                        Upload image
+                     </BlogsCreateLabelFile>
+                     <Span fontSize='var(--fs-sm)'>{stringCut(fileName, 23)}</Span>
+                  </BlogsCreateFileWrapper>
+                  {errors?.file && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+                     {errors?.file?.message}
+                  </ErrorMessage>}
+               </Group>
 
-                        {/* name of file */}
-                        <SpecialTitle fontSize='var(--fs-sm)'>
-                           {stringCut(fileName, 23)}
-                        </SpecialTitle>
+               <BlogsCreatePreview>
+                  {isLoading ?
+                     <SpinnerWrapper height='15vh'>
+                        <Spinner src={SpinnerSm} alt='spinner' />
+                     </SpinnerWrapper>
+                     :
+                     <BlogsCreatePreviewImage userPhoto={userPhoto} src={userPhoto} alt='preview' />
+                  }
+                  {/* Error while image uploading */}
+                  {errorUploadingImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
+               </BlogsCreatePreview>
 
-                     </BlogsCreateLabelWrapper>
-                     {errors?.file && <ErrorMessage justifyContent='flex-start'>{errors?.file?.message}</ErrorMessage>}
-                  </Group>
-
-                  <BlogsCreatePreview>
-                     {isLoading ?
-                        <SpinnerWrapper height='15vh'>
-                           <Spinner src={SpinnerSm} alt='spinner' />
-                        </SpinnerWrapper>
-                        :
-                        <BlogsCreatePreviewImage url={image} src={`${image}`} alt='preview' />
-                     }
-
-                     {/* Error while image uploading */}
-                     {errorImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-                  </BlogsCreatePreview>
-
+               <Group height='50px'>
                   <Button type='submit' name='submit'>Create</Button>
-                  {/* Error while post uploading*/}
-                  {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-               </Fieldset>
-            </Form>
+               </Group>
+               {/* Error while post uploading*/}
+               {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
+            </FormContainer>
          </BlogsCreateBody>
       </SectionContainer>
    )

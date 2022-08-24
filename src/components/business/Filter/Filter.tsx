@@ -1,44 +1,50 @@
 import { FC, memo, Fragment } from 'react'
 
 import { FilterEl, FilterBody, FilterWrapper, FilterOption, FilterShowResult } from './Filter.styled'
-import { SpecialTitle } from 'assets/styled/Reused.styled'
+import { Span } from 'assets/styled/Reused.styled'
 
 import { selectFilterCategories, selectIsFilterMenuOpen } from 'store/slices/filterSlice/filterSlice.selectors'
-import { CategoryType, FilterCategoriesTypes } from 'utils/constants/filterTypes.constants'
 
 import { useAppSelector } from 'hooks/useRedux'
-import { useFilter } from './hook/useFilter'
+import { useFilterSubmit } from './hook/useFilterSubmit'
+import { useFilterOption } from './hook/useFilterOption'
 
 export const Filter: FC = memo(() => {
-   const { disabledShowResultBtn, optionHandler, showResultHandler } = useFilter()
+   const { isDisabledShowResultButton, showResultHandler } = useFilterSubmit()
+   const optionHandler = useFilterOption()
 
    const filterCategories = useAppSelector(selectFilterCategories)
    const isFilterMenuOpen = useAppSelector(selectIsFilterMenuOpen)
 
+   const animateOpacityValue = isFilterMenuOpen ? 1 : 0
+   const animateVisibilityValue = isFilterMenuOpen ? 'visible' : 'hidden'
+
    return (
       <FilterEl
          initial={{ opacity: 0, visibility: 'hidden' }}
-         animate={{ opacity: isFilterMenuOpen ? 1 : 0, visibility: isFilterMenuOpen ? 'visible' : 'hidden' }}
+         animate={{ opacity: animateOpacityValue, visibility: animateVisibilityValue }}
       >
          <FilterBody>
-            {filterCategories.map(({ id, group, type }: FilterCategoriesTypes): JSX.Element =>
+            {filterCategories.map(({ id, names, type }) =>
                <Fragment key={id}>
-                  <SpecialTitle fontSize='14px' fontWeight='var(--fw-semiBold)'>{group.text}</SpecialTitle>
+                  <Span fontSize='16px' fontWeight='var(--fw-semiBold)'>{names.text}</Span>
                   <FilterWrapper>
-                     {type.map(({ typeId, active, name }: CategoryType): JSX.Element =>
+                     {type.map(({ typeId, active, name }) =>
                         <FilterOption
                            style={{
                               color: active ? 'var(--color-white)' : 'var(--color-black)',
                               backgroundColor: active ? 'var(--color-categories)' : 'var(--color-white)'
                            }}
                            key={typeId}
-                           onClick={() => optionHandler(typeId, group.query)}
+                           onClick={() => optionHandler(typeId, names.query)}
                         >{name}</FilterOption>
                      )}
                   </FilterWrapper>
                </Fragment>
             )}
-            <FilterShowResult disabled={!disabledShowResultBtn} onClick={showResultHandler}>Show Result</FilterShowResult>
+            <FilterShowResult disabled={!isDisabledShowResultButton} onClick={showResultHandler}>
+               Show Result
+            </FilterShowResult>
          </FilterBody>
       </FilterEl>
    )

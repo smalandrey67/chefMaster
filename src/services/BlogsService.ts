@@ -1,21 +1,22 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
-import { BlogsType, UploadBlogType, PostSubmit } from 'types/Blogs'
+import { BlogsResultTypeType, PreparedPostType } from 'types/Blogs'
+import { config } from 'config/config'
 
 export const blogsApi = createApi({
    reducerPath: 'blogsService',
    tagTypes: ['Blogs'],
-   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BLOGS_URL }),
+   baseQuery: fetchBaseQuery({ baseUrl: config.mockapi }),
 
    endpoints: (builder) => ({
-      getBlogs: builder.query<BlogsType[], void>({
+      getBlogs: builder.query<BlogsResultTypeType[], void>({
          query: () => ({
             url: '/items'
          }),
-         transformResponse: (response: BlogsType[]): BlogsType[] => response.slice().sort((a, b) => Number(b.id) - Number(a.id)),
-         providesTags: ['Blogs'] 
+         transformResponse: (response: BlogsResultTypeType[]): BlogsResultTypeType[] => response.slice().sort((a, b) => Number(b.id) - Number(a.id)),
+         providesTags: ['Blogs']
       }),
-      uploadBlog: builder.mutation<UploadBlogType, PostSubmit>({
+      uploadBlog: builder.mutation<BlogsResultTypeType, PreparedPostType>({
          query: (post) => ({
             url: '/items',
             method: 'POST',

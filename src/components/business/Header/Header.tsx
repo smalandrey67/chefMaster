@@ -1,24 +1,30 @@
 import { FC } from 'react'
-
-import { HeaderEl, HeaderWrapper, HeaderLogo, HeaderBlogsWrapper } from './Header.styled'
-
-import { Container } from 'assets/styled/Reused.styled'
 import { ImSpoonKnife } from 'react-icons/im'
 
+import { LinkEl } from 'assets/styled/Reused.styled'
+import { HeaderEl, HeaderWrapper, HeaderLogoWrapper } from './Header.styled'
+import { Container } from 'assets/styled/Reused.styled'
+
 import { Search } from '../Search/Search'
-import { HamburgerButton } from 'components/reusable/HamburgerButton/HamburgerButton'
+import { HamburgerButton } from './HamburgerButton'
 import { HeaderMenu } from './HeaderMenu'
 
 export const Header: FC = () => {
-    
+
     return (
         <HeaderEl>
             <Container>
                 <HeaderWrapper>
-                    <HeaderBlogsWrapper>
+                    <HeaderLogoWrapper>
                         <ImSpoonKnife size='25' />
-                        <HeaderLogo to='/'>ChefMaster</HeaderLogo>
-                    </HeaderBlogsWrapper>
+                        <LinkEl
+                            margin='0 0 0 5px'
+                            fontSize='var(--fs-bg)'
+                            fontWeight='var(--fw-bold)'
+                            to='/'
+                        >ChefMaster</LinkEl>
+                    </HeaderLogoWrapper>
+
                     <HamburgerButton />
                     <HeaderMenu />
                 </HeaderWrapper>

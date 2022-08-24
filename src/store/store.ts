@@ -24,18 +24,15 @@ const rootReducer = combineReducers({
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: (getDefaultMiddleware) => 
+        middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })
                 .concat(recipesApi.middleware)
                 .concat(blogsApi.middleware)
-                .concat(imageUploadApi.middleware) 
-        
+                .concat(imageUploadApi.middleware)
+
     })
 }
 
 export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore> 
+export type AppStore = ReturnType<typeof setupStore>
 export type AppDispatch = AppStore['dispatch']
-
-
-
