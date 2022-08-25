@@ -37,7 +37,6 @@ const filterSlice = createSlice({
 
                            return { ...category, active: !category.active }
                         }
-
                         return { ...category, active: false }
                      })
                   }

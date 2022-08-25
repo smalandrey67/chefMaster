@@ -27,7 +27,7 @@ export const Profile: FC = () => {
    const user = useAppSelector(selectCurrentUser)
    const authError = useAppSelector(selectCurrentUserAuthError)
 
-   const isLogOutDisabled = !!Object.values(user || {}).length
+   const isUserAuthorisated = !!Object.values(user || {}).length
    const isUpdateDisabled = profilePhotoUrl || name ? true : false
    const currentProfilePhoto = profilePhotoUrl ? profilePhotoUrl : user?.photoURL ? user.photoURL : null
 
@@ -73,12 +73,15 @@ export const Profile: FC = () => {
                <Button disabled={!isUpdateDisabled} onClick={submitUpdatesHandler} type='button' name='Update'>Update</Button>
             </Group>
             <Group margin='0 0 7px 0' width='100%' height='50px'>
-               <Button disabled={!isLogOutDisabled} onClick={logOutHandler} type='button' name='log-out'>Log out</Button>
+               <Button disabled={!isUserAuthorisated} onClick={logOutHandler} type='button' name='log-out'>Log out</Button>
             </Group>
 
-            <LinkEl textDecoration='underline' margin='0 0 15px 0' color='var(--color-links)' to='/login'>
-               Log in
-            </LinkEl>
+            {isUserAuthorisated || 
+               <LinkEl textDecoration='underline' margin='0 0 15px 0' color='var(--color-links)' to='/login'>
+                  Log in
+               </LinkEl>
+            }
+
             <ErrorMessage>
                <>
                   {authError}

@@ -1,13 +1,19 @@
-export type DishType = {
-   idDish: string;
+export type SubMealDishType = {
    image: string;
+   idDish: number;
    title: string;
+}
+
+export type SubMeal = {
+   subMealId: string;
+   subMealTitle: string;
+   subMealDishes: SubMealDishType[];
 }
 
 export type WeekPlanType = {
    idWeek: string;
    weekDay: string;
-   dishes: DishType[]
+   subMeals: SubMeal[]
 }
 export type PayloadDeleteType = {
    idDish: string;
@@ -15,8 +21,13 @@ export type PayloadDeleteType = {
 }
 export type MealPlanState = {
    weekPlan: WeekPlanType[];
+   activeMealDayId: string;
+   activeMealDay: WeekPlanType;
 }
 export type PayloadAddRecipeType = {
    idWeek: string;
-   plannedRecipe: DishType;
+   plannedRecipe: SubMeal;
+}
+export type PayloadChangeActiveMealDay = {
+   idWeek: string;
 }

@@ -39,6 +39,7 @@ export const Input = styled.input`
     padding: 0 10px;
     width: 100%;
     height: 100%;
+
     &::placeholder{
         color: var(--color-alternative);
     }
@@ -56,10 +57,12 @@ export const Button = styled.button`
     height: 100%;
     width: 100%;
     cursor: pointer;
+
     &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
     }
+    
     &:active {
         background-color: var(--color-categories);
         color: var(--color-white);

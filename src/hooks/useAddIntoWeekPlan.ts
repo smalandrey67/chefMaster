@@ -14,7 +14,12 @@ export const useAddIntoWeekPlan = (
 
    const addRecipeIntoWeekPlan = (): void => {
       if (state) {
-         dispatch(addRecipeIntoMeal(state.idWeek, id, title, image))
+         dispatch(addRecipeIntoMeal({
+            idWeek: state.idWeek, 
+            id, 
+            title, 
+            image
+         }))
          navigateHandler('/meal/plan')
       }
    }

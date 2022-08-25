@@ -32,7 +32,7 @@ export const Registration: FC = () => {
          <PopupContainer>
             <FormContainer handleSubmit={handleSubmit} submitHandler={SubmitUserTypeHandler}>
                <Legend>Sign up</Legend>
-               <Group height='50px' margin='0 0 18px 0'>
+               <Group height='50px' margin='10px 0 18px 0'>
                   <Label>
                      <Input
                         {...register('email', validation.email)} placeholder='email' type='email'

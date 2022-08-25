@@ -13,13 +13,13 @@ export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek 
    const navigateHandler = useRedirect()
    const dispatch = useAppDispatch()
 
-   const deleteRecipeFromMeal = (e: MouseEvent<HTMLButtonElement>, idDish: string, idWeek: string): void => {
+   const deleteRecipeFromMeal = (e: MouseEvent<HTMLButtonElement>, idDish: number, idWeek: string): void => {
       e.stopPropagation()
-      dispatch(deleteRecipeFromMealPlan({ idDish, idWeek }))
+      // dispatch(deleteRecipeFromMealPlan({ idDish, idWeek }))
    }
 
    return (
-      <MealPlanDish onClick={() => navigateHandler('/details/', idDish)}>
+      <MealPlanDish onClick={() => navigateHandler('/details/', 'idDish')}>
          <LazyImage
             image={image}
             alt={title}

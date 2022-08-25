@@ -6,6 +6,8 @@ import Error from 'assets/images/icons/error.svg'
 
 export const NotFound: FC = () => {
 
+    
+
     return (
         <Container>
             <NotFoundWrapper>
