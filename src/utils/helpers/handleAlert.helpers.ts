@@ -5,7 +5,7 @@ import { UseToastReturnsType } from 'types/Hooks'
 
 export type AlertType = 'success' | 'warning' | 'error' | 'default'
 
-export const useToast = (): UseToastReturnsType => {
+export const handleAlert = (): UseToastReturnsType => {
 
    const showAlertHandler = (message: string, type: AlertType): void => {
       switch (type) {

@@ -22,7 +22,12 @@ export const Registration: FC = () => {
 
    const SubmitUserTypeHandler: SubmitHandler<SubmitUserType> = (data): void => {
       const { email, password } = data
-      dispatch(registrationThunk({ email, password, navigateHandler }))
+      
+      dispatch(registrationThunk({ 
+         email: email.trim().toLocaleLowerCase(),
+         password: password.trim().toLocaleLowerCase(),
+         navigateHandler 
+      }))
 
       reset()
    }

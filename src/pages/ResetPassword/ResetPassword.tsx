@@ -21,7 +21,8 @@ export const ResetPassword: FC = () => {
 
    const submitResetPasswordHandler: SubmitHandler<SubmitResetPasswordType> = (data): void => {
       const { email } = data
-      dispatch(resetPasswordThunk({ email }))
+      
+      dispatch(resetPasswordThunk({ email: email.trim().toLocaleLowerCase() }))
 
       reset()
    }

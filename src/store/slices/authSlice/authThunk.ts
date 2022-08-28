@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile, User } from 'firebase/auth'
+import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 import { AuthorisationParametersType, UserType } from './authSlice.types'
 import { auth } from '../../../firebase'
 import { LogOutType, UpdateUserThunkParametersType } from './authSlice.types'
 
-import { useToast } from 'hooks/useToast'
+import { handlerError } from 'utils/helpers/handleError.helper'
+import { handleAlert } from 'utils/helpers/handleAlert.helpers'
 import { addUser } from './authSlice'
 
 export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
@@ -21,11 +22,11 @@ export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersTyp
             name: user.displayName
          }
 
-         fulfillWithValue(navigateHandler('/meal/plan'))
+         fulfillWithValue(navigateHandler('/'))
 
          return userData
       } catch (error) {
-         return rejectWithValue('invalid password')
+         return rejectWithValue(handlerError(error, 'Server Error'))
       }
    }
 )
@@ -41,11 +42,11 @@ export const registrationThunk = createAsyncThunk<UserType, AuthorisationParamet
             name: user.displayName
          }
 
-         fulfillWithValue(navigateHandler('/meal/plan'))
+         fulfillWithValue(navigateHandler('/'))
 
          return userData
       } catch (error) {
-         return rejectWithValue('email already exists')
+         return rejectWithValue(handlerError(error, 'Server Error'))
       }
    }
 )
@@ -57,7 +58,7 @@ export const logOutThunk = createAsyncThunk<void, LogOutType, { rejectValue: str
 
          fulfillWithValue(navigateHandler('/'))
       } catch (error) {
-         return rejectWithValue('server error')
+         return rejectWithValue(handlerError(error, 'Server Error'))
       }
    }
 )
@@ -69,10 +70,10 @@ export const resetPasswordThunk = createAsyncThunk<void, { email: string }, { re
          await sendPasswordResetEmail(auth, email)
 
          fulfillWithValue(
-            useToast()('Check out your email', 'success')
+            handleAlert()('Check out your email', 'success')
          )
       } catch (error) {
-         return rejectWithValue('Can\'nt reset a password')
+         return rejectWithValue(handlerError(error, 'Server Error'))
       }
    }
 )
@@ -85,11 +86,11 @@ export const updateUserThunk = createAsyncThunk<void, UpdateUserThunkParametersT
             dispatch(addUser(auth.currentUser))
 
             fulfillWithValue(
-               useToast()('The profile was updated', 'success')
+               handleAlert()('The profile was updated', 'success')
             )
          }
       } catch (error) {
-         return rejectWithValue('Can\'nt reset a password')
+         return rejectWithValue(handlerError(error, 'Server Error'))
       }
    }
 )

@@ -1,25 +1,19 @@
-import { FC, memo, MouseEvent } from 'react'
+import { FC, memo } from 'react'
 import { IoIosClose } from 'react-icons/io'
 
-import { useAppDispatch } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
-import { deleteRecipeFromMealPlan } from 'store/slices/mealPlanSlice/mealPlanSlice'
+import { useDeleteRecipe } from './hooks/useDeleteRecipe'
 
 import { MealPlanDeleteButton, MealPlanDish } from './MealPlan.styled'
 import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
 import { MealDishProps } from './MealPlan.types'
 
-export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek }) => {
+export const MealDish: FC<MealDishProps> = memo(({ subMealId, idDish, image, title, idWeek }) => {
    const navigateHandler = useRedirect()
-   const dispatch = useAppDispatch()
-
-   const deleteRecipeFromMeal = (e: MouseEvent<HTMLButtonElement>, idDish: number, idWeek: string): void => {
-      e.stopPropagation()
-      // dispatch(deleteRecipeFromMealPlan({ idDish, idWeek }))
-   }
+   const deleteRecipeFromWeekPlanHandler = useDeleteRecipe(subMealId)
 
    return (
-      <MealPlanDish onClick={() => navigateHandler('/details/', 'idDish')}>
+      <MealPlanDish onClick={() => navigateHandler('/details/', idDish)}>
          <LazyImage
             image={image}
             alt={title}
@@ -27,7 +21,7 @@ export const MealDish: FC<MealDishProps> = memo(({ idDish, image, title, idWeek 
             height='102px'
             style={{ 'objectFit': 'cover', 'borderRadius': 'var(--br-radius)' }}
          />
-         <MealPlanDeleteButton onClick={(e) => deleteRecipeFromMeal(e, idDish, idWeek)}>
+         <MealPlanDeleteButton onClick={(e) => deleteRecipeFromWeekPlanHandler(e, idDish, idWeek)}>
             <IoIosClose color='var(--color-white)' size='30' />
          </MealPlanDeleteButton>
       </MealPlanDish>

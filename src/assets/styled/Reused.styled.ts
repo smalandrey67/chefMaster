@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 import {
     LegendProps, SpanProps, FlexGroupProps, GroupProps, ImageProps,
-    ErrorMessageProps, SpinnerProps, MarginProps, TitleProps,
+    ErrorMessageProps, SpinnerProps, TitleProps,
     RecipeImageWrapperProps, ErrorWrapperProps, LinkElProps,
     ParagraphProps, FlexProps
 } from './Styled.types'
@@ -215,18 +215,6 @@ export const ErrorMessage = styled.span<ErrorMessageProps>`
     justify-content: ${props => props.justifyContent || 'center'};
     margin: ${props => props.margin || 0};
 `
-
-
-
-
-
-
-
-
-
-// #errors base styles
-
-
 export const ErrorWrapper = styled.div<ErrorWrapperProps>`
     display: flex;
     align-items: center;
@@ -234,31 +222,5 @@ export const ErrorWrapper = styled.div<ErrorWrapperProps>`
     flex-direction: ${props => props.flexDirection || 'row'};
     height: ${props => props.height || 'auto'};
 `
-
-// #spinner base styles
 export const Spinner = styled.img``
-
-
-
-export const SubTitle = styled.h3<MarginProps>`
-    margin: ${({ margin }) => margin || 0}
-`
-
-export const Text = styled.p<MarginProps>`
-    margin: ${({ margin }) => margin || 0}
-`
-
-
-
-// #Recipe article element for each card
-export const RecipeEl = styled.article`
-    cursor: pointer;
-    @media (hover: hover) {
-        transition: all 0.5s ease;
-        &:hover {
-            transform: scale(1.01)
-        }
-    }
-`
-
 

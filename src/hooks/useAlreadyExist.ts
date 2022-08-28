@@ -11,8 +11,13 @@ export const useAlreadyExist = (state: StateValuesType, id: number): boolean | u
          const currentWeek = weekPlan.find(week => week.idWeek === state.idWeek)
 
          if (currentWeek) {
+            const currentSubMeal = currentWeek.subMeals.find(subMeal => subMeal.subMealId === state.subMealId)
+
+            if (currentSubMeal) {
+               return currentSubMeal.subMealDishes.some(dish => dish.idDish === id)
+            } 
+            
             return
-            // return currentWeek.dishes.some(dish => dish.idDish === String(id))
          }
       }
    }

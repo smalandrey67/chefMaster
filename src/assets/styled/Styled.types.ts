@@ -70,16 +70,6 @@ export type TitleProps = Partial<{
    margin: string;
 }>
 
-
-
-
-export type MarginProps = {
-   margin?: string;
-}
-
-
-
-
 export type ErrorWrapperProps = {
    flexDirection?: string;
    height: string;

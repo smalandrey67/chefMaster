@@ -14,7 +14,7 @@ export const RecipeCard: FC<RandomRecipeResultType> = ({ id, title, image, healt
 
     return (
         <SplideSlide>
-            <Article onClick={() => navigateHandler('/details/', String(id))}>
+            <Article onClick={() => navigateHandler('/details/', id)}>
                 <RecipeImageWrapper>
                     <LazyImage image={image} alt={title} width='100%' height='100%' />
                     <RecipeScore healthScore={healthScore}>{healthScore}</RecipeScore>

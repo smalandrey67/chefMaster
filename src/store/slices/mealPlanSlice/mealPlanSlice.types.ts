@@ -16,17 +16,18 @@ export type WeekPlanType = {
    subMeals: SubMeal[]
 }
 export type PayloadDeleteType = {
-   idDish: string;
+   subMealId: string;
+   idDish: number;
    idWeek: string;
 }
 export type MealPlanState = {
    weekPlan: WeekPlanType[];
-   activeMealDayId: string;
    activeMealDay: WeekPlanType;
 }
 export type PayloadAddRecipeType = {
    idWeek: string;
-   plannedRecipe: SubMeal;
+   subMealId: string;
+   preparedRecipe: SubMealDishType;
 }
 export type PayloadChangeActiveMealDay = {
    idWeek: string;

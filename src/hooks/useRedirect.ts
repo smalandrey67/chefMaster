@@ -5,7 +5,7 @@ import { UseRedirectReturnsType } from 'types/Hooks'
 export const useRedirect = (): UseRedirectReturnsType => {
    const navigate: NavigateFunction = useNavigate()
 
-   const navigateHandler = (query: string, params = ''): void => {
+   const navigateHandler = (query: string, params: number | string = ''): void => {
       navigate(`${query}${params}`)
    }
 

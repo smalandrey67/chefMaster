@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction, MouseEvent } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction, MouseEvent, RefObject } from 'react'
 
 import { SubmitBlogType } from './Blogs'
 import { FilterParamsType } from './Params'
@@ -7,7 +7,7 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
 import { SubmitHandler } from 'react-hook-form'
 import { SubmitSearchType } from 'components/business/Search/Search.types'
-import { AlertType } from 'hooks/useToast'
+import { AlertType } from 'utils/helpers/handleAlert.helpers'
 
 export type UseUploadImageReturnsType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -32,7 +32,7 @@ export type UseBackReturnsType = () => void;
 
 export type UseMakeFavoriteReturnsType = () => void;
 
-export type UseRedirectReturnsType = (query: string, params?: string) => void;
+export type UseRedirectReturnsType = (query: string, params?: number | string) => void;
 
 export type UseFilterSubmitReturnsType = {
    showResultHandler: () => void;
@@ -67,3 +67,20 @@ export type UseFileChangeReturnsType = {
 export type UseLogOutReturnsType = () => void;
 
 export type UseSubmitUpdatesReturnsType = () => void;
+
+export type UseOpenMenuAddingRecipeReturnsType = {
+   menuAddingRecipeIndex: number | null;
+   openMenuAddingRecipeHandler: (index: number) => void;
+}
+
+export type UseSetActiveMealDayReturnsType = (idWeek: string) => void;
+
+export type UseSubMealFunctionalityReturnsType = {
+   isSubMealMenu: boolean;
+   inputSubMealAddRef: RefObject<HTMLInputElement>;
+   openSubMealFieldHandler: () => void;
+   deleteSubMealMenuHandler: (subMealId: string) => void;
+   addSubMealMenuHandler: () => void;
+}
+
+export type UseDeleteRecipeReturnsType = (e: MouseEvent<HTMLButtonElement>, idDish: number, idWeek: string) => void

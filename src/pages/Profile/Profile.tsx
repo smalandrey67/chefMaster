@@ -16,6 +16,7 @@ import { useAppSelector } from 'hooks/useRedux'
 import { useFileChange } from './hook/useFileChange'
 import { useLogOut } from './hook/useLogOut'
 import { useSubmitUpdates } from './hook/useSubmitUpdates'
+import { config } from 'config/config'
 
 export const Profile: FC = () => {
    const [name, setName] = useState('')
@@ -43,7 +44,7 @@ export const Profile: FC = () => {
             <ProfileImageWrapper>
                <Image
                   objectFit='cover'
-                  src={currentProfilePhoto ?? process.env.REACT_APP_NOT_USER_PROFILE_PHOTO}
+                  src={currentProfilePhoto ?? config.noUserPhoto}
                   alt='profile photo'
                />
                <ProfileUploadLabel>

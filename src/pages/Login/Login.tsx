@@ -10,6 +10,7 @@ import { PopupContainer } from 'components/containers/PopupContainer/PopupContai
 
 import { useRedirect } from 'hooks/useRedirect'
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
+
 import { signInThunk } from 'store/slices/authSlice/authThunk'
 import { selectCurrentUserAuthError } from 'store/slices/authSlice/authSlice.selectors'
 
@@ -22,7 +23,12 @@ export const Login: FC = () => {
 
    const SubmitUserTypeHandler: SubmitHandler<SubmitUserType> = (data): void => {
       const { email, password } = data
-      dispatch(signInThunk({ email, password, navigateHandler }))
+    
+      dispatch(signInThunk({ 
+         email: email.trim().toLocaleLowerCase(),
+         password: password.trim().toLocaleLowerCase(),
+         navigateHandler 
+      }))
 
       reset()
    }
