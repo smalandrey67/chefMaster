@@ -9,7 +9,7 @@ type ToastOptionsType = {
 
 export const toastOptions: ToastOptionsType = {
    position: 'bottom-center',
-   autoClose: 4000,
+   autoClose: 3000,
    pauseOnHover: true,
    draggable: true
 }

@@ -1,21 +1,55 @@
-import { FC } from 'react'
+import { FC, useEffect, memo } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Flex, FlexGroup, Label, Input, Button } from 'assets/styled/Reused.styled'
-import { SubMealMenuFieldProps } from './MealPlan.types'
+import { useSetActiveMealDay } from './hooks/useSetActiveMealDay'
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 
-export const SubMealMenuField: FC<SubMealMenuFieldProps> = ({ isSubMealMenu, inputSubMealAddRef, addSubMealMenuHandler }) => {
+import { addSubMealMenu } from 'store/slices/mealPlanSlice/mealPlanSlice'
+import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
+
+import { Label, Input, ErrorMessage, Group } from 'assets/styled/Reused.styled'
+import { FormContainer } from 'components/containers/FormContainer/FormContainer'
+import { validation } from 'utils/constants/validation.constants'
+import { SubMealMenuFieldProps, SubmitSubMealType } from './MealPlan.types'
+
+export const SubMealMenuField: FC<SubMealMenuFieldProps> = memo(({ isSubMealMenu }) => {
+   const { register, formState: { errors }, handleSubmit, reset, setFocus } = useForm<SubmitSubMealType>({ mode: 'onChange' })
+
+   const activeDay = useAppSelector(selectActiveMealDay)
+   const dispatch = useAppDispatch()
+   const setActiveMealDayHandler = useSetActiveMealDay()
+
+   const submitSubMealHandler: SubmitHandler<SubmitSubMealType> = (data): void => {
+      const subMealMenuTitle = data.subMealName.trim().toLocaleLowerCase()
+
+      dispatch(addSubMealMenu({ subMealMenuTitle, idWeek: activeDay.idWeek }))
+      setActiveMealDayHandler(activeDay.idWeek)
+
+      reset()
+   }
+
+   useEffect(() => {
+      setFocus('subMealName')
+   }, [isSubMealMenu, setFocus])
+
+   const animateHeightValue = isSubMealMenu ? '35px' : 0
+   const animateOpacityValue = isSubMealMenu ? 1 : 0
+   const animateMarginValue = isSubMealMenu ? '0 0 10px 0' : 0
 
    return (
-      <Flex style={{ display: isSubMealMenu ? 'flex' : 'none' }}>
-         <FlexGroup margin='0 10px 0 0' height='35px' flex='0 1 70%'>
+      <FormContainer handleSubmit={handleSubmit} submitHandler={submitSubMealHandler}>
+         <Group 
+            maxwidth='500px' 
+            animate={{ height: animateHeightValue, opacity: animateOpacityValue, margin: animateMarginValue }}
+            transition={{ type: 'tween', duration: 0.2 }}
+         >
             <Label>
-               <Input ref={inputSubMealAddRef} type='text' placeholder='...' name='sub meal' />
+               <Input 
+                  {...register('subMealName', validation.subMeal)} disabled={!isSubMealMenu} type='text' enterKeyHint='done'
+               />
             </Label>
-         </FlexGroup>
-
-         <FlexGroup height='35px' flex='0 1 30%'>
-            <Button onClick={addSubMealMenuHandler} type='button' name='add sub meal'>add</Button>
-         </FlexGroup>
-      </Flex>
+            {errors?.subMealName && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>{errors?.subMealName?.message}</ErrorMessage>}
+         </Group>
+      </FormContainer>
    )
-}
+})

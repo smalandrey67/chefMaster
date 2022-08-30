@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit'
 
 import { motion } from 'utils/constants/motion.constants'
 import { stringCut } from 'utils/helpers/string.helper'
-import { config } from 'config/config'
+import { config } from 'config'
 
 import { List, Span, Image } from 'assets/styled/Reused.styled'
 import {

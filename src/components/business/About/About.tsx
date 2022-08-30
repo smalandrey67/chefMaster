@@ -1,12 +1,18 @@
 import { FC } from 'react'
+import ReactDOM from 'react-dom'
+import { BsChatRightText } from 'react-icons/bs'
 
-import Background from 'assets/images/production/cooking-bg.webp'
+import Background from 'assets/images/main/cooking-bg.webp'
 import { Image } from 'assets/styled/Reused.styled'
-import { AboutWrapper, AboutWrapperImage, AboutDescriptionWrapper, AboutDescriptionParagraph } from './About.styled'
+import { AboutWrapper, AboutWrapperImage, AboutDescriptionWrapper, AboutDescriptionParagraph, AboutChatWrapper } from './About.styled'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
+import { Answer } from '../Answer/Answer'
+
+import { usePopup } from 'hooks/usePopup'
 
 export const About: FC = () => {
+   const { popupIsActive, popupHandler } = usePopup()
 
    return (
       <SectionContainer>
@@ -26,6 +32,14 @@ export const About: FC = () => {
                   If you eat and drink too little, you'll lose weight.
                </AboutDescriptionParagraph>
             </AboutDescriptionWrapper>
+
+            <AboutChatWrapper aria-label='ask question' onClick={popupHandler}>
+               <BsChatRightText size='25' cursor='pointer' color='var(--color-white)' />
+            </AboutChatWrapper>
+
+            {popupIsActive && ReactDOM.createPortal(
+               <Answer popupHandler={popupHandler} />, document.getElementById('popup')!)
+            }
          </AboutWrapper>
       </SectionContainer>
    )

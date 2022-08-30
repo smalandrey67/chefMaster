@@ -3,9 +3,11 @@ import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 import { mealPLan } from 'utils/constants/mealPlan.constants'
 import { PayloadDeleteType, PayloadChangeActiveMealDay, MealPlanState, PayloadAddRecipeType } from './mealPlanSlice.types'
 
+const currentDay = new Date().getDay()
+
 const initialState: MealPlanState = {
    weekPlan: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '') : mealPLan,
-   activeMealDay: localStorage.getItem('activeDay') ? JSON.parse(localStorage.getItem('activeDay') || '') : mealPLan[new Date().getDay()]
+   activeMealDay: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '')[currentDay] : mealPLan[currentDay]
 }
 
 export const mealPlanSlice = createSlice({
@@ -66,7 +68,7 @@ export const mealPlanSlice = createSlice({
 
          if (activeDay) {
             state.activeMealDay = activeDay
-            localStorage.setItem('activeDay', JSON.stringify(state.activeMealDay))
+            // localStorage.setItem('activeDay', JSON.stringify(state.activeMealDay))
          }
 
       },
@@ -84,7 +86,6 @@ export const mealPlanSlice = createSlice({
 
             return week
          })
-
          localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
       },
       deleteSubMealMenu: (state, { payload }: PayloadAction<{ subMealId: string, idWeek: string }>): void => {

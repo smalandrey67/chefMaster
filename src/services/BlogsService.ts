@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
 import { BlogsResultTypeType, PreparedPostType } from 'types/Blogs'
-import { config } from 'config/config'
+import { config } from 'config'
 
 export const blogsApi = createApi({
    reducerPath: 'blogsService',

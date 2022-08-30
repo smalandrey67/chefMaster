@@ -1,11 +1,10 @@
 import { toast } from 'react-toastify'
 import { toastOptions } from 'utils/constants/toastOptions.constants'
 
-import { UseToastReturnsType } from 'types/Hooks'
-
 export type AlertType = 'success' | 'warning' | 'error' | 'default'
+export type HandleAlertReturnsType = (message: string, type: AlertType) => void;
 
-export const handleAlert = (): UseToastReturnsType => {
+export const handleAlert = (): HandleAlertReturnsType => {
 
    const showAlertHandler = (message: string, type: AlertType): void => {
       switch (type) {

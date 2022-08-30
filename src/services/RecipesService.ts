@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
-import { config } from 'config/config'
+import { config } from 'config'
 
 import { RecipeResultType, RecipesResponseType, RandomRecipeResultType, RandomRecipesResponseType } from 'types/Recipe'
 import { DetailsType } from 'types/Details'

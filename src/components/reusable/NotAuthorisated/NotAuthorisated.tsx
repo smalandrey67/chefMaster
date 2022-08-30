@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Container, Title, LinkEl } from 'assets/styled/Reused.styled'
 import { NotAuthorisatedContent, NotAuthorisatedImage } from './NotAuthorisated.styled'
 
-import NotAuthorisationWarning from 'assets/images/production/notAuthorisation.webp'
+import NotAuthorisationWarning from 'assets/images/main/notAuthorisation.webp'
 
 export const NotAuthorisated: FC = () => {
 

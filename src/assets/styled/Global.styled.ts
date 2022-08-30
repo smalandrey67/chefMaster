@@ -76,6 +76,7 @@ export const Global = createGlobalStyle`
         --br-radius: 10px;
 
         --shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        --shadow-alternative: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
     body {
         font-family: var(--family);
@@ -106,6 +107,8 @@ export const Global = createGlobalStyle`
 
     ul {
         list-style: none;
+        margin: 0;
+        padding: 0;
     }
 `
 

@@ -16,7 +16,7 @@ import { useAppSelector } from 'hooks/useRedux'
 import { useFileChange } from './hook/useFileChange'
 import { useLogOut } from './hook/useLogOut'
 import { useSubmitUpdates } from './hook/useSubmitUpdates'
-import { config } from 'config/config'
+import { config } from 'config'
 
 export const Profile: FC = () => {
    const [name, setName] = useState('')

@@ -15,6 +15,7 @@ export const MealPlanItem = styled.li`
 export const MealPlanWeekButton = styled(Button) <MealPlanWeekButtonProps>`
    font-size: var(--fs-sl);
    font-weight: var(--fw-bold);
+   box-shadow: var(--shadow-alternative);
  
    ${props => {
       if (props.idWeek === props.activeDayIdWeek) {
@@ -41,16 +42,30 @@ export const MealPlanSubMealTitle = styled(MealPlanItemTitle)`
 
 export const MealPlanItemAdd = styled(Button)`
    width: 25px;
-   height: 24px;
+   height: 25px;
    padding: 0;
    border-radius: 50%;
    background-color: var(--color-categories);
    color: var(--color-white);
    display: block;
+   box-shadow: none;
 `
 export const MealPlanSubMealAdd = styled.button`
    width: 25px;
-   height: 20px;
+   height: 25px;
+   padding: 0;
+   border: none;
+   background-color: transparent;
+
+   @media (hover: hover) {
+        transition: all 0.3s ease;
+        &:hover {
+            border-radius: 50%;
+            background-color: var(--color-scrollbar);
+            color: var(--color-white);
+        }
+    }
+
 `
 export const MealPlanSubMenu = styled(List)`
    display: none;
@@ -66,11 +81,10 @@ export const MealPlanSubMenu = styled(List)`
    display: flex;
    align-items: center;
    justify-content: center;
-`
-export const SubMealSubMenu = styled(MealPlanSubMenu)`
-   top: 35px;
-   flex-direction: column;
-   align-items: flex-start;
+
+   @media (min-width: 768px) {
+      top: 33px;
+   }
 `
 
 export const MealPlanSubMenuItem = styled.li`
@@ -84,6 +98,7 @@ export const MealPLanSubMenuItemDelete = styled.li`
    font-size: var(--fs-sm);
    font-weight: var(--fw-semiBold);
    color: var(--color-error);
+   cursor: pointer;
 `
 
 export const SubMealInputWrapper = styled.div`
@@ -124,8 +139,16 @@ export const MealPlanDish = styled.div`
    height: 100%;
    position: relative;
    cursor: pointer;
+
    &:not(:last-child) {
       margin-right: 4px;
+   }
+
+   @media (hover: hover) {
+         transition: all 0.5s ease;
+         &:hover {
+            transform: scale(0.98)
+         }
    }
 `
 export const MealPlanDeleteButton = styled.button`

@@ -19,6 +19,7 @@ export type FlexGroupProps = Partial<{
 export type GroupProps = Partial<{
    height: string;
    width: string;
+   maxwidth: string;
    margin: string;
 }>
 

@@ -56,7 +56,6 @@ export const Button = styled.button`
     padding: 0 15px;
     height: 100%;
     width: 100%;
-    cursor: pointer;
 
     &:disabled {
         opacity: 0.6;
@@ -67,7 +66,8 @@ export const Button = styled.button`
         background-color: var(--color-categories);
         color: var(--color-white);
     }
-   @media (hover: hover) {
+    
+    @media (hover: hover) {
         transition: all 0.3s ease;
         &:hover {
             background-color: var(--color-categories);
@@ -124,10 +124,7 @@ export const Figcaption = styled.figcaption`
     font-size: var(--fs-md);
     font-weight: var(--fw-bold);
 `
-export const List = styled(motion.ul)`
-    margin: 0;
-    padding: 0;
-`
+export const List = styled(motion.ul)``
 export const Section = styled(motion.section)``
 export const Article = styled.article`
     cursor: pointer;
@@ -154,9 +151,10 @@ export const FlexGroup = styled.div<FlexGroupProps>`
     flex: ${props => props.flex || 'auto'};
     margin: ${props => props.margin || 0}
 `
-export const Group = styled.div<GroupProps>`
+export const Group = styled(motion.div)<GroupProps>`
     height: ${props => props.height || 'auto'}; 
     width: ${props => props.width || 'auto'}; 
+    max-width: ${props => props.maxwidth || 'auto'};
     margin: ${props => props.margin || 0};
 `
 

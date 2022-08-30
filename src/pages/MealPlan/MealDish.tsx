@@ -8,7 +8,7 @@ import { MealPlanDeleteButton, MealPlanDish } from './MealPlan.styled'
 import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
 import { MealDishProps } from './MealPlan.types'
 
-export const MealDish: FC<MealDishProps> = memo(({ subMealId, idDish, image, title, idWeek }) => {
+export const MealDish: FC<MealDishProps> = memo(({ subMealId, idDish, image, title }) => {
    const navigateHandler = useRedirect()
    const deleteRecipeFromWeekPlanHandler = useDeleteRecipe(subMealId)
 
@@ -21,7 +21,7 @@ export const MealDish: FC<MealDishProps> = memo(({ subMealId, idDish, image, tit
             height='102px'
             style={{ 'objectFit': 'cover', 'borderRadius': 'var(--br-radius)' }}
          />
-         <MealPlanDeleteButton onClick={(e) => deleteRecipeFromWeekPlanHandler(e, idDish, idWeek)}>
+         <MealPlanDeleteButton onClick={(e) => deleteRecipeFromWeekPlanHandler(e, idDish)}>
             <IoIosClose color='var(--color-white)' size='30' />
          </MealPlanDeleteButton>
       </MealPlanDish>

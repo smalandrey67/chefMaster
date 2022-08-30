@@ -10,7 +10,7 @@ import { useAppSelector } from 'hooks/useRedux'
 import { useRedirect } from 'hooks/useRedirect'
 import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 
-import { config } from 'config/config'
+import { config } from 'config'
 
 export const useBlogSubmit = (
    userPhoto: string | undefined,

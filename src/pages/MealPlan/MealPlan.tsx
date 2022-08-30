@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useMemo } from 'react'
 import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import { ToastContainer } from 'react-toastify'
@@ -18,23 +18,33 @@ import { MealPlanWeeks } from './MealPlanWeeks'
 import { SubMenuItem } from './SubMenuItem'
 import { SubMealMenuField } from './SubMealMenuField'
 import { MealDish } from './MealDish'
+import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
 import { NotAuthorisated } from 'components/reusable/NotAuthorisated/NotAuthorisated'
 
+import { useChangeStatusOfSubMealMenu } from './hooks/useChangeStatusOfSubMealMenu'
 import { useSetActiveMealDay } from './hooks/useSetActiveMealDay'
 import { useOpenMenuAddingRecipe } from './hooks/useOpenMenuAddingRecipe'
-import { useSubMealFunctionality } from './hooks/useSubMealFunctionality'
+import { useDeleteSubMealMenu } from './hooks/useDeleteSubMealMenu'
 import { stringCut } from 'utils/helpers/string.helper'
-
 
 export const MealPlan: FC = () => {
    const activeDay = useAppSelector(selectActiveMealDay)
    const user = useAppSelector(selectCurrentUser)
 
    const setActiveMealDayHandler = useSetActiveMealDay()
-   const { menuAddingRecipeIndex, openMenuAddingRecipeHandler } = useOpenMenuAddingRecipe()
-   const { isSubMealMenu, openSubMealFieldHandler, inputSubMealAddRef, addSubMealMenuHandler, deleteSubMealMenuHandler } = useSubMealFunctionality(activeDay.idWeek, setActiveMealDayHandler)
+   const { openSubMealFieldHandler, resetStatusOfSubMealField, isSubMealMenu } = useChangeStatusOfSubMealMenu()
+   const { menuAddingRecipeIndex, openMenuAddingRecipeHandler, resetStatusOfMenuAddingRecipe } = useOpenMenuAddingRecipe()
+   const deleteSubMealMenuHandler  = useDeleteSubMealMenu(setActiveMealDayHandler)
+
+   const arrayFnOfClosingPopups = useMemo(() => {
+      return [resetStatusOfMenuAddingRecipe, resetStatusOfSubMealField]
+   }, [resetStatusOfMenuAddingRecipe, resetStatusOfSubMealField])
+
+   useEffect(() => {
+      arrayFnOfClosingPopups.forEach(fn => fn())
+   }, [activeDay, arrayFnOfClosingPopups])
 
    return Object.values(user || {}).length ?
       <SectionContainer motion={motion}>
@@ -42,58 +52,45 @@ export const MealPlan: FC = () => {
             <Title>Meal Plan</Title>
          </BackButtonContainer>
 
-         <MealPlanWeeks activeDayIdWeek={activeDay.idWeek} setActiveMealDayHandler={setActiveMealDayHandler} />
+         <MealPlanWeeks setActiveMealDayHandler={setActiveMealDayHandler} />
 
          <MealPlanItemTitle>
             {Object.values(activeDay || {}).length && activeDay.weekDay}
             <MealPlanItemAdd onClick={openSubMealFieldHandler}>+</MealPlanItemAdd>
          </MealPlanItemTitle>
-
-         <SubMealMenuField
-            isSubMealMenu={isSubMealMenu}
-            inputSubMealAddRef={inputSubMealAddRef}
-            addSubMealMenuHandler={addSubMealMenuHandler}
-         />
-
+         
+         <SubMealMenuField isSubMealMenu={isSubMealMenu} />
          <List>
-            {Object.values(activeDay || {}).length && activeDay.subMeals.map((subMeal, index) =>
+            {activeDay.subMeals.length ? activeDay.subMeals.map((subMeal, index) =>
                <MealPlanItem key={subMeal.subMealId}>
                   <MealPlanSubMealTitle>
                      {stringCut(subMeal.subMealTitle, 40)}
                      <MealPlanSubMealAdd onClick={() => openMenuAddingRecipeHandler(index)}>
-                        <BiDotsHorizontalRounded size='20' />
+                        <BiDotsHorizontalRounded size='25' />
                      </MealPlanSubMealAdd>
                      <MealPlanSubMenu
                         animate={{ scale: menuAddingRecipeIndex === index ? 1 : 0 }}
                         transition={{ type: 'tween', duration: 0.2 }}
                         style={{ display: menuAddingRecipeIndex === index ? 'block' : 'none' }}
                      >
-                        <SubMenuItem
-                           subMealId={subMeal.subMealId}
-                           idWeek={activeDay.idWeek}
-                           path='/favorites'
-                           title='Add Saved Recipe'
-                           Icon={BsFillBasket3Fill}
+                        <SubMenuItem 
+                           subMealId={subMeal.subMealId} path='/favorites' title='Add Saved Recipe' Icon={BsFillBasket3Fill}
                         />
-                        <SubMenuItem
-                           subMealId={subMeal.subMealId}
-                           idWeek={activeDay.idWeek}
-                           path='/searched'
-                           title='Search New Recipe'
-                           Icon={BsSearch}
+                        <SubMenuItem 
+                           subMealId={subMeal.subMealId} path='/searched' title='Search New Recipe' Icon={BsSearch}
                         />
-                        <MealPLanSubMenuItemDelete onClick={() => deleteSubMealMenuHandler(subMeal.subMealId)}>Delete</MealPLanSubMenuItemDelete>
+                        <MealPLanSubMenuItemDelete onClick={() => deleteSubMealMenuHandler(subMeal.subMealId)}>
+                           Delete
+                        </MealPLanSubMenuItemDelete>
                      </MealPlanSubMenu>
                   </MealPlanSubMealTitle>
 
                   <MealPlanDishes>
-                     {subMeal.subMealDishes.map(dish =>
-                        <MealDish {...dish} key={dish.idDish} subMealId={subMeal.subMealId} idWeek={activeDay.idWeek} />
-                     )}
+                     {subMeal.subMealDishes.map(dish => <MealDish {...dish} key={dish.idDish} subMealId={subMeal.subMealId} />)}
                   </MealPlanDishes>
-                  <ToastContainer />
                </MealPlanItem>
-            )}
+            ) : <ErrorNoResult height='30vh' description='Add your first sub meal'/> }
+            <ToastContainer />
          </List>
       </SectionContainer> : <NotAuthorisated />
 }

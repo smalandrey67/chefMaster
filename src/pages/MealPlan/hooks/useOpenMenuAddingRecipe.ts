@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 import { UseOpenMenuAddingRecipeReturnsType } from 'types/Hooks'
 
@@ -14,8 +14,13 @@ export const useOpenMenuAddingRecipe = (): UseOpenMenuAddingRecipeReturnsType =>
       setMenuAddingRecipeIndex(index)
    }
 
+   const resetStatusOfMenuAddingRecipe = useCallback(() => {
+      setMenuAddingRecipeIndex(null)
+   }, [])
+
    return {
       menuAddingRecipeIndex,
-      openMenuAddingRecipeHandler
+      openMenuAddingRecipeHandler,
+      resetStatusOfMenuAddingRecipe
    }
 }

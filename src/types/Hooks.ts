@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction, MouseEvent, RefObject } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction, MouseEvent } from 'react'
 
 import { SubmitBlogType } from './Blogs'
 import { FilterParamsType } from './Params'
@@ -7,7 +7,6 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
 import { SubmitHandler } from 'react-hook-form'
 import { SubmitSearchType } from 'components/business/Search/Search.types'
-import { AlertType } from 'utils/helpers/handleAlert.helpers'
 
 export type UseUploadImageReturnsType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -55,8 +54,6 @@ export type UseRemoveFromFavoriteReturnsType = (e: MouseEvent<HTMLButtonElement>
 
 export type UseAddIntoWeekPlanReturnsType = () => void;
 
-export type UseToastReturnsType = (message: string, type: AlertType) => void;
-
 export type UseFileChangeReturnsType = {
    changeFileHandler: (e: ChangeEvent<HTMLInputElement>) => void;
    profilePhotoUrl: string | undefined;
@@ -71,16 +68,17 @@ export type UseSubmitUpdatesReturnsType = () => void;
 export type UseOpenMenuAddingRecipeReturnsType = {
    menuAddingRecipeIndex: number | null;
    openMenuAddingRecipeHandler: (index: number) => void;
+   resetStatusOfMenuAddingRecipe: () => void;
 }
 
 export type UseSetActiveMealDayReturnsType = (idWeek: string) => void;
 
-export type UseSubMealFunctionalityReturnsType = {
-   isSubMealMenu: boolean;
-   inputSubMealAddRef: RefObject<HTMLInputElement>;
+export type UseDeleteSubMealMenuReturnsType = (subMealId: string) => void;
+
+export type UseChangeStatusOfSubMealMenuReturnsType = {
    openSubMealFieldHandler: () => void;
-   deleteSubMealMenuHandler: (subMealId: string) => void;
-   addSubMealMenuHandler: () => void;
+   resetStatusOfSubMealField: () => void;
+   isSubMealMenu: boolean;
 }
 
-export type UseDeleteRecipeReturnsType = (e: MouseEvent<HTMLButtonElement>, idDish: number, idWeek: string) => void
+export type UseDeleteRecipeReturnsType = (e: MouseEvent<HTMLButtonElement>, idDish: number) => void

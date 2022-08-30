@@ -23,6 +23,7 @@ type ValidationType = Readonly<{
    question: ValidationFieldType;
    email: ValidationFieldType;
    password: ValidationFieldType;
+   subMeal: ValidationFieldType;
 }>
 
 export const validation: ValidationType = {
@@ -57,6 +58,11 @@ export const validation: ValidationType = {
    password: {
       required: 'Password is required',
       minLength: { value: 6, message: 'Min 6 symbols' },
+      maxLength: { value: 20, message: 'Max 20 symbols' }
+   }, 
+   subMeal: {
+      required: 'Field is required',
+      minLength: { value: 5, message: 'Min 5 symbols' },
       maxLength: { value: 20, message: 'Max 20 symbols' }
    }
 }
