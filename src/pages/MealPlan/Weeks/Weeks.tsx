@@ -8,10 +8,10 @@ import { splideOptions } from 'utils/constants/splide.constants'
 import { Splide } from '@splidejs/react-splide'
 
 import { Group } from 'assets/styled/Reused.styled'
-import { MealPlanWeekButton } from './MealPlan.styled'
-import { MealPlanWeeksProps } from './MealPlan.types'
+import { WeekButton } from './Weeks.styled'
+import { WeeksProps } from './Weeks.types'
 
-export const MealPlanWeeks: FC<MealPlanWeeksProps> = memo(({ setActiveMealDayHandler }) => {
+export const Weeks: FC<WeeksProps> = memo(({ setActiveMealDayHandler }) => {
    const weekPlan = useAppSelector(selectWeekPlan)
    const activeDay = useAppSelector(selectActiveMealDay)
    
@@ -20,12 +20,12 @@ export const MealPlanWeeks: FC<MealPlanWeeksProps> = memo(({ setActiveMealDayHan
          {weekPlan.map(dayPlan =>
             <SplideSlide key={dayPlan.idWeek} style={{ padding: '4px' }}>
                <Group height='35px' width='100%'>
-                  <MealPlanWeekButton
+                  <WeekButton
                      idWeek={dayPlan.idWeek}
                      activeDayIdWeek={activeDay.idWeek}
                      onClick={() => setActiveMealDayHandler(dayPlan.idWeek)}
                   >{dayPlan.weekDay.slice(0, 3)}
-                  </MealPlanWeekButton>
+                  </WeekButton>
                </Group>
             </SplideSlide>
          )}

@@ -3,12 +3,12 @@ import { Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-toastify/dist/ReactToastify.css';
 
-import { routes, RouteType } from 'routes/routes'
+import { routes, RouteType } from 'routes'
 
-import { Preload } from 'components/reusable/Preload/Preload'
+import { Preload } from 'components/common/Preload/Preload'
 import { Header } from 'components/business/Header/Header'
 import { Categories } from 'components/business/Categories/Categories'
-import { ErrorFallback } from 'components/reusable/ErrorFallback/ErrorFallback'
+import { ErrorFallback } from 'components/common/ErrorFallback/ErrorFallback.lazy'
 
 import { onAuthStateChanged } from 'firebase/auth'
 import { useAppDispatch } from 'hooks/useRedux'
@@ -24,9 +24,9 @@ export const Home: FC = () => {
                 dispatch(addUser(currentUser))
             }
         })
+
         return unsubscribe
     }, [dispatch])
-
 
     return (
         <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh' />}>

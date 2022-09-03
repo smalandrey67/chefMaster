@@ -5,7 +5,7 @@ import { SubmitAnswerType } from 'types/Answer'
 import { AuthFormContainerProps } from './FormContainer.types'
 import { SubmitSearchType } from 'components/business/Search/Search.types'
 import { SubmitBlogType } from 'types/Blogs'
-import { SubmitSubMealType } from 'pages/MealPlan/MealPlan.types'
+import { SubmitSubMealType } from 'pages/MealPlan/SubMealField/SubMealField.types'
 
 export const FormContainer = <T extends 
    SubmitUserType | SubmitAnswerType | SubmitSearchType | SubmitBlogType | SubmitResetPasswordType | SubmitSubMealType>({

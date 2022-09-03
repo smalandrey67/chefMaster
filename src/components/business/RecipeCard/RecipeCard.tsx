@@ -7,7 +7,7 @@ import { useRedirect } from 'hooks/useRedirect'
 import { Article, RecipeImageWrapper } from 'assets/styled/Reused.styled'
 import { RecipeScore, RecipeGradient } from './RecipeCard.styled'
 
-import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
+import { LazyImage } from 'components/common/LazyImage/LazyImage'
 
 export const RecipeCard: FC<RandomRecipeResultType> = ({ id, title, image, healthScore }) => {
     const navigateHandler = useRedirect()

@@ -48,7 +48,7 @@ export const ResetPassword: FC = () => {
                   <LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>Already have an account?</LinkEl>
                </Flex>
             </FormContainer>
-            <ToastContainer />
+            <ToastContainer role='alert'/>
          </PopupContainer>
       </Container>
    )

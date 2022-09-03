@@ -14,14 +14,14 @@ import {
    MealPlanSubMealAdd, MealPlanDishes, MealPlanSubMenu, MealPLanSubMenuItemDelete
 } from './MealPlan.styled'
 
-import { MealPlanWeeks } from './MealPlanWeeks'
-import { SubMenuItem } from './SubMenuItem'
-import { SubMealMenuField } from './SubMealMenuField'
-import { MealDish } from './MealDish'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { Weeks } from './Weeks/Weeks'
+import { SubMenuItem } from './SubMenuItem/SubMenuItem'
+import { SubMealField } from './SubMealField/SubMealField'
+import { Dish } from './Dish/Dish'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
-import { NotAuthorisated } from 'components/reusable/NotAuthorisated/NotAuthorisated'
+import { NotAuthorisated } from 'components/common/NotAuthorisated/NotAuthorisated'
 
 import { useChangeStatusOfSubMealMenu } from './hooks/useChangeStatusOfSubMealMenu'
 import { useSetActiveMealDay } from './hooks/useSetActiveMealDay'
@@ -52,14 +52,14 @@ export const MealPlan: FC = () => {
             <Title>Meal Plan</Title>
          </BackButtonContainer>
 
-         <MealPlanWeeks setActiveMealDayHandler={setActiveMealDayHandler} />
+         <Weeks setActiveMealDayHandler={setActiveMealDayHandler} />
 
          <MealPlanItemTitle>
             {Object.values(activeDay || {}).length && activeDay.weekDay}
             <MealPlanItemAdd onClick={openSubMealFieldHandler}>+</MealPlanItemAdd>
          </MealPlanItemTitle>
          
-         <SubMealMenuField isSubMealMenu={isSubMealMenu} />
+         <SubMealField isSubMealMenu={isSubMealMenu} />
          <List>
             {activeDay.subMeals.length ? activeDay.subMeals.map((subMeal, index) =>
                <MealPlanItem key={subMeal.subMealId}>
@@ -86,11 +86,11 @@ export const MealPlan: FC = () => {
                   </MealPlanSubMealTitle>
 
                   <MealPlanDishes>
-                     {subMeal.subMealDishes.map(dish => <MealDish {...dish} key={dish.idDish} subMealId={subMeal.subMealId} />)}
+                     {subMeal.subMealDishes.map(dish => <Dish {...dish} key={dish.idDish} subMealId={subMeal.subMealId} />)}
                   </MealPlanDishes>
                </MealPlanItem>
             ) : <ErrorNoResult height='30vh' description='Add your first sub meal'/> }
-            <ToastContainer />
+            <ToastContainer role='alert'/>
          </List>
       </SectionContainer> : <NotAuthorisated />
 }

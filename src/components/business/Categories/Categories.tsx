@@ -6,7 +6,7 @@ import { CategoriesNav, CategoriesLink } from './Categories.styled'
 import { Splide } from '@splidejs/react-splide'
 import { SplideSlide } from '@splidejs/react-splide'
 
-import { categories, CategoriesType } from 'utils/constants/categories.constants'
+import { categories } from 'utils/constants/categories.constants'
 import { splideOptions } from 'utils/constants/splide.constants'
 
 export const Categories: FC = () => {
@@ -15,7 +15,7 @@ export const Categories: FC = () => {
         <CategoriesNav>
             <Container>
                 <Splide options={splideOptions(4)}>
-                    {categories.map(({ cuisine, Icon }: CategoriesType): JSX.Element =>
+                    {categories.map(({ cuisine, Icon }) =>
                         <SplideSlide key={cuisine} style={{ display: 'flex', justifyContent: 'center' }}>
                             <CategoriesLink to={`cuisine/${cuisine}`}>
                                 <Icon color='var(--color-categories)' size='25' />

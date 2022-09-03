@@ -5,7 +5,7 @@ import { motion } from 'utils/constants/motion.constants'
 
 import { DetailsInfoDescriptionWrapper } from './Instructions.styled'
 import { Paragraph } from 'assets/styled/Reused.styled'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { InstructionsProps } from './Instructions.types'
 

@@ -89,7 +89,7 @@ export const Profile: FC = () => {
                   {errorOfUploadFile}
                </>
             </ErrorMessage>
-            <ToastContainer />
+            <ToastContainer role='alert'/>
          </ProfileContent>
       </SectionContainer>
    )

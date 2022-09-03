@@ -1,9 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import { Button, List, Flex, Input } from 'assets/styled/Reused.styled'
-
-import { MealPlanWeekButtonProps } from './MealPlan.types'
 
 export const MealPlanItem = styled.li`
    padding: 15px 0 10px 0;
@@ -11,20 +9,6 @@ export const MealPlanItem = styled.li`
    &:not(:last-child) {
       border-bottom: 1px solid var(--color-black);
    } 
-`
-export const MealPlanWeekButton = styled(Button) <MealPlanWeekButtonProps>`
-   font-size: var(--fs-sl);
-   font-weight: var(--fw-bold);
-   box-shadow: var(--shadow-alternative);
- 
-   ${props => {
-      if (props.idWeek === props.activeDayIdWeek) {
-         return css`
-            background-color: var(--color-categories);
-            color: var(--color-white);
-         `
-      }
-   }}
 `
 export const MealPlanItemTitle = styled.h4`
    display: flex;
@@ -111,15 +95,6 @@ export const SubMealInput = styled(Input)`
    top: 0;
    left: 0;  
 `
-
-export const MealPlanSubMenuLink = styled(Link)`
-   display: grid;
-   grid-auto-flow: column;
-   align-items: center;
-   gap: 5px;
-   font-size: var(--fs-sm);
-   font-weight: var(--fw-semiBold);
-`
 export const SubMealItem = styled.li`
    display: grid;
    grid-auto-flow: column;
@@ -133,31 +108,4 @@ export const SubMealItem = styled.li`
 export const MealPlanDishes = styled(Flex)`
    justify-content: stretch;
    overflow: auto;
-`
-export const MealPlanDish = styled.div`
-   width: 150px;
-   height: 100%;
-   position: relative;
-   cursor: pointer;
-
-   &:not(:last-child) {
-      margin-right: 4px;
-   }
-
-   @media (hover: hover) {
-         transition: all 0.5s ease;
-         &:hover {
-            transform: scale(0.98)
-         }
-   }
-`
-export const MealPlanDeleteButton = styled.button`
-   position: absolute;
-   top: 0;
-   right: 0;
-   width: 30px;
-   height: 30px;
-   background-color: transparent;
-   padding: 0;
-   box-shadow: none;
 `

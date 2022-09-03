@@ -8,7 +8,7 @@ import { selectFavorites } from 'store/slices/favoriteSlice/favoriteSlice.select
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { FavoriteCard } from 'components/business/FavoriteCard/FavoriteCard'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 export const Favorites: FC = () => {
    const favorites = useAppSelector(selectFavorites)

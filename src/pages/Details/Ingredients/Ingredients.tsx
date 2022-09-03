@@ -3,8 +3,8 @@ import { FC } from 'react'
 import { stringCut } from 'utils/helpers/string.helper'
 import { motion } from 'utils/constants/motion.constants'
 
-import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { LazyImage } from 'components/common/LazyImage/LazyImage'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { List, Span } from 'assets/styled/Reused.styled'
 import { DetailsIngredientsCount, DetailsIngredientsItem, DetailsIngredientsTitle, DetailsIngredientsUnit } from './Ingredients.styled'

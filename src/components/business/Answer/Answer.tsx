@@ -10,7 +10,7 @@ import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 
 import { PopupContainer } from '../../containers/PopupContainer/PopupContainer'
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
-import { ErrorNoResult } from '../../reusable/ErrorNoResult/ErrorNoResult'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'

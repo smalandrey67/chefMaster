@@ -1,28 +1,31 @@
 import { ComponentType, LazyExoticComponent, FC } from 'react'
 
-import { NotFound } from 'pages/NotFound/NotFound'
-import { Searched } from 'pages/Searched/Searched'
 import { Login } from 'pages/Login/Login'
 import { Registration } from 'pages/Registration/Registration'
 import { ResetPassword } from 'pages/ResetPassword/ResetPassword'
+
+import { Main } from 'pages/Main/Main.lazy'
+import { Cuisines } from 'pages/Cuisines/Cuisines.lazy'
+import { Details } from 'pages/Details/Details.lazy'
+import { Blogs } from 'pages/Blogs/Blogs.lazy'
+import { BlogsCreate } from 'pages/BlogsCreate/BlogsCreate.lazy'
+import { Searched } from 'pages/Searched/Searched.lazy'
+import { NotFound } from 'pages/NotFound/NotFound.lazy'
+import { Favorites } from 'pages/Favorites/Favorites.lazy'
+import { MealPlan } from 'pages/MealPlan/MealPlan.lazy'
+import { Profile } from 'pages/Profile/Profile.lazy'
 
 // import { Main } from 'pages/Main/Main'
 // import { Cuisines } from 'pages/Cuisines/Cuisines'
 // import { Details } from 'pages/Details/Details'
 // import { Blogs } from 'pages/Blogs/Blogs'
 // import { BlogsCreate } from 'pages/BlogsCreate/BlogsCreate'
+// import { Searched } from 'pages/Searched/Searched'
+// import { NotFound } from 'pages/NotFound/NotFound'
 // import { Favorites } from 'pages/Favorites/Favorites'
 // import { MealPlan } from 'pages/MealPlan/MealPlan'
 // import { Profile } from 'pages/Profile/Profile'
 
-import { Main } from './routesChunks'
-import { Cuisines } from './routesChunks'
-import { Details } from './routesChunks'
-import { Blogs } from './routesChunks'
-import { BlogsCreate } from './routesChunks'
-import { Favorites } from './routesChunks'
-import { MealPlan } from './routesChunks'
-import { Profile } from './routesChunks'
 
 export type RouteType = Readonly<{
    path: string;

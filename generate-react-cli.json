@@ -1,0 +1,55 @@
+{
+  "usesTypeScript": true,
+  "usesCssModule": false,
+  "cssPreprocessor": "css",
+  "testLibrary": "Testing Library",
+  "component": {
+    "default": {
+      "path": "src/components",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": true
+    },
+    "business": {
+      "customTemplates": {
+        "component": "templates/business/TemplateName.tsx",
+        "style": "templates/business/TemplateName.styled.ts",
+        "types": "templates/business/TemplateName.types.ts",
+        "lazy": "templates/business/TemplateName.lazy.ts"
+      },
+      "path": "src/components/business",
+      "withStyle": true,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": true,
+      "withTypes": true
+    },
+    "common": {
+      "customTemplates": {
+        "component": "templates/common/TemplateName.tsx",
+        "style": "templates/common/TemplateName.styled.ts",
+        "types": "templates/common/TemplateName.types.ts"
+      },
+      "path": "src/components/common",
+      "withStyle": true,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "withTypes": true
+    },
+    "container": {
+      "customTemplates": {
+        "component": "templates/container/TemplateName.tsx",
+        "style": "templates/container/TemplateName.styled.ts",
+        "types": "templates/container/TemplateName.types.ts"
+      },
+      "path": "src/components/containers",
+      "withStyle": true,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "withTypes": true
+    }
+  }
+}

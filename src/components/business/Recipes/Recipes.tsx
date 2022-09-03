@@ -2,14 +2,13 @@ import { FC } from 'react'
 
 import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
-
-import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { BiError } from 'react-icons/bi'
 
 import { splideOptions } from 'utils/constants/splide.constants'
 import { useGetRandomRecipesQuery } from 'services/RecipesService'
 import { Splide } from '@splidejs/react-splide'
 
+import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 
 export const Recipes: FC = () => {

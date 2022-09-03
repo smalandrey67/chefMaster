@@ -10,12 +10,12 @@ import { ErrorMessage, SpinnerWrapper, Spinner, FlexGroup, Image } from 'assets/
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
-import { ErrorFallback } from 'components/reusable/ErrorFallback/ErrorFallback'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
-import { Ingredients } from './Ingredients/Ingredients'
-import { Instructions } from './Instructions/Instructions'
+import { ErrorFallback } from 'components/common/ErrorFallback/ErrorFallback.lazy'
+import { Ingredients } from './Ingredients/Ingredients.lazy'
+import { Instructions } from './Instructions/Instructions.lazy'
+import { Cooking } from './Cooking/Cooking.lazy'
 import { Tabs } from './Tabs/Tabs'
-import { Cooking } from './Cooking/Cooking'
 import { Nutritions } from './Nutritions/Nutritions'
 import { Social } from './Social/Social'
 

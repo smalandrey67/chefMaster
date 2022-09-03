@@ -7,7 +7,7 @@ import {
 import { Title, Span, Image, Paragraph } from 'assets/styled/Reused.styled'
 
 import { BlogCardPropsType } from 'types/Blogs'
-import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
+import { LazyImage } from 'components/common/LazyImage/LazyImage'
 
 export const BlogCard: FC<BlogCardPropsType> = ({ title, file, author, description, avatar }) => {
 

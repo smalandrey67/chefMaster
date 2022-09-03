@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { BiError } from 'react-icons/bi'
 
 import { CuisineCard } from 'components/business/CuisineCard/CuisineCard'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from 'assets/styled/Reused.styled'

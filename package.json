@@ -35,7 +35,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "component": "generate-react component",
+    "business": "generate-react component --type=business",
+    "common": "generate-react component --type=common",
+    "container": "generate-react component --type=container"
   },
   "browserslist": {
     "production": [
@@ -53,6 +57,7 @@
     "@types/react-lazy-load-image-component": "^1.5.2",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "generate-react-cli": "^7.3.0"
   }
 }

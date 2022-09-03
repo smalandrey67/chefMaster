@@ -35,8 +35,8 @@ export const useBlogSubmit = (
          const postData: PreparedPostType = {
             ...data,
             file: userPhoto,
-            author: user?.name ? user?.name : 'Anonymous',
-            avatar: user?.photoURL ? user?.photoURL : config.noUserPhoto
+            author: user?.name ? user.name : 'Anonymous',
+            avatar: user?.photoURL ? user.photoURL : config.noUserPhoto
          }
 
          uploadBlog(postData)

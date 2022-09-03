@@ -7,7 +7,7 @@ import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BlogCard } from 'components/business/BlogCard/BlogCard'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { BiError } from 'react-icons/bi'
 import { HiPlus } from 'react-icons/hi'

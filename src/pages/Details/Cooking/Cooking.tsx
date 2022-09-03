@@ -15,7 +15,7 @@ import { BsChevronDown } from 'react-icons/bs'
 import { IoFootstepsSharp } from 'react-icons/io5'
 
 import { CookingProps } from './Cooking.types'
-import { ErrorNoResult } from 'components/reusable/ErrorNoResult/ErrorNoResult'
+import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 export const Cooking: FC<CookingProps> = memo(({ details }) => {
     const [stepIsActive, setStepIsActive] = useState<string | null>(null)

@@ -5,11 +5,10 @@ import { BsChatRightText } from 'react-icons/bs'
 import Background from 'assets/images/main/cooking-bg.webp'
 import { Image } from 'assets/styled/Reused.styled'
 import { AboutWrapper, AboutWrapperImage, AboutDescriptionWrapper, AboutDescriptionParagraph, AboutChatWrapper } from './About.styled'
+import { usePopup } from 'hooks/usePopup'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
-import { Answer } from '../Answer/Answer'
-
-import { usePopup } from 'hooks/usePopup'
+import { Answer } from 'components/business/Answer/Answer.lazy'
 
 export const About: FC = () => {
    const { popupIsActive, popupHandler } = usePopup()

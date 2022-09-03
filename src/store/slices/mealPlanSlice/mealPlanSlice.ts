@@ -68,9 +68,7 @@ export const mealPlanSlice = createSlice({
 
          if (activeDay) {
             state.activeMealDay = activeDay
-            // localStorage.setItem('activeDay', JSON.stringify(state.activeMealDay))
          }
-
       },
       addSubMealMenu: (state, { payload }: PayloadAction<{ subMealMenuTitle: string, idWeek: string }>): void => {
          state.weekPlan = state.weekPlan.map(week => {

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { LazyImage } from '../../reusable/LazyImage/LazyImage'
+import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { RecipeContainer } from 'components/containers/RecipeContainer/RecipeContainer'
 
 import { RecipeResultType } from 'types/Recipe'

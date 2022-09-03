@@ -39,8 +39,8 @@ export const Search: FC = memo(() => {
                 </FormContainer>
             </FlexGroup>
 
-            <FlexGroup flex='0 1 25%' aria-label='filter' onClick={openFilterMenuHandler}>
-                <SearchFilter>
+            <FlexGroup flex='0 1 25%' onClick={openFilterMenuHandler}>
+                <SearchFilter aria-label='filter' name='filter-options'>
                     <GoSettings size='23' />
                 </SearchFilter>
             </FlexGroup>

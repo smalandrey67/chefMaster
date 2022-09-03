@@ -5,7 +5,7 @@ import { useRemoveFromFavorite } from './hook/useRemoveFromFavorite'
 import { FavoriteRecipeType } from 'types/Favorites'
 import { ButtonHeart } from 'assets/styled/Reused.styled'
 
-import { LazyImage } from 'components/reusable/LazyImage/LazyImage'
+import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { RecipeContainer } from 'components/containers/RecipeContainer/RecipeContainer'
 
 export const FavoriteCard: FC<FavoriteRecipeType> = ({ id, title, image, isActive }) => {

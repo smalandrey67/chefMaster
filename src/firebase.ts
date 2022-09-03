@@ -1,7 +1,10 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
+import { initializeAuth, browserLocalPersistence, indexedDBLocalPersistence } from 'firebase/auth'
 
 import { config } from 'config'
 
 const app = initializeApp(config.firebase);
-export const auth = getAuth(app)
+export const auth = initializeAuth(app, {
+   persistence: [indexedDBLocalPersistence, browserLocalPersistence]
+});
+
