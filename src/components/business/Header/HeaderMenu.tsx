@@ -21,7 +21,7 @@ export const HeaderMenu: FC = () => {
 
    const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
    useOverflow(isHamburgerMenu)
-
+   
    useEffect(() => {
       if (isHamburgerMenu) {
          dispatch(changeStatusOfHamburgerMenu())

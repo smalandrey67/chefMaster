@@ -25,6 +25,13 @@ export const DetailsIngredientsTitle = styled(Paragraph)`
     margin: 0 10px;
     flex: 1 1 auto;
 `
+export const DetailsIngredientsWeight = styled(Paragraph)`
+    margin-right: 5px;
+    font-weight: var(--fw-semiBold);
+`
 export const DetailsIngredientsUnit = styled(Paragraph)`
+    display: flex;
+    align-items: center;
+
     font-size: var(--fs-sm);
 `

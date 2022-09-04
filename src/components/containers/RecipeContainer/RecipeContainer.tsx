@@ -11,8 +11,7 @@ import { RecipeContainerProps } from './RecipeContainer.types'
 import { Article, RecipeImageWrapper, RecipeTitle } from 'assets/styled/Reused.styled'
 
 export const RecipeContainer: FC<RecipeContainerProps> = ({ children, id, title, image }) => {
-   const location = useLocation()
-   const { state } = location as LocationStateType
+   const { state } = useLocation() as LocationStateType
 
    const navigateHandler = useRedirect()
    const addRecipeIntoWeekPlan = useAddIntoWeekPlan(state, id, title, image)

@@ -3,7 +3,7 @@ export type LegendProps = Partial<{
    width: string;
 }>
 
-export type SpanProps = Partial<{
+export type StrongProps = Partial<{
    margin: string;
    fontWeight: string;
    color: string;

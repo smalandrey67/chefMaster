@@ -16,7 +16,7 @@ export const Favorites: FC = () => {
    return (
       <SectionContainer>
          <BackButtonContainer>
-            <Title>Favorites ({favorites.length})</Title>
+            <Title>Favorites {favorites.length ? `(${favorites.length})` : null}</Title>
          </BackButtonContainer>
 
          <RecipesWrapper>

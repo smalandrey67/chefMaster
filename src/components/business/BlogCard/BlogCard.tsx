@@ -4,7 +4,7 @@ import {
    BlogArticle, BlogWrapper, BlogHeader,
    BlogHeaderAvatar, BlogFigure, BlogFigcaption
 } from './BlogCard.styled'
-import { Title, Span, Image, Paragraph } from 'assets/styled/Reused.styled'
+import { Title, Strong, Image, Paragraph } from 'assets/styled/Reused.styled'
 
 import { BlogCardPropsType } from 'types/Blogs'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
@@ -25,9 +25,9 @@ export const BlogCard: FC<BlogCardPropsType> = ({ title, file, author, descripti
                <LazyImage image={`${file}`} alt={author} width='100%' height='100%' />
                <BlogFigcaption>
                   written by
-                  <Span margin='0 0 0 5px' fontSize='var(--fs-md)' fontWeight='var(--fw-bold)' color='var(--color-categories)'>
+                  <Strong margin='0 0 0 5px' fontSize='var(--fs-md)' color='var(--color-categories)'>
                      {author}
-                  </Span>
+                  </Strong>
                </BlogFigcaption>
             </BlogFigure>
             <Paragraph>{description}</Paragraph>

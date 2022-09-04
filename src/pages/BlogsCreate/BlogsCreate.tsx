@@ -10,7 +10,7 @@ import { SectionContainer } from 'components/containers/SectionContainer/Section
 
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 import {
-   SpinnerWrapper, Spinner, Span,
+   SpinnerWrapper, Spinner, Strong,
    ErrorMessage, Legend, Group, Label,
    Input, Button
 } from 'assets/styled/Reused.styled'
@@ -38,7 +38,7 @@ export const BlogsCreate: FC = () => {
          <BlogsCreateBody>
             <FormContainer handleSubmit={handleSubmit} submitHandler={submitBlogHandler}>
                <Legend>Create your own post</Legend>
-               <Group margin='0 0 20px 0' width='100%' height='50px'>
+               <Group margin='10px 0 20px 0' width='100%' height='50px'>
                   <Label>
                      <Input
                         {...register('title', validation.title)} placeholder='Title' type='text'
@@ -71,7 +71,7 @@ export const BlogsCreate: FC = () => {
                         />
                         Upload image
                      </BlogsCreateLabelFile>
-                     <Span fontSize='var(--fs-sm)'>{stringCut(fileName, 23)}</Span>
+                     <Strong fontSize='var(--fs-sm)'>{stringCut(fileName, 23)}</Strong>
                   </BlogsCreateFileWrapper>
                   {errors?.file && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
                      {errors?.file?.message}

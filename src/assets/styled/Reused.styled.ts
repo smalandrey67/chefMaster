@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 import {
-    LegendProps, SpanProps, FlexGroupProps, GroupProps, ImageProps,
+    LegendProps, StrongProps, FlexGroupProps, GroupProps, ImageProps,
     ErrorMessageProps, SpinnerProps, TitleProps,
     RecipeImageWrapperProps, ErrorWrapperProps, LinkElProps,
     ParagraphProps, FlexProps
@@ -188,10 +188,9 @@ export const Title = styled.h4<TitleProps>`
     font-size: ${props => props.fontSize || 'var(--fs-bg)'};
     font-weight: ${props => props.fontWeight || 'var(--fw-regular)'};
 `
-export const Span = styled.span<SpanProps>`
+export const Strong = styled.strong<StrongProps>`
     font-size: ${props => props.fontSize || 'var(--fs-sm)'};
     margin: ${props => props.margin || 0};
-    font-weight: ${props => props.fontWeight || 'normal'};
     color: ${props => props.color || 'var(--color-black)'}
 `
 export const RecipeTitle = styled.h4`

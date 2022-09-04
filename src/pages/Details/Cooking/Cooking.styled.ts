@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { DetailsCookingContentProps, DetailsCookingIngredientsProps } from './Cooking.types'
 
 export const DetailsCookingSubtitle = styled.h4`
     margin: 5px 0;
@@ -34,32 +35,36 @@ export const DetailsCookingStep = styled.span`
     font-size: var(--fs-sm);
     font-weight: var(--fw-semiBold);
 `
-export const DetailsCookingContent = styled.div`
+export const DetailsCookingContent = styled.div<DetailsCookingContentProps>`
     position: relative;
     height: 0;
     visibility: hidden;
     overflow: hidden;
-    &.active{
-        transition: all 0.3s ease;
-        padding: 0 10px 10px 10px;
-        height: auto;
-        visibility: visible;
-    }
+    
+    ${props => {
+        if (props.isActiveStep) {
+            return css`
+                transition: all 0.3s ease;
+                padding: 0 10px 10px 10px;
+                height: auto;
+                visibility: visible;
+            `
+        }
+    }}
 `
-export const DetailsCookingIngredients = styled.div`
+export const DetailsCookingIngredients = styled.div<DetailsCookingIngredientsProps>`
     height: 50px;
     display: flex;
     align-items: center;
     overflow: auto;
     margin-bottom: 5px;
-    &.hide{
-        display: none;
-    }
+    display: ${props => props.isHideStep ? '' : 'none'};
 `
 export const DetailsCookingIngredientsPhoto = styled.img`
     height: 100%;
     width: 50px;
     object-fit: contain;
+    
     &:not(:last-child){
         margin-right: 5px;
     }

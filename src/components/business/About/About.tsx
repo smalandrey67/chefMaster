@@ -12,7 +12,7 @@ import { Answer } from 'components/business/Answer/Answer.lazy'
 
 export const About: FC = () => {
    const { popupIsActive, popupHandler } = usePopup()
-
+        
    return (
       <SectionContainer>
          <AboutWrapper>
@@ -35,7 +35,7 @@ export const About: FC = () => {
             <AboutChatWrapper aria-label='ask question' onClick={popupHandler}>
                <BsChatRightText size='25' cursor='pointer' color='var(--color-white)' />
             </AboutChatWrapper>
-
+         
             {popupIsActive && ReactDOM.createPortal(
                <Answer popupHandler={popupHandler} />, document.getElementById('popup')!)
             }

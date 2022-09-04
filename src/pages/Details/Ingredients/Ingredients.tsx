@@ -6,10 +6,12 @@ import { motion } from 'utils/constants/motion.constants'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
-import { List, Span } from 'assets/styled/Reused.styled'
-import { DetailsIngredientsCount, DetailsIngredientsItem, DetailsIngredientsTitle, DetailsIngredientsUnit } from './Ingredients.styled'
+import { List } from 'assets/styled/Reused.styled'
+import {
+    DetailsIngredientsCount, DetailsIngredientsItem,
+    DetailsIngredientsTitle, DetailsIngredientsUnit, DetailsIngredientsWeight
+} from './Ingredients.styled'
 
-import { IngredientsType } from 'types/Details'
 import { IngredientsProps } from './Ingredients.types'
 
 export const Ingredients: FC<IngredientsProps> = ({ details }) => {
@@ -21,7 +23,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
             </DetailsIngredientsCount>
 
             <List {...motion} >
-                {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }: IngredientsType): JSX.Element =>
+                {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }) =>
                     <DetailsIngredientsItem key={id}>
                         <LazyImage
                             image={`${process.env.REACT_APP_IMAGE_URL}${image}`}
@@ -32,7 +34,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                         />
                         <DetailsIngredientsTitle>{stringCut(nameClean, 13)}</DetailsIngredientsTitle>
                         <DetailsIngredientsUnit>
-                            <Span margin='0 5px 0 0'>{amount}</Span>
+                            <DetailsIngredientsWeight>{amount}</DetailsIngredientsWeight>
                             {unit}
                         </DetailsIngredientsUnit>
                     </DetailsIngredientsItem>

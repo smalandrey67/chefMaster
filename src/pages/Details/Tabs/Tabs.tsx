@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { changeTabName } from 'store/slices/tabsSlice/tabsSlice'
@@ -36,4 +36,4 @@ export const Tabs: FC = () => {
             >Cooking</DetailsInfoButton>
         </DetailsInfoWrapper>
     )
-}   
+}

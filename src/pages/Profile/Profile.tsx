@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify'
 
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 import {
-   ErrorMessage, LinkEl, Span, Title, Spinner,
+   ErrorMessage, LinkEl, Strong, Title, Spinner,
    Label, Input, Image, Flex, Group, Button
 } from 'assets/styled/Reused.styled'
 import { ProfileContent, ProfileImageWrapper, ProfileUploadLabel } from './Profile.styled'
@@ -54,12 +54,12 @@ export const Profile: FC = () => {
             {isLoading ? <Spinner src={SpinnerSm} alt='spinner' /> : null}
 
             <Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
-               <Span fontSize='var(--fs-sm)' fontWeight='var(--fw-semiBold)'>Email: </Span>
-               {user && user.email ? user.email : <Span fontSize='var(--fs-sm)'>You are not authorized</Span>}
+               <Strong fontSize='var(--fs-sm)'>Email: </Strong>
+               {user && user.email ? user.email : <Strong fontSize='var(--fs-sm)'>You are not authorized</Strong>}
             </Flex>
             <Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
-               <Span fontSize='var(--fs-sm)' fontWeight='var(--fw-semiBold)'>Name:</Span>
-               {user && user.name ? user.name : <Span fontSize='var(--fs-sm)'>No name yet</Span>}
+               <Strong fontSize='var(--fs-sm)'>Name:</Strong>
+               {user && user.name ? user.name : <Strong fontSize='var(--fs-sm)'>No name yet</Strong>}
             </Flex>
 
             <Group margin='0 0 7px 0' width='100%' height='50px'>

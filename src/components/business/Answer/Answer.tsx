@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { AnswerHeader, AnswerExample, AnswerResult } from './Answer.styled'
 import {
-   ErrorMessage, SpinnerWrapper, Spinner, Span,
+   ErrorMessage, SpinnerWrapper, Spinner, Strong,
    Legend, FlexGroup, Group, Label, Input, Flex, Button, Image
 } from 'assets/styled/Reused.styled'
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
@@ -38,7 +38,7 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
             </AnswerHeader>
 
             <AnswerExample>
-               <Span fontSize='var(--fs-sm)' fontWeight='var(--fw-bold)'>Example:</Span>
+               <Strong fontSize='var(--fs-sm)'>Example:</Strong>
                How much vitam c is in 2 apples
             </AnswerExample>
             <Flex>

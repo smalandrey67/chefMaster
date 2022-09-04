@@ -36,7 +36,7 @@ export const MealPlan: FC = () => {
    const setActiveMealDayHandler = useSetActiveMealDay()
    const { openSubMealFieldHandler, resetStatusOfSubMealField, isSubMealMenu } = useChangeStatusOfSubMealMenu()
    const { menuAddingRecipeIndex, openMenuAddingRecipeHandler, resetStatusOfMenuAddingRecipe } = useOpenMenuAddingRecipe()
-   const deleteSubMealMenuHandler  = useDeleteSubMealMenu(setActiveMealDayHandler)
+   const deleteSubMealMenuHandler = useDeleteSubMealMenu(setActiveMealDayHandler)
 
    const arrayFnOfClosingPopups = useMemo(() => {
       return [resetStatusOfMenuAddingRecipe, resetStatusOfSubMealField]

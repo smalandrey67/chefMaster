@@ -14,7 +14,7 @@ import { WeeksProps } from './Weeks.types'
 export const Weeks: FC<WeeksProps> = memo(({ setActiveMealDayHandler }) => {
    const weekPlan = useAppSelector(selectWeekPlan)
    const activeDay = useAppSelector(selectActiveMealDay)
-   
+
    return (
       <Splide options={splideOptions(3)} style={{ marginBottom: '10px' }}>
          {weekPlan.map(dayPlan =>
