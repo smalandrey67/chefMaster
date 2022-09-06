@@ -1,4 +1,4 @@
-import { DetailsType, IngredientsType } from 'types/Details'
+import { DetailsType } from 'types/Details'
 
 export type CookingProps = {
    details: DetailsType | undefined;

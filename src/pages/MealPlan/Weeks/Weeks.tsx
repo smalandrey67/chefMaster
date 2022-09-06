@@ -10,13 +10,14 @@ import { Splide } from '@splidejs/react-splide'
 import { Group } from 'assets/styled/Reused.styled'
 import { WeekButton } from './Weeks.styled'
 import { WeeksProps } from './Weeks.types'
+import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
 
 export const Weeks: FC<WeeksProps> = memo(({ setActiveMealDayHandler }) => {
    const weekPlan = useAppSelector(selectWeekPlan)
    const activeDay = useAppSelector(selectActiveMealDay)
-
+   
    return (
-      <Splide options={splideOptions(3)} style={{ marginBottom: '10px' }}>
+      <Splide options={splideOptions(3, getIndexOfCurrentDay())} style={{ marginBottom: '10px' }}>
          {weekPlan.map(dayPlan =>
             <SplideSlide key={dayPlan.idWeek} style={{ padding: '4px' }}>
                <Group height='35px' width='100%'>

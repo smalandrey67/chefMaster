@@ -18,6 +18,7 @@ import { Weeks } from './Weeks/Weeks'
 import { SubMenuItem } from './SubMenuItem/SubMenuItem'
 import { SubMealField } from './SubMealField/SubMealField'
 import { Dish } from './Dish/Dish'
+import { ResetMealPlanButton } from './ResetMealPlanButton/ResetMealPlanButton'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
@@ -51,7 +52,8 @@ export const MealPlan: FC = () => {
          <BackButtonContainer>
             <Title>Meal Plan</Title>
          </BackButtonContainer>
-
+         
+         <ResetMealPlanButton />
          <Weeks setActiveMealDayHandler={setActiveMealDayHandler} />
 
          <MealPlanItemTitle>
@@ -62,7 +64,7 @@ export const MealPlan: FC = () => {
          <SubMealField isSubMealMenu={isSubMealMenu} />
          <List>
             {activeDay.subMeals.length ? activeDay.subMeals.map((subMeal, index) =>
-               <MealPlanItem key={subMeal.subMealId}>
+               <MealPlanItem key={subMeal.subMealId} {...motion}>
                   <MealPlanSubMealTitle>
                      {stringCut(subMeal.subMealTitle, 40)}
                      <MealPlanSubMealAdd onClick={() => openMenuAddingRecipeHandler(index)}>

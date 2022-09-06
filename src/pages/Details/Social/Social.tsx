@@ -22,7 +22,7 @@ export const Social: FC<SocialProps> = memo(({ details }) => {
       if (favoriteRecipe?.isActive) return 'red'
 
       return 'black'
-   } // #This function checks if we have the same details object in the favorites array, make it red rather than black
+   } // #This function checks if we have the same details object in the favorites array, so we make it red rather than black
 
    const colorType = getColorOfHeart()
 

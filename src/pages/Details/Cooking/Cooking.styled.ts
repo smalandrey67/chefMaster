@@ -53,7 +53,7 @@ export const DetailsCookingContent = styled.div<DetailsCookingContentProps>`
     }}
 `
 export const DetailsCookingIngredients = styled.div<DetailsCookingIngredientsProps>`
-    height: 50px;
+    height: 70px;
     display: flex;
     align-items: center;
     overflow: auto;

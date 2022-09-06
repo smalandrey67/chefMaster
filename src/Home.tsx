@@ -35,11 +35,11 @@ export const Home: FC = () => {
 
             <Suspense fallback={<Preload />}>
                 <Routes>
-                    {routes.map((route: RouteType) =>
+                    {routes.map(route =>
                         <Route key={route.path} path={route.path} element={<route.component />} />
                     )}
                 </Routes>
             </Suspense>
-        </ErrorBoundary >
+        </ErrorBoundary>
     )
 }

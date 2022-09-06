@@ -11,7 +11,7 @@ import { DishProps } from './Dish.types'
 export const Dish: FC<DishProps> = memo(({ subMealId, idDish, image, title }) => {
    const navigateHandler = useRedirect()
    const deleteRecipeFromWeekPlanHandler = useDeleteRecipe(subMealId)
-
+   
    return (
       <DishEl onClick={() => navigateHandler('/details/', idDish)}>
          <LazyImage

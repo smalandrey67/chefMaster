@@ -8,7 +8,7 @@ import { auth } from '../../../firebase'
 import { LogOutType, UpdateUserThunkParametersType } from './authSlice.types'
 
 import { handlerError } from 'utils/helpers/handleError.helper'
-import { handleAlert } from 'utils/helpers/handleAlert.helpers'
+import { handleAlert } from 'utils/helpers/handleAlert.helper'
 import { addUser } from './authSlice'
 
 export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
@@ -66,7 +66,6 @@ export const logOutThunk = createAsyncThunk<void, LogOutType, { rejectValue: str
 export const resetPasswordThunk = createAsyncThunk<void, { email: string }, { rejectValue: string }>(
    'resetPassword', async ({ email }, { rejectWithValue, fulfillWithValue }) => {
       try {
-
          await sendPasswordResetEmail(auth, email)
 
          fulfillWithValue(

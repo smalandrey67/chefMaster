@@ -1,11 +1,12 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-
 import { Button, List, Flex, Input } from 'assets/styled/Reused.styled'
 
-export const MealPlanItem = styled.li`
+import { motion } from 'framer-motion'
+
+export const MealPlanItem = styled(motion.li)`
    padding: 15px 0 10px 0;
    position: relative;
+
    &:not(:last-child) {
       border-bottom: 1px solid var(--color-black);
    } 

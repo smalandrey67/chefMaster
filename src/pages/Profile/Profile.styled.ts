@@ -21,6 +21,33 @@ export const ProfileUploadLabel = styled.label`
    left: 0;
    width: 100%;
    height: 100%;
+   cursor: pointer;
+`
+
+export const ProfileBackgroundOverImage = styled.div`
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   opacity: 0;
+
+   &:active {
+      background-color: var(--color-grey);
+      opacity: 0.4;
+   }
+    
+   @media (hover: hover) {
+      transition: all 0.3s ease;
+      &:hover {
+         background-color: var(--color-grey);
+         opacity: 0.4;
+      }
+   }
 `
 
 export const ProfileButtonLogOut = styled(Button)`

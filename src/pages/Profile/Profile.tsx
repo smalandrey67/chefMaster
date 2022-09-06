@@ -6,7 +6,7 @@ import {
    ErrorMessage, LinkEl, Strong, Title, Spinner,
    Label, Input, Image, Flex, Group, Button
 } from 'assets/styled/Reused.styled'
-import { ProfileContent, ProfileImageWrapper, ProfileUploadLabel } from './Profile.styled'
+import { ProfileContent, ProfileImageWrapper, ProfileBackgroundOverImage, ProfileUploadLabel } from './Profile.styled'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
@@ -17,6 +17,8 @@ import { useFileChange } from './hook/useFileChange'
 import { useLogOut } from './hook/useLogOut'
 import { useSubmitUpdates } from './hook/useSubmitUpdates'
 import { config } from 'config'
+
+import { HiPlus } from 'react-icons/hi'
 
 export const Profile: FC = () => {
    const [name, setName] = useState('')
@@ -49,7 +51,11 @@ export const Profile: FC = () => {
                />
                <ProfileUploadLabel>
                   <Input hidden onChange={changeFileHandler} type='file' name='file' />
+                  <ProfileBackgroundOverImage>
+                     <HiPlus color='var(--color-white)' size={30}/>
+                  </ProfileBackgroundOverImage>
                </ProfileUploadLabel>
+
             </ProfileImageWrapper>
             {isLoading ? <Spinner src={SpinnerSm} alt='spinner' /> : null}
 

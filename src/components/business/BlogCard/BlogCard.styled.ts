@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import { Article, Flex, Figure, Figcaption } from 'assets/styled/Reused.styled'
+import { Flex, Figure, Figcaption } from 'assets/styled/Reused.styled'
 
-export const BlogArticle = styled(Article)`
+export const BlogArticle = styled.article`
    margin-bottom: 30px;
    max-width: 800px;
 `

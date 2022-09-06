@@ -7,15 +7,15 @@ import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { List } from 'assets/styled/Reused.styled'
-import {
-    DetailsIngredientsCount, DetailsIngredientsItem,
+import { 
+    DetailsIngredientsCount,  DetailsIngredientsItem, 
     DetailsIngredientsTitle, DetailsIngredientsUnit, DetailsIngredientsWeight
 } from './Ingredients.styled'
 
 import { IngredientsProps } from './Ingredients.types'
 
 export const Ingredients: FC<IngredientsProps> = ({ details }) => {
-
+    
     return (
         <>
             <DetailsIngredientsCount>
@@ -32,7 +32,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                             height='100%'
                             style={{ 'objectFit': 'contain' }}
                         />
-                        <DetailsIngredientsTitle>{stringCut(nameClean, 13)}</DetailsIngredientsTitle>
+                        <DetailsIngredientsTitle>{nameClean}</DetailsIngredientsTitle>
                         <DetailsIngredientsUnit>
                             <DetailsIngredientsWeight>{amount}</DetailsIngredientsWeight>
                             {unit}

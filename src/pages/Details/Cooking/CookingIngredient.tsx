@@ -10,7 +10,7 @@ export const CookingIngredient: FC<CookingIngredientProps> = memo(({ image, name
    return (
       <LazyImage
          width='60px'
-         height='100%'
+         height='60px'
          style={{ 'objectFit': 'contain' }}
          image={`${config.ingredientsUrl}${image}`}
          alt={name}

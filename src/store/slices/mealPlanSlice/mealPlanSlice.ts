@@ -1,13 +1,12 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 
 import { mealPLan } from 'utils/constants/mealPlan.constants'
+import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
 import { PayloadDeleteType, PayloadChangeActiveMealDay, MealPlanState, PayloadAddRecipeType } from './mealPlanSlice.types'
-
-const currentDay = new Date().getDay()
 
 const initialState: MealPlanState = {
    weekPlan: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '') : mealPLan,
-   activeMealDay: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '')[currentDay] : mealPLan[currentDay]
+   activeMealDay: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '')[getIndexOfCurrentDay()] : mealPLan[getIndexOfCurrentDay()],
 }
 
 export const mealPlanSlice = createSlice({
@@ -31,7 +30,7 @@ export const mealPlanSlice = createSlice({
                }
                return week
             })
-          
+            
             localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
          },
          prepare: (idWeek: string, subMealId: string, id: number, title: string, image: string) => {
@@ -62,6 +61,7 @@ export const mealPlanSlice = createSlice({
             }
             return week
          })
+         localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
       },
       setActiveMealDay: (state, { payload }: PayloadAction<PayloadChangeActiveMealDay>): void => {
          const activeDay = state.weekPlan.find(dayPlan => dayPlan.idWeek === payload.idWeek)
@@ -97,6 +97,11 @@ export const mealPlanSlice = createSlice({
             return week
          })
          localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
+      },
+      resetMealPlan: (state): void => {
+         state.weekPlan = [...mealPLan]
+         
+         localStorage.removeItem('weekPlan')
       }
    }
 })
@@ -107,5 +112,6 @@ export const {
    deleteRecipeFromMealPlan, 
    setActiveMealDay, 
    addSubMealMenu, 
-   deleteSubMealMenu 
+   deleteSubMealMenu,
+   resetMealPlan
 } = mealPlanSlice.actions

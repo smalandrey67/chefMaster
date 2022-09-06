@@ -3,7 +3,7 @@ import { deleteSubMealMenu } from 'store/slices/mealPlanSlice/mealPlanSlice'
 import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
 import { UseDeleteSubMealMenuReturnsType } from 'types/Hooks'
-import { handleAlert } from 'utils/helpers/handleAlert.helpers'
+import { handleAlert } from 'utils/helpers/handleAlert.helper'
 
 export const useDeleteSubMealMenu = (setActiveMealDay: (idWeek: string) => void): UseDeleteSubMealMenuReturnsType => {
    const dispatch = useAppDispatch()
