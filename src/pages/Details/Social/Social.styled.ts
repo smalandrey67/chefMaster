@@ -1,4 +1,14 @@
 import styled from 'styled-components'
+import { Figcaption } from 'assets/styled/Reused.styled'
+
+export const DetailsWrapperTitle = styled(Figcaption)`  
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semiBold);
+    color: var(--color-white);
+`
 
 export const SocialReadyMinutes = styled.span`
     position: absolute;

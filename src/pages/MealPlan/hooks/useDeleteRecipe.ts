@@ -5,6 +5,7 @@ import { deleteRecipeFromMealPlan, setActiveMealDay } from 'store/slices/mealPla
 import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
 import { UseDeleteRecipeReturnsType } from 'types/Hooks'
+import { updateMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 
 export const useDeleteRecipe = (subMealId: string): UseDeleteRecipeReturnsType => {
    const dispatch = useAppDispatch()
@@ -15,6 +16,7 @@ export const useDeleteRecipe = (subMealId: string): UseDeleteRecipeReturnsType =
 
       dispatch(deleteRecipeFromMealPlan({ subMealId, idDish, idWeek: activeDay.idWeek }))
       dispatch(setActiveMealDay({ idWeek: activeDay.idWeek }))
+      dispatch(updateMealPlanThunk())
    }
 
    return deleteRecipeFromWeekPlanHandler

@@ -26,6 +26,8 @@ type ValidationType = Readonly<{
    subMeal: ValidationFieldType;
 }>
 
+const patternForValidatEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 export const validation: ValidationType = {
    title: {
       required: 'Field is required',
@@ -51,7 +53,7 @@ export const validation: ValidationType = {
       minLength: { value: 3, message: 'Min 3 symbols' },
       maxLength: { value: 60, message: 'Max 20 symbols' },
       pattern: {
-         value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+         value: patternForValidatEmail,
          message: 'Please enter a valid email'
       }
    },

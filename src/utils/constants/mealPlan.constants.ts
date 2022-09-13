@@ -2,7 +2,7 @@ import { nanoid } from '@reduxjs/toolkit'
 
 import { WeekPlanType } from 'store/slices/mealPlanSlice/mealPlanSlice.types'
 
-export const mealPLan: readonly WeekPlanType[] = [
+export const mealPlan: readonly WeekPlanType[] = [
    {
       idWeek: nanoid(),
       weekDay: 'Sunday',

@@ -50,13 +50,9 @@ export const MealPlanSubMealAdd = styled.button`
             color: var(--color-white);
         }
     }
-
 `
 export const MealPlanSubMenu = styled(List)`
-   display: none;
-   position: absolute;
-   top: 20px;
-   right: 0;
+   position: absolute;                                    
    background-color: var(--color-white);
    box-shadow: var(--shadow);
    min-height: 70px;

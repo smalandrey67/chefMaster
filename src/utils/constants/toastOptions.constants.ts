@@ -1,11 +1,11 @@
 import { ToastPosition } from 'react-toastify'
 
-type ToastOptionsType = {
+type ToastOptionsType = Readonly<{
    position: ToastPosition,
    autoClose: number,
    pauseOnHover: boolean,
    draggable: boolean
-}
+}>
 
 export const toastOptions: ToastOptionsType = {
    position: 'bottom-center',

@@ -1,8 +1,8 @@
 import { toast } from 'react-toastify'
 import { toastOptions } from 'utils/constants/toastOptions.constants'
 
-export type AlertType = 'success' | 'warning' | 'error' | 'default'
-export type HandleAlertReturnsType = (message: string, type: AlertType) => void;
+type AlertType = 'success' | 'warning' | 'error' | 'default'
+type HandleAlertReturnsType = (message: string, type: AlertType) => void;
 
 export const handleAlert = (): HandleAlertReturnsType => {
 

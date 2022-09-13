@@ -5,5 +5,3 @@ export type UseDeleteSubMealMenuType = (
    setActiveMealDay: (idWeek: string) => void
 ) => UseDeleteSubMealMenuReturnsType
 
-
-

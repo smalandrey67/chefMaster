@@ -1,14 +1,14 @@
 import { FC, useEffect, useMemo } from 'react'
 import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
-import { BiDotsHorizontalRounded } from 'react-icons/bi'
+import { BiDotsHorizontalRounded, BiError } from 'react-icons/bi'
 import { ToastContainer } from 'react-toastify'
 
 import { motion } from 'utils/constants/motion.constants'
-import { useAppSelector } from 'hooks/useRedux'
-import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
+import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
+import { selectActiveMealDay, selectMealPlanUploadingError, selectMealPlanUploadingStatus } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 
-import { Title, List } from 'assets/styled/Reused.styled'
+import { Title, List, SpinnerWrapper, Spinner, ErrorMessage } from 'assets/styled/Reused.styled'
 import {
    MealPlanItem, MealPlanItemTitle, MealPlanSubMealTitle, MealPlanItemAdd,
    MealPlanSubMealAdd, MealPlanDishes, MealPlanSubMenu, MealPLanSubMenuItemDelete
@@ -30,9 +30,18 @@ import { useOpenMenuAddingRecipe } from './hooks/useOpenMenuAddingRecipe'
 import { useDeleteSubMealMenu } from './hooks/useDeleteSubMealMenu'
 import { stringCut } from 'utils/helpers/string.helper'
 
+import { getMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
+
+import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
+
+
 export const MealPlan: FC = () => {
+   const dispatch = useAppDispatch()
+
    const activeDay = useAppSelector(selectActiveMealDay)
    const user = useAppSelector(selectCurrentUser)
+   const status = useAppSelector(selectMealPlanUploadingStatus)
+   const error = useAppSelector(selectMealPlanUploadingError)
 
    const setActiveMealDayHandler = useSetActiveMealDay()
    const { openSubMealFieldHandler, resetStatusOfSubMealField, isSubMealMenu } = useChangeStatusOfSubMealMenu()
@@ -47,23 +56,40 @@ export const MealPlan: FC = () => {
       arrayFnOfClosingPopups.forEach(fn => fn())
    }, [activeDay, arrayFnOfClosingPopups])
 
-   return Object.values(user || {}).length ?
+   useEffect(() => {
+      dispatch(getMealPlanThunk())
+   }, [dispatch])
+
+
+   if (!Object.values(user || {}).length) {
+      return <NotAuthorisated />
+   }
+
+   if (status === 'pending') {
+      return (
+         <SpinnerWrapper height='40vh'>
+            < Spinner src={SpinnerBg} alt='spinner' />
+         </SpinnerWrapper >
+      )
+   }
+
+   return (
       <SectionContainer motion={motion}>
          <BackButtonContainer>
             <Title>Meal Plan</Title>
          </BackButtonContainer>
-         
+
          <ResetMealPlanButton />
          <Weeks setActiveMealDayHandler={setActiveMealDayHandler} />
 
          <MealPlanItemTitle>
-            {Object.values(activeDay || {}).length && activeDay.weekDay}
+            {Object.values(activeDay || {}).length ? activeDay.weekDay : <div></div>}
             <MealPlanItemAdd onClick={openSubMealFieldHandler}>+</MealPlanItemAdd>
          </MealPlanItemTitle>
-         
+
          <SubMealField isSubMealMenu={isSubMealMenu} />
          <List>
-            {activeDay.subMeals.length ? activeDay.subMeals.map((subMeal, index) =>
+            {Object.values(activeDay || {}).length ? activeDay.subMeals.map((subMeal, index) =>
                <MealPlanItem key={subMeal.subMealId} {...motion}>
                   <MealPlanSubMealTitle>
                      {stringCut(subMeal.subMealTitle, 40)}
@@ -73,12 +99,16 @@ export const MealPlan: FC = () => {
                      <MealPlanSubMenu
                         animate={{ scale: menuAddingRecipeIndex === index ? 1 : 0 }}
                         transition={{ type: 'tween', duration: 0.2 }}
-                        style={{ display: menuAddingRecipeIndex === index ? 'block' : 'none' }}
+                        style={{
+                           display: menuAddingRecipeIndex === index ? 'block' : 'none',
+                           top: index + 1 === activeDay.subMeals.length ? -10 : -5,
+                           right: index + 1 === activeDay.subMeals.length ? 35 : 33
+                        }}
                      >
-                        <SubMenuItem 
+                        <SubMenuItem
                            subMealId={subMeal.subMealId} path='/favorites' title='Add Saved Recipe' Icon={BsFillBasket3Fill}
                         />
-                        <SubMenuItem 
+                        <SubMenuItem
                            subMealId={subMeal.subMealId} path='/searched' title='Search New Recipe' Icon={BsSearch}
                         />
                         <MealPLanSubMenuItemDelete onClick={() => deleteSubMealMenuHandler(subMeal.subMealId)}>
@@ -91,8 +121,10 @@ export const MealPlan: FC = () => {
                      {subMeal.subMealDishes.map(dish => <Dish {...dish} key={dish.idDish} subMealId={subMeal.subMealId} />)}
                   </MealPlanDishes>
                </MealPlanItem>
-            ) : <ErrorNoResult height='30vh' description='Add your first sub meal'/> }
-            <ToastContainer role='alert'/>
+            ) : <ErrorNoResult height='30vh' description='Add your first sub meal' />}
+            <ToastContainer role='alert' />
+            {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
          </List>
-      </SectionContainer> : <NotAuthorisated />
+      </SectionContainer>
+   )
 }

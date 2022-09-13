@@ -22,6 +22,13 @@ const filterSlice = createSlice({
       changeStatusOfFilterMenu: (state): void => {
          state.isFilterMenuOpen = !state.isFilterMenuOpen
       },
+      resetStatusOfMenus: (state): void => {
+         if (state.isHamburgerMenu) {
+            state.isHamburgerMenu = false
+         } else if (state.isFilterMenuOpen) {
+            state.isFilterMenuOpen = false
+         }
+      },
       changeActiveOfOption: {
          reducer: (state, { payload }: PayloadAction<PayloadActiveType>): void => {
 
@@ -59,5 +66,5 @@ const filterSlice = createSlice({
    }
 })
 
-export const { changeStatusOfHamburgerMenu, changeStatusOfFilterMenu, changeActiveOfOption } = filterSlice.actions
+export const { changeStatusOfHamburgerMenu, changeStatusOfFilterMenu, resetStatusOfMenus, changeActiveOfOption } = filterSlice.actions
 export default filterSlice.reducer

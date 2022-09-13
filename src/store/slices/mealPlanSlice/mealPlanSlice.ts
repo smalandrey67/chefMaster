@@ -1,12 +1,15 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 
-import { mealPLan } from 'utils/constants/mealPlan.constants'
+import { mealPlan } from 'utils/constants/mealPlan.constants'
 import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
-import { PayloadDeleteType, PayloadChangeActiveMealDay, MealPlanState, PayloadAddRecipeType } from './mealPlanSlice.types'
+import { getMealPlanThunk } from './mealPlanThunk'
+import { PayloadDeleteType, PayloadChangeActiveMealDay, MealPlanState, PayloadAddRecipeType, WeekPlanType } from './mealPlanSlice.types'
 
 const initialState: MealPlanState = {
-   weekPlan: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '') : mealPLan,
-   activeMealDay: localStorage.getItem('weekPlan') ? JSON.parse(localStorage.getItem('weekPlan') || '')[getIndexOfCurrentDay()] : mealPLan[getIndexOfCurrentDay()],
+   weekPlan: [],
+   activeMealDay: {} as WeekPlanType,
+   error: null,
+   status: null
 }
 
 export const mealPlanSlice = createSlice({
@@ -30,8 +33,6 @@ export const mealPlanSlice = createSlice({
                }
                return week
             })
-            
-            localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
          },
          prepare: (idWeek: string, subMealId: string, id: number, title: string, image: string) => {
             return {
@@ -61,7 +62,6 @@ export const mealPlanSlice = createSlice({
             }
             return week
          })
-         localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
       },
       setActiveMealDay: (state, { payload }: PayloadAction<PayloadChangeActiveMealDay>): void => {
          const activeDay = state.weekPlan.find(dayPlan => dayPlan.idWeek === payload.idWeek)
@@ -75,16 +75,15 @@ export const mealPlanSlice = createSlice({
             if (week.idWeek === payload.idWeek) {
                return {
                   ...week,
-                  subMeals: [ 
-                     ...week.subMeals, 
+                  subMeals: [
+                     ...week.subMeals,
                      { subMealId: nanoid(), subMealTitle: payload.subMealMenuTitle, subMealDishes: [] }
                   ]
-               }     
+               }
             }
 
             return week
          })
-         localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
       },
       deleteSubMealMenu: (state, { payload }: PayloadAction<{ subMealId: string, idWeek: string }>): void => {
          state.weekPlan = state.weekPlan.map(week => {
@@ -96,22 +95,42 @@ export const mealPlanSlice = createSlice({
             }
             return week
          })
-         localStorage.setItem('weekPlan', JSON.stringify(state.weekPlan))
       },
       resetMealPlan: (state): void => {
-         state.weekPlan = [...mealPLan]
-         
-         localStorage.removeItem('weekPlan')
+         state.weekPlan = [...mealPlan]
       }
+   },
+   extraReducers: (builder): void => {
+      builder
+         .addCase(getMealPlanThunk.pending, (state): void => {
+            state.status = 'pending'
+            state.error = null
+         })
+         .addCase(getMealPlanThunk.fulfilled, (state, { payload }): void => {
+            if (payload) {
+               state.weekPlan = payload
+               
+               if (!Object.values(state.activeMealDay || {}).length) {
+                  state.activeMealDay = payload[getIndexOfCurrentDay()]
+               }
+
+               state.status = 'fulfilled'
+            }
+         })
+         .addCase(getMealPlanThunk.rejected, (state, { payload }): void => {
+            if (payload) {
+               state.error = payload
+            }
+         })
    }
 })
 
 export default mealPlanSlice.reducer
-export const { 
-   addRecipeIntoMeal, 
-   deleteRecipeFromMealPlan, 
-   setActiveMealDay, 
-   addSubMealMenu, 
+export const {
+   addRecipeIntoMeal,
+   deleteRecipeFromMealPlan,
+   setActiveMealDay,
+   addSubMealMenu,
    deleteSubMealMenu,
    resetMealPlan
 } = mealPlanSlice.actions

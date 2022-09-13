@@ -1,10 +1,8 @@
-import { FC, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { FC } from 'react'
 
-import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
+import { useAppSelector } from 'hooks/useRedux'
 import { useOverflow } from 'hooks/useOverflow'
 import { selectIsHamburgerMenu } from 'store/slices/filterSlice/filterSlice.selectors'
-import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice/filterSlice'
 
 import { LinkEl } from 'assets/styled/Reused.styled'
 import {
@@ -16,18 +14,8 @@ import { BsFillPeopleFill, BsFillBasket3Fill, BsFillCalendarWeekFill } from 'rea
 import { FaUserTie } from 'react-icons/fa'
 
 export const HeaderMenu: FC = () => {
-   const dispatch = useAppDispatch()
-   const location = useLocation()
-
    const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
    useOverflow(isHamburgerMenu)
-   
-   useEffect(() => {
-      if (isHamburgerMenu) {
-         dispatch(changeStatusOfHamburgerMenu())
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [dispatch, location])
 
    return (
       <HeaderNav isHamburgerMenu={isHamburgerMenu}>

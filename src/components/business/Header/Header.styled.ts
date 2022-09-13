@@ -108,6 +108,10 @@ export const HeaderHorizontalLine = styled.div`
         bottom: 170px;
         left: 0;
     }
+
+    @media (max-width: 480px) {
+        bottom: 140px;
+    }
 `
 export const HeaderVerticalLine = styled.div`
     

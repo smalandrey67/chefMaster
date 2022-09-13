@@ -4,16 +4,22 @@ import { useSelector } from 'react-redux'
 import { resetMealPlan, setActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice'
 import { selectActiveMealDay, selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
-import { mealPLan } from 'utils/constants/mealPlan.constants'
+import { mealPlan } from 'utils/constants/mealPlan.constants'
 import { handleAlert } from 'utils/helpers/handleAlert.helper'
 
-export const useResetMealPlan = () => {
+import { UseResetMealPlanReturnsType } from 'types/Hooks'
+import { updateMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
+
+export const useResetMealPlan = (): UseResetMealPlanReturnsType => {
    const weekPlan = useSelector(selectWeekPlan)
    const activeDay = useAppSelector(selectActiveMealDay)
    const dispatch = useAppDispatch()
 
-   const resetMealPlanHandler = () => {
-      const isAlreadyMealPlanReset = JSON.stringify(mealPLan) === JSON.stringify(weekPlan)
+   const resetMealPlanHandler = (): void => {
+      console.log(mealPlan, 'constant')
+      console.log(weekPlan, 'original')
+      
+      const isAlreadyMealPlanReset = JSON.stringify(mealPlan) === JSON.stringify(weekPlan)
 
       if (isAlreadyMealPlanReset) {
          handleAlert()('Plan Already Reset', 'warning')
@@ -25,6 +31,9 @@ export const useResetMealPlan = () => {
       if (isDeleteTheMealPlan) {
          dispatch(resetMealPlan())
          dispatch(setActiveMealDay({ idWeek: activeDay.idWeek }))
+         dispatch(updateMealPlanThunk())
+
+         handleAlert()('Meal Plan was reseted', 'success')
       }
    }
 

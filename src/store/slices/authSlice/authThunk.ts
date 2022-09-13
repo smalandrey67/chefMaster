@@ -2,6 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { addDoc, doc, setDoc } from 'firebase/firestore'
+import { db } from '../../../firebase'
 
 import { AuthorisationParametersType, UserType } from './authSlice.types'
 import { auth } from '../../../firebase'
@@ -11,6 +13,8 @@ import { handlerError } from 'utils/helpers/handleError.helper'
 import { handleAlert } from 'utils/helpers/handleAlert.helper'
 import { addUser } from './authSlice'
 
+import { mealPlan } from 'utils/constants/mealPlan.constants'
+
 export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
    'signIn', async ({ email, password, navigateHandler }, { rejectWithValue, fulfillWithValue }) => {
       try {
@@ -19,7 +23,8 @@ export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersTyp
          const userData: UserType = {
             photoURL: user.photoURL,
             email: user.email,
-            name: user.displayName
+            name: user.displayName,
+            uid: user.uid
          }
 
          fulfillWithValue(navigateHandler('/'))
@@ -36,14 +41,17 @@ export const registrationThunk = createAsyncThunk<UserType, AuthorisationParamet
       try {
          const { user } = await createUserWithEmailAndPassword(auth, email, password)
 
+         const userDocumentRef = doc(db, 'users', user.uid)
+         await setDoc(userDocumentRef, { mealPlan }) 
+
          const userData: UserType = {
             photoURL: user.photoURL,
             email: user.email,
-            name: user.displayName
+            name: user.displayName,
+            uid: user.uid
          }
 
          fulfillWithValue(navigateHandler('/'))
-
          return userData
       } catch (error) {
          return rejectWithValue(handlerError(error, 'Server Error'))

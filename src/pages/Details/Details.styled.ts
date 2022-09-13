@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
-import { Flex, Figure, Figcaption } from 'assets/styled/Reused.styled'
+import { Flex, Figure } from 'assets/styled/Reused.styled'
 
 export const DetailsWrapper = styled(Flex)`
     flex-direction: column;
     align-items: stretch;
     
-    @media (min-width: 768px) {
+    @media (min-width: 1080px) {
         flex-direction: row;
         align-items: flex-start;
         gap: 15px;
@@ -17,15 +17,6 @@ export const DetailsWrapperLeft = styled.div``
 
 export const DetailWrapperImage = styled(Figure)`
     margin-bottom: 5px;
-`
-
-export const DetailsWrapperTitle = styled(Figcaption)`  
-    @media (max-width: 768px) {
-        font-size: var(--fs-md);
-    }
-    margin-left: 5px;
-    font-size: var(--fs-bg);
-    font-weight: var(--fw-semiBold);
 `
 
 export const DetailsOverImage = styled.div`
@@ -40,7 +31,20 @@ export const DetailsImage = styled.img`
 `
 
 export const DetailsInfo = styled.div`
-    /* @media (min-width: 768px) { */
-        flex: 0 1 50%;
-    /* } */
+    flex: 0 1 50%;
+`
+
+export const DetailsHeartButton = styled.button`
+    background: none;
+    cursor: pointer;
+    position: relative;
+    top: 8px;
+
+    @media (hover: hover) {
+        transition: all 0.5s ease;
+        
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
 `

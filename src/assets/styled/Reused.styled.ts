@@ -87,7 +87,7 @@ export const ButtonHeart = styled.button`
         &:hover {
             transform: scale(0.9)
         }
-   }
+    }
 `
 export const Image = styled.img<ImageProps>`
     height: 100%;

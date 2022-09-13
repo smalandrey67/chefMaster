@@ -9,7 +9,10 @@ import { Search } from '../Search/Search'
 import { HamburgerButton } from './HamburgerButton'
 import { HeaderMenu } from './HeaderMenu'
 
+import { useClosePopups } from 'hooks/useClosePopups'
+
 export const Header: FC = () => {
+    useClosePopups()
 
     return (
         <HeaderEl>

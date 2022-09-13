@@ -4,6 +4,8 @@ export type UserType = {
    photoURL: string | null;
    email: string | null;
    name: string | null;
+   uid: string | null;
+   documentId?: string; 
 }
 export type AuthState = {
    user: UserType | null;

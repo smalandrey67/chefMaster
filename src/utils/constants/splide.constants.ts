@@ -6,7 +6,7 @@ type SplideType = Readonly<{
    start: number;
 }>
 
-export const splideOptions = (pageValue: SplideType['perPage'], startValue?: SplideType['start']): SplideType => {
+export const splideOptions = (pageValue: number, startValue?: number): SplideType => {
    return {
       perPage: pageValue,
       arrows: false,

@@ -81,4 +81,6 @@ export type UseChangeStatusOfSubMealMenuReturnsType = {
    isSubMealMenu: boolean;
 }
 
-export type UseDeleteRecipeReturnsType = (e: MouseEvent<HTMLButtonElement>, idDish: number) => void
+export type UseDeleteRecipeReturnsType = (e: MouseEvent<HTMLButtonElement>, idDish: number) => void;
+
+export type UseResetMealPlanReturnsType = () => void;

@@ -3,13 +3,11 @@ export type SubMealDishType = {
    idDish: number;
    title: string;
 }
-
 export type SubMeal = {
    subMealId: string;
    subMealTitle: string;
    subMealDishes: SubMealDishType[];
 }
-
 export type WeekPlanType = {
    idWeek: string;
    weekDay: string;
@@ -21,8 +19,10 @@ export type PayloadDeleteType = {
    idWeek: string;
 }
 export type MealPlanState = {
-   weekPlan: WeekPlanType[];
+   weekPlan: WeekPlanType[]; 
    activeMealDay: WeekPlanType;
+   status: 'pending' | 'fulfilled' | null;
+   error: string | null;
 }
 export type PayloadAddRecipeType = {
    idWeek: string;

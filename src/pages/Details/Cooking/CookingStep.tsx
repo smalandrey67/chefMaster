@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import { nanoid } from '@reduxjs/toolkit'
 
 import { Strong } from 'assets/styled/Reused.styled'
 import {
@@ -38,8 +39,8 @@ export const CookingStep: FC<CookingStepType> = ({ step, number, ingredients}) =
 
          <DetailsCookingContent isActiveStep={isActiveStep}>
             <DetailsCookingIngredients isHideStep={isHideStep}>
-               {ingredients.length && ingredients.map(({ id, ...values }) =>
-                  <CookingIngredient key={id} {...values}/>
+               {ingredients.length && ingredients.map((ingredients) =>
+                  <CookingIngredient key={nanoid()} {...ingredients}/>
                )}
             </DetailsCookingIngredients>
             {step}

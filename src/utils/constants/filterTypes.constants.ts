@@ -2,7 +2,7 @@ import { nanoid } from '@reduxjs/toolkit'
 
 import { FilterParamsType } from 'types/Params'
 
-export type NamesType = {
+type NamesType = {
    text: string;
    query: keyof FilterParamsType;
 }

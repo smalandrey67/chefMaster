@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { BiError } from 'react-icons/bi'
-import {
-    DetailsWrapper, DetailWrapperImage, DetailsWrapperTitle, DetailsOverImage
-} from './Details.styled'
+import { BsSuitHeartFill } from 'react-icons/bs'
+import { DetailsWrapper, DetailWrapperImage, DetailsOverImage, DetailsHeartButton } from './Details.styled'
 import { ErrorMessage, SpinnerWrapper, Spinner, FlexGroup, Image } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
@@ -19,10 +18,11 @@ import { Tabs } from './Tabs/Tabs'
 import { Nutritions } from './Nutritions/Nutritions'
 import { Social } from './Social/Social'
 
-import { motion } from 'utils/constants/motion.constants'
-import { stringCut } from 'utils/helpers/string.helper'
-
+import { useGetHeartColor } from './hook/useGetHeartColor'
+import { useMakeFavorite } from './hook/useMakeFavorite'
 import { useAppSelector } from 'hooks/useRedux'
+
+import { motion } from 'utils/constants/motion.constants'
 import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { useGetDetailsQuery } from 'services/RecipesService'
 
@@ -31,7 +31,9 @@ export const Details: FC = () => {
     const { data: details, error, isLoading } = useGetDetailsQuery(params.id)
 
     const tabName = useAppSelector(selectTabName)
-
+    const makeRecipefavoriteHandler = useMakeFavorite(details)
+    const colorType = useGetHeartColor(details)
+    
     return (
         <SectionContainer motion={motion}>
             <DetailsWrapper>
@@ -44,9 +46,9 @@ export const Details: FC = () => {
                         <FlexGroup flex='0 1 50%'>
                             <DetailWrapperImage>
                                 <BackButtonContainer>
-                                    <DetailsWrapperTitle>
-                                        {stringCut(details?.title, 22)}
-                                    </DetailsWrapperTitle>
+                                    <DetailsHeartButton aria-label='make this recipe the favorite' onClick={makeRecipefavoriteHandler}>
+                                        <BsSuitHeartFill color={colorType} size='30' />
+                                    </DetailsHeartButton>
                                 </BackButtonContainer>
 
                                 <DetailsOverImage>
