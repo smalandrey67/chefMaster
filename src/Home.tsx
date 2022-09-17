@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-toastify/dist/ReactToastify.css';
 
-import { routes, RouteType } from 'routes'
+import { routes } from 'routes'
 
 import { Preload } from 'components/common/Preload/Preload'
 import { Header } from 'components/business/Header/Header'
@@ -22,6 +22,8 @@ export const Home: FC = () => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 dispatch(addUser(currentUser))
+            } else {
+                localStorage.removeItem('user')
             }
         })
 

@@ -17,7 +17,7 @@ export const Weeks: FC<WeeksProps> = memo(({ setActiveMealDayHandler }) => {
    const activeDay = useAppSelector(selectActiveMealDay)
    
    return (
-      <Splide options={splideOptions(3, getIndexOfCurrentDay())} style={{ marginBottom: '10px' }}>
+      <Splide options={splideOptions(3, getIndexOfCurrentDay())}>
          {weekPlan.map(dayPlan =>
             <SplideSlide key={dayPlan.idWeek} style={{ padding: '4px' }}>
                <Group height='35px' width='100%'>

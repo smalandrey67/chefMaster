@@ -16,9 +16,6 @@ export const useResetMealPlan = (): UseResetMealPlanReturnsType => {
    const dispatch = useAppDispatch()
 
    const resetMealPlanHandler = (): void => {
-      console.log(mealPlan, 'constant')
-      console.log(weekPlan, 'original')
-      
       const isAlreadyMealPlanReset = JSON.stringify(mealPlan) === JSON.stringify(weekPlan)
 
       if (isAlreadyMealPlanReset) {

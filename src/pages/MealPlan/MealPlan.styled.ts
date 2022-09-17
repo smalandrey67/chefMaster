@@ -18,6 +18,7 @@ export const MealPlanItemTitle = styled.h4`
    margin: 0 0 10px 0;
    font-size: var(--fs-md);
    position: relative;
+   margin-top: 10px;
 `
 export const MealPlanSubMealTitle = styled(MealPlanItemTitle)`
    font-weight: var(--fw-semiBold);
