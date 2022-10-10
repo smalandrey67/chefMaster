@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { AnswerHeader, AnswerExample, AnswerResult } from './Answer.styled'
+import * as Style from './Answer.styled'
 import {
    ErrorMessage, SpinnerWrapper, Spinner, Strong,
    Legend, FlexGroup, Group, Label, Input, Flex, Button, Image
@@ -32,15 +32,15 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
    return (
       <PopupContainer>
          <FormContainer handleSubmit={handleSubmit} submitHandler={submitAnswerHandler}>
-            <AnswerHeader>
+            <Style.AnswerHeader>
                <Legend>Quick answer</Legend>
                <IoCloseSharp onClick={popupHandler} size='23' cursor='pointer' />
-            </AnswerHeader>
+            </Style.AnswerHeader>
 
-            <AnswerExample>
+            <Style.AnswerExample>
                <Strong fontSize='var(--fs-sm)'>Example:</Strong>
-               How much vitam c is in 2 apples
-            </AnswerExample>
+               How much vitamins c is in 2 apples
+            </Style.AnswerExample>
             <Flex>
                <FlexGroup margin='0 10px 0 0' flex='0 1 70%' height='50px'>
                   <Label>
@@ -65,12 +65,12 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
             <Spinner src={SpinnerSm} alt='spinner' />
          </SpinnerWrapper>}
 
-         {isSuccess && Object.keys(data?.answer || {}).length ? <AnswerResult>
+         {isSuccess && Object.keys(data?.answer || {}).length ? <Style.AnswerResult>
             <Group width='150px' height='150px'>
                <Image src={data?.image} alt='Product' objectFit='contain' />
             </Group>
             {data?.answer}
-         </AnswerResult> : null}
+         </Style.AnswerResult> : null}
 
          {isSuccess && !Object.keys(data?.answer || {}).length ?
             <ErrorNoResult description='Nothing was found' height='23vh' /> : null}

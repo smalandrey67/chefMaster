@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { BiError } from 'react-icons/bi'
 import { BsSuitHeartFill } from 'react-icons/bs'
-import { DetailsWrapper, DetailWrapperImage, DetailsOverImage, DetailsHeartButton } from './Details.styled'
+import * as Style from './Details.styled'
 import { ErrorMessage, SpinnerWrapper, Spinner, FlexGroup, Image } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
@@ -36,7 +36,7 @@ export const Details: FC = () => {
     
     return (
         <SectionContainer motion={motion}>
-            <DetailsWrapper>
+            <Style.DetailsWrapper>
                 {isLoading ?
                     <SpinnerWrapper height='50vh'>
                         <Spinner src={SpinnerBg} alt='spinner' />
@@ -44,20 +44,20 @@ export const Details: FC = () => {
                     :
                     <>
                         <FlexGroup flex='0 1 50%'>
-                            <DetailWrapperImage>
+                            <Style.DetailWrapperImage>
                                 <BackButtonContainer>
-                                    <DetailsHeartButton aria-label='make this recipe the favorite' onClick={makeRecipefavoriteHandler}>
+                                    <Style.DetailsHeartButton aria-label='make this recipe the favorite' onClick={makeRecipefavoriteHandler}>
                                         <BsSuitHeartFill color={colorType} size='30' />
-                                    </DetailsHeartButton>
+                                    </Style.DetailsHeartButton>
                                 </BackButtonContainer>
 
-                                <DetailsOverImage>
+                                <Style.DetailsOverImage>
                                     <Image width='100%' objectFit='cover' src={details?.image} alt={details?.title} />
 
                                     {/* Social component actually means functionality over the image */}
                                     <Social details={details} />
-                                </DetailsOverImage>
-                            </DetailWrapperImage>
+                                </Style.DetailsOverImage>
+                            </Style.DetailWrapperImage>
 
                             <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
                                 <Nutritions id={params.id} />
@@ -87,7 +87,7 @@ export const Details: FC = () => {
                         </FlexGroup>
                     </>
                 }
-            </DetailsWrapper>
+            </Style.DetailsWrapper>
             {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
         </SectionContainer>
     )

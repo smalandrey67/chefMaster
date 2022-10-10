@@ -1,18 +1,18 @@
 import { FC } from 'react'
 
 import { BiError } from 'react-icons/bi'
-import { ErrorWrapper, ErrorMessage } from 'assets/styled/Reused.styled'
+import * as Style from 'assets/styled/Reused.styled'
 
 import { ErrorFallbackProps } from './ErrorFallback.types'
 
 export const ErrorFallback: FC<ErrorFallbackProps> = ({ height }) => {
 
   return (
-    <ErrorWrapper height={height}>
-      <ErrorMessage justifyContent='center'>
+    <Style.ErrorWrapper height={height}>
+      <Style.ErrorMessage justifyContent='center'>
         <BiError />
         something went wrong. Server error
-      </ErrorMessage>
-    </ErrorWrapper>
+      </Style.ErrorMessage>
+    </Style.ErrorWrapper>
   )
 }

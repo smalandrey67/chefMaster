@@ -1,17 +1,17 @@
 import { FC, memo } from 'react'
 
 import { useResetMealPlan } from '../hooks/useResetMealPlan'
-import { ResetMealPlanWrapper, ResetMealPlanButtonEl } from './ResetMealPlanButton.styled'
+import * as Style from './ResetMealPlanButton.styled'
 
 export const ResetMealPlanButton: FC = memo(() => {
    const resetMealPlanHandler = useResetMealPlan()
    
    return ( 
-      <ResetMealPlanWrapper>
-         <ResetMealPlanButtonEl onClick={resetMealPlanHandler}>
+      <Style.ResetMealPlanWrapper>
+         <Style.ResetMealPlanButtonEl onClick={resetMealPlanHandler}>
             Delete Meal Plan
-         </ResetMealPlanButtonEl>
-      </ResetMealPlanWrapper>
+         </Style.ResetMealPlanButtonEl>
+      </Style.ResetMealPlanWrapper>
    )
 })
 

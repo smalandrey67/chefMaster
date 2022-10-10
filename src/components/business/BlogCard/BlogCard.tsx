@@ -1,9 +1,6 @@
 import { FC } from 'react'
 
-import {
-   BlogArticle, BlogWrapper, BlogHeader,
-   BlogHeaderAvatar, BlogFigure, BlogFigcaption
-} from './BlogCard.styled'
+import * as Style from './BlogCard.styled'
 import { Title, Strong, Image, Paragraph } from 'assets/styled/Reused.styled'
 
 import { BlogCardPropsType } from 'types/Blogs'
@@ -12,26 +9,26 @@ import { LazyImage } from 'components/common/LazyImage/LazyImage'
 export const BlogCard: FC<BlogCardPropsType> = ({ title, file, author, description, avatar }) => {
 
    return (
-      <BlogArticle>
-         <BlogWrapper>
-            <BlogHeader>
-               <BlogHeaderAvatar>
+      <Style.BlogArticle>
+         <Style.BlogWrapper>
+            <Style.BlogHeader>
+               <Style.BlogHeaderAvatar>
                   <Image src={avatar} alt={author} objectFit='cover' />
-               </BlogHeaderAvatar>
+               </Style.BlogHeaderAvatar>
                <Title>{title}</Title>
-            </BlogHeader>
+            </Style.BlogHeader>
 
-            <BlogFigure>
+            <Style.BlogFigure>
                <LazyImage image={`${file}`} alt={author} width='100%' height='100%' />
-               <BlogFigcaption>
+               <Style.BlogFigcaption>
                   written by
                   <Strong margin='0 0 0 5px' fontSize='var(--fs-md)' color='var(--color-categories)'>
                      {author}
                   </Strong>
-               </BlogFigcaption>
-            </BlogFigure>
+               </Style.BlogFigcaption>
+            </Style.BlogFigure>
             <Paragraph>{description}</Paragraph>
-         </BlogWrapper>
-      </BlogArticle>
+         </Style.BlogWrapper>
+      </Style.BlogArticle>
    )
 }

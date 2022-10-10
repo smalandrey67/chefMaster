@@ -1,7 +1,7 @@
 type SplideType = Readonly<{
    perPage: number;
-   arrows: false;
-   pagination: false;
+   arrows: boolean;
+   pagination: boolean;
    gap: string;
    start: number;
 }>

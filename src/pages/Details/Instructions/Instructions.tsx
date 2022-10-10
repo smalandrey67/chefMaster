@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { removeTags } from 'utils/helpers/tags.helper'
 import { motion } from 'utils/constants/motion.constants'
 
-import { DetailsInfoDescriptionWrapper } from './Instructions.styled'
+import * as Style from './Instructions.styled'
 import { Paragraph } from 'assets/styled/Reused.styled'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
@@ -17,10 +17,10 @@ export const Instructions: FC<InstructionsProps> = ({ details }) => {
                 <ErrorNoResult description='No instructions here' height='25vh' />
                 : null}
 
-            <DetailsInfoDescriptionWrapper {...motion}>
+            <Style.DetailsInfoDescriptionWrapper {...motion}>
                 <Paragraph margin={details?.summary && '0 0 10px 0'}>{removeTags(details?.summary)}</Paragraph>
                 <Paragraph margin={details?.instructions && '0 0 10px 0'}>{removeTags(details?.instructions)}</Paragraph>
-            </DetailsInfoDescriptionWrapper>
+            </Style.DetailsInfoDescriptionWrapper>
         </>
     )
 }

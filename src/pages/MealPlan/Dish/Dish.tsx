@@ -4,7 +4,7 @@ import { IoIosClose } from 'react-icons/io'
 import { useRedirect } from 'hooks/useRedirect'
 import { useDeleteRecipe } from '../hooks/useDeleteRecipe'
 
-import { DishEl, DishDeleteButton } from './Dish.styled'
+import * as Style from './Dish.styled'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { DishProps } from './Dish.types'
 
@@ -13,7 +13,7 @@ export const Dish: FC<DishProps> = memo(({ subMealId, idDish, image, title }) =>
    const deleteRecipeFromWeekPlanHandler = useDeleteRecipe(subMealId)
    
    return (
-      <DishEl onClick={() => navigateHandler('/details/', idDish)}>
+      <Style.DishEl onClick={() => navigateHandler('/details/', idDish)}>
          <LazyImage
             image={image}
             alt={title}
@@ -21,9 +21,9 @@ export const Dish: FC<DishProps> = memo(({ subMealId, idDish, image, title }) =>
             height='102px'
             style={{ 'objectFit': 'cover', 'borderRadius': 'var(--br-radius)' }}
          />
-         <DishDeleteButton onClick={(e) => deleteRecipeFromWeekPlanHandler(e, idDish)}>
+         <Style.DishDeleteButton onClick={(e) => deleteRecipeFromWeekPlanHandler(e, idDish)}>
             <IoIosClose color='var(--color-white)' size='30' />
-         </DishDeleteButton>
-      </DishEl>
+         </Style.DishDeleteButton>
+      </Style.DishEl>
    )
 })

@@ -1,11 +1,10 @@
 import { FC } from 'react'
 
-import { TemplateNameEl } from './TemplateName.styled'
-
+import * as Style from './TemplateName.styled'
 import { TemplateNameProps } from './TemplateName.types'
 
 export const TemplateName: FC<TemplateNameProps> = () => (
-   <TemplateNameEl>
+   <Style.TemplateNameEl>
       TemplateName Component
-   </TemplateNameEl>
+   </Style.TemplateNameEl>
 )

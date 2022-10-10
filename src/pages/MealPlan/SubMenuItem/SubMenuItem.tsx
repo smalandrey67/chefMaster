@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { useAppSelector } from 'hooks/useRedux'
 import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
-import { SubMenuItemEl, SubMenuLink } from './SubMenuItem.styled'
+import * as Style from './SubMenuItem.styled'
 import { SubMenuItemProps } from './SubMenuItem.types'
 
 export const SubMenuItem: FC<SubMenuItemProps> = memo(({ subMealId, path, title, Icon }) => {
@@ -12,11 +12,11 @@ export const SubMenuItem: FC<SubMenuItemProps> = memo(({ subMealId, path, title,
    const location = useLocation()
 
    return (
-      <SubMenuItemEl>
-         <SubMenuLink to={path} state={{ prevPath: location.pathname, idWeek: activeDay.idWeek, subMealId }}>
+      <Style.SubMenuItemEl>
+         <Style.SubMenuLink to={path} state={{ prevPath: location.pathname, idWeek: activeDay.idWeek, subMealId }}>
             <Icon />
             {title}
-         </SubMenuLink>
-      </SubMenuItemEl>
+         </Style.SubMenuLink>
+      </Style.SubMenuItemEl>
    )
 })

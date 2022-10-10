@@ -9,10 +9,7 @@ import { selectActiveMealDay, selectMealPlanUploadingError, selectMealPlanUpload
 import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 
 import { Title, List, SpinnerWrapper, Spinner, ErrorMessage } from 'assets/styled/Reused.styled'
-import {
-   MealPlanItem, MealPlanItemTitle, MealPlanSubMealTitle, MealPlanItemAdd,
-   MealPlanSubMealAdd, MealPlanDishes, MealPlanSubMenu, MealPLanSubMenuItemDelete
-} from './MealPlan.styled'
+import * as Style from './MealPlan.styled'
 
 import { Weeks } from './Weeks/Weeks'
 import { SubMenuItem } from './SubMenuItem/SubMenuItem'
@@ -33,7 +30,6 @@ import { stringCut } from 'utils/helpers/string.helper'
 import { getMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
-
 
 export const MealPlan: FC = () => {
    const dispatch = useAppDispatch()
@@ -60,7 +56,6 @@ export const MealPlan: FC = () => {
       dispatch(getMealPlanThunk())
    }, [dispatch])
 
-
    if (!Object.values(user || {}).length) {
       return <NotAuthorisated />
    }
@@ -82,21 +77,21 @@ export const MealPlan: FC = () => {
          <ResetMealPlanButton />
          <Weeks setActiveMealDayHandler={setActiveMealDayHandler} />
 
-         <MealPlanItemTitle>
+         <Style.MealPlanItemTitle>
             {Object.values(activeDay || {}).length ? activeDay.weekDay : <div></div>}
-            <MealPlanItemAdd onClick={openSubMealFieldHandler}>+</MealPlanItemAdd>
-         </MealPlanItemTitle>
+            <Style.MealPlanItemAdd onClick={openSubMealFieldHandler}>+</Style.MealPlanItemAdd>
+         </Style.MealPlanItemTitle>
 
          <SubMealField isSubMealMenu={isSubMealMenu} />
          <List>
             {Object.values(activeDay || {}).length ? activeDay.subMeals.map((subMeal, index) =>
-               <MealPlanItem key={subMeal.subMealId} {...motion}>
-                  <MealPlanSubMealTitle>
+               <Style.MealPlanItem key={subMeal.subMealId} {...motion}>
+                  <Style.MealPlanSubMealTitle>
                      {stringCut(subMeal.subMealTitle, 40)}
-                     <MealPlanSubMealAdd onClick={() => openMenuAddingRecipeHandler(index)}>
+                     <Style.MealPlanSubMealAdd onClick={() => openMenuAddingRecipeHandler(index)}>
                         <BiDotsHorizontalRounded size='25' />
-                     </MealPlanSubMealAdd>
-                     <MealPlanSubMenu
+                     </Style.MealPlanSubMealAdd>
+                     <Style.MealPlanSubMenu
                         animate={{ scale: menuAddingRecipeIndex === index ? 1 : 0 }}
                         transition={{ type: 'tween', duration: 0.2 }}
                         style={{
@@ -111,16 +106,16 @@ export const MealPlan: FC = () => {
                         <SubMenuItem
                            subMealId={subMeal.subMealId} path='/searched' title='Search New Recipe' Icon={BsSearch}
                         />
-                        <MealPLanSubMenuItemDelete onClick={() => deleteSubMealMenuHandler(subMeal.subMealId)}>
+                        <Style.MealPLanSubMenuItemDelete onClick={() => deleteSubMealMenuHandler(subMeal.subMealId)}>
                            Delete
-                        </MealPLanSubMenuItemDelete>
-                     </MealPlanSubMenu>
-                  </MealPlanSubMealTitle>
+                        </Style.MealPLanSubMenuItemDelete>
+                     </Style.MealPlanSubMenu>
+                  </Style.MealPlanSubMealTitle>
 
-                  <MealPlanDishes>
+                  <Style.MealPlanDishes>
                      {subMeal.subMealDishes.map(dish => <Dish {...dish} key={dish.idDish} subMealId={subMeal.subMealId} />)}
-                  </MealPlanDishes>
-               </MealPlanItem>
+                  </Style.MealPlanDishes>
+               </Style.MealPlanItem>
             ) : <ErrorNoResult height='30vh' description='Add your first sub meal' />}
             <ToastContainer role='alert' />
             {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}

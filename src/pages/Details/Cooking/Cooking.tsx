@@ -5,7 +5,7 @@ import { motion } from 'utils/constants/motion.constants'
 import { stringCut } from 'utils/helpers/string.helper'
 
 import { List } from 'assets/styled/Reused.styled'
-import { DetailsCookingSubtitle } from './Cooking.styled'
+import * as Style from './Cooking.styled'
 
 import { IoFootstepsSharp } from 'react-icons/io5'
 import { CookingProps } from './Cooking.types'
@@ -20,10 +20,10 @@ export const Cooking: FC<CookingProps> = ({ details }) => {
             {details?.analyzedInstructions.map(({ name, steps }) => (
                 <Fragment key={nanoid()}>
                     {name.length ?
-                        <DetailsCookingSubtitle>
+                        <Style.DetailsCookingSubtitle>
                             <IoFootstepsSharp />
                             {stringCut(name, 40)}
-                        </DetailsCookingSubtitle> : null}
+                        </Style.DetailsCookingSubtitle> : null}
 
                     {steps.map(step => <CookingStep key={step.number} {...step} />)}
                 </Fragment>

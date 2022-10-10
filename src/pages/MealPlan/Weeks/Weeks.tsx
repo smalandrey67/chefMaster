@@ -8,7 +8,7 @@ import { splideOptions } from 'utils/constants/splide.constants'
 import { Splide } from '@splidejs/react-splide'
 
 import { Group } from 'assets/styled/Reused.styled'
-import { WeekButton } from './Weeks.styled'
+import * as Style from './Weeks.styled'
 import { WeeksProps } from './Weeks.types'
 import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
 
@@ -21,12 +21,12 @@ export const Weeks: FC<WeeksProps> = memo(({ setActiveMealDayHandler }) => {
          {weekPlan.map(dayPlan =>
             <SplideSlide key={dayPlan.idWeek} style={{ padding: '4px' }}>
                <Group height='35px' width='100%'>
-                  <WeekButton
+                  <Style.WeekButton
                      idWeek={dayPlan.idWeek}
                      activeDayIdWeek={activeDay.idWeek}
                      onClick={() => setActiveMealDayHandler(dayPlan.idWeek)}
                   >{dayPlan.weekDay.slice(0, 3)}
-                  </WeekButton>
+                  </Style.WeekButton>
                </Group>
             </SplideSlide>
          )}

@@ -1,14 +1,14 @@
 import { FC } from 'react'
 
 import { Container, Group, Image, Title, LinkEl } from 'assets/styled/Reused.styled'
-import { NotFoundWrapper } from './NotFound.styled'
+import * as Style from './NotFound.styled'
 import Error from 'assets/images/icons/error.svg'
 
 export const NotFound: FC = () => {
 
     return (
         <Container>
-            <NotFoundWrapper>
+            <Style.NotFoundWrapper>
                 <Group width='140px' height='140px'>
                     <Image src={Error} alt='error' />
                 </Group>
@@ -19,7 +19,7 @@ export const NotFound: FC = () => {
                     textDecoration='underline'
                     to='/'
                 >Click: Go back to main page</LinkEl>
-            </NotFoundWrapper>
+            </Style.NotFoundWrapper>
         </Container>
     )
 }

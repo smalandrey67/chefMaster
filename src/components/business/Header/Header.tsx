@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { ImSpoonKnife } from 'react-icons/im'
 
 import { LinkEl } from 'assets/styled/Reused.styled'
-import { HeaderEl, HeaderWrapper, HeaderLogoWrapper } from './Header.styled'
+import * as Style from './Header.styled'
 import { Container } from 'assets/styled/Reused.styled'
 
 import { Search } from '../Search/Search'
@@ -15,10 +15,10 @@ export const Header: FC = () => {
     useClosePopups()
 
     return (
-        <HeaderEl>
+        <Style.HeaderEl>
             <Container>
-                <HeaderWrapper>
-                    <HeaderLogoWrapper>
+                <Style.HeaderWrapper>
+                    <Style.HeaderLogoWrapper>
                         <ImSpoonKnife size='25' />
                         <LinkEl
                             margin='0 0 0 5px'
@@ -26,13 +26,13 @@ export const Header: FC = () => {
                             fontWeight='var(--fw-bold)'
                             to='/'
                         >ChefMaster</LinkEl>
-                    </HeaderLogoWrapper>
+                    </Style.HeaderLogoWrapper>
 
                     <HamburgerButton />
                     <HeaderMenu />
-                </HeaderWrapper>
+                </Style.HeaderWrapper>
                 <Search />
             </Container>
-        </HeaderEl>
+        </Style.HeaderEl>
     )
 }

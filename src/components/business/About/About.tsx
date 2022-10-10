@@ -4,7 +4,7 @@ import { BsChatRightText } from 'react-icons/bs'
 
 import Background from 'assets/images/main/cooking-bg.webp'
 import { Image } from 'assets/styled/Reused.styled'
-import { AboutWrapper, AboutWrapperImage, AboutDescriptionWrapper, AboutDescriptionParagraph, AboutChatWrapper } from './About.styled'
+import * as Style from './About.styled'
 import { usePopup } from 'hooks/usePopup'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
@@ -15,31 +15,31 @@ export const About: FC = () => {
         
    return (
       <SectionContainer>
-         <AboutWrapper>
-            <AboutWrapperImage>
+         <Style.AboutWrapper>
+            <Style.AboutWrapperImage>
                <Image src={Background} alt='cooking-background' />
-            </AboutWrapperImage>
-            <AboutDescriptionWrapper>
-               <AboutDescriptionParagraph>
+            </Style.AboutWrapperImage>
+            <Style.AboutDescriptionWrapper>
+               <Style.AboutDescriptionParagraph>
                   The key to a healthy diet is to eat the right amount of calories
                   for how active you are so you balance the energy you consume with the energy you use.
-               </AboutDescriptionParagraph>
+               </Style.AboutDescriptionParagraph>
 
-               <AboutDescriptionParagraph>
+               <Style.AboutDescriptionParagraph>
                   If you eat or drink more than your body needs,
                   you'll put on weight because the energy you do not use is stored as fat.
                   If you eat and drink too little, you'll lose weight.
-               </AboutDescriptionParagraph>
-            </AboutDescriptionWrapper>
+               </Style.AboutDescriptionParagraph>
+            </Style.AboutDescriptionWrapper>
 
-            <AboutChatWrapper aria-label='ask question' onClick={popupHandler}>
+            <Style.AboutChatWrapper aria-label='ask question' onClick={popupHandler}>
                <BsChatRightText size='25' cursor='pointer' color='var(--color-white)' />
-            </AboutChatWrapper>
+            </Style.AboutChatWrapper>
          
             {popupIsActive && ReactDOM.createPortal(
                <Answer popupHandler={popupHandler} />, document.getElementById('popup')!)
             }
-         </AboutWrapper>
+         </Style.AboutWrapper>
       </SectionContainer>
    )
 }

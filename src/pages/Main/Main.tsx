@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { MainEl } from './Main.styled'
+import * as Style from './Main.styled'
 
 import { Recipes } from 'components/business/Recipes/Recipes'
 import { About } from 'components/business/About/About'
@@ -8,9 +8,9 @@ import { About } from 'components/business/About/About'
 export const Main: FC = () => {
   
     return (
-        <MainEl>
+        <Style.MainEl>
             <Recipes />
             <About />
-        </MainEl>
+        </Style.MainEl>
     )
 }

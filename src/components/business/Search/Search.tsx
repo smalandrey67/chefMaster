@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { ErrorMessage, FlexGroup, Group, Label, Input } from 'assets/styled/Reused.styled'
-import { SearchWrapper, SearchFilter } from './Search.styled'
+import * as Style from './Search.styled'
 import { Filter } from '../Filter/Filter'
 
 import { FiSearch } from 'react-icons/fi'
@@ -22,7 +22,7 @@ export const Search: FC = memo(() => {
     const openFilterMenuHandler = useFilterMenu()
 
     return (
-        <SearchWrapper>
+        <Style.SearchWrapper>
             <FlexGroup margin='0 10px 0 0' flex='0 1 75%'>
                 <FormContainer handleSubmit={handleSubmit} submitHandler={submitSearchHandler}>
                     <Group height='50px'>
@@ -40,11 +40,11 @@ export const Search: FC = memo(() => {
             </FlexGroup>
 
             <FlexGroup flex='0 1 25%' onClick={openFilterMenuHandler}>
-                <SearchFilter aria-label='filter' name='filter-options'>
+                <Style.SearchFilter aria-label='filter' name='filter-options'>
                     <GoSettings size='23' />
-                </SearchFilter>
+                </Style.SearchFilter>
             </FlexGroup>
             <Filter />
-        </SearchWrapper>
+        </Style.SearchWrapper>
     )
 })

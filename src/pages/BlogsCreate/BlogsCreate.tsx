@@ -14,12 +14,7 @@ import {
    ErrorMessage, Legend, Group, Label,
    Input, Button
 } from 'assets/styled/Reused.styled'
-import {
-   BlogsCreateBody, BlogsCreateLabelFile,
-   BlogsCreateTextarea, BlogsCreatePreview,
-   BlogsCreatePreviewImage,
-   BlogsCreateFileWrapper
-} from './BlogsCreate.styled'
+import * as Style from './BlogsCreate.styled'
 
 import { SubmitBlogType } from 'types/Blogs'
 import { BiError } from 'react-icons/bi'
@@ -35,7 +30,7 @@ export const BlogsCreate: FC = () => {
 
    return (
       <SectionContainer>
-         <BlogsCreateBody>
+         <Style.BlogsCreateBody>
             <FormContainer handleSubmit={handleSubmit} submitHandler={submitBlogHandler}>
                <Legend>Create your own post</Legend>
                <Group margin='10px 0 20px 0' width='100%' height='50px'>
@@ -50,7 +45,7 @@ export const BlogsCreate: FC = () => {
                </Group>
                <Group margin='0 0 10px 0' width='100%'>
                   <Label>
-                     <BlogsCreateTextarea
+                     <Style.BlogsCreateTextarea
                         {...register('description', validation.description)} placeholder='Description'
                      />
                   </Label>
@@ -60,8 +55,8 @@ export const BlogsCreate: FC = () => {
                </Group>
 
                <Group margin='0 0 20px 0' width='100%' height='50px'>
-                  <BlogsCreateFileWrapper>
-                     <BlogsCreateLabelFile as='label'>
+                  <Style.BlogsCreateFileWrapper>
+                     <Style.BlogsCreateLabelFile as='label'>
                         <Input
                            {...register('file', validation.file)}
                            type='file'
@@ -70,25 +65,25 @@ export const BlogsCreate: FC = () => {
                            hidden
                         />
                         Upload image
-                     </BlogsCreateLabelFile>
+                     </Style.BlogsCreateLabelFile>
                      <Strong fontSize='var(--fs-sm)'>{stringCut(fileName, 23)}</Strong>
-                  </BlogsCreateFileWrapper>
+                  </Style.BlogsCreateFileWrapper>
                   {errors?.file && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
                      {errors?.file?.message}
                   </ErrorMessage>}
                </Group>
 
-               <BlogsCreatePreview>
+               <Style.BlogsCreatePreview>
                   {isLoading ?
                      <SpinnerWrapper height='15vh'>
                         <Spinner src={SpinnerSm} alt='spinner' />
                      </SpinnerWrapper>
                      :
-                     <BlogsCreatePreviewImage userPhoto={userPhoto} src={userPhoto} alt='preview' />
+                     <Style.BlogsCreatePreviewImage userPhoto={userPhoto} src={userPhoto} alt='preview' />
                   }
                   {/* Error while image uploading */}
                   {errorUploadingImage && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-               </BlogsCreatePreview>
+               </Style.BlogsCreatePreview>
 
                <Group height='50px'>
                   <Button type='submit' name='submit'>Create</Button>
@@ -96,7 +91,7 @@ export const BlogsCreate: FC = () => {
                {/* Error while post uploading*/}
                {errorBlog && <ErrorMessage><BiError />Server Error</ErrorMessage>}
             </FormContainer>
-         </BlogsCreateBody>
+         </Style.BlogsCreateBody>
       </SectionContainer>
    )
 }

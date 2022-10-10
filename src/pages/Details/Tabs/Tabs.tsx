@@ -1,10 +1,10 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
 
 import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { changeTabName } from 'store/slices/tabsSlice/tabsSlice'
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 
-import { DetailsInfoButton, DetailsInfoWrapper } from './Tabs.styled'
+import * as Style from './Tabs.styled'
 
 const INSTRUCTIONS = 'instructions'
 const INGREDIENTS = 'ingredients'
@@ -19,21 +19,21 @@ export const Tabs: FC = () => {
     }
 
     return (
-        <DetailsInfoWrapper>
-            <DetailsInfoButton
+        <Style.DetailsInfoWrapper>
+            <Style.DetailsInfoButton
                 className={`${tabName === INSTRUCTIONS && 'active'}`}
                 onClick={() => tabHandler(INSTRUCTIONS)}
-            >Instructions</DetailsInfoButton>
+            >Instructions</Style.DetailsInfoButton>
 
-            <DetailsInfoButton
+            <Style.DetailsInfoButton
                 className={`${tabName === INGREDIENTS && 'active'}`}
                 onClick={() => tabHandler(INGREDIENTS)}
-            >Ingredients</DetailsInfoButton>
+            >Ingredients</Style.DetailsInfoButton>
 
-            <DetailsInfoButton
+            <Style.DetailsInfoButton
                 className={`${tabName === COOKING && 'active'}`}
                 onClick={() => tabHandler(COOKING)}
-            >Cooking</DetailsInfoButton>
-        </DetailsInfoWrapper>
+            >Cooking</Style.DetailsInfoButton>
+        </Style.DetailsInfoWrapper>
     )
 }

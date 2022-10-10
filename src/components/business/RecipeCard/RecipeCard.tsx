@@ -5,7 +5,7 @@ import { SplideSlide } from '@splidejs/react-splide'
 import { useRedirect } from 'hooks/useRedirect'
 
 import { Article, RecipeImageWrapper } from 'assets/styled/Reused.styled'
-import { RecipeScore, RecipeGradient } from './RecipeCard.styled'
+import * as Style from './RecipeCard.styled'
 
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 
@@ -17,8 +17,8 @@ export const RecipeCard: FC<RandomRecipeResultType> = ({ id, title, image, healt
             <Article onClick={() => navigateHandler('/details/', id)}>
                 <RecipeImageWrapper>
                     <LazyImage image={image} alt={title} width='100%' height='100%' />
-                    <RecipeScore healthScore={healthScore}>{healthScore}</RecipeScore>
-                    <RecipeGradient />
+                    <Style.RecipeScore healthScore={healthScore}>{healthScore}</Style.RecipeScore>
+                    <Style.RecipeGradient />
                 </RecipeImageWrapper>
             </Article>
         </SplideSlide>

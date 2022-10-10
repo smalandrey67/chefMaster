@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Popup, PopupBody, PopupContent } from './PopupContainer.styled'
+import * as Style from './PopupContainer.styled'
 import { motion } from 'utils/constants/motion.constants'
 
 import { PopupContainerProps } from './PopupContainer.types'
@@ -8,12 +8,12 @@ import { PopupContainerProps } from './PopupContainer.types'
 export const PopupContainer: FC<PopupContainerProps> = ({ children }) => {
 
    return (
-      <Popup role='alert' {...motion}>
-         <PopupBody>
-            <PopupContent>
+      <Style.Popup role='alert' {...motion}>
+         <Style.PopupBody>
+            <Style.PopupContent>
                {children}
-            </PopupContent>
-         </PopupBody>
-      </Popup>
+            </Style.PopupContent>
+         </Style.PopupBody>
+      </Style.Popup>
    )
 }

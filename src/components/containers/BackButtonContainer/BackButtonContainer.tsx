@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BackButtonContainerWrapper, ButtonBack } from './BackButtonContainer.styled'
+import * as Style from './BackButtonContainer.styled'
 
 import { useBack } from 'hooks/useBack'
 import { IoMdArrowRoundBack } from 'react-icons/io'
@@ -10,12 +10,12 @@ export const BackButtonContainer: FC<BackButtonContainerProps> = ({ children }) 
    const pageBackHandler = useBack()
 
    return (
-      <BackButtonContainerWrapper>
-         <ButtonBack onClick={pageBackHandler}>
+      <Style.BackButtonContainerWrapper>
+         <Style.ButtonBack onClick={pageBackHandler}>
             <IoMdArrowRoundBack size='16' />
             back
-         </ButtonBack>
+         </Style.ButtonBack>
          {children}
-      </BackButtonContainerWrapper>
+      </Style.BackButtonContainerWrapper>
    )
 }

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
 import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
-import { NutritionWrapper, NutritionItem } from './Nutritions.styled'
+import * as Style from './Nutritions.styled'
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 
 import { GiPaperArrow, GiRawEgg } from 'react-icons/gi'
@@ -15,30 +15,30 @@ export const Nutritions: FC<NutritionProps> = memo(({ id }) => {
     const { data: nutrition, error, isLoading } = useGetNutritionsQuery(id)
 
     return (
-        <NutritionWrapper>
+        <Style.NutritionWrapper>
             {isLoading ?
                 <SpinnerWrapper height='15vh'>
                     <Spinner src={SpinnerSm} alt='spinner' />
                 </SpinnerWrapper>
                 :
                 <>
-                    <NutritionItem>
+                    <Style.NutritionItem>
                         <GiPaperArrow size='20' />
                         {nutrition?.carbs} carbs
-                    </NutritionItem>
+                    </Style.NutritionItem>
 
-                    <NutritionItem>
+                    <Style.NutritionItem>
                         <GiRawEgg size='20' />
                         {nutrition?.protein} proteins
-                    </NutritionItem>
+                    </Style.NutritionItem>
 
-                    <NutritionItem>
+                    <Style.NutritionItem>
                         <ImFire size='20' />
                         {nutrition?.calories} Kcal
-                    </NutritionItem>
+                    </Style.NutritionItem>
                 </>
             }
             {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-        </NutritionWrapper>
+        </Style.NutritionWrapper>
     )
 })

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BlogsAdd, BlogsWrapper } from './Blogs.styled'
+import * as Style from './Blogs.styled'
 import { SpinnerWrapper, Spinner, ErrorMessage } from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
@@ -20,10 +20,10 @@ export const Blogs: FC = () => {
    return (
       <SectionContainer>
          <BackButtonContainer>
-            <BlogsAdd to='/blogs/create'>add blog <HiPlus /></BlogsAdd>
+            <Style.BlogsAdd to='/blogs/create'>add blog <HiPlus /></Style.BlogsAdd>
          </BackButtonContainer>
 
-         <BlogsWrapper>
+         <Style.BlogsWrapper>
             {isLoading ?
                <SpinnerWrapper height='40vh'>
                   <Spinner src={SpinnerBg} alt='spinner' />
@@ -35,7 +35,7 @@ export const Blogs: FC = () => {
             {!blogs?.length && !error && !isLoading ? <ErrorNoResult description='No posts yet' height='50vh' /> : null}
 
             {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-         </BlogsWrapper>
+         </Style.BlogsWrapper>
       </SectionContainer>
    )
 }

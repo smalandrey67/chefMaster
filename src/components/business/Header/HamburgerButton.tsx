@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 import { selectIsHamburgerMenu } from 'store/slices/filterSlice/filterSlice.selectors'
 import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice/filterSlice'
 
-import { Hamburger, HamburgerLine } from './Header.styled'
+import * as Style from './Header.styled'
 
 export const HamburgerButton: FC = () => {
    const dispatch = useAppDispatch()
@@ -15,8 +15,8 @@ export const HamburgerButton: FC = () => {
    }
 
    return (
-      <Hamburger onClick={hamburgerHandler} isHamburgerMenu={isHamburgerMenu}>
-         <HamburgerLine isHamburgerMenu={isHamburgerMenu} />
-      </Hamburger>
+      <Style.Hamburger onClick={hamburgerHandler} isHamburgerMenu={isHamburgerMenu}>
+         <Style.HamburgerLine isHamburgerMenu={isHamburgerMenu} />
+      </Style.Hamburger>
    )
 }

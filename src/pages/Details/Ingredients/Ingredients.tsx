@@ -1,16 +1,12 @@
 import { FC } from 'react'
 
-import { stringCut } from 'utils/helpers/string.helper'
 import { motion } from 'utils/constants/motion.constants'
 
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { List } from 'assets/styled/Reused.styled'
-import { 
-    DetailsIngredientsCount,  DetailsIngredientsItem, 
-    DetailsIngredientsTitle, DetailsIngredientsUnit, DetailsIngredientsWeight
-} from './Ingredients.styled'
+import * as Style from './Ingredients.styled'
 
 import { IngredientsProps } from './Ingredients.types'
 
@@ -18,13 +14,13 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
     
     return (
         <>
-            <DetailsIngredientsCount>
+            <Style.DetailsIngredientsCount>
                 {details?.extendedIngredients.length} items
-            </DetailsIngredientsCount>
+            </Style.DetailsIngredientsCount>
 
             <List {...motion} >
                 {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }) =>
-                    <DetailsIngredientsItem key={id}>
+                    <Style.DetailsIngredientsItem key={id}>
                         <LazyImage
                             image={`${process.env.REACT_APP_IMAGE_URL}${image}`}
                             alt={nameClean}
@@ -32,12 +28,12 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
                             height='100%'
                             style={{ 'objectFit': 'contain' }}
                         />
-                        <DetailsIngredientsTitle>{nameClean}</DetailsIngredientsTitle>
-                        <DetailsIngredientsUnit>
-                            <DetailsIngredientsWeight>{amount}</DetailsIngredientsWeight>
+                        <Style.DetailsIngredientsTitle>{nameClean}</Style.DetailsIngredientsTitle>
+                        <Style.DetailsIngredientsUnit>
+                            <Style.DetailsIngredientsWeight>{amount}</Style.DetailsIngredientsWeight>
                             {unit}
-                        </DetailsIngredientsUnit>
-                    </DetailsIngredientsItem>
+                        </Style.DetailsIngredientsUnit>
+                    </Style.DetailsIngredientsItem>
                 )}
             </List>
 

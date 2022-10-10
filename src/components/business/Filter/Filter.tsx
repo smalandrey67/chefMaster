@@ -1,6 +1,6 @@
 import { FC, memo, Fragment } from 'react'
 
-import { FilterEl, FilterBody, FilterWrapper, FilterOption, FilterShowResult } from './Filter.styled'
+import * as Style from './Filter.styled'
 import { Strong } from 'assets/styled/Reused.styled'
 
 import { selectFilterCategories, selectIsFilterMenuOpen } from 'store/slices/filterSlice/filterSlice.selectors'
@@ -20,32 +20,32 @@ export const Filter: FC = memo(() => {
    const animateVisibilityValue = isFilterMenuOpen ? 'visible' : 'hidden'
 
    return (
-      <FilterEl
+      <Style.FilterEl
          initial={{ opacity: 0, visibility: 'hidden' }}
          animate={{ opacity: animateOpacityValue, visibility: animateVisibilityValue }}
       >
-         <FilterBody>
+         <Style.FilterBody>
             {filterCategories.map(({ id, names, type }) =>
                <Fragment key={id}>
                   <Strong fontSize='var(--fs-sm)'>{names.text}</Strong>
-                  <FilterWrapper>
+                  <Style.FilterWrapper>
                      {type.map(({ typeId, active, name }) =>
-                        <FilterOption
+                        <Style.FilterOption
                            style={{
                               color: active ? 'var(--color-white)' : 'var(--color-black)',
                               backgroundColor: active ? 'var(--color-categories)' : 'var(--color-white)'
                            }}
                            key={typeId}
                            onClick={() => optionHandler(typeId, names.query)}
-                        >{name}</FilterOption>
+                        >{name}</Style.FilterOption>
                      )}
-                  </FilterWrapper>
+                  </Style.FilterWrapper>
                </Fragment>
             )}
-            <FilterShowResult disabled={!isDisabledShowResultButton} onClick={showResultHandler}>
+            <Style.FilterShowResult disabled={!isDisabledShowResultButton} onClick={showResultHandler}>
                Show Result
-            </FilterShowResult>
-         </FilterBody>
-      </FilterEl>
+            </Style.FilterShowResult>
+         </Style.FilterBody>
+      </Style.FilterEl>
    )
 })

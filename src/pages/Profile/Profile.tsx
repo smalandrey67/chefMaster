@@ -6,7 +6,7 @@ import {
    ErrorMessage, LinkEl, Strong, Title, Spinner,
    Label, Input, Image, Flex, Group, Button
 } from 'assets/styled/Reused.styled'
-import { ProfileContent, ProfileImageWrapper, ProfileBackgroundOverImage, ProfileUploadLabel } from './Profile.styled'
+import * as Style from './Profile.styled'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
@@ -39,24 +39,24 @@ export const Profile: FC = () => {
    return (
       <SectionContainer>
          <BackButtonContainer>
-            <Title>Profile</Title>
+            <Title>Profile test</Title>
          </BackButtonContainer>
-         <ProfileContent>
+         <Style.ProfileContent>
 
-            <ProfileImageWrapper>
+            <Style.ProfileImageWrapper>
                <Image
                   objectFit='cover'
                   src={currentProfilePhoto ?? config.noUserPhoto}
                   alt='profile photo'
                />
-               <ProfileUploadLabel>
+               <Style.ProfileUploadLabel>
                   <Input hidden onChange={changeFileHandler} type='file' name='file' />
-                  <ProfileBackgroundOverImage>
+                  <Style.ProfileBackgroundOverImage>
                      <HiPlus color='var(--color-white)' size={30}/>
-                  </ProfileBackgroundOverImage>
-               </ProfileUploadLabel>
+                  </Style.ProfileBackgroundOverImage>
+               </Style.ProfileUploadLabel>
 
-            </ProfileImageWrapper>
+            </Style.ProfileImageWrapper>
             {isLoading ? <Spinner src={SpinnerSm} alt='spinner' /> : null}
 
             <Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
@@ -96,7 +96,7 @@ export const Profile: FC = () => {
                </>
             </ErrorMessage>
             <ToastContainer role='alert'/>
-         </ProfileContent>
+         </Style.ProfileContent>
       </SectionContainer>
    )
 }
