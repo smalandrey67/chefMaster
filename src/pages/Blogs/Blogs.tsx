@@ -15,27 +15,34 @@ import { HiPlus } from 'react-icons/hi'
 import { useGetBlogsQuery } from 'services/BlogsService'
 
 export const Blogs: FC = () => {
-   const { data: blogs, error, isLoading } = useGetBlogsQuery()
+  const { data: blogs, error, isLoading } = useGetBlogsQuery()
 
-   return (
-      <SectionContainer>
-         <BackButtonContainer>
-            <Style.BlogsAdd to='/blogs/create'>add blog <HiPlus /></Style.BlogsAdd>
-         </BackButtonContainer>
+  return (
+    <SectionContainer>
+      <BackButtonContainer>
+        <Style.BlogsAdd to='/blogs/create'>
+          add blog <HiPlus />
+        </Style.BlogsAdd>
+      </BackButtonContainer>
 
-         <Style.BlogsWrapper>
-            {isLoading ?
-               <SpinnerWrapper height='40vh'>
-                  <Spinner src={SpinnerBg} alt='spinner' />
-               </SpinnerWrapper>
-               :
-               blogs?.map(({ id, ...blog }) => <BlogCard key={id} {...blog} />)
-            }
+      <Style.BlogsWrapper>
+        {isLoading ? (
+          <SpinnerWrapper height='40vh'>
+            <Spinner src={SpinnerBg} alt='spinner' />
+          </SpinnerWrapper>
+        ) : (
+          blogs?.map(({ id, ...blog }) => <BlogCard key={id} {...blog} />)
+        )}
 
-            {!blogs?.length && !error && !isLoading ? <ErrorNoResult description='No posts yet' height='50vh' /> : null}
+        {!blogs?.length && !error && !isLoading ? <ErrorNoResult description='No posts yet' height='50vh' /> : null}
 
-            {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-         </Style.BlogsWrapper>
-      </SectionContainer>
-   )
+        {error && (
+          <ErrorMessage>
+            <BiError />
+            Server Error
+          </ErrorMessage>
+        )}
+      </Style.BlogsWrapper>
+    </SectionContainer>
+  )
 }

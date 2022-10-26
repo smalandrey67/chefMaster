@@ -1,7 +1,3 @@
+import { UseDeleteSubMealMenuReturnsType } from 'types/Hooks'
 
-import { UseDeleteSubMealMenuReturnsType } from 'types/Hooks';
-
-export type UseDeleteSubMealMenuType = (
-   setActiveMealDay: (idWeek: string) => void
-) => UseDeleteSubMealMenuReturnsType
-
+export type UseDeleteSubMealMenuType = (setActiveMealDay: (idWeek: string) => void) => UseDeleteSubMealMenuReturnsType

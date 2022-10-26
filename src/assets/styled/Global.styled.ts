@@ -111,4 +111,3 @@ export const Global = createGlobalStyle`
         padding: 0;
     }
 `
-

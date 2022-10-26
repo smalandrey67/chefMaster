@@ -14,44 +14,57 @@ import { SubMealFieldProps, SubmitSubMealType } from './SubMealField.types'
 import { updateMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 
 export const SubMealField: FC<SubMealFieldProps> = memo(({ isSubMealMenu }) => {
-   const { register, formState: { errors }, handleSubmit, reset, setFocus } = useForm<SubmitSubMealType>({ mode: 'onChange' })
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+    setFocus
+  } = useForm<SubmitSubMealType>({ mode: 'onChange' })
 
-   const activeDay = useAppSelector(selectActiveMealDay)
-   const dispatch = useAppDispatch()
-   const setActiveMealDayHandler = useSetActiveMealDay()
+  const activeDay = useAppSelector(selectActiveMealDay)
+  const dispatch = useAppDispatch()
+  const setActiveMealDayHandler = useSetActiveMealDay()
 
-   const submitSubMealHandler: SubmitHandler<SubmitSubMealType> = (data): void => {
-      const subMealMenuTitle = data.subMealName.trim().toLocaleLowerCase()
+  const submitSubMealHandler: SubmitHandler<SubmitSubMealType> = (data): void => {
+    const subMealMenuTitle = data.subMealName.trim().toLocaleLowerCase()
 
-      dispatch(addSubMealMenu({ subMealMenuTitle, idWeek: activeDay.idWeek }))
-      setActiveMealDayHandler(activeDay.idWeek)
-      dispatch(updateMealPlanThunk())
+    dispatch(addSubMealMenu({ subMealMenuTitle, idWeek: activeDay.idWeek }))
+    setActiveMealDayHandler(activeDay.idWeek)
+    dispatch(updateMealPlanThunk())
 
-      reset()
-   }
+    reset()
+  }
 
-   useEffect(() => {
-      setFocus('subMealName')
-   }, [isSubMealMenu, setFocus])
+  useEffect(() => {
+    setFocus('subMealName')
+  }, [isSubMealMenu, setFocus])
 
-   const animateHeightValue = isSubMealMenu ? '35px' : 0
-   const animateOpacityValue = isSubMealMenu ? 1 : 0
-   const animateMarginValue = isSubMealMenu ? '0 0 10px 0' : 0
+  const animateHeightValue = isSubMealMenu ? '35px' : 0
+  const animateOpacityValue = isSubMealMenu ? 1 : 0
+  const animateMarginValue = isSubMealMenu ? '0 0 10px 0' : 0
 
-   return (
-      <FormContainer handleSubmit={handleSubmit} submitHandler={submitSubMealHandler}>
-         <Group 
-            maxwidth='500px' 
-            animate={{ height: animateHeightValue, opacity: animateOpacityValue, margin: animateMarginValue }}
-            transition={{ type: 'tween', duration: 0.2 }}
-         >
-            <Label>
-               <Input 
-                  {...register('subMealName', validation.subMeal)} disabled={!isSubMealMenu} type='text' enterKeyHint='done'
-               />
-            </Label>
-            {errors?.subMealName && <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>{errors?.subMealName?.message}</ErrorMessage>}
-         </Group>
-      </FormContainer>
-   )
+  return (
+    <FormContainer handleSubmit={handleSubmit} submitHandler={submitSubMealHandler}>
+      <Group
+        maxwidth='500px'
+        animate={{ height: animateHeightValue, opacity: animateOpacityValue, margin: animateMarginValue }}
+        transition={{ type: 'tween', duration: 0.2 }}
+      >
+        <Label>
+          <Input
+            {...register('subMealName', validation.subMeal)}
+            disabled={!isSubMealMenu}
+            type='text'
+            enterKeyHint='done'
+          />
+        </Label>
+        {errors?.subMealName && (
+          <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+            {errors?.subMealName?.message}
+          </ErrorMessage>
+        )}
+      </Group>
+    </FormContainer>
+  )
 })

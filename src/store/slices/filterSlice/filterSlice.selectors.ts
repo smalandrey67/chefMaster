@@ -6,22 +6,19 @@ export const selectIsFilterMenuOpen = (state: RootState) => state.filter.isFilte
 export const selectParams = (state: RootState) => state.filter.filterParams
 export const selectIsHamburgerMenu = (state: RootState) => state.filter.isHamburgerMenu
 
-export const selectValidatedParams = createSelector(
-   [selectParams],
-   (params) => {
-      const entriesFromParams = Object.entries(params)
+export const selectValidatedParams = createSelector([selectParams], (params) => {
+  const entriesFromParams = Object.entries(params)
 
-      let stringOfParams = ''
-      const isDisabledShowResultButton = !!Object.values(params).length
+  let stringOfParams = ''
+  const isDisabledShowResultButton = !!Object.values(params).length
 
-      for (let i = 0; i < entriesFromParams.length; i++) {
-         if (i === 0) {
-            stringOfParams += `?${entriesFromParams[i][0]}=${entriesFromParams[i][1]}`
-         } else {
-            stringOfParams += `&${entriesFromParams[i][0]}=${entriesFromParams[i][1]}`
-         }
-      }
+  for (let i = 0; i < entriesFromParams.length; i++) {
+    if (i === 0) {
+      stringOfParams += `?${entriesFromParams[i][0]}=${entriesFromParams[i][1]}`
+    } else {
+      stringOfParams += `&${entriesFromParams[i][0]}=${entriesFromParams[i][1]}`
+    }
+  }
 
-      return { stringOfParams, isDisabledShowResultButton }
-   }
-)
+  return { stringOfParams, isDisabledShowResultButton }
+})

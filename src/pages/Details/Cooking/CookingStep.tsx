@@ -3,8 +3,10 @@ import { nanoid } from '@reduxjs/toolkit'
 
 import { Strong } from 'assets/styled/Reused.styled'
 import {
-   DetailsCookingItem, DetailsCookingHeader, DetailsCookingContent,
-   DetailsCookingIngredients
+  DetailsCookingItem,
+  DetailsCookingHeader,
+  DetailsCookingContent,
+  DetailsCookingIngredients
 } from './Cooking.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
@@ -12,39 +14,36 @@ import { CookingStepType } from 'types/Details'
 
 import { CookingIngredient } from './CookingIngredient'
 
-export const CookingStep: FC<CookingStepType> = ({ step, number, ingredients}) => {
-   const [stepIsActive, setStepIsActive] = useState<string | null>(null)
+export const CookingStep: FC<CookingStepType> = ({ step, number, ingredients }) => {
+  const [stepIsActive, setStepIsActive] = useState<string | null>(null)
 
-   const stepHandler = (index: string): void => {
-      if (index === stepIsActive) {
-         setStepIsActive(null)
+  const stepHandler = (index: string): void => {
+    if (index === stepIsActive) {
+      setStepIsActive(null)
 
-         return
-      }
-      setStepIsActive(index)
-   }
-   
-   const transfromValue = stepIsActive === step ? 'rotate(180deg)' : 'rotate(0)'
-   const isActiveStep = stepIsActive === step
-   const isHideStep = !!ingredients.length
+      return
+    }
+    setStepIsActive(index)
+  }
 
-   return (
-      <DetailsCookingItem>
-         <DetailsCookingHeader onClick={() => stepHandler(step)}>
-            <Strong>Step {number}</Strong>
-            <BsChevronDown
-               style={{ transform: transfromValue }}
-            />
-         </DetailsCookingHeader>
+  const transfromValue = stepIsActive === step ? 'rotate(180deg)' : 'rotate(0)'
+  const isActiveStep = stepIsActive === step
+  const isHideStep = !!ingredients.length
 
-         <DetailsCookingContent isActiveStep={isActiveStep}>
-            <DetailsCookingIngredients isHideStep={isHideStep}>
-               {ingredients.length && ingredients.map((ingredients) =>
-                  <CookingIngredient key={nanoid()} {...ingredients}/>
-               )}
-            </DetailsCookingIngredients>
-            {step}
-         </DetailsCookingContent>
-      </DetailsCookingItem>
-   )
+  return (
+    <DetailsCookingItem>
+      <DetailsCookingHeader onClick={() => stepHandler(step)}>
+        <Strong>Step {number}</Strong>
+        <BsChevronDown style={{ transform: transfromValue }} />
+      </DetailsCookingHeader>
+
+      <DetailsCookingContent isActiveStep={isActiveStep}>
+        <DetailsCookingIngredients isHideStep={isHideStep}>
+          {ingredients.length &&
+            ingredients.map((ingredients) => <CookingIngredient key={nanoid()} {...ingredients} />)}
+        </DetailsCookingIngredients>
+        {step}
+      </DetailsCookingContent>
+    </DetailsCookingItem>
+  )
 }

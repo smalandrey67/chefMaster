@@ -10,17 +10,17 @@ import * as Style from './RecipeCard.styled'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 
 export const RecipeCard: FC<RandomRecipeResultType> = ({ id, title, image, healthScore }) => {
-    const navigateHandler = useRedirect()
+  const navigateHandler = useRedirect()
 
-    return (
-        <SplideSlide>
-            <Article onClick={() => navigateHandler('/details/', id)}>
-                <RecipeImageWrapper>
-                    <LazyImage image={image} alt={title} width='100%' height='100%' />
-                    <Style.RecipeScore healthScore={healthScore}>{healthScore}</Style.RecipeScore>
-                    <Style.RecipeGradient />
-                </RecipeImageWrapper>
-            </Article>
-        </SplideSlide>
-    )
+  return (
+    <SplideSlide>
+      <Article onClick={() => navigateHandler('/details/', id)}>
+        <RecipeImageWrapper>
+          <LazyImage image={image} alt={title} width='100%' height='100%' />
+          <Style.RecipeScore healthScore={healthScore}>{healthScore}</Style.RecipeScore>
+          <Style.RecipeGradient />
+        </RecipeImageWrapper>
+      </Article>
+    </SplideSlide>
+  )
 }

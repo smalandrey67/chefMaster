@@ -6,28 +6,28 @@ import { UseSubmitUpdatesReturnsType } from 'types/Hooks'
 import { UpdateUserThunkParametersType } from 'store/slices/authSlice/authSlice.types'
 
 export const useSubmitUpdates = (
-   profilePhotoUrl: string | undefined,
-   name: string,
-   setName: Dispatch<SetStateAction<string>>
+  profilePhotoUrl: string | undefined,
+  name: string,
+  setName: Dispatch<SetStateAction<string>>
 ): UseSubmitUpdatesReturnsType => {
-   const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
-   const submitUpdatesHandler = (): void => {
-      if (profilePhotoUrl || name) {
-         const updatesData = {} as UpdateUserThunkParametersType
+  const submitUpdatesHandler = (): void => {
+    if (profilePhotoUrl || name) {
+      const updatesData = {} as UpdateUserThunkParametersType
 
-         if (profilePhotoUrl) {
-            updatesData['photoURL'] = profilePhotoUrl
-         }
-
-         if (name) {
-            updatesData['displayName'] = name
-         }
-
-         dispatch(updateUserThunk(updatesData))
-         setName('')
+      if (profilePhotoUrl) {
+        updatesData['photoURL'] = profilePhotoUrl
       }
-   }
 
-   return submitUpdatesHandler
+      if (name) {
+        updatesData['displayName'] = name
+      }
+
+      dispatch(updateUserThunk(updatesData))
+      setName('')
+    }
+  }
+
+  return submitUpdatesHandler
 }

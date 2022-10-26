@@ -27,69 +27,76 @@ import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { useGetDetailsQuery } from 'services/RecipesService'
 
 export const Details: FC = () => {
-    const params = useParams<{ id: string }>()
-    const { data: details, error, isLoading } = useGetDetailsQuery(params.id)
+  const params = useParams<{ id: string }>()
+  const { data: details, error, isLoading } = useGetDetailsQuery(params.id)
 
-    const tabName = useAppSelector(selectTabName)
-    const makeRecipefavoriteHandler = useMakeFavorite(details)
-    const colorType = useGetHeartColor(details)
-    
-    return (
-        <SectionContainer motion={motion}>
-            <Style.DetailsWrapper>
-                {isLoading ?
-                    <SpinnerWrapper height='50vh'>
-                        <Spinner src={SpinnerBg} alt='spinner' />
-                    </SpinnerWrapper>
-                    :
-                    <>
-                        <FlexGroup flex='0 1 50%'>
-                            <Style.DetailWrapperImage>
-                                <BackButtonContainer>
-                                    <Style.DetailsHeartButton aria-label='make this recipe the favorite' onClick={makeRecipefavoriteHandler}>
-                                        <BsSuitHeartFill color={colorType} size='30' />
-                                    </Style.DetailsHeartButton>
-                                </BackButtonContainer>
+  const tabName = useAppSelector(selectTabName)
+  const makeRecipefavoriteHandler = useMakeFavorite(details)
+  const colorType = useGetHeartColor(details)
 
-                                <Style.DetailsOverImage>
-                                    <Image width='100%' objectFit='cover' src={details?.image} alt={details?.title} />
+  return (
+    <SectionContainer motion={motion}>
+      <Style.DetailsWrapper>
+        {isLoading ? (
+          <SpinnerWrapper height='50vh'>
+            <Spinner src={SpinnerBg} alt='spinner' />
+          </SpinnerWrapper>
+        ) : (
+          <>
+            <FlexGroup flex='0 1 50%'>
+              <Style.DetailWrapperImage>
+                <BackButtonContainer>
+                  <Style.DetailsHeartButton
+                    aria-label='make this recipe the favorite'
+                    onClick={makeRecipefavoriteHandler}
+                  >
+                    <BsSuitHeartFill color={colorType} size='30' />
+                  </Style.DetailsHeartButton>
+                </BackButtonContainer>
 
-                                    {/* Social component actually means functionality over the image */}
-                                    <Social details={details} />
-                                </Style.DetailsOverImage>
-                            </Style.DetailWrapperImage>
+                <Style.DetailsOverImage>
+                  <Image width='100%' objectFit='cover' src={details?.image} alt={details?.title} />
 
-                            <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
-                                <Nutritions id={params.id} />
-                            </ErrorBoundary>
-                        </FlexGroup>
+                  {/* Social component actually means functionality over the image */}
+                  <Social details={details} />
+                </Style.DetailsOverImage>
+              </Style.DetailWrapperImage>
 
-                        <FlexGroup flex='0 1 50%'>
-                            <Tabs />
+              <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
+                <Nutritions id={params.id} />
+              </ErrorBoundary>
+            </FlexGroup>
 
-                            {tabName === 'instructions' &&
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
-                                    <Instructions details={details} />
-                                </ErrorBoundary>
-                            }
+            <FlexGroup flex='0 1 50%'>
+              <Tabs />
 
-                            {tabName === 'ingredients' &&
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
-                                    <Ingredients details={details} />
-                                </ErrorBoundary>
-                            }
+              {tabName === 'instructions' && (
+                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                  <Instructions details={details} />
+                </ErrorBoundary>
+              )}
 
-                            {tabName === 'cooking' &&
-                                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
-                                    <Cooking details={details} />
-                                </ErrorBoundary>
-                            }
-                        </FlexGroup>
-                    </>
-                }
-            </Style.DetailsWrapper>
-            {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-        </SectionContainer>
-    )
+              {tabName === 'ingredients' && (
+                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                  <Ingredients details={details} />
+                </ErrorBoundary>
+              )}
 
+              {tabName === 'cooking' && (
+                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                  <Cooking details={details} />
+                </ErrorBoundary>
+              )}
+            </FlexGroup>
+          </>
+        )}
+      </Style.DetailsWrapper>
+      {error && (
+        <ErrorMessage>
+          <BiError />
+          Server Error
+        </ErrorMessage>
+      )}
+    </SectionContainer>
+  )
 }

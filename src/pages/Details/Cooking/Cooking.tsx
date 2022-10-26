@@ -14,22 +14,26 @@ import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.laz
 import { CookingStep } from './CookingStep'
 
 export const Cooking: FC<CookingProps> = ({ details }) => {
+  return (
+    <List {...motion}>
+      {details?.analyzedInstructions.map(({ name, steps }) => (
+        <Fragment key={nanoid()}>
+          {name.length ? (
+            <Style.DetailsCookingSubtitle>
+              <IoFootstepsSharp />
+              {stringCut(name, 40)}
+            </Style.DetailsCookingSubtitle>
+          ) : null}
 
-    return (
-        <List {...motion} >
-            {details?.analyzedInstructions.map(({ name, steps }) => (
-                <Fragment key={nanoid()}>
-                    {name.length ?
-                        <Style.DetailsCookingSubtitle>
-                            <IoFootstepsSharp />
-                            {stringCut(name, 40)}
-                        </Style.DetailsCookingSubtitle> : null}
+          {steps.map((step) => (
+            <CookingStep key={step.number} {...step} />
+          ))}
+        </Fragment>
+      ))}
 
-                    {steps.map(step => <CookingStep key={step.number} {...step} />)}
-                </Fragment>
-            ))}
-
-            {!details?.analyzedInstructions.length && <ErrorNoResult description='No instruction for cooking' height='25vh' />}
-        </List>
-    )
+      {!details?.analyzedInstructions.length && (
+        <ErrorNoResult description='No instruction for cooking' height='25vh' />
+      )}
+    </List>
+  )
 }

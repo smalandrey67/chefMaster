@@ -1,17 +1,17 @@
 export type RecipeResultType = {
-    id: number;
-    title: string;
-    image: string;
+  id: number
+  title: string
+  image: string
 }
 export type RecipesResponseType = {
-    results: RecipeResultType[];
+  results: RecipeResultType[]
 }
 export type RandomRecipeResultType = {
-    id: number;
-    title: string;
-    image: string;
-    healthScore: number;
+  id: number
+  title: string
+  image: string
+  healthScore: number
 }
 export type RandomRecipesResponseType = {
-    recipes: RandomRecipeResultType[]
+  recipes: RandomRecipeResultType[]
 }

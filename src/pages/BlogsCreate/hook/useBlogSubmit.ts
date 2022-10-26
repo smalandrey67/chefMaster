@@ -13,37 +13,36 @@ import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 import { config } from 'config'
 
 export const useBlogSubmit = (
-   userPhoto: string | undefined,
-   setFileName: Dispatch<SetStateAction<string>>,
-   reset: UseFormReset<SubmitBlogType>
+  userPhoto: string | undefined,
+  setFileName: Dispatch<SetStateAction<string>>,
+  reset: UseFormReset<SubmitBlogType>
 ): UseBlogSubmitReturnsType => {
+  const [uploadBlog, { error: errorBlog, isSuccess }] = useUploadBlogMutation()
 
-   const [uploadBlog, { error: errorBlog, isSuccess }] = useUploadBlogMutation()
+  const user = useAppSelector(selectCurrentUser)
+  const navigateHandler = useRedirect()
 
-   const user = useAppSelector(selectCurrentUser)
-   const navigateHandler = useRedirect()
+  useEffect(() => {
+    if (isSuccess) {
+      navigateHandler('/blogs')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess])
 
-   useEffect(() => {
-      if (isSuccess) {
-         navigateHandler('/blogs')
+  const submitBlogHandler: SubmitHandler<SubmitBlogType> = (data): void => {
+    if (userPhoto) {
+      const postData: PreparedPostType = {
+        ...data,
+        file: userPhoto,
+        author: user?.name ? user.name : 'Anonymous',
+        avatar: user?.photoURL ? user.photoURL : config.noUserPhoto
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [isSuccess])
 
-   const submitBlogHandler: SubmitHandler<SubmitBlogType> = (data): void => {
-      if (userPhoto) {
-         const postData: PreparedPostType = {
-            ...data,
-            file: userPhoto,
-            author: user?.name ? user.name : 'Anonymous',
-            avatar: user?.photoURL ? user.photoURL : config.noUserPhoto
-         }
+      uploadBlog(postData)
+      setFileName('')
+      reset()
+    }
+  }
 
-         uploadBlog(postData)
-         setFileName('')
-         reset()
-      }
-   }
-
-   return { errorBlog, submitBlogHandler }
+  return { errorBlog, submitBlogHandler }
 }

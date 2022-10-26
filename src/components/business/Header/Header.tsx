@@ -12,27 +12,24 @@ import { HeaderMenu } from './HeaderMenu'
 import { useClosePopups } from 'hooks/useClosePopups'
 
 export const Header: FC = () => {
-    useClosePopups()
+  useClosePopups()
 
-    return (
-        <Style.HeaderEl>
-            <Container>
-                <Style.HeaderWrapper>
-                    <Style.HeaderLogoWrapper>
-                        <ImSpoonKnife size='25' />
-                        <LinkEl
-                            margin='0 0 0 5px'
-                            fontSize='var(--fs-bg)'
-                            fontWeight='var(--fw-bold)'
-                            to='/'
-                        >ChefMaster</LinkEl>
-                    </Style.HeaderLogoWrapper>
+  return (
+    <Style.HeaderEl>
+      <Container>
+        <Style.HeaderWrapper>
+          <Style.HeaderLogoWrapper>
+            <ImSpoonKnife size='25' />
+            <LinkEl margin='0 0 0 5px' fontSize='var(--fs-bg)' fontWeight='var(--fw-bold)' to='/'>
+              ChefMaster
+            </LinkEl>
+          </Style.HeaderLogoWrapper>
 
-                    <HamburgerButton />
-                    <HeaderMenu />
-                </Style.HeaderWrapper>
-                <Search />
-            </Container>
-        </Style.HeaderEl>
-    )
+          <HamburgerButton />
+          <HeaderMenu />
+        </Style.HeaderWrapper>
+        <Search />
+      </Container>
+    </Style.HeaderEl>
+  )
 }

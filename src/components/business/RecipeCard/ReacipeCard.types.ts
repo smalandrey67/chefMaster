@@ -1,3 +1,3 @@
 export type RecipeScoreProps = {
-   healthScore: number;
+  healthScore: number
 }

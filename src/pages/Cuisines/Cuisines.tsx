@@ -13,24 +13,29 @@ import { BiError } from 'react-icons/bi'
 import { useGetCuisineQuery } from 'services/RecipesService'
 
 export const Cuisines: FC = () => {
-    const params = useParams<{ type: string }>()
-    const { data: cuisines, error, isLoading } = useGetCuisineQuery(params.type)
+  const params = useParams<{ type: string }>()
+  const { data: cuisines, error, isLoading } = useGetCuisineQuery(params.type)
 
-    return (
-        <SectionContainer motion={motion}>
-            <BackButtonContainer>
-                <Title>{params?.type}</Title>
-            </BackButtonContainer>
-            <RecipesWrapper>
-                {isLoading ?
-                    <SpinnerWrapper height='40vh'>
-                        <Spinner src={SpinnerBg} alt='spinner' />
-                    </SpinnerWrapper>
-                    :
-                    cuisines?.map(recipe => <CuisineCard key={recipe.id} {...recipe} />)
-                }
-                {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-            </RecipesWrapper>
-        </SectionContainer>
-    )
+  return (
+    <SectionContainer motion={motion}>
+      <BackButtonContainer>
+        <Title>{params?.type}</Title>
+      </BackButtonContainer>
+      <RecipesWrapper>
+        {isLoading ? (
+          <SpinnerWrapper height='40vh'>
+            <Spinner src={SpinnerBg} alt='spinner' />
+          </SpinnerWrapper>
+        ) : (
+          cuisines?.map((recipe) => <CuisineCard key={recipe.id} {...recipe} />)
+        )}
+        {error && (
+          <ErrorMessage>
+            <BiError />
+            Server Error
+          </ErrorMessage>
+        )}
+      </RecipesWrapper>
+    </SectionContainer>
+  )
 }

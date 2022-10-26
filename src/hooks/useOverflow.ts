@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 
 export const useOverflow = (stateOfMenu: boolean): void => {
-   useEffect(() => {
-      if (stateOfMenu) {
-         document.body.style.overflow = 'hidden'
+  useEffect(() => {
+    if (stateOfMenu) {
+      document.body.style.overflow = 'hidden'
 
-         return
-      }
+      return
+    }
 
-      document.body.style.overflow = 'visible'
-   }, [stateOfMenu])
+    document.body.style.overflow = 'visible'
+  }, [stateOfMenu])
 }

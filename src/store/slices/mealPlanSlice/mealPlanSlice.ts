@@ -1,68 +1,56 @@
-import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 
-import { mealPlan } from 'utils/constants/mealPlan.constants';
-import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper';
-import { getMealPlanThunk } from './mealPlanThunk';
+import { mealPlan } from 'utils/constants/mealPlan.constants'
+import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
+import { getMealPlanThunk } from './mealPlanThunk'
 import {
   PayloadDeleteType,
   PayloadChangeActiveMealDay,
   MealPlanState,
   PayloadAddRecipeType,
-  WeekPlanType,
-} from './mealPlanSlice.types';
+  WeekPlanType
+} from './mealPlanSlice.types'
 
 const initialState: MealPlanState = {
   weekPlan: [],
   activeMealDay: {} as WeekPlanType,
   error: null,
-  status: null,
-};
+  status: null
+}
 
 export const mealPlanSlice = createSlice({
   name: 'mealPlan',
   initialState,
   reducers: {
     addRecipeIntoMeal: {
-      reducer: (
-        state,
-        { payload }: PayloadAction<PayloadAddRecipeType>
-      ): void => {
+      reducer: (state, { payload }: PayloadAction<PayloadAddRecipeType>): void => {
         state.weekPlan = state.weekPlan.map((week) => {
           if (week.idWeek === payload.idWeek) {
             return {
               ...week,
               subMeals: week.subMeals.map((subMeal) => {
                 if (subMeal.subMealId === payload.subMealId) {
-                  subMeal.subMealDishes.push(payload.preparedRecipe);
+                  subMeal.subMealDishes.push(payload.preparedRecipe)
                 }
 
-                return subMeal;
-              }),
-            };
+                return subMeal
+              })
+            }
           }
-          return week;
-        });
+          return week
+        })
       },
-      prepare: (
-        idWeek: string,
-        subMealId: string,
-        id: number,
-        title: string,
-        image: string
-      ) => {
+      prepare: (idWeek: string, subMealId: string, id: number, title: string, image: string) => {
         return {
           payload: {
             idWeek,
             subMealId,
-            preparedRecipe: { idDish: id, title, image },
-          },
-        };
-      },
+            preparedRecipe: { idDish: id, title, image }
+          }
+        }
+      }
     },
-    deleteRecipeFromMealPlan: (
-      state,
-      { payload }: PayloadAction<PayloadDeleteType>
-    ): void => {
+    deleteRecipeFromMealPlan: (state, { payload }: PayloadAction<PayloadDeleteType>): void => {
       state.weekPlan = state.weekPlan.map((week) => {
         if (week.idWeek === payload.idWeek) {
           return {
@@ -71,34 +59,24 @@ export const mealPlanSlice = createSlice({
               if (subMeal.subMealId === payload.subMealId) {
                 return {
                   ...subMeal,
-                  subMealDishes: subMeal.subMealDishes.filter(
-                    (dish) => dish.idDish !== payload.idDish
-                  ),
-                };
+                  subMealDishes: subMeal.subMealDishes.filter((dish) => dish.idDish !== payload.idDish)
+                }
               }
-              return subMeal;
-            }),
-          };
+              return subMeal
+            })
+          }
         }
-        return week;
-      });
+        return week
+      })
     },
-    setActiveMealDay: (
-      state,
-      { payload }: PayloadAction<PayloadChangeActiveMealDay>
-    ): void => {
-      const activeDay = state.weekPlan.find(
-        (dayPlan) => dayPlan.idWeek === payload.idWeek
-      );
+    setActiveMealDay: (state, { payload }: PayloadAction<PayloadChangeActiveMealDay>): void => {
+      const activeDay = state.weekPlan.find((dayPlan) => dayPlan.idWeek === payload.idWeek)
 
       if (activeDay) {
-        state.activeMealDay = activeDay;
+        state.activeMealDay = activeDay
       }
     },
-    addSubMealMenu: (
-      state,
-      { payload }: PayloadAction<{ subMealMenuTitle: string; idWeek: string }>
-    ): void => {
+    addSubMealMenu: (state, { payload }: PayloadAction<{ subMealMenuTitle: string; idWeek: string }>): void => {
       state.weekPlan = state.weekPlan.map((week) => {
         if (week.idWeek === payload.idWeek) {
           return {
@@ -108,67 +86,61 @@ export const mealPlanSlice = createSlice({
               {
                 subMealId: nanoid(),
                 subMealTitle: payload.subMealMenuTitle,
-                subMealDishes: [],
-              },
-            ],
-          };
+                subMealDishes: []
+              }
+            ]
+          }
         }
 
-        return week;
-      });
+        return week
+      })
     },
-    deleteSubMealMenu: (
-      state,
-      { payload }: PayloadAction<{ subMealId: string; idWeek: string }>
-    ): void => {
+    deleteSubMealMenu: (state, { payload }: PayloadAction<{ subMealId: string; idWeek: string }>): void => {
       state.weekPlan = state.weekPlan.map((week) => {
         if (week.idWeek === payload.idWeek) {
           return {
             ...week,
-            subMeals: week.subMeals.filter(
-              (subMeal) => subMeal.subMealId !== payload.subMealId
-            ),
-          };
+            subMeals: week.subMeals.filter((subMeal) => subMeal.subMealId !== payload.subMealId)
+          }
         }
-        return week;
-      });
+        return week
+      })
     },
     resetMealPlan: (state): void => {
-      console.log([...mealPlan]);
-      state.weekPlan = [...mealPlan];
-    },
+      state.weekPlan = [...mealPlan]
+    }
   },
   extraReducers: (builder): void => {
     builder
       .addCase(getMealPlanThunk.pending, (state): void => {
-        state.status = 'pending';
-        state.error = null;
+        state.status = 'pending'
+        state.error = null
       })
       .addCase(getMealPlanThunk.fulfilled, (state, { payload }): void => {
         if (payload) {
-          state.weekPlan = payload;
+          state.weekPlan = payload
 
           if (!Object.values(state.activeMealDay || {}).length) {
-            state.activeMealDay = payload[getIndexOfCurrentDay()];
+            state.activeMealDay = payload[getIndexOfCurrentDay()]
           }
 
-          state.status = 'fulfilled';
+          state.status = 'fulfilled'
         }
       })
       .addCase(getMealPlanThunk.rejected, (state, { payload }): void => {
         if (payload) {
-          state.error = payload;
+          state.error = payload
         }
-      });
-  },
-});
+      })
+  }
+})
 
-export default mealPlanSlice.reducer;
+export default mealPlanSlice.reducer
 export const {
   addRecipeIntoMeal,
   deleteRecipeFromMealPlan,
   setActiveMealDay,
   addSubMealMenu,
   deleteSubMealMenu,
-  resetMealPlan,
-} = mealPlanSlice.actions;
+  resetMealPlan
+} = mealPlanSlice.actions

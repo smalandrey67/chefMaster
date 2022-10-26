@@ -11,26 +11,30 @@ import { useGetSearchedQuery } from 'services/RecipesService'
 import { useValidateParams } from './hook/useValidateParams'
 
 export const Searched: FC = () => {
-    const params = useValidateParams()
-    const { data: recipes, error, isLoading } = useGetSearchedQuery(params)
+  const params = useValidateParams()
+  const { data: recipes, error, isLoading } = useGetSearchedQuery(params)
 
-    return (
-        <Container>
-            <RecipesWrapper>
-                {/* if isLoading true and data?.results actually are so we are rendering them. If not show the error result */}
-                {isLoading ?
-                    <SpinnerWrapper height='50vh'>
-                        <Spinner src={SpinnerBg} alt='spinner' />
-                    </SpinnerWrapper>
-                    :
-                    recipes?.length ?
-                        recipes.map(recipe => <CuisineCard key={recipe.id} {...recipe} />)
-                        :
-                        <ErrorNoResult description='Nothing was found' height='50vh' />
-                }
+  return (
+    <Container>
+      <RecipesWrapper>
+        {/* if isLoading true and data?.results actually are so we are rendering them. If not show the error result */}
+        {isLoading ? (
+          <SpinnerWrapper height='50vh'>
+            <Spinner src={SpinnerBg} alt='spinner' />
+          </SpinnerWrapper>
+        ) : recipes?.length ? (
+          recipes.map((recipe) => <CuisineCard key={recipe.id} {...recipe} />)
+        ) : (
+          <ErrorNoResult description='Nothing was found' height='50vh' />
+        )}
 
-                {error && <ErrorMessage><BiError />Server Error</ErrorMessage>}
-            </RecipesWrapper>
-        </Container>
-    )
+        {error && (
+          <ErrorMessage>
+            <BiError />
+            Server Error
+          </ErrorMessage>
+        )}
+      </RecipesWrapper>
+    </Container>
+  )
 }

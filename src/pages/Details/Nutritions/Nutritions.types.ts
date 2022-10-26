@@ -1,3 +1,3 @@
 export type NutritionProps = {
-   id: string | undefined;
+  id: string | undefined
 }

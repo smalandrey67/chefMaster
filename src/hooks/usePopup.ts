@@ -4,15 +4,15 @@ import { UsePopupReturnsType } from 'types/Hooks'
 import { useOverflow } from './useOverflow'
 
 export const usePopup = (): UsePopupReturnsType => {
-   const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
-   useOverflow(popupIsActive)
+  const [popupIsActive, setPopupIsActive] = useState<boolean>(false)
+  useOverflow(popupIsActive)
 
-   const popupHandler = (): void => {
-      setPopupIsActive(prevState => !prevState)
-   }
+  const popupHandler = (): void => {
+    setPopupIsActive((prevState) => !prevState)
+  }
 
-   return {
-      popupIsActive,
-      popupHandler
-   }
+  return {
+    popupIsActive,
+    popupHandler
+  }
 }

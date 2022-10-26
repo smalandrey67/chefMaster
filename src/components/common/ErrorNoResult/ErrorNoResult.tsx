@@ -7,14 +7,13 @@ import * as Style from './ErrorNoResult.styled'
 import { ErrorNotResultProps } from './ErrorNoResult.types'
 
 export const ErrorNoResult: FC<ErrorNotResultProps> = ({ description, height }) => {
+  return (
+    <ErrorWrapper height={height} flexDirection='column'>
+      <Style.ErrorNoResultWrapperImage>
+        <Style.ErrorNoResultImage src={ManShrugging} alt='man shrugging' />
+      </Style.ErrorNoResultWrapperImage>
 
-   return (
-      <ErrorWrapper height={height} flexDirection='column'>
-         <Style.ErrorNoResultWrapperImage>
-            <Style.ErrorNoResultImage src={ManShrugging} alt='man shrugging' />
-         </Style.ErrorNoResultWrapperImage>
-
-         <Style.ErrorNoResultTitle>{description}</Style.ErrorNoResultTitle>
-      </ErrorWrapper>
-   )
+      <Style.ErrorNoResultTitle>{description}</Style.ErrorNoResultTitle>
+    </ErrorWrapper>
+  )
 }

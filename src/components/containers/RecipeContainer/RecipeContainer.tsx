@@ -11,20 +11,22 @@ import { RecipeContainerProps } from './RecipeContainer.types'
 import { Article, RecipeImageWrapper, RecipeTitle } from 'assets/styled/Reused.styled'
 
 export const RecipeContainer: FC<RecipeContainerProps> = ({ children, id, title, image }) => {
-   const { state } = useLocation() as LocationStateType
+  const { state } = useLocation() as LocationStateType
 
-   const navigateHandler = useRedirect()
-   const addRecipeIntoWeekPlan = useAddIntoWeekPlan(state, id, title, image)
+  const navigateHandler = useRedirect()
+  const addRecipeIntoWeekPlan = useAddIntoWeekPlan(state, id, title, image)
 
-   const isExist = useAlreadyExist(state, id)
-   const isCanAdd = state && state.prevPath === '/meal/plan' && !isExist
+  const isExist = useAlreadyExist(state, id)
+  const isCanAdd = state && state.prevPath === '/meal/plan' && !isExist
 
-   return (
-      <Article onClick={() => isCanAdd ? addRecipeIntoWeekPlan() : !isExist ? navigateHandler('/details/', String(id)) : null}>
-         <RecipeImageWrapper isExist={isExist}>
-            {children}
-            <RecipeTitle>{title}</RecipeTitle>
-         </RecipeImageWrapper>
-      </Article>
-   )
+  return (
+    <Article
+      onClick={() => (isCanAdd ? addRecipeIntoWeekPlan() : !isExist ? navigateHandler('/details/', String(id)) : null)}
+    >
+      <RecipeImageWrapper isExist={isExist}>
+        {children}
+        <RecipeTitle>{title}</RecipeTitle>
+      </RecipeImageWrapper>
+    </Article>
+  )
 }

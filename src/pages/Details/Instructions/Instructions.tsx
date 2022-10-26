@@ -10,17 +10,16 @@ import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.laz
 import { InstructionsProps } from './Instructions.types'
 
 export const Instructions: FC<InstructionsProps> = ({ details }) => {
+  return (
+    <>
+      {!details?.summary.length && !details?.instructions.length ? (
+        <ErrorNoResult description='No instructions here' height='25vh' />
+      ) : null}
 
-    return (
-        <>
-            {!details?.summary.length && !details?.instructions.length ?
-                <ErrorNoResult description='No instructions here' height='25vh' />
-                : null}
-
-            <Style.DetailsInfoDescriptionWrapper {...motion}>
-                <Paragraph margin={details?.summary && '0 0 10px 0'}>{removeTags(details?.summary)}</Paragraph>
-                <Paragraph margin={details?.instructions && '0 0 10px 0'}>{removeTags(details?.instructions)}</Paragraph>
-            </Style.DetailsInfoDescriptionWrapper>
-        </>
-    )
+      <Style.DetailsInfoDescriptionWrapper {...motion}>
+        <Paragraph margin={details?.summary && '0 0 10px 0'}>{removeTags(details?.summary)}</Paragraph>
+        <Paragraph margin={details?.instructions && '0 0 10px 0'}>{removeTags(details?.instructions)}</Paragraph>
+      </Style.DetailsInfoDescriptionWrapper>
+    </>
+  )
 }

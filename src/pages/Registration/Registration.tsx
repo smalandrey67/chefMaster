@@ -14,56 +14,65 @@ import { selectCurrentUserAuthError } from 'store/slices/authSlice/authSlice.sel
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 
 export const Registration: FC = () => {
-   const { register, formState: { errors }, handleSubmit, reset } = useForm<SubmitUserType>({ mode: 'onChange' })
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset
+  } = useForm<SubmitUserType>({ mode: 'onChange' })
 
-   const authError = useAppSelector(selectCurrentUserAuthError)
-   const dispatch = useAppDispatch()
-   const navigateHandler = useRedirect()
+  const authError = useAppSelector(selectCurrentUserAuthError)
+  const dispatch = useAppDispatch()
+  const navigateHandler = useRedirect()
 
-   const SubmitUserTypeHandler: SubmitHandler<SubmitUserType> = (data): void => {
-      const { email, password } = data
-      
-      dispatch(registrationThunk({ 
-         email: email.trim().toLocaleLowerCase(),
-         password: password.trim().toLocaleLowerCase(),
-         navigateHandler 
-      }))
+  const SubmitUserTypeHandler: SubmitHandler<SubmitUserType> = (data): void => {
+    const { email, password } = data
 
-      reset()
-   }
+    dispatch(
+      registrationThunk({
+        email: email.trim().toLocaleLowerCase(),
+        password: password.trim().toLocaleLowerCase(),
+        navigateHandler
+      })
+    )
 
-   return (
-      <Container>
-         <PopupContainer>
-            <FormContainer handleSubmit={handleSubmit} submitHandler={SubmitUserTypeHandler}>
-               <Legend>Sign up</Legend>
-               <Group height='50px' margin='10px 0 18px 0'>
-                  <Label>
-                     <Input
-                        {...register('email', validation.email)} placeholder='email' type='email'
-                     />
-                  </Label>
-                  {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
-               </Group>
-               <Group height='50px' margin='0 0 18px 0'>
-                  <Label>
-                     <Input
-                        {...register('password', validation.password)} placeholder='password' type='password'
-                     />
-                  </Label>
-                  {errors?.password && <ErrorMessage justifyContent='flex-start'>{errors?.password?.message}</ErrorMessage>}
-               </Group>
-               {<ErrorMessage>{authError}</ErrorMessage>}
-               <Group margin='0 0 10px 0' height='40px'>
-                  <Button type='submit' name='submit'>Sign up</Button>
-               </Group>
+    reset()
+  }
 
-               <Flex justifyContent='space-between'>
-                  <LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>Already have an account?</LinkEl>
-                  <LinkEl color='var(--color-links)' textDecoration='underline' to='/reset/password'>Forgot a password?</LinkEl>
-               </Flex>
-            </FormContainer>
-         </PopupContainer>
-      </Container>
-   )
+  return (
+    <Container>
+      <PopupContainer>
+        <FormContainer handleSubmit={handleSubmit} submitHandler={SubmitUserTypeHandler}>
+          <Legend>Sign up</Legend>
+          <Group height='50px' margin='10px 0 18px 0'>
+            <Label>
+              <Input {...register('email', validation.email)} placeholder='email' type='email' />
+            </Label>
+            {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
+          </Group>
+          <Group height='50px' margin='0 0 18px 0'>
+            <Label>
+              <Input {...register('password', validation.password)} placeholder='password' type='password' />
+            </Label>
+            {errors?.password && <ErrorMessage justifyContent='flex-start'>{errors?.password?.message}</ErrorMessage>}
+          </Group>
+          {<ErrorMessage>{authError}</ErrorMessage>}
+          <Group margin='0 0 10px 0' height='40px'>
+            <Button type='submit' name='submit'>
+              Sign up
+            </Button>
+          </Group>
+
+          <Flex justifyContent='space-between'>
+            <LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>
+              Already have an account?
+            </LinkEl>
+            <LinkEl color='var(--color-links)' textDecoration='underline' to='/reset/password'>
+              Forgot a password?
+            </LinkEl>
+          </Flex>
+        </FormContainer>
+      </PopupContainer>
+    </Container>
+  )
 }

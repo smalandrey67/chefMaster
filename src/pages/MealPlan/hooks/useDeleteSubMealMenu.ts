@@ -7,16 +7,16 @@ import { UseDeleteSubMealMenuReturnsType } from 'types/Hooks'
 import { handleAlert } from 'utils/helpers/handleAlert.helper'
 
 export const useDeleteSubMealMenu = (setActiveMealDay: (idWeek: string) => void): UseDeleteSubMealMenuReturnsType => {
-   const dispatch = useAppDispatch()
-   const activeDay = useAppSelector(selectActiveMealDay)
-  
-   const deleteSubMealMenuHandler = (subMealId: string): void => {
-      dispatch(deleteSubMealMenu({ subMealId, idWeek: activeDay.idWeek }))
-      setActiveMealDay(activeDay.idWeek)
-      dispatch(updateMealPlanThunk())
+  const dispatch = useAppDispatch()
+  const activeDay = useAppSelector(selectActiveMealDay)
 
-      handleAlert()('SubMeal was deleted', 'success')
-   }
+  const deleteSubMealMenuHandler = (subMealId: string): void => {
+    dispatch(deleteSubMealMenu({ subMealId, idWeek: activeDay.idWeek }))
+    setActiveMealDay(activeDay.idWeek)
+    dispatch(updateMealPlanThunk())
 
-   return deleteSubMealMenuHandler
+    handleAlert()('SubMeal was deleted', 'success')
+  }
+
+  return deleteSubMealMenuHandler
 }

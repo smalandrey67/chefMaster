@@ -19,4 +19,3 @@ root.render(
     </BrowserRouter>
   </Provider>
 )
-

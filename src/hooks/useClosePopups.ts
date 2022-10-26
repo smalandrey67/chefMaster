@@ -5,10 +5,10 @@ import { useAppDispatch } from './useRedux'
 import { resetStatusOfMenus } from 'store/slices/filterSlice/filterSlice'
 
 export const useClosePopups = (): void => {
-   const dispatch = useAppDispatch()
-   const location = useLocation()
+  const dispatch = useAppDispatch()
+  const location = useLocation()
 
-   useEffect(() => {
-      dispatch(resetStatusOfMenus())
-   }, [location, dispatch])
+  useEffect(() => {
+    dispatch(resetStatusOfMenus())
+  }, [location, dispatch])
 }

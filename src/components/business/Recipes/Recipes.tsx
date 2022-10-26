@@ -12,21 +12,26 @@ import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 
 export const Recipes: FC = () => {
-    const { data: recipes, error, isLoading } = useGetRandomRecipesQuery()
+  const { data: recipes, error, isLoading } = useGetRandomRecipesQuery()
 
-    return (
-        <SectionContainer>
-            <Splide options={splideOptions(3)}>
-                {isLoading ?
-                    <SpinnerWrapper height='50vh'>
-                        <Spinner src={SpinnerBg} alt='spinner' />
-                    </SpinnerWrapper>
-                    :
-                    recipes?.map(recipe => <RecipeCard key={recipe.id} {...recipe} />)
-                }
-            </Splide>
+  return (
+    <SectionContainer>
+      <Splide options={splideOptions(3)}>
+        {isLoading ? (
+          <SpinnerWrapper height='50vh'>
+            <Spinner src={SpinnerBg} alt='spinner' />
+          </SpinnerWrapper>
+        ) : (
+          recipes?.map((recipe) => <RecipeCard key={recipe.id} {...recipe} />)
+        )}
+      </Splide>
 
-            {error && <ErrorMessage><BiError />Server error</ErrorMessage>}
-        </SectionContainer>
-    )
+      {error && (
+        <ErrorMessage>
+          <BiError />
+          Server error
+        </ErrorMessage>
+      )}
+    </SectionContainer>
+  )
 }

@@ -14,42 +14,49 @@ import { selectCurrentUserAuthError } from 'store/slices/authSlice/authSlice.sel
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 
 export const ResetPassword: FC = () => {
-   const { register, formState: { errors }, handleSubmit, reset } = useForm<SubmitResetPasswordType>({ mode: 'onChange' })
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset
+  } = useForm<SubmitResetPasswordType>({ mode: 'onChange' })
 
-   const authError = useAppSelector(selectCurrentUserAuthError)
-   const dispatch = useAppDispatch()
+  const authError = useAppSelector(selectCurrentUserAuthError)
+  const dispatch = useAppDispatch()
 
-   const submitResetPasswordHandler: SubmitHandler<SubmitResetPasswordType> = (data): void => {
-      const { email } = data
-      
-      dispatch(resetPasswordThunk({ email: email.trim().toLocaleLowerCase() }))
+  const submitResetPasswordHandler: SubmitHandler<SubmitResetPasswordType> = (data): void => {
+    const { email } = data
 
-      reset()
-   }
+    dispatch(resetPasswordThunk({ email: email.trim().toLocaleLowerCase() }))
 
-   return (
-      <Container>
-         <PopupContainer>
-            <FormContainer handleSubmit={handleSubmit} submitHandler={submitResetPasswordHandler}>
-               <Legend>Reset the password</Legend>
-               <Group height='50px' margin='10px 0 18px 0'>
-                  <Label>
-                     <Input
-                        {...register('email', validation.email)} placeholder='email' type='email'
-                     />
-                  </Label>
-                  {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
-               </Group>
-               {<ErrorMessage>{authError}</ErrorMessage>}
-               <Group margin='0 0 10px 0' height='40px'>
-                  <Button type='submit' name='submit'>Reset</Button>
-               </Group>
-               <Flex>
-                  <LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>Already have an account?</LinkEl>
-               </Flex>
-            </FormContainer>
-            <ToastContainer role='alert'/>
-         </PopupContainer>
-      </Container>
-   )
+    reset()
+  }
+
+  return (
+    <Container>
+      <PopupContainer>
+        <FormContainer handleSubmit={handleSubmit} submitHandler={submitResetPasswordHandler}>
+          <Legend>Reset the password</Legend>
+          <Group height='50px' margin='10px 0 18px 0'>
+            <Label>
+              <Input {...register('email', validation.email)} placeholder='email' type='email' />
+            </Label>
+            {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
+          </Group>
+          {<ErrorMessage>{authError}</ErrorMessage>}
+          <Group margin='0 0 10px 0' height='40px'>
+            <Button type='submit' name='submit'>
+              Reset
+            </Button>
+          </Group>
+          <Flex>
+            <LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>
+              Already have an account?
+            </LinkEl>
+          </Flex>
+        </FormContainer>
+        <ToastContainer role='alert' />
+      </PopupContainer>
+    </Container>
+  )
 }

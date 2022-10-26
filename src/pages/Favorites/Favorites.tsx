@@ -11,18 +11,21 @@ import { BackButtonContainer } from 'components/containers/BackButtonContainer/B
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 export const Favorites: FC = () => {
-   const favorites = useAppSelector(selectFavorites)
+  const favorites = useAppSelector(selectFavorites)
 
-   return (
-      <SectionContainer>
-         <BackButtonContainer>
-            <Title>Favorites {favorites.length ? `(${favorites.length})` : null}</Title>
-         </BackButtonContainer>
+  return (
+    <SectionContainer>
+      <BackButtonContainer>
+        <Title>Favorites {favorites.length ? `(${favorites.length})` : null}</Title>
+      </BackButtonContainer>
 
-         <RecipesWrapper>
-            {favorites.length ? favorites.map(favoriteRecipe => <FavoriteCard key={favoriteRecipe.id} {...favoriteRecipe} />) :
-               <ErrorNoResult description='No favorites yet' height='50vh' />}
-         </RecipesWrapper>
-      </SectionContainer>
-   )
+      <RecipesWrapper>
+        {favorites.length ? (
+          favorites.map((favoriteRecipe) => <FavoriteCard key={favoriteRecipe.id} {...favoriteRecipe} />)
+        ) : (
+          <ErrorNoResult description='No favorites yet' height='50vh' />
+        )}
+      </RecipesWrapper>
+    </SectionContainer>
+  )
 }

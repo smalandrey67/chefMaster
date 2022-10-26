@@ -1,7 +1,7 @@
 import { FC, Suspense, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 import { routes } from 'routes'
 
@@ -16,32 +16,32 @@ import { auth } from './firebase'
 import { addUser } from 'store/slices/authSlice/authSlice'
 
 export const Home: FC = () => {
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                dispatch(addUser(currentUser))
-            } else {
-                localStorage.removeItem('user')
-            }
-        })
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        dispatch(addUser(currentUser))
+      } else {
+        localStorage.removeItem('user')
+      }
+    })
 
-        return unsubscribe
-    }, [dispatch])
+    return unsubscribe
+  }, [dispatch])
 
-    return (
-        <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh' />}>
-            <Header />
-            <Categories />
+  return (
+    <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh' />}>
+      <Header />
+      <Categories />
 
-            <Suspense fallback={<Preload />}>
-                <Routes>
-                    {routes.map(route =>
-                        <Route key={route.path} path={route.path} element={<route.component />} />
-                    )}
-                </Routes>
-            </Suspense>
-        </ErrorBoundary>
-    )
+      <Suspense fallback={<Preload />}>
+        <Routes>
+          {routes.map((route) => (
+            <Route key={route.path} path={route.path} element={<route.component />} />
+          ))}
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
+  )
 }

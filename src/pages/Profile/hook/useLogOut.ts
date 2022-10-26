@@ -7,16 +7,16 @@ import { logOutThunk } from 'store/slices/authSlice/authThunk'
 import { UseLogOutReturnsType } from 'types/Hooks'
 
 export const useLogOut = (): UseLogOutReturnsType => {
-   const user = useAppSelector(selectCurrentUser)
+  const user = useAppSelector(selectCurrentUser)
 
-   const dispatch = useAppDispatch()
-   const navigateHandler = useRedirect()
+  const dispatch = useAppDispatch()
+  const navigateHandler = useRedirect()
 
-   const logOutHandler = (): void => {
-      if (Object.values(user || {}).length) {
-         dispatch(logOutThunk({ navigateHandler }))
-      }
-   }
+  const logOutHandler = (): void => {
+    if (Object.values(user || {}).length) {
+      dispatch(logOutThunk({ navigateHandler }))
+    }
+  }
 
-   return logOutHandler
+  return logOutHandler
 }

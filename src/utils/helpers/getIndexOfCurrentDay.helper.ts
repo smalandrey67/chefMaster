@@ -1,3 +1,3 @@
 export const getIndexOfCurrentDay = (): number => {
-   return new Date().getDay()
+  return new Date().getDay()
 }

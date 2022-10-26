@@ -1,7 +1,7 @@
 export type WeeksProps = {
-   setActiveMealDayHandler: (idWeek: string) => void;
+  setActiveMealDayHandler: (idWeek: string) => void
 }
 export type WeekButtonProps = {
-   idWeek: string;
-   activeDayIdWeek: string;
+  idWeek: string
+  activeDayIdWeek: string
 }

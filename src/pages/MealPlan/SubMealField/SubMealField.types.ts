@@ -1,6 +1,6 @@
 export type SubMealFieldProps = {
-   isSubMealMenu: boolean;
+  isSubMealMenu: boolean
 }
 export type SubmitSubMealType = {
-   subMealName: string;
+  subMealName: string
 }

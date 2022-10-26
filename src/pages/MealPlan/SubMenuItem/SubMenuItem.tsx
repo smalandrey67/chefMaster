@@ -8,15 +8,15 @@ import * as Style from './SubMenuItem.styled'
 import { SubMenuItemProps } from './SubMenuItem.types'
 
 export const SubMenuItem: FC<SubMenuItemProps> = memo(({ subMealId, path, title, Icon }) => {
-   const activeDay = useAppSelector(selectActiveMealDay)
-   const location = useLocation()
+  const activeDay = useAppSelector(selectActiveMealDay)
+  const location = useLocation()
 
-   return (
-      <Style.SubMenuItemEl>
-         <Style.SubMenuLink to={path} state={{ prevPath: location.pathname, idWeek: activeDay.idWeek, subMealId }}>
-            <Icon />
-            {title}
-         </Style.SubMenuLink>
-      </Style.SubMenuItemEl>
-   )
+  return (
+    <Style.SubMenuItemEl>
+      <Style.SubMenuLink to={path} state={{ prevPath: location.pathname, idWeek: activeDay.idWeek, subMealId }}>
+        <Icon />
+        {title}
+      </Style.SubMenuLink>
+    </Style.SubMenuItemEl>
+  )
 })

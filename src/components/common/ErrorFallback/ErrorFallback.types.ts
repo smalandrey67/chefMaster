@@ -1,3 +1,3 @@
 export type ErrorFallbackProps = {
-   height: string;
+  height: string
 }

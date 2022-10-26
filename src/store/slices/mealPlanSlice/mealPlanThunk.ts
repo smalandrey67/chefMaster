@@ -8,37 +8,38 @@ import { db } from '../../../firebase'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 
 export const getMealPlanThunk = createAsyncThunk<WeekPlanType[] | undefined, void, { rejectValue: string }>(
-   'getMealPlan', async (_, { rejectWithValue, getState }) => {
-      try {
-         const state = getState() as RootState
-         const uidOfUserDocument = state.authorisation.user?.uid
+  'getMealPlan',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const state = getState() as RootState
+      const uidOfUserDocument = state.authorisation.user?.uid
 
+      if (uidOfUserDocument) {
+        const mealPlanRef = doc(db, 'users', uidOfUserDocument)
+        const userMealPlan = await getDoc(mealPlanRef)
 
-         if (uidOfUserDocument) {
-            const mealPlanRef = doc(db, 'users', uidOfUserDocument)
-            const userMealPlan = await getDoc(mealPlanRef)
-
-            return userMealPlan.data()?.mealPlan
-         }
-      } catch (error) {
-         return rejectWithValue(handlerError(error, 'Server Error'))
+        return userMealPlan.data()?.mealPlan
       }
-   }
+    } catch (error) {
+      return rejectWithValue(handlerError(error, 'Server Error'))
+    }
+  }
 )
 
 export const updateMealPlanThunk = createAsyncThunk<void, void, { rejectValue: string }>(
-   'updateMealPlanThunk', async (_, { rejectWithValue, getState }) => {
-      try {
-         const state = getState() as RootState
-         const uidOfUserDocument = state.authorisation.user?.uid
+  'updateMealPlanThunk',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const state = getState() as RootState
+      const uidOfUserDocument = state.authorisation.user?.uid
 
-         if (uidOfUserDocument) {
-            const mealPlanRef = doc(db, 'users', uidOfUserDocument)
+      if (uidOfUserDocument) {
+        const mealPlanRef = doc(db, 'users', uidOfUserDocument)
 
-            await updateDoc(mealPlanRef, { mealPlan: state.mealPlan.weekPlan })
-         }
-      } catch (error) {
-         return rejectWithValue(handlerError(error, 'Server Error'))
+        await updateDoc(mealPlanRef, { mealPlan: state.mealPlan.weekPlan })
       }
-   }
+    } catch (error) {
+      return rejectWithValue(handlerError(error, 'Server Error'))
+    }
+  }
 )

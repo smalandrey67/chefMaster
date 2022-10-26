@@ -1,6 +1,6 @@
 export type TabsState = {
-   tabName: string;
+  tabName: string
 }
 export type ChangeTabNamePayload = {
-   tabName: string;
+  tabName: string
 }

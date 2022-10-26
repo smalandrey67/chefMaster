@@ -6,11 +6,10 @@ import { Recipes } from 'components/business/Recipes/Recipes'
 import { About } from 'components/business/About/About'
 
 export const Main: FC = () => {
-  
-    return (
-        <Style.MainEl>
-            <Recipes />
-            <About />
-        </Style.MainEl>
-    )
+  return (
+    <Style.MainEl>
+      <Recipes />
+      <About />
+    </Style.MainEl>
+  )
 }

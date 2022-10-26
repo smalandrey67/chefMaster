@@ -1,5 +1,5 @@
 export type NutritionType = {
-    calories: string;
-    carbs: string;
-    protein: string;
+  calories: string
+  carbs: string
+  protein: string
 }

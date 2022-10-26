@@ -6,14 +6,13 @@ import { CookingIngredientProps } from './Cooking.types'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 
 export const CookingIngredient: FC<CookingIngredientProps> = memo(({ image, name }) => {
-
-   return (
-      <LazyImage
-         width='60px'
-         height='60px'
-         style={{ 'objectFit': 'contain' }}
-         image={`${config.ingredientsUrl}${image}`}
-         alt={name}
-      />
-   ) 
+  return (
+    <LazyImage
+      width='60px'
+      height='60px'
+      style={{ objectFit: 'contain' }}
+      image={`${config.ingredientsUrl}${image}`}
+      alt={name}
+    />
+  )
 })

@@ -7,22 +7,19 @@ import * as Style from './Social.styled'
 import { SocialProps } from './Social.types'
 
 export const Social: FC<SocialProps> = memo(({ details }) => {
+  return (
+    <>
+      <Style.DetailsWrapperTitle>{details?.title}</Style.DetailsWrapperTitle>
 
-   return (
-      <>
-         <Style.DetailsWrapperTitle>
-            {details?.title}
-         </Style.DetailsWrapperTitle>
+      <Style.SocialReadyMinutes>
+        <BsClock size='20' />
+        {details?.readyInMinutes} min
+      </Style.SocialReadyMinutes>
 
-         <Style.SocialReadyMinutes>
-            <BsClock size='20' />
-            {details?.readyInMinutes} min
-         </Style.SocialReadyMinutes>
-
-         <Style.SocialAgreeLikes>
-            <AiOutlineLike size='20' />
-            {details?.aggregateLikes}
-         </Style.SocialAgreeLikes>
-      </>
-   )
+      <Style.SocialAgreeLikes>
+        <AiOutlineLike size='20' />
+        {details?.aggregateLikes}
+      </Style.SocialAgreeLikes>
+    </>
+  )
 })

@@ -7,21 +7,23 @@ import { addRecipeIntoMeal, setActiveMealDay } from 'store/slices/mealPlanSlice/
 import { updateMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 
 export const useAddIntoWeekPlan = (
-   state: StateValuesType, id: number, title: string, image: string
+  state: StateValuesType,
+  id: number,
+  title: string,
+  image: string
 ): UseAddIntoWeekPlanReturnsType => {
+  const dispatch = useAppDispatch()
+  const navigateHandler = useRedirect()
 
-   const dispatch = useAppDispatch()
-   const navigateHandler = useRedirect()
+  const addRecipeIntoWeekPlan = (): void => {
+    if (state) {
+      dispatch(addRecipeIntoMeal(state.idWeek, state.subMealId, id, title, image))
+      dispatch(setActiveMealDay({ idWeek: state.idWeek }))
+      dispatch(updateMealPlanThunk())
 
-   const addRecipeIntoWeekPlan = (): void => {
-      if (state) {
-         dispatch(addRecipeIntoMeal(state.idWeek, state.subMealId, id, title, image))
-         dispatch(setActiveMealDay({ idWeek: state.idWeek }))
-         dispatch(updateMealPlanThunk())
-         
-         navigateHandler('/meal/plan')
-      }
-   }
+      navigateHandler('/meal/plan')
+    }
+  }
 
-   return addRecipeIntoWeekPlan
+  return addRecipeIntoWeekPlan
 }

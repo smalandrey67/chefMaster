@@ -7,16 +7,16 @@ import { changeStatusOfHamburgerMenu } from 'store/slices/filterSlice/filterSlic
 import * as Style from './Header.styled'
 
 export const HamburgerButton: FC = () => {
-   const dispatch = useAppDispatch()
-   const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
+  const dispatch = useAppDispatch()
+  const isHamburgerMenu = useAppSelector(selectIsHamburgerMenu)
 
-   const hamburgerHandler = (): void => {
-      dispatch(changeStatusOfHamburgerMenu())
-   }
+  const hamburgerHandler = (): void => {
+    dispatch(changeStatusOfHamburgerMenu())
+  }
 
-   return (
-      <Style.Hamburger onClick={hamburgerHandler} isHamburgerMenu={isHamburgerMenu}>
-         <Style.HamburgerLine isHamburgerMenu={isHamburgerMenu} />
-      </Style.Hamburger>
-   )
+  return (
+    <Style.Hamburger onClick={hamburgerHandler} isHamburgerMenu={isHamburgerMenu}>
+      <Style.HamburgerLine isHamburgerMenu={isHamburgerMenu} />
+    </Style.Hamburger>
+  )
 }

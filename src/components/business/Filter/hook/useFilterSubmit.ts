@@ -7,22 +7,22 @@ import { useRedirect } from 'hooks/useRedirect'
 import { UseFilterSubmitReturnsType } from 'types/Hooks'
 
 export const useFilterSubmit = (): UseFilterSubmitReturnsType => {
-	const isFilterMenuOpen = useAppSelector(selectIsFilterMenuOpen)
-	const { stringOfParams, isDisabledShowResultButton } = useAppSelector(selectValidatedParams)
+  const isFilterMenuOpen = useAppSelector(selectIsFilterMenuOpen)
+  const { stringOfParams, isDisabledShowResultButton } = useAppSelector(selectValidatedParams)
 
-	const dispatch = useAppDispatch()
-	const navigateHandler = useRedirect()
+  const dispatch = useAppDispatch()
+  const navigateHandler = useRedirect()
 
-	const showResultHandler = (): void => {
-		navigateHandler('/searched', stringOfParams)
+  const showResultHandler = (): void => {
+    navigateHandler('/searched', stringOfParams)
 
-		if (isFilterMenuOpen) {
-			dispatch(changeStatusOfFilterMenu())
-		}
-	}
+    if (isFilterMenuOpen) {
+      dispatch(changeStatusOfFilterMenu())
+    }
+  }
 
-	return {
-		isDisabledShowResultButton,
-		showResultHandler
-	}
+  return {
+    isDisabledShowResultButton,
+    showResultHandler
+  }
 }

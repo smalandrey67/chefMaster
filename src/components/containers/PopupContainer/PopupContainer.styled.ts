@@ -2,25 +2,25 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 export const Popup = styled(motion.div)`
-   position: fixed;
-   width: 100%;
-   height: 100%;
-   background-color: var(--color-gradient);
-   top: 0;
-   left: 0;
-   z-index: 150;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-gradient);
+  top: 0;
+  left: 0;
+  z-index: 150;
 `
 export const PopupBody = styled.div`
-   min-height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 30px 10px;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
 `
 export const PopupContent = styled.div`
-   background-color: var(--color-white);
-   color: var(--color-text);
-   width: 500px;
-   padding: 15px;
-   border-radius: var(--br-radius);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  width: 500px;
+  padding: 15px;
+  border-radius: var(--br-radius);
 `

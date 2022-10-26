@@ -1,7 +1,7 @@
-import { lazy } from 'react';
+import { lazy } from 'react'
 
 export const Instructions = lazy(() =>
-   import(/* webpackChunkName: "Instructions" */'./Instructions').then(module => ({
-      default: module.Instructions
-   }))
+  import(/* webpackChunkName: "Instructions" */ './Instructions').then((module) => ({
+    default: module.Instructions
+  }))
 )

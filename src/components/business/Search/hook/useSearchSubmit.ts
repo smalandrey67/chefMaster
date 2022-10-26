@@ -11,24 +11,24 @@ import { selectIsFilterMenuOpen, selectValidatedParams } from 'store/slices/filt
 import { changeStatusOfFilterMenu } from 'store/slices/filterSlice/filterSlice'
 
 export const useSearchSubmit = (reset: UseFormReset<SubmitSearchType>): UseSearchSubmitReturnsType => {
-   const dispatch = useAppDispatch()
-   const navigateHandler = useRedirect()
+  const dispatch = useAppDispatch()
+  const navigateHandler = useRedirect()
 
-   const isFilterMenuOpen = useAppSelector(selectIsFilterMenuOpen)
-   const { stringOfParams } = useAppSelector(selectValidatedParams)
+  const isFilterMenuOpen = useAppSelector(selectIsFilterMenuOpen)
+  const { stringOfParams } = useAppSelector(selectValidatedParams)
 
-   useOverflow(isFilterMenuOpen)
+  useOverflow(isFilterMenuOpen)
 
-   const submitSearchHandler: SubmitHandler<SubmitSearchType> = (data): void => {
-      const nameOfProduct = data.product.trim().toLowerCase()
+  const submitSearchHandler: SubmitHandler<SubmitSearchType> = (data): void => {
+    const nameOfProduct = data.product.trim().toLowerCase()
 
-      navigateHandler('/searched/', `${nameOfProduct}${stringOfParams}`)
-      reset()
+    navigateHandler('/searched/', `${nameOfProduct}${stringOfParams}`)
+    reset()
 
-      if (isFilterMenuOpen) {
-         dispatch(changeStatusOfFilterMenu())
-      }
-   }
+    if (isFilterMenuOpen) {
+      dispatch(changeStatusOfFilterMenu())
+    }
+  }
 
-   return submitSearchHandler
+  return submitSearchHandler
 }

@@ -1,6 +1,6 @@
 export type HeaderNavProps = Partial<{
-   isHamburgerMenu: boolean
+  isHamburgerMenu: boolean
 }>
 export type HamburgerProps = {
-   isHamburgerMenu: boolean;
+  isHamburgerMenu: boolean
 }

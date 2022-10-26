@@ -11,29 +11,32 @@ const INGREDIENTS = 'ingredients'
 const COOKING = 'cooking'
 
 export const Tabs: FC = () => {
-    const dispatch = useAppDispatch()
-    const tabName = useAppSelector(selectTabName)
+  const dispatch = useAppDispatch()
+  const tabName = useAppSelector(selectTabName)
 
-    const tabHandler = (tabName: string): void => {
-        dispatch(changeTabName({ tabName }))
-    }
+  const tabHandler = (tabName: string): void => {
+    dispatch(changeTabName({ tabName }))
+  }
 
-    return (
-        <Style.DetailsInfoWrapper>
-            <Style.DetailsInfoButton
-                className={`${tabName === INSTRUCTIONS && 'active'}`}
-                onClick={() => tabHandler(INSTRUCTIONS)}
-            >Instructions</Style.DetailsInfoButton>
+  return (
+    <Style.DetailsInfoWrapper>
+      <Style.DetailsInfoButton
+        className={`${tabName === INSTRUCTIONS && 'active'}`}
+        onClick={() => tabHandler(INSTRUCTIONS)}
+      >
+        Instructions
+      </Style.DetailsInfoButton>
 
-            <Style.DetailsInfoButton
-                className={`${tabName === INGREDIENTS && 'active'}`}
-                onClick={() => tabHandler(INGREDIENTS)}
-            >Ingredients</Style.DetailsInfoButton>
+      <Style.DetailsInfoButton
+        className={`${tabName === INGREDIENTS && 'active'}`}
+        onClick={() => tabHandler(INGREDIENTS)}
+      >
+        Ingredients
+      </Style.DetailsInfoButton>
 
-            <Style.DetailsInfoButton
-                className={`${tabName === COOKING && 'active'}`}
-                onClick={() => tabHandler(COOKING)}
-            >Cooking</Style.DetailsInfoButton>
-        </Style.DetailsInfoWrapper>
-    )
+      <Style.DetailsInfoButton className={`${tabName === COOKING && 'active'}`} onClick={() => tabHandler(COOKING)}>
+        Cooking
+      </Style.DetailsInfoButton>
+    </Style.DetailsInfoWrapper>
+  )
 }

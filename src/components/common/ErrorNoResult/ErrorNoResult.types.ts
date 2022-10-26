@@ -1,4 +1,4 @@
 export type ErrorNotResultProps = {
-   description: string;
-   height: string;
+  description: string
+  height: string
 }

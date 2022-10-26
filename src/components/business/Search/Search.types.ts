@@ -1,3 +1,3 @@
 export type SubmitSearchType = {
-   product: string;
+  product: string
 }

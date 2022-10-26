@@ -1,8 +1,8 @@
 import { FavoriteRecipeType } from 'types/Favorites'
 
 export type FavoritesState = {
-   favorites: FavoriteRecipeType[];
+  favorites: FavoriteRecipeType[]
 }
 export type RemoveFavoritePayload = {
-   id: number;
+  id: number
 }
