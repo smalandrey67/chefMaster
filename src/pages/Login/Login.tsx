@@ -1,9 +1,11 @@
 import { FC } from 'react'
+import { useLocation } from 'react-router-dom'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Container, ErrorMessage, Group, Label, Input, Flex, LinkEl, Button, Legend } from 'assets/styled/Reused.styled'
 import { SubmitUserType } from 'types/Authorisation'
-import { validation } from 'utils/constants/validation.constants'
+import { LocationStateType } from 'types/Location'
+import { validation } from 'constants/validation'
 
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
@@ -22,6 +24,8 @@ export const Login: FC = () => {
     reset
   } = useForm<SubmitUserType>({ mode: 'onChange' })
 
+  const { state } = useLocation() as LocationStateType
+
   const authError = useAppSelector(selectCurrentUserAuthError)
   const navigateHandler = useRedirect()
   const dispatch = useAppDispatch()
@@ -33,7 +37,8 @@ export const Login: FC = () => {
       signInThunk({
         email: email.trim().toLocaleLowerCase(),
         password: password.trim().toLocaleLowerCase(),
-        navigateHandler
+        navigateHandler,
+        navigatePath: state?.prevPath ?? '/'
       })
     )
 
@@ -65,7 +70,12 @@ export const Login: FC = () => {
           </Group>
 
           <Flex justifyContent='space-between'>
-            <LinkEl color='var(--color-links)' textDecoration='underline' to='/registration'>
+            <LinkEl
+              color='var(--color-links)'
+              textDecoration='underline'
+              to='/registration'
+              state={{ prevPath: state?.prevPath }}
+            >
               Don't have an account?
             </LinkEl>
             <LinkEl color='var(--color-links)' textDecoration='underline' to='/reset/password'>

@@ -20,7 +20,7 @@ export const FormContainer = <
   children,
   handleSubmit,
   submitHandler
-}: AuthFormContainerProps<T>) => {
+}: AuthFormContainerProps<T>): JSX.Element => {
   return (
     <Form onSubmit={handleSubmit(submitHandler)}>
       <Fieldset>{children}</Fieldset>

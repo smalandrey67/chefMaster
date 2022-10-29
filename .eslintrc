@@ -13,9 +13,10 @@
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
     "react/display-name": ["off", { "ignoreTranspilerName": true }],
-    "no-console": "error",
+    "no-console": "warn",
     "quotes": ["warn", "single"],
     "jsx-quotes": ["warn", "prefer-single"],
+    "func-style": ["warn", "expression"],
     "no-empty": [
       "warn",
       {
@@ -41,6 +42,14 @@
       }
     ],
     "no-else-return": "warn",
+    "@typescript-eslint/explicit-function-return-type": [
+      "warn",
+      {
+        "allowExpressions": true,
+        "allowHigherOrderFunctions": true,
+        "allowTypedFunctionExpressions": true
+      }
+    ],
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "arrow-spacing": "warn"

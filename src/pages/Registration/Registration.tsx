@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
 import { Container, ErrorMessage, Legend, Label, Input, Flex, LinkEl, Button, Group } from 'assets/styled/Reused.styled'
 
-import { validation } from 'utils/constants/validation.constants'
+import { validation } from 'constants/validation'
 import { SubmitUserType } from 'types/Authorisation'
 
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
@@ -12,6 +12,8 @@ import { registrationThunk } from 'store/slices/authSlice/authThunk'
 import { useRedirect } from 'hooks/useRedirect'
 import { selectCurrentUserAuthError } from 'store/slices/authSlice/authSlice.selectors'
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
+import { useLocation } from 'react-router-dom'
+import { LocationStateType } from 'types/Location'
 
 export const Registration: FC = () => {
   const {
@@ -20,6 +22,8 @@ export const Registration: FC = () => {
     handleSubmit,
     reset
   } = useForm<SubmitUserType>({ mode: 'onChange' })
+
+  const { state } = useLocation() as LocationStateType
 
   const authError = useAppSelector(selectCurrentUserAuthError)
   const dispatch = useAppDispatch()
@@ -32,7 +36,8 @@ export const Registration: FC = () => {
       registrationThunk({
         email: email.trim().toLocaleLowerCase(),
         password: password.trim().toLocaleLowerCase(),
-        navigateHandler
+        navigateHandler,
+        navigatePath: state?.prevPath ?? '/'
       })
     )
 

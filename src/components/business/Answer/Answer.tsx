@@ -18,7 +18,7 @@ import {
 } from 'assets/styled/Reused.styled'
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 
-import { PopupContainer } from '../../containers/PopupContainer/PopupContainer'
+import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
@@ -27,7 +27,7 @@ import { BiError } from 'react-icons/bi'
 
 import { SubmitAnswerType, AnswerProps } from 'types/Answer'
 import { useLazyGetAnswerQuery } from 'services/RecipesService'
-import { validation } from 'utils/constants/validation.constants'
+import { validation } from 'constants/validation'
 
 export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
   const {

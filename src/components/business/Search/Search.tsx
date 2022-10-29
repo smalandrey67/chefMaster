@@ -9,7 +9,7 @@ import { FiSearch } from 'react-icons/fi'
 import { GoSettings } from 'react-icons/go'
 import { SubmitSearchType } from './Search.types'
 
-import { validation } from 'utils/constants/validation.constants'
+import { validation } from 'constants/validation'
 import { useFilterMenu } from './hook/useFilterMenu'
 import { useSearchSubmit } from './hook/useSearchSubmit'
 

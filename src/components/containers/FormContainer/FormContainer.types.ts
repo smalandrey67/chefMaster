@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form'
+import { FieldValues, SubmitHandler, UseFormHandleSubmit } from 'react-hook-form'
 
-export type AuthFormContainerProps<T> = {
+export type AuthFormContainerProps<T extends FieldValues> = {
   children: ReactNode
   handleSubmit: UseFormHandleSubmit<T>
   submitHandler: SubmitHandler<T>

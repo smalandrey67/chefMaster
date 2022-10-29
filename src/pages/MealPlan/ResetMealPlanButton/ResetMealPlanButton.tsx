@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import { useResetMealPlan } from '../hooks/useResetMealPlan'
+import { useResetMealPlan } from '../hook/useResetMealPlan'
 import * as Style from './ResetMealPlanButton.styled'
 
 export const ResetMealPlanButton: FC = memo(() => {

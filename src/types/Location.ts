@@ -4,5 +4,5 @@ export type StateValuesType = {
   subMealId: string
 }
 export type LocationStateType = {
-  state: StateValuesType
+  state: StateValuesType | null
 }

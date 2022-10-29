@@ -6,7 +6,7 @@ import { AuthState, UserType } from './authSlice.types'
 import { signInThunk, registrationThunk, logOutThunk, resetPasswordThunk, updateUserThunk } from './authThunk'
 
 const initialState: AuthState = {
-  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '') : null,
+  user: null,
   error: null
 }
 
@@ -17,8 +17,6 @@ const authSlice = createSlice({
     addUser: {
       reducer: (state, { payload }: PayloadAction<UserType>): void => {
         state.user = payload
-
-        localStorage.setItem('user', JSON.stringify(payload))
       },
       prepare: (currentUser: User) => {
         return {
@@ -49,8 +47,6 @@ const authSlice = createSlice({
       .addCase(registrationThunk.fulfilled, (state, { payload }): void => {
         state.user = payload
         state.error = null
-
-        localStorage.setItem('user', JSON.stringify(payload))
       })
       .addCase(registrationThunk.rejected, (state, { payload }): void => {
         if (payload) {
@@ -60,8 +56,6 @@ const authSlice = createSlice({
       .addCase(logOutThunk.fulfilled, (state): void => {
         state.user = null
         state.error = null
-
-        localStorage.removeItem('user')
       })
       .addCase(logOutThunk.rejected, (state, { payload }): void => {
         if (payload) {

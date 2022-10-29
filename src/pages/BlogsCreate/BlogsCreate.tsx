@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { stringCut } from 'utils/helpers/string.helper'
-import { extension } from 'utils/constants/extension.constants'
-import { validation } from 'utils/constants/validation.constants'
+import { stringCut } from 'utils/stringCut'
+import { extension } from 'constants/extension'
+import { validation } from 'constants/validation'
 
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'

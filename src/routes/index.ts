@@ -29,6 +29,7 @@ import { Profile } from 'pages/Profile/Profile'
 export type RouteType = Readonly<{
   path: string
   component: LazyExoticComponent<FC<string | unknown>> | ComponentType
+  isAuthRequired: boolean
 }>
 
 enum RoutePath {
@@ -49,18 +50,18 @@ enum RoutePath {
 }
 
 export const routes: readonly RouteType[] = [
-  { path: RoutePath.Main, component: Main },
-  { path: RoutePath.Cuisine, component: Cuisines },
-  { path: RoutePath.Details, component: Details },
-  { path: RoutePath.Blogs, component: Blogs },
-  { path: RoutePath.BlogsCreate, component: BlogsCreate },
-  { path: RoutePath.SearchedName, component: Searched },
-  { path: RoutePath.Searched, component: Searched },
-  { path: RoutePath.MealPlan, component: MealPlan },
-  { path: RoutePath.Login, component: Login },
-  { path: RoutePath.Register, component: Registration },
-  { path: RoutePath.Favorites, component: Favorites },
-  { path: RoutePath.ResetPassword, component: ResetPassword },
-  { path: RoutePath.Profile, component: Profile },
-  { path: RoutePath.NotFound, component: NotFound }
+  { path: RoutePath.Main, component: Main, isAuthRequired: false },
+  { path: RoutePath.Cuisine, component: Cuisines, isAuthRequired: false },
+  { path: RoutePath.Details, component: Details, isAuthRequired: false },
+  { path: RoutePath.Blogs, component: Blogs, isAuthRequired: true },
+  { path: RoutePath.BlogsCreate, component: BlogsCreate, isAuthRequired: false },
+  { path: RoutePath.SearchedName, component: Searched, isAuthRequired: false },
+  { path: RoutePath.Searched, component: Searched, isAuthRequired: false },
+  { path: RoutePath.MealPlan, component: MealPlan, isAuthRequired: true },
+  { path: RoutePath.Login, component: Login, isAuthRequired: false },
+  { path: RoutePath.Register, component: Registration, isAuthRequired: false },
+  { path: RoutePath.Favorites, component: Favorites, isAuthRequired: false },
+  { path: RoutePath.ResetPassword, component: ResetPassword, isAuthRequired: false },
+  { path: RoutePath.Profile, component: Profile, isAuthRequired: false },
+  { path: RoutePath.NotFound, component: NotFound, isAuthRequired: false }
 ]

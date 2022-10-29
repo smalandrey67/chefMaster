@@ -1,47 +1,22 @@
-import { FC, Suspense, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { FC } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { routes } from 'routes'
-
-import { Preload } from 'components/common/Preload/Preload'
 import { Header } from 'components/business/Header/Header'
 import { Categories } from 'components/business/Categories/Categories'
 import { ErrorFallback } from 'components/common/ErrorFallback/ErrorFallback.lazy'
+import { AllRoutes } from 'components/business/AllRoutes/AllRoutes'
 
-import { onAuthStateChanged } from 'firebase/auth'
-import { useAppDispatch } from 'hooks/useRedux'
-import { auth } from './firebase'
-import { addUser } from 'store/slices/authSlice/authSlice'
+import { useAuthStateChanged } from 'hooks/useAuthStateChanged'
 
 export const Home: FC = () => {
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        dispatch(addUser(currentUser))
-      } else {
-        localStorage.removeItem('user')
-      }
-    })
-
-    return unsubscribe
-  }, [dispatch])
+  useAuthStateChanged()
 
   return (
     <ErrorBoundary fallbackRender={() => <ErrorFallback height='100vh' />}>
       <Header />
       <Categories />
-
-      <Suspense fallback={<Preload />}>
-        <Routes>
-          {routes.map((route) => (
-            <Route key={route.path} path={route.path} element={<route.component />} />
-          ))}
-        </Routes>
-      </Suspense>
+      <AllRoutes />
     </ErrorBoundary>
   )
 }

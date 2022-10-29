@@ -6,9 +6,9 @@ import tabReducer from './slices/tabsSlice/tabsSlice'
 import mealPlanReducer from './slices/mealPlanSlice/mealPlanSlice'
 import authReducer from './slices/authSlice/authSlice'
 
-import { recipesApi } from '../services/RecipesService'
-import { blogsApi } from '../services/BlogsService'
-import { imageUploadApi } from '../services/ImageUploadService'
+import { recipesApi } from 'services/RecipesService'
+import { blogsApi } from 'services/BlogsService'
+import { imageUploadApi } from 'services/ImageUploadService'
 
 const rootReducer = combineReducers({
   filter: filterReducer,
@@ -21,6 +21,7 @@ const rootReducer = combineReducers({
   [imageUploadApi.reducerPath]: imageUploadApi.reducer
 })
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,

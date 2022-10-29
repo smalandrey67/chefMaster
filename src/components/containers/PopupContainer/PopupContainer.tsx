@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import * as Style from './PopupContainer.styled'
-import { motion } from 'utils/constants/motion.constants'
+import { motion } from 'constants/motion'
 
 import { PopupContainerProps } from './PopupContainer.types'
 

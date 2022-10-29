@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, Flex, Image } from '../../assets/styled/Reused.styled'
+import { Button, Flex, Image } from 'assets/styled/Reused.styled'
 
 import { BlogsCreatePreviewImageProps } from './BlogsCreate.types'
 
@@ -35,5 +35,5 @@ export const BlogsCreatePreview = styled.div`
   margin-bottom: 5px;
 `
 export const BlogsCreatePreviewImage = styled(Image)<BlogsCreatePreviewImageProps>`
-  display: ${(props) => (props.userPhoto ? 'block' : 'none')};
+  display: ${(props): 'none' | 'block' => (props.userPhoto ? 'block' : 'none')};
 `

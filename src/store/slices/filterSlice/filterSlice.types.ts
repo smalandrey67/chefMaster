@@ -1,5 +1,5 @@
 import { FilterParamsType } from 'types/Params'
-import { FilterCategoriesTypes } from 'utils/constants/filterTypes.constants'
+import { FilterCategoriesTypes } from 'constants/filterTypes'
 
 export type PayloadActiveType = {
   typeId: string
@@ -11,4 +11,9 @@ export type FilterState = {
   isFilterMenuOpen: boolean
   filterParams: FilterParamsType
   isHamburgerMenu: boolean
+}
+
+export type SelectValidatedParamsReturns = {
+  stringOfParams: string
+  isDisabledShowResultButton: boolean
 }

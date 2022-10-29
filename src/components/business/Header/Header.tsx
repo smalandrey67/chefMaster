@@ -5,7 +5,7 @@ import { LinkEl } from 'assets/styled/Reused.styled'
 import * as Style from './Header.styled'
 import { Container } from 'assets/styled/Reused.styled'
 
-import { Search } from '../Search/Search'
+import { Search } from 'components/business/Search/Search'
 import { HamburgerButton } from './HamburgerButton'
 import { HeaderMenu } from './HeaderMenu'
 

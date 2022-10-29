@@ -1,7 +1,7 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 
-import { mealPlan } from 'utils/constants/mealPlan.constants'
-import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
+import { mealPlan } from 'constants/mealPlan'
+import { getIndexOfCurrentDay } from 'utils/getIndexOfCurrentDay'
 import { getMealPlanThunk } from './mealPlanThunk'
 import {
   PayloadDeleteType,

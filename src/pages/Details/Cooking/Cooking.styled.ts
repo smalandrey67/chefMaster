@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { DetailsCookingContentProps, DetailsCookingIngredientsProps } from './Cooking.types'
 
 export const DetailsCookingSubtitle = styled.h4`
@@ -41,7 +41,7 @@ export const DetailsCookingContent = styled.div<DetailsCookingContentProps>`
   visibility: hidden;
   overflow: hidden;
 
-  ${(props) => {
+  ${(props): FlattenSimpleInterpolation | undefined => {
     if (props.isActiveStep) {
       return css`
         transition: all 0.3s ease;

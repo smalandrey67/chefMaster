@@ -1,12 +1,15 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from 'store/store'
+import { FilterParamsType } from 'types/Params'
+import { FilterCategoriesTypes } from 'constants/filterTypes'
+import { SelectValidatedParamsReturns } from './filterSlice.types'
 
-export const selectFilterCategories = (state: RootState) => state.filter.filterCategories
-export const selectIsFilterMenuOpen = (state: RootState) => state.filter.isFilterMenuOpen
-export const selectParams = (state: RootState) => state.filter.filterParams
-export const selectIsHamburgerMenu = (state: RootState) => state.filter.isHamburgerMenu
+export const selectFilterCategories = (state: RootState): FilterCategoriesTypes[] => state.filter.filterCategories
+export const selectIsFilterMenuOpen = (state: RootState): boolean => state.filter.isFilterMenuOpen
+export const selectParams = (state: RootState): FilterParamsType => state.filter.filterParams
+export const selectIsHamburgerMenu = (state: RootState): boolean => state.filter.isHamburgerMenu
 
-export const selectValidatedParams = createSelector([selectParams], (params) => {
+export const selectValidatedParams = createSelector([selectParams], (params): SelectValidatedParamsReturns => {
   const entriesFromParams = Object.entries(params)
 
   let stringOfParams = ''

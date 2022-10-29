@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { IoIosClose } from 'react-icons/io'
 
 import { useRedirect } from 'hooks/useRedirect'
-import { useDeleteRecipe } from '../hooks/useDeleteRecipe'
+import { useDeleteRecipe } from '../hook/useDeleteRecipe'
 
 import * as Style from './Dish.styled'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
@@ -21,7 +21,9 @@ export const Dish: FC<DishProps> = memo(({ subMealId, idDish, image, title }) =>
         height='102px'
         style={{ objectFit: 'cover', borderRadius: 'var(--br-radius)' }}
       />
-      <Style.DishDeleteButton onClick={(e) => deleteRecipeFromWeekPlanHandler(e, idDish)}>
+      <Style.DishDeleteButton
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => deleteRecipeFromWeekPlanHandler(e, idDish)}
+      >
         <IoIosClose color='var(--color-white)' size='30' />
       </Style.DishDeleteButton>
     </Style.DishEl>

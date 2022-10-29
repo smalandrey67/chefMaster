@@ -1,8 +1,8 @@
 import { FC, Fragment } from 'react'
 import { nanoid } from '@reduxjs/toolkit'
 
-import { motion } from 'utils/constants/motion.constants'
-import { stringCut } from 'utils/helpers/string.helper'
+import { motion } from 'constants/motion'
+import { stringCut } from 'utils/stringCut'
 
 import { List } from 'assets/styled/Reused.styled'
 import * as Style from './Cooking.styled'

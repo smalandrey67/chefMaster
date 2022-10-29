@@ -3,7 +3,7 @@ import { BsFillBasket3Fill, BsSearch } from 'react-icons/bs'
 import { BiDotsHorizontalRounded, BiError } from 'react-icons/bi'
 import { ToastContainer } from 'react-toastify'
 
-import { motion } from 'utils/constants/motion.constants'
+import { motion } from 'constants/motion'
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux'
 import {
   selectActiveMealDay,
@@ -23,13 +23,12 @@ import { ResetMealPlanButton } from './ResetMealPlanButton/ResetMealPlanButton'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
-import { NotAuthorisated } from 'components/common/NotAuthorisated/NotAuthorisated'
 
-import { useChangeStatusOfSubMealMenu } from './hooks/useChangeStatusOfSubMealMenu'
-import { useSetActiveMealDay } from './hooks/useSetActiveMealDay'
-import { useOpenMenuAddingRecipe } from './hooks/useOpenMenuAddingRecipe'
-import { useDeleteSubMealMenu } from './hooks/useDeleteSubMealMenu'
-import { stringCut } from 'utils/helpers/string.helper'
+import { useChangeStatusOfSubMealMenu } from './hook/useChangeStatusOfSubMealMenu'
+import { useSetActiveMealDay } from './hook/useSetActiveMealDay'
+import { useOpenMenuAddingRecipe } from './hook/useOpenMenuAddingRecipe'
+import { useDeleteSubMealMenu } from './hook/useDeleteSubMealMenu'
+import { stringCut } from 'utils/stringCut'
 
 import { getMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 
@@ -58,12 +57,10 @@ export const MealPlan: FC = () => {
   }, [activeDay, arrayFnOfClosingPopups])
 
   useEffect(() => {
-    dispatch(getMealPlanThunk())
-  }, [dispatch])
-
-  if (!Object.values(user || {}).length) {
-    return <NotAuthorisated />
-  }
+    if (user) {
+      dispatch(getMealPlanThunk())
+    }
+  }, [user, dispatch])
 
   if (status === 'pending') {
     return (
@@ -75,7 +72,7 @@ export const MealPlan: FC = () => {
 
   return (
     <SectionContainer motion={motion}>
-      <BackButtonContainer>
+      <BackButtonContainer buttonTitle='back'>
         <Title>Meal Plan</Title>
       </BackButtonContainer>
 

@@ -7,7 +7,7 @@ import { addRecipeIntoMeal, setActiveMealDay } from 'store/slices/mealPlanSlice/
 import { updateMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 
 export const useAddIntoWeekPlan = (
-  state: StateValuesType,
+  state: StateValuesType | null,
   id: number,
   title: string,
   image: string

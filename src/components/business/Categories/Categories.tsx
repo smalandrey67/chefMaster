@@ -6,8 +6,8 @@ import * as Style from './Categories.styled'
 import { Splide } from '@splidejs/react-splide'
 import { SplideSlide } from '@splidejs/react-splide'
 
-import { categories } from 'utils/constants/categories.constants'
-import { splideOptions } from 'utils/constants/splide.constants'
+import { categories } from 'constants/categories'
+import { splideOptions } from 'constants/splide'
 
 export const Categories: FC = () => {
   return (

@@ -3,7 +3,7 @@ import { useAppSelector } from './useRedux'
 
 import { StateValuesType } from 'types/Location'
 
-export const useAlreadyExist = (state: StateValuesType, id: number): boolean | undefined => {
+export const useAlreadyExist = (state: StateValuesType | null, id: number): boolean | undefined => {
   const weekPlan = useAppSelector(selectWeekPlan)
 
   const isAlreadyExistHandler = (): boolean | undefined => {

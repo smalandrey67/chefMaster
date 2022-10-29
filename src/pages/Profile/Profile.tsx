@@ -47,7 +47,7 @@ export const Profile: FC = () => {
 
   return (
     <SectionContainer>
-      <BackButtonContainer>
+      <BackButtonContainer buttonTitle='back'>
         <Title>Profile test</Title>
       </BackButtonContainer>
       <Style.ProfileContent>

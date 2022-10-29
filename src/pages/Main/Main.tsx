@@ -2,13 +2,13 @@ import { FC } from 'react'
 
 import * as Style from './Main.styled'
 
-import { Recipes } from 'components/business/Recipes/Recipes'
+import { RecipesCarousel } from 'components/business/RecipesCarousel/RecipesCarousel'
 import { About } from 'components/business/About/About'
 
 export const Main: FC = () => {
   return (
     <Style.MainEl>
-      <Recipes />
+      <RecipesCarousel />
       <About />
     </Style.MainEl>
   )

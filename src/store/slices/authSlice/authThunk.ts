@@ -3,21 +3,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
-import { db } from '../../../firebase'
+import { db } from 'firebaseConfig'
 
 import { AuthorisationParametersType, UserType } from './authSlice.types'
-import { auth } from '../../../firebase'
+import { auth } from 'firebaseConfig'
 import { LogOutType, UpdateUserThunkParametersType } from './authSlice.types'
 
-import { handlerError } from 'utils/helpers/handleError.helper'
-import { handleAlert } from 'utils/helpers/handleAlert.helper'
+import { handlerError } from 'utils/handleError'
+import { handleAlert } from 'utils/handleAlert'
 import { addUser } from './authSlice'
 
-import { mealPlan } from 'utils/constants/mealPlan.constants'
+import { mealPlan } from 'constants/mealPlan'
 
 export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
   'signIn',
-  async ({ email, password, navigateHandler }, { rejectWithValue, fulfillWithValue }) => {
+  async ({ email, password, navigateHandler, navigatePath }, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password)
 
@@ -28,7 +28,7 @@ export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersTyp
         uid: user.uid
       }
 
-      fulfillWithValue(navigateHandler('/'))
+      fulfillWithValue(navigateHandler(navigatePath))
 
       return userData
     } catch (error) {
@@ -39,7 +39,7 @@ export const signInThunk = createAsyncThunk<UserType, AuthorisationParametersTyp
 
 export const registrationThunk = createAsyncThunk<UserType, AuthorisationParametersType, { rejectValue: string }>(
   'registration',
-  async ({ email, password, navigateHandler }, { rejectWithValue, fulfillWithValue }) => {
+  async ({ email, password, navigateHandler, navigatePath }, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { user } = await createUserWithEmailAndPassword(auth, email, password)
 
@@ -53,7 +53,7 @@ export const registrationThunk = createAsyncThunk<UserType, AuthorisationParamet
         uid: user.uid
       }
 
-      fulfillWithValue(navigateHandler('/'))
+      fulfillWithValue(navigateHandler(navigatePath))
       return userData
     } catch (error) {
       return rejectWithValue(handlerError(error, 'Server Error'))
@@ -80,7 +80,7 @@ export const resetPasswordThunk = createAsyncThunk<void, { email: string }, { re
     try {
       await sendPasswordResetEmail(auth, email)
 
-      fulfillWithValue(handleAlert()('Check out your email', 'success'))
+      fulfillWithValue(handleAlert('Check out your email', 'success'))
     } catch (error) {
       return rejectWithValue(handlerError(error, 'Server Error'))
     }
@@ -95,7 +95,7 @@ export const updateUserThunk = createAsyncThunk<void, UpdateUserThunkParametersT
         await updateProfile(auth.currentUser, { ...updatesData })
         dispatch(addUser(auth.currentUser))
 
-        fulfillWithValue(handleAlert()('The profile was updated', 'success'))
+        fulfillWithValue(handleAlert('The profile was updated', 'success'))
       }
     } catch (error) {
       return rejectWithValue(handlerError(error, 'Server Error'))

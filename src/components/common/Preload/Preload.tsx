@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { SpinnerWrapper, Title } from 'assets/styled/Reused.styled'
-import { HeaderLogoWrapper } from '../../business/Header/Header.styled'
+import { HeaderLogoWrapper } from 'components/business/Header/Header.styled'
 
 import { ImSpoonKnife } from 'react-icons/im'
 

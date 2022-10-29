@@ -100,8 +100,8 @@ export const ButtonHeart = styled.button`
 `
 export const Image = styled.img<ImageProps>`
   height: 100%;
-  width: ${(props) => props.width || '100%'};
-  object-fit: ${(props) => props.objectFit || 'cover'};
+  width: ${(props): string | number => props.width || '100%'};
+  object-fit: ${(props): string => props.objectFit || 'cover'};
 `
 // #==================================#
 export const Form = styled.form``

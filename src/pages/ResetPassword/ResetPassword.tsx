@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Container, ErrorMessage, Legend, Label, Input, Flex, LinkEl, Button, Group } from 'assets/styled/Reused.styled'
 import { SubmitResetPasswordType } from 'types/Authorisation'
-import { validation } from 'utils/constants/validation.constants'
+import { validation } from 'constants/validation'
 
 import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
 

@@ -1,7 +1,7 @@
 import { FC, useEffect, memo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { useSetActiveMealDay } from '../hooks/useSetActiveMealDay'
+import { useSetActiveMealDay } from '../hook/useSetActiveMealDay'
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 
 import { addSubMealMenu } from 'store/slices/mealPlanSlice/mealPlanSlice'
@@ -9,7 +9,7 @@ import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.se
 
 import { Label, Input, ErrorMessage, Group } from 'assets/styled/Reused.styled'
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
-import { validation } from 'utils/constants/validation.constants'
+import { validation } from 'constants/validation'
 import { SubMealFieldProps, SubmitSubMealType } from './SubMealField.types'
 import { updateMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
 

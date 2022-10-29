@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 
 import { Button } from 'assets/styled/Reused.styled'
 import { WeekButtonProps } from './Weeks.types'
@@ -8,7 +8,7 @@ export const WeekButton = styled(Button)<WeekButtonProps>`
   font-weight: var(--fw-bold);
   box-shadow: var(--shadow-alternative);
 
-  ${(props) => {
+  ${(props): FlattenSimpleInterpolation | undefined => {
     if (props.idWeek === props.activeDayIdWeek) {
       return css`
         background-color: var(--color-categories);

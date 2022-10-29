@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { MotionType } from 'utils/constants/motion.constants'
+import { MotionType } from 'constants/motion'
 
 export type SectionContainerProps = {
   children: ReactNode

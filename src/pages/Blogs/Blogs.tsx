@@ -19,7 +19,7 @@ export const Blogs: FC = () => {
 
   return (
     <SectionContainer>
-      <BackButtonContainer>
+      <BackButtonContainer buttonTitle='back'>
         <Style.BlogsAdd to='/blogs/create'>
           add blog <HiPlus />
         </Style.BlogsAdd>

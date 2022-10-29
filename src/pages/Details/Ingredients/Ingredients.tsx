@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { motion } from 'utils/constants/motion.constants'
+import { motion } from 'constants/motion'
 
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'

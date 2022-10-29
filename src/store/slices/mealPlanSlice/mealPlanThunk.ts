@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { handlerError } from 'utils/helpers/handleError.helper'
+import { handlerError } from 'utils/handleError'
 
 import { RootState } from 'store/store'
 import { WeekPlanType } from 'store/slices/mealPlanSlice/mealPlanSlice.types'
 
-import { db } from '../../../firebase'
+import { db } from 'firebaseConfig'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 
 export const getMealPlanThunk = createAsyncThunk<WeekPlanType[] | undefined, void, { rejectValue: string }>(

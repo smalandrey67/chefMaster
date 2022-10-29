@@ -15,6 +15,7 @@ export type AuthorisationParametersType = {
   email: string
   password: string
   navigateHandler: UseRedirectReturnsType
+  navigatePath: string
 }
 export type LogOutType = {
   navigateHandler: UseRedirectReturnsType

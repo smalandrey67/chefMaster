@@ -8,7 +8,7 @@ import { SectionContainer } from 'components/containers/SectionContainer/Section
 import { CuisineCard } from 'components/business/CuisineCard/CuisineCard'
 import { BackButtonContainer } from 'components/containers/BackButtonContainer/BackButtonContainer'
 
-import { motion } from 'utils/constants/motion.constants'
+import { motion } from 'constants/motion'
 import { BiError } from 'react-icons/bi'
 import { useGetCuisineQuery } from 'services/RecipesService'
 
@@ -18,7 +18,7 @@ export const Cuisines: FC = () => {
 
   return (
     <SectionContainer motion={motion}>
-      <BackButtonContainer>
+      <BackButtonContainer buttonTitle='back'>
         <Title>{params?.type}</Title>
       </BackButtonContainer>
       <RecipesWrapper>

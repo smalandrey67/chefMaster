@@ -4,13 +4,13 @@ import { useAppSelector } from 'hooks/useRedux'
 import { selectActiveMealDay, selectWeekPlan } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
 import { SplideSlide } from '@splidejs/react-splide'
-import { splideOptions } from 'utils/constants/splide.constants'
+import { splideOptions } from 'constants/splide'
 import { Splide } from '@splidejs/react-splide'
 
 import { Group } from 'assets/styled/Reused.styled'
 import * as Style from './Weeks.styled'
 import { WeeksProps } from './Weeks.types'
-import { getIndexOfCurrentDay } from 'utils/helpers/getIndexOfCurrentDay.helper'
+import { getIndexOfCurrentDay } from 'utils/getIndexOfCurrentDay'
 
 export const Weeks: FC<WeeksProps> = memo(({ setActiveMealDayHandler }) => {
   const weekPlan = useAppSelector(selectWeekPlan)

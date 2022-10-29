@@ -4,14 +4,14 @@ import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styl
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 import { BiError } from 'react-icons/bi'
 
-import { splideOptions } from 'utils/constants/splide.constants'
+import { splideOptions } from 'constants/splide'
 import { useGetRandomRecipesQuery } from 'services/RecipesService'
 import { Splide } from '@splidejs/react-splide'
 
-import { RecipeCard } from '../RecipeCard/RecipeCard'
+import { RecipeCard } from 'components/business/RecipeCard/RecipeCard'
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 
-export const Recipes: FC = () => {
+export const RecipesCarousel: FC = () => {
   const { data: recipes, error, isLoading } = useGetRandomRecipesQuery()
 
   return (

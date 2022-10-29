@@ -22,7 +22,7 @@ import { useGetHeartColor } from './hook/useGetHeartColor'
 import { useMakeFavorite } from './hook/useMakeFavorite'
 import { useAppSelector } from 'hooks/useRedux'
 
-import { motion } from 'utils/constants/motion.constants'
+import { motion } from 'constants/motion'
 import { selectTabName } from 'store/slices/tabsSlice/tabsSlice.selectors'
 import { useGetDetailsQuery } from 'services/RecipesService'
 
@@ -45,7 +45,7 @@ export const Details: FC = () => {
           <>
             <FlexGroup flex='0 1 50%'>
               <Style.DetailWrapperImage>
-                <BackButtonContainer>
+                <BackButtonContainer buttonTitle='back'>
                   <Style.DetailsHeartButton
                     aria-label='make this recipe the favorite'
                     onClick={makeRecipefavoriteHandler}
@@ -62,7 +62,7 @@ export const Details: FC = () => {
                 </Style.DetailsOverImage>
               </Style.DetailWrapperImage>
 
-              <ErrorBoundary fallbackRender={() => <ErrorFallback height='5vh' />}>
+              <ErrorBoundary fallbackRender={(): JSX.Element => <ErrorFallback height='5vh' />}>
                 <Nutritions id={params.id} />
               </ErrorBoundary>
             </FlexGroup>
@@ -71,19 +71,19 @@ export const Details: FC = () => {
               <Tabs />
 
               {tabName === 'instructions' && (
-                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                <ErrorBoundary fallbackRender={(): JSX.Element => <ErrorFallback height='10vh' />}>
                   <Instructions details={details} />
                 </ErrorBoundary>
               )}
 
               {tabName === 'ingredients' && (
-                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                <ErrorBoundary fallbackRender={(): JSX.Element => <ErrorFallback height='10vh' />}>
                   <Ingredients details={details} />
                 </ErrorBoundary>
               )}
 
               {tabName === 'cooking' && (
-                <ErrorBoundary fallbackRender={() => <ErrorFallback height='10vh' />}>
+                <ErrorBoundary fallbackRender={(): JSX.Element => <ErrorFallback height='10vh' />}>
                   <Cooking details={details} />
                 </ErrorBoundary>
               )}
