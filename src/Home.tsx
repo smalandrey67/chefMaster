@@ -3,9 +3,9 @@ import { ErrorBoundary } from 'react-error-boundary'
 import 'react-toastify/dist/ReactToastify.css'
 
 import { Header } from 'components/business/Header/Header'
+import { AllRoutes } from 'components/business/AllRoutes/AllRoutes'
 import { Categories } from 'components/business/Categories/Categories'
 import { ErrorFallback } from 'components/common/ErrorFallback/ErrorFallback.lazy'
-import { AllRoutes } from 'components/business/AllRoutes/AllRoutes'
 
 import { useAuthStateChanged } from 'hooks/useAuthStateChanged'
 

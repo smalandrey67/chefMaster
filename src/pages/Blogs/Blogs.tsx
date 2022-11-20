@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import * as Style from './Blogs.styled'
-import { SpinnerWrapper, Spinner, ErrorMessage } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
@@ -27,9 +27,9 @@ export const Blogs: FC = () => {
 
       <Style.BlogsWrapper>
         {isLoading ? (
-          <SpinnerWrapper height='40vh'>
-            <Spinner src={SpinnerBg} alt='spinner' />
-          </SpinnerWrapper>
+          <ReusedStyle.SpinnerWrapper height='40vh'>
+            <ReusedStyle.Spinner src={SpinnerBg} alt='spinner' />
+          </ReusedStyle.SpinnerWrapper>
         ) : (
           blogs?.map(({ id, ...blog }) => <BlogCard key={id} {...blog} />)
         )}
@@ -37,10 +37,10 @@ export const Blogs: FC = () => {
         {!blogs?.length && !error && !isLoading ? <ErrorNoResult description='No posts yet' height='50vh' /> : null}
 
         {error && (
-          <ErrorMessage>
+          <ReusedStyle.ErrorMessage>
             <BiError />
             Server Error
-          </ErrorMessage>
+          </ReusedStyle.ErrorMessage>
         )}
       </Style.BlogsWrapper>
     </SectionContainer>

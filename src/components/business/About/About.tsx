@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BsChatRightText } from 'react-icons/bs'
 
 import Background from 'assets/images/main/cooking-bg.webp'
-import { Image } from 'assets/styled/Reused.styled'
+import * as StyleReused from 'assets/styled/Reused.styled'
 import * as Style from './About.styled'
 import { usePopup } from 'hooks/usePopup'
 
@@ -17,7 +17,7 @@ export const About: FC = () => {
     <SectionContainer>
       <Style.AboutWrapper>
         <Style.AboutWrapperImage>
-          <Image src={Background} alt='cooking-background' />
+          <StyleReused.Image src={Background} alt='cooking-background' />
         </Style.AboutWrapperImage>
         <Style.AboutDescriptionWrapper>
           <Style.AboutDescriptionParagraph>

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { ErrorMessage, SpinnerWrapper, Spinner, Title, RecipesWrapper } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
@@ -19,23 +19,23 @@ export const Cuisines: FC = () => {
   return (
     <SectionContainer motion={motion}>
       <BackButtonContainer buttonTitle='back'>
-        <Title>{params?.type}</Title>
+        <ReusedStyle.Title>{params?.type}</ReusedStyle.Title>
       </BackButtonContainer>
-      <RecipesWrapper>
+      <ReusedStyle.RecipesWrapper>
         {isLoading ? (
-          <SpinnerWrapper height='40vh'>
-            <Spinner src={SpinnerBg} alt='spinner' />
-          </SpinnerWrapper>
+          <ReusedStyle.SpinnerWrapper height='40vh'>
+            <ReusedStyle.Spinner src={SpinnerBg} alt='spinner' />
+          </ReusedStyle.SpinnerWrapper>
         ) : (
           cuisines?.map((recipe) => <CuisineCard key={recipe.id} {...recipe} />)
         )}
         {error && (
-          <ErrorMessage>
+          <ReusedStyle.ErrorMessage>
             <BiError />
             Server Error
-          </ErrorMessage>
+          </ReusedStyle.ErrorMessage>
         )}
-      </RecipesWrapper>
+      </ReusedStyle.RecipesWrapper>
     </SectionContainer>
   )
 }

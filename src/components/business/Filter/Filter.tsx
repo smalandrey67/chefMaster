@@ -1,7 +1,7 @@
 import { FC, memo, Fragment } from 'react'
 
 import * as Style from './Filter.styled'
-import { Strong } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 
 import { selectFilterCategories, selectIsFilterMenuOpen } from 'store/slices/filterSlice/filterSlice.selectors'
 
@@ -27,7 +27,7 @@ export const Filter: FC = memo(() => {
       <Style.FilterBody>
         {filterCategories.map(({ id, names, type }) => (
           <Fragment key={id}>
-            <Strong fontSize='var(--fs-sm)'>{names.text}</Strong>
+            <ReusedStyle.Strong fontSize='var(--fs-sm)'>{names.text}</ReusedStyle.Strong>
             <Style.FilterWrapper>
               {type.map(({ typeId, active, name }) => (
                 <Style.FilterOption

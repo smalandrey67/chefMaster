@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 import { addSubMealMenu } from 'store/slices/mealPlanSlice/mealPlanSlice'
 import { selectActiveMealDay } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 
-import { Label, Input, ErrorMessage, Group } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { validation } from 'constants/validation'
 import { SubMealFieldProps, SubmitSubMealType } from './SubMealField.types'
@@ -46,25 +46,25 @@ export const SubMealField: FC<SubMealFieldProps> = memo(({ isSubMealMenu }) => {
 
   return (
     <FormContainer handleSubmit={handleSubmit} submitHandler={submitSubMealHandler}>
-      <Group
+      <ReusedStyle.Group
         maxwidth='500px'
         animate={{ height: animateHeightValue, opacity: animateOpacityValue, margin: animateMarginValue }}
         transition={{ type: 'tween', duration: 0.2 }}
       >
-        <Label>
-          <Input
+        <ReusedStyle.Label>
+          <ReusedStyle.Input
             {...register('subMealName', validation.subMeal)}
             disabled={!isSubMealMenu}
             type='text'
             enterKeyHint='done'
           />
-        </Label>
+        </ReusedStyle.Label>
         {errors?.subMealName && (
-          <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+          <ReusedStyle.ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
             {errors?.subMealName?.message}
-          </ErrorMessage>
+          </ReusedStyle.ErrorMessage>
         )}
-      </Group>
+      </ReusedStyle.Group>
     </FormContainer>
   )
 })

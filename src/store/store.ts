@@ -1,14 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import filterReducer from './slices/filterSlice/filterSlice'
-import favoritesReducer from './slices/favoriteSlice/favoritesSlice'
-import tabReducer from './slices/tabsSlice/tabsSlice'
-import mealPlanReducer from './slices/mealPlanSlice/mealPlanSlice'
 import authReducer from './slices/authSlice/authSlice'
+import favoritesReducer from './slices/favoriteSlice/favoritesSlice'
+import filterReducer from './slices/filterSlice/filterSlice'
+import mealPlanReducer from './slices/mealPlanSlice/mealPlanSlice'
+import tabReducer from './slices/tabsSlice/tabsSlice'
 
-import { recipesApi } from 'services/RecipesService'
 import { blogsApi } from 'services/BlogsService'
 import { imageUploadApi } from 'services/ImageUploadService'
+import { recipesApi } from 'services/RecipesService'
 
 const rootReducer = combineReducers({
   filter: filterReducer,

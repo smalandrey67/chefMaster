@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Container, ErrorMessage, Legend, Label, Input, Flex, LinkEl, Button, Group } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import { SubmitResetPasswordType } from 'types/Authorisation'
 import { validation } from 'constants/validation'
 
@@ -24,39 +24,43 @@ export const ResetPassword: FC = () => {
   const authError = useAppSelector(selectCurrentUserAuthError)
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    if (!authError) reset()
+  }, [authError, reset])
+
   const submitResetPasswordHandler: SubmitHandler<SubmitResetPasswordType> = (data): void => {
     const { email } = data
 
     dispatch(resetPasswordThunk({ email: email.trim().toLocaleLowerCase() }))
-
-    reset()
   }
 
   return (
-    <Container>
+    <ReusedStyle.Container>
       <PopupContainer>
         <FormContainer handleSubmit={handleSubmit} submitHandler={submitResetPasswordHandler}>
-          <Legend>Reset the password</Legend>
-          <Group height='50px' margin='10px 0 18px 0'>
-            <Label>
-              <Input {...register('email', validation.email)} placeholder='email' type='email' />
-            </Label>
-            {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
-          </Group>
-          {<ErrorMessage>{authError}</ErrorMessage>}
-          <Group margin='0 0 10px 0' height='40px'>
-            <Button type='submit' name='submit'>
+          <ReusedStyle.Legend>Reset the password</ReusedStyle.Legend>
+          <ReusedStyle.Group height='50px' margin='10px 0 18px 0'>
+            <ReusedStyle.Label>
+              <ReusedStyle.Input {...register('email', validation.email)} placeholder='email' type='email' />
+            </ReusedStyle.Label>
+            {errors?.email && (
+              <ReusedStyle.ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ReusedStyle.ErrorMessage>
+            )}
+          </ReusedStyle.Group>
+          {<ReusedStyle.ErrorMessage>{authError}</ReusedStyle.ErrorMessage>}
+          <ReusedStyle.Group margin='0 0 10px 0' height='40px'>
+            <ReusedStyle.Button type='submit' name='submit'>
               Reset
-            </Button>
-          </Group>
-          <Flex>
-            <LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>
+            </ReusedStyle.Button>
+          </ReusedStyle.Group>
+          <ReusedStyle.Flex>
+            <ReusedStyle.LinkEl color='var(--color-links)' textDecoration='underline' to='/login'>
               Already have an account?
-            </LinkEl>
-          </Flex>
+            </ReusedStyle.LinkEl>
+          </ReusedStyle.Flex>
         </FormContainer>
         <ToastContainer role='alert' />
       </PopupContainer>
-    </Container>
+    </ReusedStyle.Container>
   )
 }

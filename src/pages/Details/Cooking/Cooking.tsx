@@ -4,7 +4,7 @@ import { nanoid } from '@reduxjs/toolkit'
 import { motion } from 'constants/motion'
 import { stringCut } from 'utils/stringCut'
 
-import { List } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Cooking.styled'
 
 import { IoFootstepsSharp } from 'react-icons/io5'
@@ -15,7 +15,7 @@ import { CookingStep } from './CookingStep'
 
 export const Cooking: FC<CookingProps> = ({ details }) => {
   return (
-    <List {...motion}>
+    <ReusedStyle.List {...motion}>
       {details?.analyzedInstructions.map(({ name, steps }) => (
         <Fragment key={nanoid()}>
           {name.length ? (
@@ -34,6 +34,6 @@ export const Cooking: FC<CookingProps> = ({ details }) => {
       {!details?.analyzedInstructions.length && (
         <ErrorNoResult description='No instruction for cooking' height='25vh' />
       )}
-    </List>
+    </ReusedStyle.List>
   )
 }

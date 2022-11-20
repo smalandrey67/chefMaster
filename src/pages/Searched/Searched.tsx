@@ -5,7 +5,7 @@ import { CuisineCard } from 'components/business/CuisineCard/CuisineCard'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
-import { Container, ErrorMessage, SpinnerWrapper, Spinner, RecipesWrapper } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 
 import { useGetSearchedQuery } from 'services/RecipesService'
 import { useValidateParams } from './hook/useValidateParams'
@@ -15,13 +15,13 @@ export const Searched: FC = () => {
   const { data: recipes, error, isLoading } = useGetSearchedQuery(params)
 
   return (
-    <Container>
-      <RecipesWrapper>
+    <ReusedStyle.Container>
+      <ReusedStyle.RecipesWrapper>
         {/* if isLoading true and data?.results actually are so we are rendering them. If not show the error result */}
         {isLoading ? (
-          <SpinnerWrapper height='50vh'>
-            <Spinner src={SpinnerBg} alt='spinner' />
-          </SpinnerWrapper>
+          <ReusedStyle.SpinnerWrapper height='50vh'>
+            <ReusedStyle.Spinner src={SpinnerBg} alt='spinner' />
+          </ReusedStyle.SpinnerWrapper>
         ) : recipes?.length ? (
           recipes.map((recipe) => <CuisineCard key={recipe.id} {...recipe} />)
         ) : (
@@ -29,12 +29,12 @@ export const Searched: FC = () => {
         )}
 
         {error && (
-          <ErrorMessage>
+          <ReusedStyle.ErrorMessage>
             <BiError />
             Server Error
-          </ErrorMessage>
+          </ReusedStyle.ErrorMessage>
         )}
-      </RecipesWrapper>
-    </Container>
+      </ReusedStyle.RecipesWrapper>
+    </ReusedStyle.Container>
   )
 }

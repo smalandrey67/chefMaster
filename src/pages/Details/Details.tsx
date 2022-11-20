@@ -5,7 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { BiError } from 'react-icons/bi'
 import { BsSuitHeartFill } from 'react-icons/bs'
 import * as Style from './Details.styled'
-import { ErrorMessage, SpinnerWrapper, Spinner, FlexGroup, Image } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
@@ -38,12 +38,12 @@ export const Details: FC = () => {
     <SectionContainer motion={motion}>
       <Style.DetailsWrapper>
         {isLoading ? (
-          <SpinnerWrapper height='50vh'>
-            <Spinner src={SpinnerBg} alt='spinner' />
-          </SpinnerWrapper>
+          <ReusedStyle.SpinnerWrapper height='50vh'>
+            <ReusedStyle.Spinner src={SpinnerBg} alt='spinner' />
+          </ReusedStyle.SpinnerWrapper>
         ) : (
           <>
-            <FlexGroup flex='0 1 50%'>
+            <ReusedStyle.FlexGroup flex='0 1 50%'>
               <Style.DetailWrapperImage>
                 <BackButtonContainer buttonTitle='back'>
                   <Style.DetailsHeartButton
@@ -55,7 +55,7 @@ export const Details: FC = () => {
                 </BackButtonContainer>
 
                 <Style.DetailsOverImage>
-                  <Image width='100%' objectFit='cover' src={details?.image} alt={details?.title} />
+                  <ReusedStyle.Image width='100%' objectFit='cover' src={details?.image} alt={details?.title} />
 
                   {/* Social component actually means functionality over the image */}
                   <Social details={details} />
@@ -65,9 +65,9 @@ export const Details: FC = () => {
               <ErrorBoundary fallbackRender={(): JSX.Element => <ErrorFallback height='5vh' />}>
                 <Nutritions id={params.id} />
               </ErrorBoundary>
-            </FlexGroup>
+            </ReusedStyle.FlexGroup>
 
-            <FlexGroup flex='0 1 50%'>
+            <ReusedStyle.FlexGroup flex='0 1 50%'>
               <Tabs />
 
               {tabName === 'instructions' && (
@@ -87,15 +87,15 @@ export const Details: FC = () => {
                   <Cooking details={details} />
                 </ErrorBoundary>
               )}
-            </FlexGroup>
+            </ReusedStyle.FlexGroup>
           </>
         )}
       </Style.DetailsWrapper>
       {error && (
-        <ErrorMessage>
+        <ReusedStyle.ErrorMessage>
           <BiError />
           Server Error
-        </ErrorMessage>
+        </ReusedStyle.ErrorMessage>
       )}
     </SectionContainer>
   )

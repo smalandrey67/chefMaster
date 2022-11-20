@@ -8,7 +8,7 @@ import { useAddIntoWeekPlan } from 'hooks/useAddIntoWeekPlan'
 import { LocationStateType } from 'types/Location'
 import { RecipeContainerProps } from './RecipeContainer.types'
 
-import { Article, RecipeImageWrapper, RecipeTitle } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 
 export const RecipeContainer: FC<RecipeContainerProps> = ({ children, id, title, image }) => {
   const { state } = useLocation() as LocationStateType
@@ -20,13 +20,13 @@ export const RecipeContainer: FC<RecipeContainerProps> = ({ children, id, title,
   const isCanAdd = state && state.prevPath === '/meal/plan' && !isExist
 
   return (
-    <Article
+    <ReusedStyle.Article
       onClick={() => (isCanAdd ? addRecipeIntoWeekPlan() : !isExist ? navigateHandler('/details/', String(id)) : null)}
     >
-      <RecipeImageWrapper isExist={isExist}>
+      <ReusedStyle.RecipeImageWrapper isExist={isExist}>
         {children}
-        <RecipeTitle>{title}</RecipeTitle>
-      </RecipeImageWrapper>
-    </Article>
+        <ReusedStyle.RecipeTitle>{title}</ReusedStyle.RecipeTitle>
+      </ReusedStyle.RecipeImageWrapper>
+    </ReusedStyle.Article>
   )
 }

@@ -1,33 +1,21 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import * as StyleReused from 'assets/styled/Reused.styled'
 import * as Style from './Answer.styled'
-import {
-  ErrorMessage,
-  SpinnerWrapper,
-  Spinner,
-  Strong,
-  Legend,
-  FlexGroup,
-  Group,
-  Label,
-  Input,
-  Flex,
-  Button,
-  Image
-} from 'assets/styled/Reused.styled'
+
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 
-import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
-import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
+import { FormContainer } from 'components/containers/FormContainer/FormContainer'
+import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
 
-import { IoCloseSharp } from 'react-icons/io5'
 import { BiError } from 'react-icons/bi'
+import { IoCloseSharp } from 'react-icons/io5'
 
-import { SubmitAnswerType, AnswerProps } from 'types/Answer'
-import { useLazyGetAnswerQuery } from 'services/RecipesService'
 import { validation } from 'constants/validation'
+import { useLazyGetAnswerQuery } from 'services/RecipesService'
+import { AnswerProps, SubmitAnswerType } from 'types/Answer'
 
 export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
   const {
@@ -48,46 +36,46 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
     <PopupContainer>
       <FormContainer handleSubmit={handleSubmit} submitHandler={submitAnswerHandler}>
         <Style.AnswerHeader>
-          <Legend>Quick answer</Legend>
+          <StyleReused.Legend>Quick answer</StyleReused.Legend>
           <IoCloseSharp onClick={popupHandler} size='23' cursor='pointer' />
         </Style.AnswerHeader>
 
         <Style.AnswerExample>
-          <Strong fontSize='var(--fs-sm)'>Example:</Strong>
+          <StyleReused.Strong fontSize='var(--fs-sm)'>Example:</StyleReused.Strong>
           How much vitamins c is in 2 apples
         </Style.AnswerExample>
-        <Flex>
-          <FlexGroup margin='0 10px 0 0' flex='0 1 70%' height='50px'>
-            <Label>
-              <Input {...register('question', validation.question)} placeholder='Question' type='text' />
-            </Label>
-          </FlexGroup>
+        <StyleReused.Flex>
+          <StyleReused.FlexGroup margin='0 10px 0 0' flex='0 1 70%' height='50px'>
+            <StyleReused.Label>
+              <StyleReused.Input {...register('question', validation.question)} placeholder='Question' type='text' />
+            </StyleReused.Label>
+          </StyleReused.FlexGroup>
 
-          <FlexGroup flex='0 1 30%' height='50px'>
-            <Button type='submit' name='submit'>
+          <StyleReused.FlexGroup flex='0 1 30%' height='50px'>
+            <StyleReused.Button type='submit' name='submit'>
               ask
-            </Button>
-          </FlexGroup>
-        </Flex>
+            </StyleReused.Button>
+          </StyleReused.FlexGroup>
+        </StyleReused.Flex>
 
         {errors?.question && (
-          <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+          <StyleReused.ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
             {errors?.question?.message}
-          </ErrorMessage>
+          </StyleReused.ErrorMessage>
         )}
       </FormContainer>
 
       {isLoading && (
-        <SpinnerWrapper height='15vh'>
-          <Spinner src={SpinnerSm} alt='spinner' />
-        </SpinnerWrapper>
+        <StyleReused.SpinnerWrapper height='15vh'>
+          <StyleReused.Spinner src={SpinnerSm} alt='spinner' />
+        </StyleReused.SpinnerWrapper>
       )}
 
       {isSuccess && Object.keys(data?.answer || {}).length ? (
         <Style.AnswerResult>
-          <Group width='150px' height='150px'>
-            <Image src={data?.image} alt='Product' objectFit='contain' />
-          </Group>
+          <StyleReused.Group width='150px' height='150px'>
+            <StyleReused.Image src={data?.image} alt='Product' objectFit='contain' />
+          </StyleReused.Group>
           {data?.answer}
         </Style.AnswerResult>
       ) : null}
@@ -97,10 +85,10 @@ export const Answer: FC<AnswerProps> = ({ popupHandler }) => {
       ) : null}
 
       {error && (
-        <ErrorMessage margin='5px 0 0 0'>
+        <StyleReused.ErrorMessage margin='5px 0 0 0'>
           <BiError />
           Server Error
-        </ErrorMessage>
+        </StyleReused.ErrorMessage>
       )}
     </PopupContainer>
   )

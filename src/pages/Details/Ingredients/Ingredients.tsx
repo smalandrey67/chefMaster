@@ -5,7 +5,7 @@ import { motion } from 'constants/motion'
 import { LazyImage } from 'components/common/LazyImage/LazyImage'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
-import { List } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Ingredients.styled'
 
 import { IngredientsProps } from './Ingredients.types'
@@ -15,7 +15,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
     <>
       <Style.DetailsIngredientsCount>{details?.extendedIngredients.length} items</Style.DetailsIngredientsCount>
 
-      <List {...motion}>
+      <ReusedStyle.List {...motion}>
         {details?.extendedIngredients.map(({ id, image, nameClean, amount, unit }) => (
           <Style.DetailsIngredientsItem key={id}>
             <LazyImage
@@ -32,7 +32,7 @@ export const Ingredients: FC<IngredientsProps> = ({ details }) => {
             </Style.DetailsIngredientsUnit>
           </Style.DetailsIngredientsItem>
         ))}
-      </List>
+      </ReusedStyle.List>
 
       {!details?.extendedIngredients.length && <ErrorNoResult description='No ingredients here' height='25vh' />}
     </>

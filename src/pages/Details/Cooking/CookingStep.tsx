@@ -1,13 +1,8 @@
 import { FC, useState } from 'react'
 import { nanoid } from '@reduxjs/toolkit'
 
-import { Strong } from 'assets/styled/Reused.styled'
-import {
-  DetailsCookingItem,
-  DetailsCookingHeader,
-  DetailsCookingContent,
-  DetailsCookingIngredients
-} from './Cooking.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
+import * as Style from './Cooking.styled'
 
 import { BsChevronDown } from 'react-icons/bs'
 import { CookingStepType } from 'types/Details'
@@ -31,19 +26,19 @@ export const CookingStep: FC<CookingStepType> = ({ step, number, ingredients }) 
   const isHideStep = !!ingredients.length
 
   return (
-    <DetailsCookingItem>
-      <DetailsCookingHeader onClick={() => stepHandler(step)}>
-        <Strong>Step {number}</Strong>
+    <Style.DetailsCookingItem>
+      <Style.DetailsCookingHeader onClick={() => stepHandler(step)}>
+        <ReusedStyle.Strong>Step {number}</ReusedStyle.Strong>
         <BsChevronDown style={{ transform: transfromValue }} />
-      </DetailsCookingHeader>
+      </Style.DetailsCookingHeader>
 
-      <DetailsCookingContent isActiveStep={isActiveStep}>
-        <DetailsCookingIngredients isHideStep={isHideStep}>
+      <Style.DetailsCookingContent isActiveStep={isActiveStep}>
+        <Style.DetailsCookingIngredients isHideStep={isHideStep}>
           {ingredients.length &&
             ingredients.map((ingredients) => <CookingIngredient key={nanoid()} {...ingredients} />)}
-        </DetailsCookingIngredients>
+        </Style.DetailsCookingIngredients>
         {step}
-      </DetailsCookingContent>
-    </DetailsCookingItem>
+      </Style.DetailsCookingContent>
+    </Style.DetailsCookingItem>
   )
 }

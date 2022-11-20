@@ -4,7 +4,7 @@ import { removeHtmlTags } from 'utils/removeHtmlTags'
 import { motion } from 'constants/motion'
 
 import * as Style from './Instructions.styled'
-import { Paragraph } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import { ErrorNoResult } from 'components/common/ErrorNoResult/ErrorNoResult.lazy'
 
 import { InstructionsProps } from './Instructions.types'
@@ -17,8 +17,12 @@ export const Instructions: FC<InstructionsProps> = ({ details }) => {
       ) : null}
 
       <Style.DetailsInfoDescriptionWrapper {...motion}>
-        <Paragraph margin={details?.summary && '0 0 10px 0'}>{removeHtmlTags(details?.summary)}</Paragraph>
-        <Paragraph margin={details?.instructions && '0 0 10px 0'}>{removeHtmlTags(details?.instructions)}</Paragraph>
+        <ReusedStyle.Paragraph margin={details?.summary && '0 0 10px 0'}>
+          {removeHtmlTags(details?.summary)}
+        </ReusedStyle.Paragraph>
+        <ReusedStyle.Paragraph margin={details?.instructions && '0 0 10px 0'}>
+          {removeHtmlTags(details?.instructions)}
+        </ReusedStyle.Paragraph>
       </Style.DetailsInfoDescriptionWrapper>
     </>
   )

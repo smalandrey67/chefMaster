@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { Container, Title, LinkEl } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import { NotAuthorisatedContent, NotAuthorisatedImage } from './NotAuthorisated.styled'
 
 import NotAuthorisationWarning from 'assets/images/main/notAuthorisation.webp'
@@ -10,13 +10,13 @@ export const NotAuthorisated: FC = () => {
   const location = useLocation()
 
   return (
-    <Container>
+    <ReusedStyle.Container>
       <NotAuthorisatedContent>
         <NotAuthorisatedImage src={NotAuthorisationWarning} alt='not authorisation' />
-        <Title fontSize='var(--fs-md) ' margin='0 0 10px 0'>
+        <ReusedStyle.Title fontSize='var(--fs-md) ' margin='0 0 10px 0'>
           Log in before get into this page
-        </Title>
-        <LinkEl
+        </ReusedStyle.Title>
+        <ReusedStyle.LinkEl
           fontSize='var(--fs-md)'
           textDecoration='underline'
           color='var(--color-links)'
@@ -24,8 +24,8 @@ export const NotAuthorisated: FC = () => {
           state={{ prevPath: location.pathname }}
         >
           Log in
-        </LinkEl>
+        </ReusedStyle.LinkEl>
       </NotAuthorisatedContent>
-    </Container>
+    </ReusedStyle.Container>
   )
 }

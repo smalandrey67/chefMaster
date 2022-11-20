@@ -2,19 +2,7 @@ import { ChangeEvent, FC, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
-import {
-  ErrorMessage,
-  LinkEl,
-  Strong,
-  Title,
-  Spinner,
-  Label,
-  Input,
-  Image,
-  Flex,
-  Group,
-  Button
-} from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Profile.styled'
 
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
@@ -48,58 +36,62 @@ export const Profile: FC = () => {
   return (
     <SectionContainer>
       <BackButtonContainer buttonTitle='back'>
-        <Title>Profile test</Title>
+        <ReusedStyle.Title>Profile</ReusedStyle.Title>
       </BackButtonContainer>
       <Style.ProfileContent>
         <Style.ProfileImageWrapper>
-          <Image objectFit='cover' src={currentProfilePhoto ?? config.noUserPhoto} alt='profile photo' />
+          <ReusedStyle.Image objectFit='cover' src={currentProfilePhoto ?? config.noUserPhoto} alt='profile photo' />
           <Style.ProfileUploadLabel>
-            <Input hidden onChange={changeFileHandler} type='file' name='file' />
+            <ReusedStyle.Input hidden onChange={changeFileHandler} type='file' name='file' />
             <Style.ProfileBackgroundOverImage>
               <HiPlus color='var(--color-white)' size={30} />
             </Style.ProfileBackgroundOverImage>
           </Style.ProfileUploadLabel>
         </Style.ProfileImageWrapper>
-        {isLoading ? <Spinner src={SpinnerSm} alt='spinner' /> : null}
+        {isLoading ? <ReusedStyle.Spinner src={SpinnerSm} alt='spinner' /> : null}
 
-        <Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
-          <Strong fontSize='var(--fs-sm)'>Email: </Strong>
-          {user && user.email ? user.email : <Strong fontSize='var(--fs-sm)'>You are not authorized</Strong>}
-        </Flex>
-        <Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
-          <Strong fontSize='var(--fs-sm)'>Name:</Strong>
-          {user && user.name ? user.name : <Strong fontSize='var(--fs-sm)'>No name yet</Strong>}
-        </Flex>
+        <ReusedStyle.Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
+          <ReusedStyle.Strong fontSize='var(--fs-sm)'>Email: </ReusedStyle.Strong>
+          {user && user.email ? (
+            user.email
+          ) : (
+            <ReusedStyle.Strong fontSize='var(--fs-sm)'>You are not authorized</ReusedStyle.Strong>
+          )}
+        </ReusedStyle.Flex>
+        <ReusedStyle.Flex margin='0 0 7px 0' width='100%' justifyContent='space-between'>
+          <ReusedStyle.Strong fontSize='var(--fs-sm)'>Name:</ReusedStyle.Strong>
+          {user && user.name ? user.name : <ReusedStyle.Strong fontSize='var(--fs-sm)'>No name yet</ReusedStyle.Strong>}
+        </ReusedStyle.Flex>
 
-        <Group margin='0 0 7px 0' width='100%' height='50px'>
-          <Label>
-            <Input value={name} type='text' placeholder='name' name='name' onChange={updateNameHandler} />
-          </Label>
-        </Group>
+        <ReusedStyle.Group margin='0 0 7px 0' width='100%' height='50px'>
+          <ReusedStyle.Label>
+            <ReusedStyle.Input value={name} type='text' placeholder='name' name='name' onChange={updateNameHandler} />
+          </ReusedStyle.Label>
+        </ReusedStyle.Group>
 
-        <Group margin='0 0 7px 0' width='100%' height='50px'>
-          <Button disabled={!isUpdateDisabled} onClick={submitUpdatesHandler} type='button' name='Update'>
+        <ReusedStyle.Group margin='0 0 7px 0' width='100%' height='50px'>
+          <ReusedStyle.Button disabled={!isUpdateDisabled} onClick={submitUpdatesHandler} type='button' name='Update'>
             Update
-          </Button>
-        </Group>
-        <Group margin='0 0 7px 0' width='100%' height='50px'>
-          <Button disabled={!isUserAuthorisated} onClick={logOutHandler} type='button' name='log-out'>
+          </ReusedStyle.Button>
+        </ReusedStyle.Group>
+        <ReusedStyle.Group margin='0 0 7px 0' width='100%' height='50px'>
+          <ReusedStyle.Button disabled={!isUserAuthorisated} onClick={logOutHandler} type='button' name='log-out'>
             Log out
-          </Button>
-        </Group>
+          </ReusedStyle.Button>
+        </ReusedStyle.Group>
 
         {isUserAuthorisated || (
-          <LinkEl textDecoration='underline' margin='0 0 15px 0' color='var(--color-links)' to='/login'>
+          <ReusedStyle.LinkEl textDecoration='underline' margin='0 0 15px 0' color='var(--color-links)' to='/login'>
             Log in
-          </LinkEl>
+          </ReusedStyle.LinkEl>
         )}
 
-        <ErrorMessage>
+        <ReusedStyle.ErrorMessage>
           <>
             {authError}
             {errorOfUploadFile}
           </>
-        </ErrorMessage>
+        </ReusedStyle.ErrorMessage>
         <ToastContainer role='alert' />
       </Style.ProfileContent>
     </SectionContainer>

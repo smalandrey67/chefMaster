@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 import { BiError } from 'react-icons/bi'
 
@@ -18,19 +18,19 @@ export const RecipesCarousel: FC = () => {
     <SectionContainer>
       <Splide options={splideOptions(3)}>
         {isLoading ? (
-          <SpinnerWrapper height='50vh'>
-            <Spinner src={SpinnerBg} alt='spinner' />
-          </SpinnerWrapper>
+          <ReusedStyle.SpinnerWrapper height='50vh'>
+            <ReusedStyle.Spinner src={SpinnerBg} alt='spinner' />
+          </ReusedStyle.SpinnerWrapper>
         ) : (
           recipes?.map((recipe) => <RecipeCard key={recipe.id} {...recipe} />)
         )}
       </Splide>
 
       {error && (
-        <ErrorMessage>
+        <ReusedStyle.ErrorMessage>
           <BiError />
           Server error
-        </ErrorMessage>
+        </ReusedStyle.ErrorMessage>
       )}
     </SectionContainer>
   )

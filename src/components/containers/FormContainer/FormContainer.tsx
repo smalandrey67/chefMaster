@@ -1,4 +1,4 @@
-import { Form, Fieldset } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 
 import { SubmitSearchType } from 'components/business/Search/Search.types'
 import { SubmitSubMealType } from 'pages/MealPlan/SubMealField/SubMealField.types'
@@ -22,8 +22,8 @@ export const FormContainer = <
   submitHandler
 }: AuthFormContainerProps<T>): JSX.Element => {
   return (
-    <Form onSubmit={handleSubmit(submitHandler)}>
-      <Fieldset>{children}</Fieldset>
-    </Form>
+    <ReusedStyle.Form onSubmit={handleSubmit(submitHandler)}>
+      <ReusedStyle.Fieldset>{children}</ReusedStyle.Fieldset>
+    </ReusedStyle.Form>
   )
 }

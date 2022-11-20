@@ -4,7 +4,7 @@ import { useAppSelector } from 'hooks/useRedux'
 import { useOverflow } from 'hooks/useOverflow'
 import { selectIsHamburgerMenu } from 'store/slices/filterSlice/filterSlice.selectors'
 
-import { LinkEl } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Header.styled'
 
 import { BsFillPeopleFill, BsFillBasket3Fill, BsFillCalendarWeekFill } from 'react-icons/bs'
@@ -19,30 +19,30 @@ export const HeaderMenu: FC = () => {
       <Style.HeaderList>
         <Style.HeaderItem>
           <BsFillBasket3Fill size='20' />
-          <LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/favorites'>
+          <ReusedStyle.LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/favorites'>
             Favorites
-          </LinkEl>
+          </ReusedStyle.LinkEl>
         </Style.HeaderItem>
         <Style.HeaderItem>
           <BsFillPeopleFill size='20' />
-          <LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/blogs'>
+          <ReusedStyle.LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/blogs'>
             Blogs
-          </LinkEl>
+          </ReusedStyle.LinkEl>
         </Style.HeaderItem>
         <Style.HeaderItem>
           <BsFillCalendarWeekFill size='20' />
-          <LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/meal/plan'>
+          <ReusedStyle.LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/meal/plan'>
             Meal Plan
-          </LinkEl>
+          </ReusedStyle.LinkEl>
         </Style.HeaderItem>
       </Style.HeaderList>
       <Style.HeaderHorizontalLine>
         <Style.HeaderList>
           <Style.HeaderItemProfile>
             <FaUserTie size='20' />
-            <LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/profile'>
+            <ReusedStyle.LinkEl fontSize='var(--fs-bg)' margin='0 0 0 10px' to='/profile'>
               Profile
-            </LinkEl>
+            </ReusedStyle.LinkEl>
           </Style.HeaderItemProfile>
         </Style.HeaderList>
       </Style.HeaderHorizontalLine>

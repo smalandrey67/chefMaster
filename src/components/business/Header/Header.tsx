@@ -1,9 +1,8 @@
 import { FC } from 'react'
 import { ImSpoonKnife } from 'react-icons/im'
 
-import { LinkEl } from 'assets/styled/Reused.styled'
 import * as Style from './Header.styled'
-import { Container } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 
 import { Search } from 'components/business/Search/Search'
 import { HamburgerButton } from './HamburgerButton'
@@ -16,20 +15,20 @@ export const Header: FC = () => {
 
   return (
     <Style.HeaderEl>
-      <Container>
+      <ReusedStyle.Container>
         <Style.HeaderWrapper>
           <Style.HeaderLogoWrapper>
             <ImSpoonKnife size='25' />
-            <LinkEl margin='0 0 0 5px' fontSize='var(--fs-bg)' fontWeight='var(--fw-bold)' to='/'>
+            <ReusedStyle.LinkEl margin='0 0 0 5px' fontSize='var(--fs-bg)' fontWeight='var(--fw-bold)' to='/'>
               ChefMaster
-            </LinkEl>
+            </ReusedStyle.LinkEl>
           </Style.HeaderLogoWrapper>
 
           <HamburgerButton />
           <HeaderMenu />
         </Style.HeaderWrapper>
         <Search />
-      </Container>
+      </ReusedStyle.Container>
     </Style.HeaderEl>
   )
 }

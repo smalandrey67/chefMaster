@@ -9,17 +9,7 @@ import { FormContainer } from 'components/containers/FormContainer/FormContainer
 import { SectionContainer } from 'components/containers/SectionContainer/SectionContainer'
 
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
-import {
-  SpinnerWrapper,
-  Spinner,
-  Strong,
-  ErrorMessage,
-  Legend,
-  Group,
-  Label,
-  Input,
-  Button
-} from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './BlogsCreate.styled'
 
 import { SubmitBlogType } from 'types/Blogs'
@@ -43,35 +33,35 @@ export const BlogsCreate: FC = () => {
     <SectionContainer>
       <Style.BlogsCreateBody>
         <FormContainer handleSubmit={handleSubmit} submitHandler={submitBlogHandler}>
-          <Legend>Create your own post</Legend>
-          <Group margin='10px 0 20px 0' width='100%' height='50px'>
-            <Label>
-              <Input {...register('title', validation.title)} placeholder='Title' type='text' />
-            </Label>
+          <ReusedStyle.Legend>Create your own post</ReusedStyle.Legend>
+          <ReusedStyle.Group margin='10px 0 20px 0' width='100%' height='50px'>
+            <ReusedStyle.Label>
+              <ReusedStyle.Input {...register('title', validation.title)} placeholder='Title' type='text' />
+            </ReusedStyle.Label>
             {errors?.title && (
-              <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+              <ReusedStyle.ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
                 {errors?.title?.message}
-              </ErrorMessage>
+              </ReusedStyle.ErrorMessage>
             )}
-          </Group>
-          <Group margin='0 0 10px 0' width='100%'>
-            <Label>
+          </ReusedStyle.Group>
+          <ReusedStyle.Group margin='0 0 10px 0' width='100%'>
+            <ReusedStyle.Label>
               <Style.BlogsCreateTextarea
                 {...register('description', validation.description)}
                 placeholder='Description'
               />
-            </Label>
+            </ReusedStyle.Label>
             {errors?.description && (
-              <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+              <ReusedStyle.ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
                 {errors?.description?.message}
-              </ErrorMessage>
+              </ReusedStyle.ErrorMessage>
             )}
-          </Group>
+          </ReusedStyle.Group>
 
-          <Group margin='0 0 20px 0' width='100%' height='50px'>
+          <ReusedStyle.Group margin='0 0 20px 0' width='100%' height='50px'>
             <Style.BlogsCreateFileWrapper>
               <Style.BlogsCreateLabelFile as='label'>
-                <Input
+                <ReusedStyle.Input
                   {...register('file', validation.file)}
                   type='file'
                   accept={extension.join(',')}
@@ -80,43 +70,43 @@ export const BlogsCreate: FC = () => {
                 />
                 Upload image
               </Style.BlogsCreateLabelFile>
-              <Strong fontSize='var(--fs-sm)'>{stringCut(fileName, 23)}</Strong>
+              <ReusedStyle.Strong fontSize='var(--fs-sm)'>{stringCut(fileName, 23)}</ReusedStyle.Strong>
             </Style.BlogsCreateFileWrapper>
             {errors?.file && (
-              <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+              <ReusedStyle.ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
                 {errors?.file?.message}
-              </ErrorMessage>
+              </ReusedStyle.ErrorMessage>
             )}
-          </Group>
+          </ReusedStyle.Group>
 
           <Style.BlogsCreatePreview>
             {isLoading ? (
-              <SpinnerWrapper height='15vh'>
-                <Spinner src={SpinnerSm} alt='spinner' />
-              </SpinnerWrapper>
+              <ReusedStyle.SpinnerWrapper height='15vh'>
+                <ReusedStyle.Spinner src={SpinnerSm} alt='spinner' />
+              </ReusedStyle.SpinnerWrapper>
             ) : (
               <Style.BlogsCreatePreviewImage userPhoto={userPhoto} src={userPhoto} alt='preview' />
             )}
             {/* Error while image uploading */}
             {errorUploadingImage && (
-              <ErrorMessage>
+              <ReusedStyle.ErrorMessage>
                 <BiError />
                 Server Error
-              </ErrorMessage>
+              </ReusedStyle.ErrorMessage>
             )}
           </Style.BlogsCreatePreview>
 
-          <Group height='50px'>
-            <Button type='submit' name='submit'>
+          <ReusedStyle.Group height='50px'>
+            <ReusedStyle.Button type='submit' name='submit'>
               Create
-            </Button>
-          </Group>
+            </ReusedStyle.Button>
+          </ReusedStyle.Group>
           {/* Error while post uploading*/}
           {errorBlog && (
-            <ErrorMessage>
+            <ReusedStyle.ErrorMessage>
               <BiError />
               Server Error
-            </ErrorMessage>
+            </ReusedStyle.ErrorMessage>
           )}
         </FormContainer>
       </Style.BlogsCreateBody>

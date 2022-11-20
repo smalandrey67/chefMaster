@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Container } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Categories.styled'
 
 import { Splide } from '@splidejs/react-splide'
@@ -12,7 +12,7 @@ import { splideOptions } from 'constants/splide'
 export const Categories: FC = () => {
   return (
     <Style.CategoriesNav>
-      <Container>
+      <ReusedStyle.Container>
         <Splide options={splideOptions(4)}>
           {categories.map(({ cuisine, Icon }) => (
             <SplideSlide key={cuisine} style={{ display: 'flex', justifyContent: 'center' }}>
@@ -23,7 +23,7 @@ export const Categories: FC = () => {
             </SplideSlide>
           ))}
         </Splide>
-      </Container>
+      </ReusedStyle.Container>
     </Style.CategoriesNav>
   )
 }

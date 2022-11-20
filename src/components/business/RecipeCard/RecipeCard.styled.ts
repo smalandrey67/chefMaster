@@ -21,7 +21,7 @@ export const RecipeScore = styled.span<RecipeScoreProps>`
   font-weight: var(--fw-bold);
   height: 25px;
   width: 25px;
-  border-radius: 50%;
+  border-radius: var(--br-radius-full);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-import { ErrorMessage, SpinnerWrapper, Spinner } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Nutritions.styled'
 import SpinnerSm from 'assets/images/icons/spinner-sm.svg'
 
@@ -17,9 +17,9 @@ export const Nutritions: FC<NutritionProps> = memo(({ id }) => {
   return (
     <Style.NutritionWrapper>
       {isLoading ? (
-        <SpinnerWrapper height='15vh'>
-          <Spinner src={SpinnerSm} alt='spinner' />
-        </SpinnerWrapper>
+        <ReusedStyle.SpinnerWrapper height='15vh'>
+          <ReusedStyle.Spinner src={SpinnerSm} alt='spinner' />
+        </ReusedStyle.SpinnerWrapper>
       ) : (
         <>
           <Style.NutritionItem>
@@ -39,10 +39,10 @@ export const Nutritions: FC<NutritionProps> = memo(({ id }) => {
         </>
       )}
       {error && (
-        <ErrorMessage>
+        <ReusedStyle.ErrorMessage>
           <BiError />
           Server Error
-        </ErrorMessage>
+        </ReusedStyle.ErrorMessage>
       )}
     </Style.NutritionWrapper>
   )

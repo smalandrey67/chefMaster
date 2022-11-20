@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { RecipesWrapper, Title } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 
 import { useAppSelector } from 'hooks/useRedux'
 import { selectFavorites } from 'store/slices/favoriteSlice/favoriteSlice.selectors'
@@ -16,16 +16,16 @@ export const Favorites: FC = () => {
   return (
     <SectionContainer>
       <BackButtonContainer buttonTitle='back'>
-        <Title>Favorites {favorites.length ? `(${favorites.length})` : null}</Title>
+        <ReusedStyle.Title>Favorites {favorites.length ? `(${favorites.length})` : null}</ReusedStyle.Title>
       </BackButtonContainer>
 
-      <RecipesWrapper>
+      <ReusedStyle.RecipesWrapper>
         {favorites.length ? (
           favorites.map((favoriteRecipe) => <FavoriteCard key={favoriteRecipe.id} {...favoriteRecipe} />)
         ) : (
           <ErrorNoResult description='No favorites yet' height='50vh' />
         )}
-      </RecipesWrapper>
+      </ReusedStyle.RecipesWrapper>
     </SectionContainer>
   )
 }

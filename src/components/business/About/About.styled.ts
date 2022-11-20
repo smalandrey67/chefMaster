@@ -35,5 +35,5 @@ export const AboutChatWrapper = styled(Button)`
   align-items: center;
   justify-content: center;
   background-color: var(--color-categories);
-  border-radius: 50%;
+  border-radius: var(--br-radius-full);
 `

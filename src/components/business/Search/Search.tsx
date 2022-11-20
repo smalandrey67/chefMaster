@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { ErrorMessage, FlexGroup, Group, Label, Input } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './Search.styled'
 import { Filter } from '../Filter/Filter'
 
@@ -28,32 +28,32 @@ export const Search: FC = memo(() => {
 
   return (
     <Style.SearchWrapper>
-      <FlexGroup margin='0 10px 0 0' flex='0 1 75%'>
+      <ReusedStyle.FlexGroup margin='0 10px 0 0' flex='0 1 75%'>
         <FormContainer handleSubmit={handleSubmit} submitHandler={submitSearchHandler}>
-          <Group height='50px'>
-            <Label>
+          <ReusedStyle.Group height='50px'>
+            <ReusedStyle.Label>
               <FiSearch size='18' />
-              <Input
+              <ReusedStyle.Input
                 {...register('product', validation.product)}
                 type='text'
                 enterKeyHint='search'
                 placeholder='Search'
               />
-            </Label>
+            </ReusedStyle.Label>
             {errors?.product && (
-              <ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
+              <ReusedStyle.ErrorMessage margin='5px 0 0 0' justifyContent='flex-start'>
                 {errors?.product?.message}
-              </ErrorMessage>
+              </ReusedStyle.ErrorMessage>
             )}
-          </Group>
+          </ReusedStyle.Group>
         </FormContainer>
-      </FlexGroup>
+      </ReusedStyle.FlexGroup>
 
-      <FlexGroup flex='0 1 25%' onClick={openFilterMenuHandler}>
+      <ReusedStyle.FlexGroup flex='0 1 25%' onClick={openFilterMenuHandler}>
         <Style.SearchFilter aria-label='filter' name='filter-options'>
           <GoSettings size='23' />
         </Style.SearchFilter>
-      </FlexGroup>
+      </ReusedStyle.FlexGroup>
       <Filter />
     </Style.SearchWrapper>
   )

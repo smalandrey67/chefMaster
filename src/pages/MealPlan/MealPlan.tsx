@@ -12,7 +12,8 @@ import {
 } from 'store/slices/mealPlanSlice/mealPlanSlice.selectors'
 import { selectCurrentUser } from 'store/slices/authSlice/authSlice.selectors'
 
-import { Title, List, SpinnerWrapper, Spinner, ErrorMessage } from 'assets/styled/Reused.styled'
+import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
 import * as Style from './MealPlan.styled'
 
 import { Weeks } from './Weeks/Weeks'
@@ -31,8 +32,6 @@ import { useDeleteSubMealMenu } from './hook/useDeleteSubMealMenu'
 import { stringCut } from 'utils/stringCut'
 
 import { getMealPlanThunk } from 'store/slices/mealPlanSlice/mealPlanThunk'
-
-import SpinnerBg from 'assets/images/icons/spinner-bg.svg'
 
 export const MealPlan: FC = () => {
   const dispatch = useAppDispatch()
@@ -64,16 +63,16 @@ export const MealPlan: FC = () => {
 
   if (status === 'pending') {
     return (
-      <SpinnerWrapper height='40vh'>
-        <Spinner src={SpinnerBg} alt='spinner' />
-      </SpinnerWrapper>
+      <ReusedStyle.SpinnerWrapper height='40vh'>
+        <ReusedStyle.Spinner src={SpinnerBg} alt='spinner' />
+      </ReusedStyle.SpinnerWrapper>
     )
   }
 
   return (
     <SectionContainer motion={motion}>
       <BackButtonContainer buttonTitle='back'>
-        <Title>Meal Plan</Title>
+        <ReusedStyle.Title>Meal Plan</ReusedStyle.Title>
       </BackButtonContainer>
 
       <ResetMealPlanButton />
@@ -85,7 +84,7 @@ export const MealPlan: FC = () => {
       </Style.MealPlanItemTitle>
 
       <SubMealField isSubMealMenu={isSubMealMenu} />
-      <List>
+      <ReusedStyle.List>
         {Object.values(activeDay || {}).length ? (
           activeDay.subMeals.map((subMeal, index) => (
             <Style.MealPlanItem key={subMeal.subMealId} {...motion}>
@@ -133,12 +132,12 @@ export const MealPlan: FC = () => {
         )}
         <ToastContainer role='alert' />
         {error && (
-          <ErrorMessage>
+          <ReusedStyle.ErrorMessage>
             <BiError />
             Server Error
-          </ErrorMessage>
+          </ReusedStyle.ErrorMessage>
         )}
-      </List>
+      </ReusedStyle.List>
     </SectionContainer>
   )
 }

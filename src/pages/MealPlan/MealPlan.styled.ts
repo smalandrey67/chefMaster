@@ -30,7 +30,7 @@ export const MealPlanItemAdd = styled(Button)`
   width: 25px;
   height: 25px;
   padding: 0;
-  border-radius: 50%;
+  border-radius: var(--br-radius-full);
   background-color: var(--color-categories);
   color: var(--color-white);
   display: block;
@@ -46,7 +46,7 @@ export const MealPlanSubMealAdd = styled.button`
   @media (hover: hover) {
     transition: all 0.3s ease;
     &:hover {
-      border-radius: 50%;
+      border-radius: var(--br-radius-full);
       background-color: var(--color-scrollbar);
       color: var(--color-white);
     }

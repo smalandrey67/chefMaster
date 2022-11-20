@@ -4,7 +4,7 @@ import { Flex, Button } from 'assets/styled/Reused.styled'
 
 export const BackButtonContainerWrapper = styled(Flex)`
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `
 export const ButtonBack = styled(Button)`
   flex: 0 1 100px;

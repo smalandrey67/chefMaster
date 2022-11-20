@@ -1,11 +1,11 @@
-import { FC } from 'react'
-import { useLocation } from 'react-router-dom'
+import { FC, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useLocation } from 'react-router-dom'
 
-import { Container, ErrorMessage, Group, Label, Input, Flex, LinkEl, Button, Legend } from 'assets/styled/Reused.styled'
+import * as ReusedStyle from 'assets/styled/Reused.styled'
+import { validation } from 'constants/validation'
 import { SubmitUserType } from 'types/Authorisation'
 import { LocationStateType } from 'types/Location'
-import { validation } from 'constants/validation'
 
 import { FormContainer } from 'components/containers/FormContainer/FormContainer'
 import { PopupContainer } from 'components/containers/PopupContainer/PopupContainer'
@@ -13,8 +13,8 @@ import { PopupContainer } from 'components/containers/PopupContainer/PopupContai
 import { useRedirect } from 'hooks/useRedirect'
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux'
 
-import { signInThunk } from 'store/slices/authSlice/authThunk'
 import { selectCurrentUserAuthError } from 'store/slices/authSlice/authSlice.selectors'
+import { signInThunk } from 'store/slices/authSlice/authThunk'
 
 export const Login: FC = () => {
   const {
@@ -30,6 +30,10 @@ export const Login: FC = () => {
   const navigateHandler = useRedirect()
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    if (!authError) reset()
+  }, [authError, reset])
+
   const SubmitUserTypeHandler: SubmitHandler<SubmitUserType> = (data): void => {
     const { email, password } = data
 
@@ -41,49 +45,57 @@ export const Login: FC = () => {
         navigatePath: state?.prevPath ?? '/'
       })
     )
-
-    reset()
   }
 
   return (
-    <Container>
+    <ReusedStyle.Container>
       <PopupContainer>
         <FormContainer handleSubmit={handleSubmit} submitHandler={SubmitUserTypeHandler}>
-          <Legend>Log in</Legend>
-          <Group height='50px' margin='10px 0 18px 0'>
-            <Label>
-              <Input {...register('email', validation.email)} placeholder='email' type='email' />
-            </Label>
-            {errors?.email && <ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ErrorMessage>}
-          </Group>
-          <Group height='50px' margin='0 0 18px 0'>
-            <Label>
-              <Input {...register('password', validation.password)} placeholder='password' type='password' />
-            </Label>
-            {errors?.password && <ErrorMessage justifyContent='flex-start'>{errors?.password?.message}</ErrorMessage>}
-          </Group>
-          {<ErrorMessage>{authError}</ErrorMessage>}
-          <Group margin='0 0 10px 0' height='40px'>
-            <Button type='submit' name='submit'>
+          <ReusedStyle.Legend>Log in</ReusedStyle.Legend>
+          <ReusedStyle.Group height='50px' margin='10px 0 18px 0'>
+            <ReusedStyle.Label>
+              <ReusedStyle.Input {...register('email', validation.email)} placeholder='email' type='email' />
+            </ReusedStyle.Label>
+            {errors?.email && (
+              <ReusedStyle.ErrorMessage justifyContent='flex-start'>{errors?.email?.message}</ReusedStyle.ErrorMessage>
+            )}
+          </ReusedStyle.Group>
+          <ReusedStyle.Group height='50px' margin='0 0 18px 0'>
+            <ReusedStyle.Label>
+              <ReusedStyle.Input
+                {...register('password', validation.password)}
+                placeholder='password'
+                type='password'
+              />
+            </ReusedStyle.Label>
+            {errors?.password && (
+              <ReusedStyle.ErrorMessage justifyContent='flex-start'>
+                {errors?.password?.message}
+              </ReusedStyle.ErrorMessage>
+            )}
+          </ReusedStyle.Group>
+          {<ReusedStyle.ErrorMessage>{authError}</ReusedStyle.ErrorMessage>}
+          <ReusedStyle.Group margin='0 0 10px 0' height='40px'>
+            <ReusedStyle.Button type='submit' name='submit'>
               Log in
-            </Button>
-          </Group>
+            </ReusedStyle.Button>
+          </ReusedStyle.Group>
 
-          <Flex justifyContent='space-between'>
-            <LinkEl
+          <ReusedStyle.Flex justifyContent='space-between'>
+            <ReusedStyle.LinkEl
               color='var(--color-links)'
               textDecoration='underline'
               to='/registration'
               state={{ prevPath: state?.prevPath }}
             >
               Don't have an account?
-            </LinkEl>
-            <LinkEl color='var(--color-links)' textDecoration='underline' to='/reset/password'>
+            </ReusedStyle.LinkEl>
+            <ReusedStyle.LinkEl color='var(--color-links)' textDecoration='underline' to='/reset/password'>
               Forgot a password?
-            </LinkEl>
-          </Flex>
+            </ReusedStyle.LinkEl>
+          </ReusedStyle.Flex>
         </FormContainer>
       </PopupContainer>
-    </Container>
+    </ReusedStyle.Container>
   )
 }

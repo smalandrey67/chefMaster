@@ -10,7 +10,7 @@ export const ProfileContent = styled(Flex)`
 export const ProfileImageWrapper = styled.div`
   width: 200px;
   height: 200px;
-  border-radius: 50%;
+  border-radius: var(--br-radius-full);
   overflow: hidden;
   margin-bottom: 15px;
   position: relative;

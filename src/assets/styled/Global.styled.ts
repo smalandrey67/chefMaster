@@ -48,7 +48,7 @@ export const Global = createGlobalStyle`
     }
 
     :root {
-        //colors
+        // #colors
         --color-white: #fff;
         --color-black: #000000; 
         --color-grey: grey;
@@ -61,20 +61,25 @@ export const Global = createGlobalStyle`
         --color-links: #1f1cd4;
         --color-gradient: rgba(0, 0, 0, 0.8);
 
-        //typography
+        // #font
         font-family: 'Quicksand', sans-serif;
         
+        // #font size
         --fs-sl: 11px;
         --fs-sm: 14px;
         --fs-md: 18px;
         --fs-bg: 25px;
         
+        // #font weight
         --fw-regular: 400;
         --fw-semiBold : 600;
         --fw-bold: 700;
 
+        // #border radius
         --br-radius: 10px;
+        --br-radius-full: 50%;
 
+        // #shadows
         --shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         --shadow-alternative: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
