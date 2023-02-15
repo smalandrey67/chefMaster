@@ -1,0 +1,19 @@
+{
+    "customSyntax": "postcss-scss",
+    "extends": [
+        "stylelint-config-recommended",
+        "stylelint-config-recess-order"
+    ],
+    "plugins": [
+        "stylelint-order"
+    ],
+    "rules": {
+        "order/order": [
+            "custom-properties",
+            "declarations"
+        ],
+        "color-hex-length": "long",
+        "declaration-no-important": true,
+        "max-nesting-depth": 3
+    }
+}
