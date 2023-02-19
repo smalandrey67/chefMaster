@@ -1,3 +1,16 @@
 * {
 	box-sizing: border-box;
 }
+
+:root {
+	--fw-regular: 400;
+	--fw-semiBold: 600;
+	--fw-bold: 800;
+}
+
+body {
+	font-family: var(--poppins-font);
+	font-weight: var(--fw-regular);
+	color: var(--light-10);
+	background: linear-gradient(45deg, var(--dark-10), var(--dark-20));
+}
