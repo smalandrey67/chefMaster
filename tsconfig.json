@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"baseUrl": "./app",
+		"baseUrl": ".",
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
@@ -16,15 +16,17 @@
 		"jsx": "preserve",
 		"incremental": true,
 		"paths": {
-			"@/components/*": ["components/common/*"],
-			"@/layout/*": ["components/layout/*"],
-			"@/screens/*": ["screens/*"],
-			"@/modules/*": ["modules/*"],
-			"@/interfaces/*": ["interfaces/*"],
-			"@/configs/*": ["configs/*"],
-			"@/constants/*": ["constants/*"],
-			"@/hooks/*": ["hooks/*"],
-			"@/store/*": ["store/*"]
+			"@/components/*": ["app/components/*"],
+			"@/layout/*": ["app/components/layout/*"],
+			"@/screens/*": ["app/screens/*"],
+			"@/modules/*": ["app/modules/*"],
+			"@/interfaces/*": ["app/interfaces/*"],
+			"@/configs/*": ["app/configs/*"],
+			"@/constants/*": ["app/constants/*"],
+			"@/hooks/*": ["app/hooks/*"],
+			"@/store/*": ["app/store/*"],
+			"@/pages/*": ["pages/*"],
+			"@/globalStyles/*": ["styles/*"]
 		},
 		"plugins": [
 			{

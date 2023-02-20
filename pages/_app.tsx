@@ -3,7 +3,7 @@ import { Poppins } from "@next/font/google";
 import type { AppProps } from "next/app";
 
 import "chefmaster-ui/dist/styles/main.css";
-import "../styles/globals.scss";
+import "@/globalStyles/globals.scss";
 
 const poppins = Poppins({
 	subsets: ["latin"],

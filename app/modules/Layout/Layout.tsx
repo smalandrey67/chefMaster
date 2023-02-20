@@ -1,12 +1,12 @@
 import { Meta } from "@/components/Meta/Meta";
 import { Header } from "@/modules/Header/Header";
 
-import { LayoutProps } from "./Layout.interface";
+import type { LayoutProps } from "./Layout.interface";
 
-export function Layout({ children, title, description }: LayoutProps): JSX.Element {
+export function Layout({ children, ...metaProps }: LayoutProps): JSX.Element {
 	return (
 		<>
-			<Meta title={title} description={description} />
+			<Meta {...metaProps} />
 			<div>
 				<Header />
 				<main>{children}</main>

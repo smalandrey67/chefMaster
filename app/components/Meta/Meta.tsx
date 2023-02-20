@@ -6,7 +6,7 @@ export function Meta({ title, description }: MetaProps): JSX.Element {
 	return (
 		<Head>
 			<title>{title}</title>
-			<link rel="icon" href="/favicon.png" type="image/x-icon" />
+			<link rel="icon" href="/chefmaster.ico" />
 			{description ? (
 				<meta itemProp="description" name="description" content={description} />
 			) : (
