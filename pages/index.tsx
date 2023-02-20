@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 
 import { Button } from "chefmaster-ui";
+import { Layout } from "@/layout/Layout";
 
 const Home: NextPage = () => {
 	return (
-		<div>
+		<Layout title="chefmaster" description="cooking, recipes, food">
 			<Button>chefmaster</Button>
-		</div>
+		</Layout>
 	);
 };
 

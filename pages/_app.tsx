@@ -10,7 +10,7 @@ const poppins = Poppins({
 	weight: ["400", "600", "800"]
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 	return (
 		<>
 			<style jsx global>
