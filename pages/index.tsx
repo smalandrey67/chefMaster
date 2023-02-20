@@ -1,12 +1,11 @@
 import type { NextPage } from "next";
 
-import { Button } from "chefmaster-ui";
 import { Layout } from "@/modules/Layout/Layout";
 
-const Home: NextPage = () => {
+const Home: NextPage = (): JSX.Element => {
 	return (
 		<Layout title="chefmaster" description="cooking, recipes, food">
-			<Button>chefmaster</Button>
+			<></>
 		</Layout>
 	);
 };

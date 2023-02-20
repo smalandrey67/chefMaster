@@ -9,8 +9,17 @@
 }
 
 body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+
 	font-family: var(--poppins-font);
 	font-weight: var(--fw-regular);
 	color: var(--light-10);
 	background: linear-gradient(45deg, var(--dark-10), var(--dark-20));
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }

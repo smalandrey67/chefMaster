@@ -16,7 +16,8 @@
 		"jsx": "preserve",
 		"incremental": true,
 		"paths": {
-			"@/components/*": ["app/components/*"],
+			"@/common*": ["app/components/common*"],
+			"@/containers*": ["app/components/containers*"],
 			"@/layout/*": ["app/components/layout/*"],
 			"@/screens/*": ["app/screens/*"],
 			"@/modules/*": ["app/modules/*"],
@@ -26,7 +27,8 @@
 			"@/hooks/*": ["app/hooks/*"],
 			"@/store/*": ["app/store/*"],
 			"@/pages/*": ["pages/*"],
-			"@/globalStyles/*": ["styles/*"]
+			"@/globalStyles/*": ["styles/*"],
+			"@/images/*": ["public/images/*"]
 		},
 		"plugins": [
 			{
