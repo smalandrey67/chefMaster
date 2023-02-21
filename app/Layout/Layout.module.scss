@@ -1,0 +1,24 @@
+.wrapper {
+	&App {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	&Layout {
+		display: grid;
+		grid-template-columns: 5fr 1fr;
+		column-gap: 10px;
+		min-height: 87vh;
+
+		&Main {
+			padding: 30px;
+			background-color: var(--dark-30);
+			border-radius: 20px;
+		}
+	}
+}
+
+.main {
+	flex: 1 1 auto;
+}

@@ -1,14 +1,14 @@
 import Head from "next/head";
 
-import type { MetaProps } from "@/interfaces/Meta";
+import type { MetaProps } from "@/interfaces/Meta.interface";
 
-export function Meta({ title, description }: MetaProps): JSX.Element {
+export function Meta({ pageTitle, pageDescription }: MetaProps): JSX.Element {
 	return (
 		<Head>
-			<title>{title}</title>
+			<title>{pageTitle}</title>
 			<link rel="icon" href="/chefmaster.ico" />
-			{description ? (
-				<meta itemProp="description" name="description" content={description} />
+			{pageDescription ? (
+				<meta itemProp="description" name="description" content={pageDescription} />
 			) : (
 				<meta name="robots" content="noindex, nofollow" />
 			)}

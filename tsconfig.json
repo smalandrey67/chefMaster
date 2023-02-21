@@ -18,7 +18,7 @@
 		"paths": {
 			"@/common*": ["app/components/common*"],
 			"@/containers*": ["app/components/containers*"],
-			"@/layout/*": ["app/components/layout/*"],
+			"@/Layout/*": ["app/Layout/*"],
 			"@/screens/*": ["app/screens/*"],
 			"@/modules/*": ["app/modules/*"],
 			"@/interfaces/*": ["app/interfaces/*"],

@@ -1,0 +1,15 @@
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 0 15px 0 0;
+	border-radius: 20px;
+
+	&Wrapper {
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+		align-items: flex-end;
+		width: 100%;
+	}
+}

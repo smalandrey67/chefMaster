@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 
-import { Layout } from "@/modules/Layout/Layout";
+import { HomeScreen } from "@/screens/HomeScreen/HomeScreen";
+import { withLayout } from "@/Layout/Layout";
 
 const Home: NextPage = (): JSX.Element => {
-	return (
-		<Layout title="chefmaster" description="cooking, recipes, food">
-			<></>
-		</Layout>
-	);
+	return <HomeScreen />;
 };
 
-export default Home;
+export default withLayout({
+	Component: Home,
+	pageTitle: "chefMaster",
+	pageDescription: "Discover a world of mouth-watering recipes on our site."
+});

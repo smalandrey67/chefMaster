@@ -4,13 +4,13 @@ import { Button } from "chefmaster-ui";
 import { PageContainer } from "@/containers/PageContainer/PageContainer";
 
 import { ImSpoonKnife } from "react-icons/im";
-import { CgMenuHotdog } from "react-icons/cg";
+import { RiSearchLine } from "react-icons/ri";
 
 import styles from "./Header.module.scss";
 
 export function Header(): JSX.Element {
 	return (
-		<header>
+		<header className={styles.header}>
 			<PageContainer>
 				<div className={styles.headerBody}>
 					<div className={styles.headerLogo}>
@@ -19,7 +19,7 @@ export function Header(): JSX.Element {
 							chefMaster
 						</Link>
 					</div>
-					<Button Icon={CgMenuHotdog} iconSize="25" />
+					<Button Icon={RiSearchLine} iconSize="25" />
 				</div>
 			</PageContainer>
 		</header>
