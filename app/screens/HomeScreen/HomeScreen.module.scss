@@ -1,0 +1,10 @@
+.home {
+	display: grid;
+	grid-template-areas:
+		"categories categories categories personalStatistic"
+		"popularRecipes popularRecipes popularRecipes articles"
+		"popularRecipes popularRecipes popularRecipes articles"
+		"popularRecipes popularRecipes popularRecipes articles";
+	gap: 10px;
+	height: 100%;
+}

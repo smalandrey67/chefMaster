@@ -4,7 +4,7 @@ import { Button } from "chefmaster-ui";
 import { PageContainer } from "@/containers/PageContainer/PageContainer";
 
 import { ImSpoonKnife } from "react-icons/im";
-import { RiSearchLine } from "react-icons/ri";
+import { BiUserCircle } from "react-icons/bi";
 
 import styles from "./Header.module.scss";
 
@@ -19,7 +19,9 @@ export function Header(): JSX.Element {
 							chefMaster
 						</Link>
 					</div>
-					<Button Icon={RiSearchLine} iconSize="25" />
+					<Button Icon={BiUserCircle} iconSize="18">
+						Profile
+					</Button>
 				</div>
 			</PageContainer>
 		</header>
