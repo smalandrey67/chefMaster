@@ -1,0 +1,23 @@
+.listItem {
+	display: flex;
+	column-gap: 20px;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 0 10px 0 25px;
+	cursor: pointer;
+	border-radius: var(--rounded-20);
+
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+
+	&:hover {
+		background-color: var(--neon-20);
+	}
+}
+
+.listLink {
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}

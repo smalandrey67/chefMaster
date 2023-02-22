@@ -1,8 +1,8 @@
-.navbar {
+.menu {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	border-radius: 20px;
+	border-radius: var(--rounded-10);
 
 	&Wrapper {
 		display: flex;
@@ -11,4 +11,10 @@
 		align-items: flex-end;
 		width: 100%;
 	}
+}
+
+.list {
+	width: 75%;
+	padding: 0;
+	margin: 0;
 }

@@ -1,15 +1,19 @@
-import Link from "next/link";
+import { NavbarItem } from "./components/NavbarItem/NavbarItem";
+
+import { navbarItems } from "./constants";
+
 import styles from "./Navbar.module.scss";
 
 export function Navbar(): JSX.Element {
 	return (
-		<div className={styles.navbar}>
-			<div className={styles.navbarWrapper}>
-				<Link href="/test/1">test page 2</Link>
-				<Link href="/test/1">test page 3</Link>
-				<Link href="/test/1">test page 4</Link>
-				<Link href="/test/1">test page 5</Link>
-			</div>
-		</div>
+		<aside className={styles.menu}>
+			<nav className={styles.menuWrapper}>
+				<ul className={styles.list}>
+					{navbarItems.map(({ id, ...properties }) => (
+						<NavbarItem key={id} {...properties} />
+					))}
+				</ul>
+			</nav>
+		</aside>
 	);
 }
