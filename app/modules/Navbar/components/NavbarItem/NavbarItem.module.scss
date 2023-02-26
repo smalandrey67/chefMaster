@@ -1,6 +1,5 @@
 .listItem {
 	display: flex;
-	column-gap: 20px;
 	align-items: center;
 	justify-content: flex-end;
 	padding: 0 10px 0 25px;
@@ -17,6 +16,8 @@
 }
 
 .listLink {
+	margin-right: 20px;
+
 	&::first-letter {
 		text-transform: uppercase;
 	}

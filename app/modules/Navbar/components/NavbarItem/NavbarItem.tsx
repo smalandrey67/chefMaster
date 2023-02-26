@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button } from "chefmaster-ui/dist";
+import { Button } from "chefmaster-ui";
 
 import type { NavbarItemProps } from "./NavbarItem.interface";
 import styles from "./NavbarItem.module.scss";

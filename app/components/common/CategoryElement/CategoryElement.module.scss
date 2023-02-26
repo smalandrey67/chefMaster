@@ -1,0 +1,36 @@
+.category {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	min-height: 170px;
+	padding: 10px;
+	color: var(--light-10);
+	cursor: pointer;
+	background-color: var(--dark-10);
+	border-radius: var(--rounded-10);
+	transition: all 0.5s ease;
+
+	&:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	&:hover {
+		background-color: var(--dark-20);
+	}
+
+	&Image {
+		object-fit: contain;
+	}
+
+	&Label {
+		font-size: 15px;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+}
