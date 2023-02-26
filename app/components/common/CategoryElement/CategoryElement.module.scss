@@ -12,14 +12,20 @@
 	cursor: pointer;
 	background-color: var(--dark-10);
 	border-radius: var(--rounded-10);
-	transition: all 0.5s ease;
 
 	&:not(:last-child) {
 		margin-right: 10px;
 	}
 
-	&:hover {
+	&:active {
 		background-color: var(--dark-20);
+	}
+
+	@media (hover: hover) {
+		transition: all 0.5s ease;
+		&:hover {
+			background-color: var(--dark-20);
+		}
 	}
 
 	&Image {

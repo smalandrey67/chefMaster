@@ -10,8 +10,14 @@
 		margin-bottom: 10px;
 	}
 
-	&:hover {
+	&:active {
 		background-color: var(--neon-20);
+	}
+
+	@media (hover: hover) {
+		&:hover {
+			background-color: var(--neon-20);
+		}
 	}
 }
 
