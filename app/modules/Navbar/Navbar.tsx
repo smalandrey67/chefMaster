@@ -1,6 +1,6 @@
 import { NavbarItem } from "./components/NavbarItem/NavbarItem";
 
-import { navbarItems } from "./constants";
+import { navbarItems } from "./Navbar.constants";
 
 import styles from "./Navbar.module.scss";
 

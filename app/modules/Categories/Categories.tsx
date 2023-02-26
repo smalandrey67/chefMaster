@@ -1,6 +1,6 @@
-import { CategoryElement } from "@/common/CategoryElement/CategoryElement";
+import { CategoryElement } from "./components/CategoryElement/CategoryElement";
 
-import { categoriesItems } from "./constants";
+import { categoriesItems } from "./Categories.constants";
 
 import styles from "./Categories.module.scss";
 

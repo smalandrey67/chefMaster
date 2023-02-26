@@ -1,4 +1,4 @@
-import { Meta } from "@/common/Meta/Meta";
+import { Meta } from "./components/Meta/Meta";
 import { PageContainer } from "@/containers/PageContainer/PageContainer";
 
 import { Header } from "@/modules/Header";

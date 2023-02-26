@@ -1,9 +1,9 @@
-import type { NavbarItems } from "./Navbar.interface";
+import type { NavbarItem } from "./Navbar.interface";
 
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { RiHomeLine, RiSettingsLine } from "react-icons/ri";
 
-export const navbarItems: readonly NavbarItems[] = [
+export const navbarItems: readonly NavbarItem[] = [
 	{
 		path: "/",
 		label: "home",

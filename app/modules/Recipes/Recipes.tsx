@@ -1,11 +1,14 @@
-import { RecipeCard } from "@/common/RecipeCard/RecipeCard";
+import { RecipeCard } from "./components/RecipeCard/RecipeCard";
+import { Title } from "chefmaster-ui";
 
 import styles from "./Recipes.module.scss";
 
 export function Recipes(): JSX.Element {
 	return (
 		<section className={styles.recipes}>
-			<h2 className={styles.recipesTitle}>Recipes</h2>
+			<Title className={styles.recipesTitle} variant="big">
+				Recipes
+			</Title>
 			<div className={styles.recipesWrapper}>
 				{new Array(6).fill("item").map((_, index) => (
 					<RecipeCard

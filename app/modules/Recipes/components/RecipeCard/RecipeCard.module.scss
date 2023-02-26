@@ -52,6 +52,10 @@
 			line-height: 1.2;
 			color: var(--light-20);
 			text-align: center;
+
+			&::first-letter {
+				text-transform: uppercase;
+			}
 		}
 	}
 }

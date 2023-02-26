@@ -1,0 +1,28 @@
+.article {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-column-gap: 10px;
+	align-items: flex-start;
+	cursor: pointer;
+
+	@media (hover: hover) {
+		transition: all 0.5s ease;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 21px;
+	}
+
+	&Image {
+		object-fit: cover;
+		border-radius: var(--rounded-10);
+	}
+
+	&Title {
+		display: flex;
+	}
+}

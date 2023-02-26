@@ -1,6 +1,6 @@
-import type { CategoriesItems } from "./Categories.interface";
+import type { CategoriesItem } from "./Categories.interface";
 
-export const categoriesItems: readonly CategoriesItems[] = [
+export const categoriesItems: readonly CategoriesItem[] = [
 	{
 		image:
 			"https://lh3.googleusercontent.com/etzpS4aOyON7r48KfDcjex06Om8gLangZRk6VlLjhoYWb6ZKZLFBXnRsBOsZb415lvkRikWG2Zv3VzkOQkfsuiCz1mIHHQRu0sopBnOLsndehnIJQ7uV5OXuYvUP2JyOpxexdtsbgQ=w2400",

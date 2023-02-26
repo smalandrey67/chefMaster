@@ -1,5 +1,13 @@
 .articles {
 	padding: 10px;
-	border: 1px solid green;
-	border-radius: var(--rounded-20);
+	overflow: auto;
+
+	&Title {
+		margin-bottom: 35px;
+	}
+
+	&Wrapper {
+		display: flex;
+		flex-direction: column;
+	}
 }
