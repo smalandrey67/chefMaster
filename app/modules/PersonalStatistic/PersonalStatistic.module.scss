@@ -1,5 +1,10 @@
-.personalStatistic {
+.statistic {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	padding: 10px;
-	border: 1px solid green;
-	border-radius: var(--rounded-20);
+
+	&Item {
+		width: 150px;
+	}
 }
