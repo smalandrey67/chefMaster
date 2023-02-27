@@ -1,14 +1,17 @@
 import { ArticleItem } from "./components/ArticleItem/ArticleItem";
-import { Title } from "chefmaster-ui";
+import { Title, Button } from "chefmaster-ui";
+
+import { TbArrowNarrowRight } from "react-icons/tb";
 
 import styles from "./Articles.module.scss";
 
 export function Articles(): JSX.Element {
 	return (
 		<section className={styles.articles}>
-			<Title className={styles.articlesTitle} variant="big">
-				Articles
-			</Title>
+			<div className={styles.articlesHeader}>
+				<Title variant="big">Articles</Title>
+				<Button Icon={TbArrowNarrowRight} iconSize={20} />
+			</div>
 
 			<div className={styles.articlesWrapper}>
 				{new Array(4).fill("article").map((_, index) => (

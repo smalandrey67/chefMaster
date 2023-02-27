@@ -2,7 +2,10 @@
 	padding: 10px;
 	overflow: auto;
 
-	&Title {
+	&Header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		margin-bottom: 35px;
 	}
 

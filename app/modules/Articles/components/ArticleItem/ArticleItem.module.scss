@@ -6,10 +6,10 @@
 	cursor: pointer;
 
 	@media (hover: hover) {
-		transition: all 0.5s ease;
+		transition: transform var(--transitionTime) ease;
 
 		&:hover {
-			transform: scale(1.05);
+			transform: scale(var(--scale));
 		}
 	}
 
