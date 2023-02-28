@@ -1,6 +1,12 @@
+@import "@/styles/mixins";
+
 .recipes {
 	padding: 10px;
 	overflow: auto;
+
+	@media screen and (max-width: 1085px) {
+		grid-column: 1 / span 3;
+	}
 
 	&Title {
 		margin: 0 0 70px 0;
@@ -8,8 +14,19 @@
 
 	&Wrapper {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-row-gap: 80px;
+		grid-template-columns: 1fr;
+		grid-row-gap: 60px;
 		grid-column-gap: 15px;
+
+		@media screen and (min-width: 600px) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-row-gap: 80px;
+		}
+
+		@media screen and (min-width: 800px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
+
+	@include customScrollbar;
 }

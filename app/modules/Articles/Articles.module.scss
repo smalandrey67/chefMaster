@@ -1,6 +1,12 @@
+@import "@/styles/mixins";
+
 .articles {
 	padding: 10px;
 	overflow: auto;
+
+	@media screen and (max-width: 1085px) {
+		grid-column: 1 / span 3;
+	}
 
 	&Header {
 		display: flex;
@@ -12,5 +18,18 @@
 	&Wrapper {
 		display: flex;
 		flex-direction: column;
+		gap: 21px;
+
+		@media screen and (max-width: 1085px) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 30px;
+		}
+
+		@media screen and (max-width: 700px) {
+			grid-template-columns: 1fr;
+		}
 	}
+
+	@include customScrollbar;
 }

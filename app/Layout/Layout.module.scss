@@ -7,14 +7,22 @@
 
 	&Layout {
 		display: grid;
-		grid-template-columns: 5fr 1fr;
+		grid-template-columns: 5fr 66px;
 		column-gap: 10px;
 		min-height: 87vh;
 
+		@media screen and (min-width: 1180px) {
+			grid-template-columns: 5fr 1fr;
+		}
+
 		&Main {
-			padding: 30px;
+			padding: 30px 10px 30px 10px;
 			background-color: var(--dark-30);
 			border-radius: var(--rounded-10);
+
+			@media screen and (min-width: 420px) {
+				padding: 30px;
+			}
 		}
 	}
 }

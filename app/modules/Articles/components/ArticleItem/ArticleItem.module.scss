@@ -2,10 +2,14 @@
 
 .article {
 	display: grid;
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 1fr 3fr;
 	grid-column-gap: 10px;
 	align-items: flex-start;
 	cursor: pointer;
+
+	@media screen and (min-width: 700px) {
+		grid-template-columns: 1fr 2fr;
+	}
 
 	@include isHover() {
 		transition: transform var(--transitionTime) ease;
@@ -13,10 +17,6 @@
 		&:hover {
 			transform: scale(var(--scale));
 		}
-	}
-
-	&:not(:last-child) {
-		margin-bottom: 21px;
 	}
 
 	&Image {

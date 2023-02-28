@@ -1,10 +1,19 @@
 .statistic {
 	display: flex;
+	gap: 15px;
 	align-items: center;
-	justify-content: space-between;
 	padding: 10px;
 
+	@media screen and (max-width: 900px) {
+		grid-column: 1 / span 3;
+		justify-content: space-between;
+	}
+
 	&Item {
-		width: 150px;
+		width: 110px;
+
+		@media screen and (min-width: 500px) {
+			width: 150px;
+		}
 	}
 }

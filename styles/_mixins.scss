@@ -3,3 +3,25 @@
 		@content;
 	}
 }
+
+@mixin customScrollbar() {
+	scrollbar-color: var(--dark-30) var(--dark-30);
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--dark-30);
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+		background-color: var(--dark-10);
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--dark-10);
+		border-radius: 10px;
+	}
+}

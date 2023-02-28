@@ -5,20 +5,25 @@
 	background-color: var(--dark-10);
 	border-radius: var(--rounded-10);
 
+	@media screen and (max-width: 1085px) {
+		align-items: flex-start;
+		padding-top: 20px;
+	}
+
 	&Wrapper {
 		display: flex;
 		flex-direction: column;
 		row-gap: 15px;
 		align-items: center;
 		width: 100%;
-
-		@media screen and (min-width: 1180px) {
-			align-items: flex-end;
-		}
 	}
 }
 
 .list {
 	padding: 0;
 	margin: 0;
+
+	@media screen and (min-width: 1180px) {
+		width: 70%;
+	}
 }
