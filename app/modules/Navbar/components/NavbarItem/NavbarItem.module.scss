@@ -1,8 +1,11 @@
+@import "@/styles/mixins";
+
 .listItem {
 	display: flex;
+	gap: 20px;
 	align-items: center;
 	justify-content: flex-end;
-	padding: 0 10px 0 25px;
+	padding: 0 15px;
 	cursor: pointer;
 	border-radius: var(--rounded-20);
 
@@ -14,17 +17,23 @@
 		background-color: var(--neon-20);
 	}
 
-	@media (hover: hover) {
-		&:hover {
-			background-color: var(--neon-20);
+	@media screen and (min-width: 1180px) {
+		padding: 0 10px 0 25px;
+
+		@include isHover() {
+			&:hover {
+				background-color: var(--neon-20);
+			}
 		}
 	}
 }
 
 .listLink {
-	margin-right: 20px;
-
 	&::first-letter {
 		text-transform: uppercase;
+	}
+
+	@media screen and (max-width: 1180px) {
+		display: none;
 	}
 }

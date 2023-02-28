@@ -1,3 +1,5 @@
+@import "@/styles/mixins";
+
 .recipe {
 	box-sizing: border-box;
 	width: 100%;
@@ -7,7 +9,7 @@
 	background-color: var(--dark-10);
 	border-radius: var(--rounded-10);
 
-	@media (hover: hover) {
+	@include isHover() {
 		transition: transform var(--transitionTime) ease;
 
 		&:hover {

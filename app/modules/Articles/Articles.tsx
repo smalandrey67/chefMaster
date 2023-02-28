@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 import { ArticleItem } from "./components/ArticleItem/ArticleItem";
-import { Title, Button } from "chefmaster-ui";
+import { Title, FancyLink } from "chefmaster-ui";
 
 import { TbArrowNarrowRight } from "react-icons/tb";
 
@@ -10,7 +12,7 @@ export function Articles(): JSX.Element {
 		<section className={styles.articles}>
 			<div className={styles.articlesHeader}>
 				<Title variant="big">Articles</Title>
-				<Button Icon={TbArrowNarrowRight} iconSize={20} />
+				<FancyLink Link={Link} href="/articles" Icon={TbArrowNarrowRight} iconSize={20} iconColor="var(--dark-10)" />
 			</div>
 
 			<div className={styles.articlesWrapper}>

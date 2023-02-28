@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button } from "chefmaster-ui";
+import { FancyLink } from "chefmaster-ui";
 
 import type { NavbarItemProps } from "./NavbarItem.interface";
 import styles from "./NavbarItem.module.scss";
@@ -8,10 +8,10 @@ import styles from "./NavbarItem.module.scss";
 export function NavbarItem({ path, label, Icon }: NavbarItemProps): JSX.Element {
 	return (
 		<li className={styles.listItem}>
-			<Link href={path} className={styles.listLink}>
+			<FancyLink className={styles.listLink} Link={Link} href={path}>
 				{label}
-			</Link>
-			<Button Icon={Icon} iconSize="25" name={label} aria-label={label} />
+			</FancyLink>
+			<FancyLink Link={Link} href={path} Icon={Icon} iconSize={20} iconColor="#000000" title={label} />
 		</li>
 	);
 }

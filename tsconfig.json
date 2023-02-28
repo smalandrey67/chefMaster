@@ -27,14 +27,9 @@
 			"@/hooks/*": ["app/hooks/*"],
 			"@/store/*": ["app/store/*"],
 			"@/pages/*": ["pages/*"],
-			"@/globalStyles/*": ["styles/*"],
+			"@/styles/*": ["styles/*"],
 			"@/images/*": ["public/images/*"]
-		},
-		"plugins": [
-			{
-				"name": "typescript-plugin-css-modules"
-			}
-		]
+		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]
