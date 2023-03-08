@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import type { RecipeCardProps } from "./RecipeCard.interface";
+import type { Recipe } from "@/interfaces/Recipe.interface";
 
 import styles from "./RecipeCard.module.scss";
 
-export function RecipeCard({ image, title, readyIn, level, id }: RecipeCardProps): JSX.Element {
+export function RecipeCard({ image, title, cookTime, cookLevel, _id }: Recipe): JSX.Element {
 	return (
 		<article className={styles.recipe}>
 			<div className={styles.recipeHeader}>
@@ -13,9 +13,9 @@ export function RecipeCard({ image, title, readyIn, level, id }: RecipeCardProps
 			<div className={styles.recipeFooter}>
 				<h4 className={styles.recipeTitle}>{title}</h4>
 				<div className={styles.recipeInformation}>
-					<span className={styles.recipeInformationItem}>{readyIn}</span>
+					<span className={styles.recipeInformationItem}>{cookTime}</span>
 					<span className={styles.recipeInformationItem}>|</span>
-					<span className={styles.recipeInformationItem}>{level}</span>
+					<span className={styles.recipeInformationItem}>{cookLevel}</span>
 				</div>
 			</div>
 		</article>
