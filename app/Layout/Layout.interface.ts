@@ -5,6 +5,6 @@ export interface LayoutProps extends MetaProps {
 	children: ReactNode;
 }
 
-export interface WithLayoutProps extends MetaProps {
-	Component: FunctionComponent;
+export interface WithLayoutProps<T> extends MetaProps {
+	Component: FunctionComponent<T>;
 }

@@ -1,22 +1,10 @@
 .header {
 	margin-bottom: 20px;
 
-	&Body {
+	&Wrapper {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		min-height: 60px;
-	}
-
-	&Logo {
-		display: grid;
-		grid-auto-flow: column;
-		column-gap: 5px;
-		align-items: center;
-		cursor: pointer;
-
-		&Link {
-			font-size: 25px;
-		}
 	}
 }

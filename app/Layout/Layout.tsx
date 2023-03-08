@@ -30,7 +30,7 @@ export const withLayout = <T extends Record<string, unknown>>({
 	Component,
 	pageTitle,
 	pageDescription
-}: WithLayoutProps): ((props: T) => JSX.Element) => {
+}: WithLayoutProps<T>): ((props: T) => JSX.Element) => {
 	return function withLayoutComponent(props: T): JSX.Element {
 		return (
 			<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
