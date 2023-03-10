@@ -2,10 +2,10 @@ import Image from "next/image";
 
 import { Title } from "chefmaster-ui";
 
-import { ArticlesItem } from "../../Articles.interface";
+import type { Article } from "@/interfaces/Article.interface";
 import styles from "./ArticleItem.module.scss";
 
-export function ArticleItem({ image, title }: ArticlesItem): JSX.Element {
+export function ArticleItem({ image, title, _id }: Article): JSX.Element {
 	return (
 		<article className={styles.article}>
 			<Image src={image} className={styles.articleImage} width={100} height={100} alt={title} />

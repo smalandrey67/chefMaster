@@ -4,10 +4,11 @@ import { ArticleItem } from "./components/ArticleItem/ArticleItem";
 import { Title, FancyLink } from "chefmaster-ui";
 
 import { TbArrowNarrowRight } from "react-icons/tb";
+import type { ArticlesProps } from "./Articles.interface";
 
 import styles from "./Articles.module.scss";
 
-export function Articles(): JSX.Element {
+export function Articles({ articles }: ArticlesProps): JSX.Element {
 	return (
 		<section className={styles.articles}>
 			<div className={styles.articlesHeader}>
@@ -16,13 +17,7 @@ export function Articles(): JSX.Element {
 			</div>
 
 			<div className={styles.articlesWrapper}>
-				{new Array(4).fill("article").map((_, index) => (
-					<ArticleItem
-						key={index}
-						image="https://lh3.googleusercontent.com/cl58QbQAB5JTvIuW_RctJE-AGE1cVcvYDwa79wMEUkd_nFpM-0-6kak2t20RjnA9PtOdDdxBpBoCzLtF4NQ-o1hS6HdszXsXVphPpSMbwUSqtcI2BNDUM51HlUhbUIU7lQkbbr5lPQ=w2400"
-						title="Black Friday deal: Free salmon steaks"
-					/>
-				))}
+				{articles && articles.map((article) => <ArticleItem key={article._id} {...article} />)}
 			</div>
 		</section>
 	);

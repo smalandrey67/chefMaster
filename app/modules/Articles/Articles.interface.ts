@@ -1,4 +1,5 @@
-export interface ArticlesItem {
-	image: string;
-	title: string;
+import type { Article } from "@/interfaces/Article.interface";
+
+export interface ArticlesProps {
+	articles?: Article[];
 }
